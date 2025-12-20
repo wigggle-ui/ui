@@ -15,15 +15,26 @@ import WidgetLoader from "@/components/widget-loader-client";
 import WidgetDetails from "@/components/widget-details";
 
 export const mdxComponents: MDXComponents = {
-  h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
-    <h1
-      className={cn(
-        "font-heading mt-2 scroll-m-28 text-3xl font-bold tracking-tight",
-        className,
-      )}
-      {...props}
-    />
-  ),
+  h1: ({ className, children, ...props }: React.ComponentProps<"h1">) => {
+    const id = children
+      ?.toString()
+      .replace(/\s+/g, "-")
+      .replace(/'/g, "")
+      .replace(/\?/g, "")
+      .toLowerCase();
+    return (
+      <h1
+        id={id}
+        className={cn(
+          "font-heading scroll-m-12 border-b-2 pb-2 text-3xl font-bold tracking-tight not-first:mt-12",
+          className,
+        )}
+        {...props}
+      >
+        {children}
+      </h1>
+    );
+  },
   h2: ({ className, ...props }: React.ComponentProps<"h2">) => {
     return (
       <h2
