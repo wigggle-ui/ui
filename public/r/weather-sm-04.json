@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/default/widgets/weather/sm/weather-04.tsx",
-      "content": "import * as React from \"react\";\r\n\r\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <Widget>\r\n      <WidgetContent className=\"mx-auto flex-col items-start\">\r\n        <Label className=\"text-6xl\">29&deg;</Label>\r\n        <Label className=\"text-2xl\">Sunny</Label>\r\n        <Label>Tue Nov 22</Label>\r\n      </WidgetContent>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "import * as React from \"react\";\n\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\n\nexport default function WidgetDemo() {\n  return (\n    <Widget>\n      <WidgetContent className=\"mx-auto flex-col items-start\">\n        <Label className=\"text-6xl\">29&deg;</Label>\n        <Label className=\"text-2xl\">Sunny</Label>\n        <Label>Tue Nov 22</Label>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
       "type": "registry:component"
     }
   ],

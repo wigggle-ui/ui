@@ -179,3 +179,30 @@
 .animate-depth-in {
   animation: depthIn 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
+
+@layer utilities {
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee 8s linear infinite;
+  }
+
+  @keyframes spin {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+  .animate-spin {
+    animation: spin 2s linear infinite;
+  }
+}

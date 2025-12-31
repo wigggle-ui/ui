@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "media-sm-02",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/avatar.json",
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/audio-player.json",
+    "https://wigggle-ui.vercel.app/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/media/sm/media-02.tsx",
+      "content": "import { SkipBackIcon, SkipForwardIcon } from \"lucide-react\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetHeader,\r\n} from \"@/registry/default/ui/widget\";\r\nimport {\r\n  AudioPlayerButton,\r\n  AudioPlayerDuration,\r\n  AudioPlayerProgress,\r\n  AudioPlayerProvider,\r\n  AudioPlayerTime,\r\n  exampleTrack,\r\n} from \"@/components/ui/audio-player\";\r\nimport {\r\n  Avatar,\r\n  AvatarFallback,\r\n  AvatarImage,\r\n} from \"@/registry/default/ui/avatar\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\nimport { Button } from \"@/registry/default/ui/button\";\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <AudioPlayerProvider>\r\n      <Widget className=\"justify-between\">\r\n        <WidgetHeader className=\"items-center justify-start gap-x-3\">\r\n          <Avatar className=\"size-14 rounded-md\">\r\n            <AvatarImage\r\n              src=\"https://i.scdn.co/image/ab67616d0000b273dfd5b5d99cf81f1864deef01\"\r\n              alt=\"Code Monkey\"\r\n            />\r\n            <AvatarFallback>CM</AvatarFallback>\r\n          </Avatar>\r\n          <div className=\"space-y-0\">\r\n            <Label className=\"text-base text-wrap\">\r\n              {exampleTrack.data.title}\r\n            </Label>\r\n          </div>\r\n        </WidgetHeader>\r\n        <WidgetContent className=\"flex-none flex-col gap-3\">\r\n          <div className=\"flex w-full items-center justify-between\">\r\n            <Button variant=\"ghost\" size=\"icon-sm\">\r\n              <SkipBackIcon className=\"stroke-muted-foreground\" />\r\n            </Button>\r\n            <AudioPlayerButton\r\n              size=\"icon-sm\"\r\n              variant=\"ghost\"\r\n              item={exampleTrack}\r\n            />\r\n            <Button variant=\"ghost\" size=\"icon-sm\">\r\n              <SkipForwardIcon className=\"stroke-muted-foreground\" />\r\n            </Button>\r\n          </div>\r\n          <div className=\"w-full space-y-1\">\r\n            <AudioPlayerProgress className=\"h-full max-h-2 w-full flex-1\" />\r\n            <div className=\"flex w-full items-center justify-between\">\r\n              <AudioPlayerTime className=\"text-muted-foreground text-xs\" />\r\n              <AudioPlayerDuration className=\"text-muted-foreground text-xs\" />\r\n            </div>\r\n          </div>\r\n        </WidgetContent>\r\n      </Widget>\r\n    </AudioPlayerProvider>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "media"
+    ],
+    "size": "sm",
+    "credits": [
+      {
+        "name": "@elevenlabs-ui",
+        "homepage": "https://ui.elevenlabs.io/docs/components/audio-player",
+        "url": "https://ui.elevenlabs.io",
+        "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'></path></svg>"
+      }
+    ]
+  }
+}

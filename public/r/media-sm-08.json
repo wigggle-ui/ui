@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "media-sm-08",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/media/sm/media-08.tsx",
+      "content": "\"use client\";\r\n\r\nimport { XIcon } from \"lucide-react\";\r\nimport Image from \"next/image\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetFooter,\r\n} from \"@/registry/default/ui/widget\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\nimport { Button } from \"@/registry/default/ui/button\";\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <Widget design=\"mumbai\" className=\"relative justify-between gap-0\">\r\n      <Button\r\n        variant=\"outline\"\r\n        size=\"icon-sm\"\r\n        className=\"absolute top-2 right-2 rounded-full\"\r\n      >\r\n        <XIcon />\r\n      </Button>\r\n      <WidgetContent className=\"flex-col gap-2\">\r\n        <Image\r\n          src=\"/assets/products/airpods-max.png\"\r\n          alt=\"Airpods Max\"\r\n          width={192}\r\n          height={192}\r\n          className=\"size-20\"\r\n        />\r\n        <Label>Henil's AirPods Max</Label>\r\n      </WidgetContent>\r\n      <WidgetFooter>\r\n        <Button variant=\"outline\" className=\"w-full rounded-full\">\r\n          Connect\r\n        </Button>\r\n      </WidgetFooter>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "media"
+    ],
+    "size": "sm"
+  }
+}

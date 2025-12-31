@@ -13,7 +13,7 @@ export default function PageHeader({
   children,
 }: PageHeaderProps) {
   return (
-    <div className={cn("mb-16 text-center", className)}>
+    <div className={cn("relative mb-16 text-center", className)}>
       <h1 className="text-foreground mb-3 text-4xl/[1.1] font-semibold md:text-5xl/[1.1]">
         {title}
       </h1>

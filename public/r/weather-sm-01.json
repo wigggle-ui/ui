@@ -12,7 +12,7 @@
   "files": [
     {
       "path": "registry/default/widgets/weather/sm/weather-01.tsx",
-      "content": "import * as React from \"react\";\r\nimport { SunIcon } from \"lucide-react\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetFooter,\r\n} from \"@/registry/default/ui/widget\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <Widget>\r\n      <WidgetContent className=\"flex-col gap-4\">\r\n        <SunIcon className=\"size-10\" strokeWidth={2} />\r\n        <Label className=\"text-4xl\">29&deg;</Label>\r\n      </WidgetContent>\r\n      <WidgetFooter className=\"justify-center\">\r\n        <Label className=\"text-lg font-semibold\">Mumbai</Label>\r\n      </WidgetFooter>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "import * as React from \"react\";\nimport { SunIcon } from \"lucide-react\";\n\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n} from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\n\nexport default function WidgetDemo() {\n  return (\n    <Widget>\n      <WidgetContent className=\"flex-col gap-4\">\n        <SunIcon className=\"size-10\" strokeWidth={2} />\n        <Label className=\"text-4xl\">29&deg;</Label>\n      </WidgetContent>\n      <WidgetFooter className=\"justify-center\">\n        <Label className=\"text-lg font-semibold\">Mumbai</Label>\n      </WidgetFooter>\n    </Widget>\n  );\n}\n",
       "type": "registry:component"
     }
   ],

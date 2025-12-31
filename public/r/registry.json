@@ -62,6 +62,21 @@
       ]
     },
     {
+      "name": "carousel",
+      "type": "registry:ui",
+      "dependencies": ["embla-carousel-react", "lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/utils.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "circular-progress",
       "type": "registry:ui",
       "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
@@ -130,6 +145,18 @@
       ]
     },
     {
+      "name": "progress",
+      "type": "registry:ui",
+      "dependencies": ["@radix-ui/react-progress"],
+      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utis.json"],
+      "files": [
+        {
+          "path": "registry/default/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "select",
       "type": "registry:ui",
       "dependencies": ["@radix-ui/react-select", "lucide-react"],
@@ -137,6 +164,18 @@
       "files": [
         {
           "path": "registry/default/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "dependencies": ["@radix-ui/react-scroll-area"],
+      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utis.json"],
+      "files": [
+        {
+          "path": "registry/default/ui/scroll-area.tsx",
           "type": "registry:ui"
         }
       ]
@@ -831,6 +870,346 @@
       "meta": {
         "tags": ["dashboard"],
         "size": "lg"
+      }
+    },
+    {
+      "name": "media-sm-01",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/avatar.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/audio-player.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/media/sm/media-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["media"],
+        "size": "sm",
+        "credits": [
+          {
+            "name": "@elevenlabs-ui",
+            "homepage": "https://ui.elevenlabs.io/docs/components/audio-player",
+            "url": "https://ui.elevenlabs.io",
+            "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'></path></svg>"
+          }
+        ]
+      }
+    },
+    {
+      "name": "media-sm-02",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/avatar.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/audio-player.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/media/sm/media-02.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["media"],
+        "size": "sm",
+        "credits": [
+          {
+            "name": "@elevenlabs-ui",
+            "homepage": "https://ui.elevenlabs.io/docs/components/audio-player",
+            "url": "https://ui.elevenlabs.io",
+            "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'></path></svg>"
+          }
+        ]
+      }
+    },
+    {
+      "name": "media-sm-03",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/audio-player.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/media/sm/media-03.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["media"],
+        "size": "sm",
+        "credits": [
+          {
+            "name": "@elevenlabs-ui",
+            "homepage": "https://ui.elevenlabs.io/docs/components/audio-player",
+            "url": "https://ui.elevenlabs.io",
+            "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'></path></svg>"
+          }
+        ]
+      }
+    },
+    {
+      "name": "media-sm-04",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/audio-player.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/media/sm/media-04.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["media"],
+        "size": "sm",
+        "credits": [
+          {
+            "name": "@elevenlabs-ui",
+            "homepage": "https://ui.elevenlabs.io/docs/components/audio-player",
+            "url": "https://ui.elevenlabs.io",
+            "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'></path></svg>"
+          }
+        ]
+      }
+    },
+    {
+      "name": "media-sm-05",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/media/sm/media-05.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["media"],
+        "size": "sm"
+      }
+    },
+    {
+      "name": "media-sm-06",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/media/sm/media-06.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["media"],
+        "size": "sm"
+      }
+    },
+    {
+      "name": "media-sm-07",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/media/sm/media-07.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["media"],
+        "size": "sm"
+      }
+    },
+    {
+      "name": "media-sm-08",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/media/sm/media-08.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["media"],
+        "size": "sm"
+      }
+    },
+    {
+      "name": "media-md-01",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/audio-player.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/avatar.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/media/md/media-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["media"],
+        "size": "md",
+        "credits": [
+          {
+            "name": "@elevenlabs-ui",
+            "homepage": "https://ui.elevenlabs.io/docs/components/audio-player",
+            "url": "https://ui.elevenlabs.io",
+            "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'></path></svg>"
+          }
+        ]
+      }
+    },
+    {
+      "name": "media-md-02",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/audio-player.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/media/md/media-02.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["media"],
+        "size": "md",
+        "credits": [
+          {
+            "name": "@elevenlabs-ui",
+            "homepage": "https://ui.elevenlabs.io/docs/components/audio-player",
+            "url": "https://ui.elevenlabs.io",
+            "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'></path></svg>"
+          }
+        ]
+      }
+    },
+    {
+      "name": "media-md-03",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/audio-player.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/media/md/media-03.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["media"],
+        "size": "md",
+        "credits": [
+          {
+            "name": "@elevenlabs-ui",
+            "homepage": "https://ui.elevenlabs.io/docs/components/audio-player",
+            "url": "https://ui.elevenlabs.io",
+            "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'></path></svg>"
+          }
+        ]
+      }
+    },
+    {
+      "name": "media-md-04",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/carousel.json",
+        "https://wigggle-ui.vercel.app/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/media/md/media-04.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["media"],
+        "size": "md",
+        "credits": [
+          {
+            "name": "@animate-ui",
+            "homepage": "https://animate-ui.com/docs/components/community/motion-carousel",
+            "url": "https://animate-ui.com/",
+            "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24'><path fill='currentColor' d='M17.453 23.09H6.547a6.43 6.43 0 0 1-3.32-.914 6.5 6.5 0 0 1-2.262-2.32 6.406 6.406 0 0 1 .031-6.45L6.45 4.094a6.4 6.4 0 0 1 2.442-2.387 6.47 6.47 0 0 1 6.218 0 6.4 6.4 0 0 1 2.442 2.387l5.453 9.312a6.4 6.4 0 0 1 .031 6.45 6.5 6.5 0 0 1-2.262 2.32 6.43 6.43 0 0 1-3.32.914M11.336 6.953 5.879 16.27a.75.75 0 0 0-.004.773.74.74 0 0 0 .672.387h10.906a.74.74 0 0 0 .672-.387.75.75 0 0 0-.004-.773l-5.457-9.317A.73.73 0 0 0 12 6.57a.73.73 0 0 0-.664.383m0 0'></path></svg>"
+          }
+        ]
+      }
+    },
+    {
+      "name": "media-md-05",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/audio-player.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/media/md/media-05.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["media"],
+        "size": "md",
+        "credits": [
+          {
+            "name": "@elevenlabs-ui",
+            "homepage": "https://ui.elevenlabs.io/docs/components/audio-player",
+            "url": "https://ui.elevenlabs.io",
+            "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'></path></svg>"
+          }
+        ]
       }
     },
     {

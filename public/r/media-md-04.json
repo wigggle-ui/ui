@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "media-md-04",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/carousel.json",
+    "https://wigggle-ui.vercel.app/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/media/md/media-04.tsx",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { MusicIcon } from \"lucide-react\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetHeader,\r\n} from \"@/registry/default/ui/widget\";\r\nimport {\r\n  Carousel,\r\n  CarouselContent,\r\n  CarouselItem,\r\n  CarouselNext,\r\n  CarouselPrevious,\r\n  type CarouselApi,\r\n} from \"@/components/ui/carousel\";\r\nimport { cn } from \"@/registry/default/lib/utils\";\r\n\r\nconst albums = [\r\n  \"https://i.scdn.co/image/ab6761610000e5ebd55c95ad400aed87da52daec\",\r\n  \"https://c.saavncdn.com/artists/Nucleya_002_20241118064538_500x500.jpg\",\r\n  \"https://i.scdn.co/image/ab67616d0000b273aacbfc6de7128a834757fea4\",\r\n  \"https://i.scdn.co/image/ab67616d0000b273e105c410a7b390c61a58cbf8\",\r\n  \"https://i.scdn.co/image/ab67616d0000b273627b5b17cb48f6e6956b842e\",\r\n];\r\n\r\nexport default function WidgetDemo() {\r\n  const [api, setApi] = React.useState<CarouselApi>();\r\n  const [current, setCurrent] = React.useState(0);\r\n\r\n  React.useEffect(() => {\r\n    if (!api) {\r\n      return;\r\n    }\r\n\r\n    setCurrent(api.selectedScrollSnap() + 1);\r\n\r\n    api.on(\"select\", () => {\r\n      setCurrent(api.selectedScrollSnap() + 1);\r\n    });\r\n  }, [api]);\r\n\r\n  return (\r\n    <Widget size=\"md\" design=\"mumbai\">\r\n      <WidgetHeader className=\"items-center justify-start gap-x-2\">\r\n        <MusicIcon className=\"size-5\" />\r\n        Top 100 in India\r\n      </WidgetHeader>\r\n      <WidgetContent className=\"h-max max-h-32\">\r\n        <div className=\"mx-auto\">\r\n          <Carousel\r\n            setApi={setApi}\r\n            className=\"w-full max-w-xs\"\r\n            opts={{ loop: true }}\r\n          >\r\n            <CarouselContent className=\"pb-4\">\r\n              {albums.map((image, index) => (\r\n                <CarouselItem key={index} className={cn(\"basis-[33%]\", {})}>\r\n                  <img\r\n                    src={image}\r\n                    alt={`Album ${index + 1}`}\r\n                    className={cn(\r\n                      \"aspect-square rounded-lg transition-transform duration-500\",\r\n                      {\r\n                        \"scale-[0.7]\": index !== current - 1,\r\n                      },\r\n                    )}\r\n                  />\r\n                </CarouselItem>\r\n              ))}\r\n            </CarouselContent>\r\n            <CarouselPrevious className=\"top-[calc(100%-1rem)] left-0 translate-y-0\" />\r\n            <CarouselNext className=\"top-[calc(100%-1rem)] right-0 translate-y-0\" />\r\n          </Carousel>\r\n        </div>\r\n      </WidgetContent>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "media"
+    ],
+    "size": "md",
+    "credits": [
+      {
+        "name": "@animate-ui",
+        "homepage": "https://animate-ui.com/docs/components/community/motion-carousel",
+        "url": "https://animate-ui.com/",
+        "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24'><path fill='currentColor' d='M17.453 23.09H6.547a6.43 6.43 0 0 1-3.32-.914 6.5 6.5 0 0 1-2.262-2.32 6.406 6.406 0 0 1 .031-6.45L6.45 4.094a6.4 6.4 0 0 1 2.442-2.387 6.47 6.47 0 0 1 6.218 0 6.4 6.4 0 0 1 2.442 2.387l5.453 9.312a6.4 6.4 0 0 1 .031 6.45 6.5 6.5 0 0 1-2.262 2.32 6.43 6.43 0 0 1-3.32.914M11.336 6.953 5.879 16.27a.75.75 0 0 0-.004.773.74.74 0 0 0 .672.387h10.906a.74.74 0 0 0 .672-.387.75.75 0 0 0-.004-.773l-5.457-9.317A.73.73 0 0 0 12 6.57a.73.73 0 0 0-.664.383m0 0'></path></svg>"
+      }
+    ]
+  }
+}

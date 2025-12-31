@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "media-md-02",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/audio-player.json",
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/media/md/media-02.tsx",
+      "content": "import { SkipBackIcon, SkipForwardIcon } from \"lucide-react\";\r\n\r\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\r\nimport {\r\n  AudioPlayerButton,\r\n  AudioPlayerDuration,\r\n  AudioPlayerProgress,\r\n  AudioPlayerProvider,\r\n  AudioPlayerTime,\r\n  exampleTrack,\r\n} from \"@/components/ui/audio-player\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\nimport { Button } from \"@/registry/default/ui/button\";\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <AudioPlayerProvider>\r\n      <Widget size=\"md\">\r\n        <WidgetContent className=\"gap-4\">\r\n          <img\r\n            src=\"https://i.scdn.co/image/ab67616d0000b273dfd5b5d99cf81f1864deef01\"\r\n            alt=\"Code Monkey\"\r\n            className=\"size-full max-w-36 rounded-lg object-cover\"\r\n          />\r\n          <div className=\"flex h-full flex-1 flex-col items-start justify-between pb-3\">\r\n            <div className=\"space-y-0\">\r\n              <Label className=\"text-base\">{exampleTrack.data.title}</Label>\r\n              <Label className=\"text-muted-foreground text-sm\">\r\n                {exampleTrack.data.artist}\r\n              </Label>\r\n            </div>\r\n            <div className=\"flex w-full flex-col gap-1.5\">\r\n              <AudioPlayerProgress className=\"h-full max-h-2 w-full flex-1\" />\r\n              <div className=\"flex w-full items-center justify-between\">\r\n                <AudioPlayerTime className=\"text-muted-foreground text-xs\" />\r\n                <AudioPlayerDuration className=\"text-muted-foreground text-xs\" />\r\n              </div>\r\n            </div>\r\n            <div className=\"mx-auto flex w-max items-center justify-between gap-x-6\">\r\n              <Button variant=\"ghost\" size=\"icon-sm\">\r\n                <SkipBackIcon className=\"stroke-muted-foreground\" />\r\n              </Button>\r\n              <AudioPlayerButton\r\n                size=\"icon-sm\"\r\n                variant=\"secondary\"\r\n                item={exampleTrack}\r\n              />\r\n              <Button variant=\"ghost\" size=\"icon-sm\">\r\n                <SkipForwardIcon className=\"stroke-muted-foreground\" />\r\n              </Button>\r\n            </div>\r\n          </div>\r\n        </WidgetContent>\r\n      </Widget>\r\n    </AudioPlayerProvider>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "media"
+    ],
+    "size": "md",
+    "credits": [
+      {
+        "name": "@elevenlabs-ui",
+        "homepage": "https://ui.elevenlabs.io/docs/components/audio-player",
+        "url": "https://ui.elevenlabs.io",
+        "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'></path></svg>"
+      }
+    ]
+  }
+}

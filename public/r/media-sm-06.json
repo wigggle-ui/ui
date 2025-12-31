@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "media-sm-06",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/media/sm/media-06.tsx",
+      "content": "\"use client\";\r\n\r\nimport { useState } from \"react\";\r\nimport {\r\n  PlayIcon,\r\n  PauseIcon,\r\n  SkipBackIcon,\r\n  SkipForwardIcon,\r\n  Volume2Icon,\r\n  VolumeXIcon,\r\n  type LucideIcon,\r\n} from \"lucide-react\";\r\n\r\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\r\nimport { Button } from \"@/registry/default/ui/button\";\r\n\r\nconst SIZE = 192;\r\nconst CENTER = SIZE / 2;\r\nconst OUTER_R = 96;\r\nconst INNER_R = 40;\r\n\r\nconst toRad = (deg: number) => (deg * Math.PI) / 180;\r\n\r\nconst arcPath = (start: number, end: number) => {\r\n  const [s, e] = [toRad(start), toRad(end)];\r\n  const [ox, oy] = [\r\n    CENTER + OUTER_R * Math.cos(s),\r\n    CENTER + OUTER_R * Math.sin(s),\r\n  ];\r\n  const [ex, ey] = [\r\n    CENTER + OUTER_R * Math.cos(e),\r\n    CENTER + OUTER_R * Math.sin(e),\r\n  ];\r\n  const [ix, iy] = [\r\n    CENTER + INNER_R * Math.cos(s),\r\n    CENTER + INNER_R * Math.sin(s),\r\n  ];\r\n  const [iex, iey] = [\r\n    CENTER + INNER_R * Math.cos(e),\r\n    CENTER + INNER_R * Math.sin(e),\r\n  ];\r\n  return `M${ox},${oy} A${OUTER_R},${OUTER_R} 0 0 1 ${ex},${ey} L${iex},${iey} A${INNER_R},${INNER_R} 0 0 0 ${ix},${iy}Z`;\r\n};\r\n\r\nconst iconPos = (start: number, end: number) => {\r\n  const mid = toRad((start + end) / 2);\r\n  const r = (OUTER_R + INNER_R) / 2;\r\n  return {\r\n    x: CENTER + r * Math.cos(mid) - 10,\r\n    y: CENTER + r * Math.sin(mid) - 10,\r\n  };\r\n};\r\n\r\nconst SEGMENTS: {\r\n  angles: [number, number];\r\n  icon: LucideIcon;\r\n  label: string;\r\n}[] = [\r\n  { angles: [-135, -45], icon: Volume2Icon, label: \"Volume up\" },\r\n  { angles: [45, 135], icon: VolumeXIcon, label: \"Volume down\" },\r\n  { angles: [135, 225], icon: SkipBackIcon, label: \"Previous\" },\r\n  { angles: [-45, 45], icon: SkipForwardIcon, label: \"Next\" },\r\n];\r\n\r\nexport default function WidgetDemo() {\r\n  const [isPlaying, setIsPlaying] = useState(false);\r\n\r\n  return (\r\n    <Widget>\r\n      <WidgetContent>\r\n        <div className=\"relative size-full\">\r\n          <button>\r\n            <svg\r\n              viewBox={`0 0 ${SIZE} ${SIZE}`}\r\n              className=\"absolute inset-0 size-full\"\r\n            >\r\n              {SEGMENTS.map(({ angles: [s, e], icon: Icon, label }) => {\r\n                const pos = iconPos(s, e);\r\n                return (\r\n                  <g key={label}>\r\n                    <path\r\n                      d={arcPath(s, e)}\r\n                      className=\"fill-secondary hover:fill-muted-foreground/30 cursor-pointer transition-colors focus:outline-none\"\r\n                      strokeWidth={1}\r\n                      role=\"button\"\r\n                      aria-label={label}\r\n                      tabIndex={0}\r\n                    />\r\n                    <foreignObject\r\n                      x={pos.x}\r\n                      y={pos.y}\r\n                      width={20}\r\n                      height={20}\r\n                      className=\"pointer-events-none\"\r\n                    >\r\n                      <Icon className=\"size-5\" />\r\n                    </foreignObject>\r\n                  </g>\r\n                );\r\n              })}\r\n            </svg>\r\n          </button>\r\n          <Button\r\n            variant=\"ghost\"\r\n            onClick={() => setIsPlaying((p) => !p)}\r\n            className=\"absolute top-1/2 left-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full\"\r\n            aria-label={isPlaying ? \"Pause\" : \"Play\"}\r\n          >\r\n            {isPlaying ? (\r\n              <PauseIcon className=\"size-6\" />\r\n            ) : (\r\n              <PlayIcon className=\"ml-0.5 size-6\" />\r\n            )}\r\n          </Button>\r\n        </div>\r\n      </WidgetContent>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "media"
+    ],
+    "size": "sm"
+  }
+}

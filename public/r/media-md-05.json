@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "media-md-05",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/audio-player.json",
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/media/md/media-05.tsx",
+      "content": "import { SkipBackIcon, SkipForwardIcon } from \"lucide-react\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetFooter,\r\n  WidgetHeader,\r\n} from \"@/registry/default/ui/widget\";\r\nimport {\r\n  AudioPlayerButton,\r\n  AudioPlayerDuration,\r\n  AudioPlayerProgress,\r\n  AudioPlayerProvider,\r\n  AudioPlayerTime,\r\n  exampleTrack,\r\n} from \"@/components/ui/audio-player\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\nimport { Button } from \"@/registry/default/ui/button\";\r\nimport {\r\n  Avatar,\r\n  AvatarFallback,\r\n  AvatarImage,\r\n} from \"@/registry/default/ui/avatar\";\r\nimport { ScrollArea } from \"@/registry/default/ui/scroll-area\";\r\n\r\ntype MusicCardProps = {\r\n  image: string;\r\n  alt: string;\r\n  fallback: string;\r\n  title: string;\r\n  artist: string;\r\n};\r\n\r\nconst albums = [\r\n  \"https://i.scdn.co/image/ab6761610000e5ebd55c95ad400aed87da52daec\",\r\n  \"https://c.saavncdn.com/artists/Nucleya_002_20241118064538_500x500.jpg\",\r\n  \"https://i.scdn.co/image/ab67616d0000b273aacbfc6de7128a834757fea4\",\r\n  \"https://i.scdn.co/image/ab67616d0000b273e105c410a7b390c61a58cbf8\",\r\n  \"https://i.scdn.co/image/ab67616d0000b273627b5b17cb48f6e6956b842e\",\r\n];\r\n\r\nconst musicCards: MusicCardProps[] = [\r\n  {\r\n    image: \"https://i.scdn.co/image/ab6761610000e5ebd55c95ad400aed87da52daec\",\r\n    alt: \"Ed Sheeran\",\r\n    fallback: \"ED\",\r\n    title: \"Sapphire\",\r\n    artist: \"Ed Sheeran\",\r\n  },\r\n  {\r\n    image:\r\n      \"https://c.saavncdn.com/artists/Nucleya_002_20241118064538_500x500.jpg\",\r\n    alt: \"Nucleya\",\r\n    fallback: \"NU\",\r\n    title: \"Jamrock\",\r\n    artist: \"Nucleya\",\r\n  },\r\n  {\r\n    image: \"https://i.scdn.co/image/ab67616d0000b273aacbfc6de7128a834757fea4\",\r\n    alt: \"Major Lazer\",\r\n    fallback: \"ML\",\r\n    title: \"Bumaye\",\r\n    artist: \"Major Lazer\",\r\n  },\r\n  {\r\n    image: \"https://i.scdn.co/image/ab67616d0000b273e105c410a7b390c61a58cbf8\",\r\n    alt: \"DJ Snake\",\r\n    fallback: \"DS\",\r\n    title: \"Taki Taki\",\r\n    artist: \"DJ Snake\",\r\n  },\r\n  {\r\n    image: \"https://i.scdn.co/image/ab67616d0000b273627b5b17cb48f6e6956b842e\",\r\n    alt: \"Arijit Singh\",\r\n    fallback: \"AS\",\r\n    title: \"Raabta\",\r\n    artist: \"Arijit Singh\",\r\n  },\r\n];\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <AudioPlayerProvider>\r\n      <Widget size=\"md\" className=\"p-0\">\r\n        <WidgetContent>\r\n          <div className=\"size-full\">\r\n            <div className=\"flex size-full flex-col items-center justify-between p-6\">\r\n              <WidgetHeader className=\"items-center justify-start gap-x-3\">\r\n                <Avatar className=\"size-full max-h-9 max-w-9 rounded-md\">\r\n                  <AvatarImage\r\n                    src=\"https://i.scdn.co/image/ab67616d0000b273dfd5b5d99cf81f1864deef01\"\r\n                    alt=\"Code Monkey\"\r\n                  />\r\n                  <AvatarFallback>CM</AvatarFallback>\r\n                </Avatar>\r\n                <div className=\"space-y-0\">\r\n                  <Label className=\"text-sm\">{exampleTrack.data.title}</Label>\r\n                  <Label className=\"text-muted-foreground text-xs\">\r\n                    {exampleTrack.data.artist}\r\n                  </Label>\r\n                </div>\r\n              </WidgetHeader>\r\n              <WidgetContent className=\"w-full flex-col gap-1\">\r\n                <AudioPlayerProgress className=\"h-full max-h-2 w-full flex-1\" />\r\n                <div className=\"flex w-full items-center justify-between\">\r\n                  <AudioPlayerTime className=\"text-muted-foreground text-xs\" />\r\n                  <AudioPlayerDuration className=\"text-muted-foreground text-xs\" />\r\n                </div>\r\n              </WidgetContent>\r\n              <WidgetFooter className=\"mx-auto w-max items-center justify-between gap-x-6\">\r\n                <Button variant=\"ghost\" size=\"icon-sm\">\r\n                  <SkipBackIcon className=\"stroke-muted-foreground\" />\r\n                </Button>\r\n                <AudioPlayerButton\r\n                  size=\"icon-sm\"\r\n                  variant=\"outline\"\r\n                  item={exampleTrack}\r\n                />\r\n                <Button variant=\"ghost\" size=\"icon-sm\">\r\n                  <SkipForwardIcon className=\"stroke-muted-foreground\" />\r\n                </Button>\r\n              </WidgetFooter>\r\n            </div>\r\n          </div>\r\n          <div className=\"flex size-full flex-col items-start justify-between\">\r\n            <ScrollArea className=\"size-full max-h-48 py-4 pe-6\">\r\n              {musicCards.map((el, i) => (\r\n                <MusicCard key={i} {...el} />\r\n              ))}\r\n            </ScrollArea>\r\n          </div>\r\n        </WidgetContent>\r\n      </Widget>\r\n    </AudioPlayerProvider>\r\n  );\r\n}\r\n\r\nconst MusicCard = ({\r\n  image,\r\n  alt,\r\n  fallback,\r\n  title,\r\n  artist,\r\n}: {\r\n  image: string;\r\n  alt: string;\r\n  fallback: string;\r\n  title: string;\r\n  artist: string;\r\n}) => {\r\n  return (\r\n    <div className=\"group bg-secondary hover:bg-muted/50 mt-3 flex w-full items-center justify-start gap-2 rounded-md p-3 hover:cursor-pointer\">\r\n      <Avatar className=\"size-full max-h-9 max-w-9 rounded-md\">\r\n        <AvatarImage src={image} alt={alt} />\r\n        <AvatarFallback>{fallback}</AvatarFallback>\r\n      </Avatar>\r\n      <div className=\"space-y-0\">\r\n        <Label className=\"w-full truncate text-sm group-hover:cursor-pointer\">\r\n          {title}\r\n        </Label>\r\n        <Label className=\"text-muted-foreground text-xs group-hover:cursor-pointer\">\r\n          {artist}\r\n        </Label>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "media"
+    ],
+    "size": "md",
+    "credits": [
+      {
+        "name": "@elevenlabs-ui",
+        "homepage": "https://ui.elevenlabs.io/docs/components/audio-player",
+        "url": "https://ui.elevenlabs.io",
+        "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'></path></svg>"
+      }
+    ]
+  }
+}

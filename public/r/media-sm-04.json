@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "media-sm-04",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/audio-player.json",
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/media/sm/media-04.tsx",
+      "content": "import { SkipBackIcon, SkipForwardIcon } from \"lucide-react\";\r\n\r\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\r\nimport {\r\n  AudioPlayerButton,\r\n  AudioPlayerProvider,\r\n  exampleTrack,\r\n} from \"@/components/ui/audio-player\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\nimport { Button } from \"@/registry/default/ui/button\";\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <AudioPlayerProvider>\r\n      <Widget design=\"mumbai\" className=\"justify-between gap-3 p-0\">\r\n        <WidgetContent>\r\n          <div className=\"relative size-full\">\r\n            <img\r\n              src=\"https://i.scdn.co/image/ab67616d0000b273dfd5b5d99cf81f1864deef01\"\r\n              alt=\"Code Monkey\"\r\n              className=\"w-full rounded-3xl object-cover\"\r\n            />\r\n            <div className=\"absolute inset-0 z-10 rounded-3xl bg-linear-to-t from-black via-black/75 to-transparent\" />\r\n            <Label className=\"absolute bottom-20 left-4 z-10 w-full overflow-hidden text-base\">\r\n              {exampleTrack.data.title}\r\n            </Label>\r\n            <Label className=\"text-muted-foreground absolute bottom-16 left-4 z-10 text-xs font-normal\">\r\n              {exampleTrack.data.artist}\r\n            </Label>\r\n            <div className=\"absolute inset-x-0 bottom-4 z-20 flex w-full gap-x-3 px-4\">\r\n              <AudioPlayerButton\r\n                variant=\"outline\"\r\n                className=\"flex-1 rounded-full\"\r\n                item={exampleTrack}\r\n              />\r\n              <Button className=\"rounded-full\" variant=\"outline\" size=\"icon-sm\">\r\n                <SkipBackIcon />\r\n              </Button>\r\n              <Button className=\"rounded-full\" variant=\"outline\" size=\"icon-sm\">\r\n                <SkipForwardIcon />\r\n              </Button>\r\n            </div>\r\n          </div>\r\n        </WidgetContent>\r\n      </Widget>\r\n    </AudioPlayerProvider>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "media"
+    ],
+    "size": "sm",
+    "credits": [
+      {
+        "name": "@elevenlabs-ui",
+        "homepage": "https://ui.elevenlabs.io/docs/components/audio-player",
+        "url": "https://ui.elevenlabs.io",
+        "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'></path></svg>"
+      }
+    ]
+  }
+}
