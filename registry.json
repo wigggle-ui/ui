@@ -148,7 +148,7 @@
       "name": "progress",
       "type": "registry:ui",
       "dependencies": ["@radix-ui/react-progress"],
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utis.json"],
+      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
           "path": "registry/default/ui/progress.tsx",
@@ -160,7 +160,7 @@
       "name": "select",
       "type": "registry:ui",
       "dependencies": ["@radix-ui/react-select", "lucide-react"],
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utis.json"],
+      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
           "path": "registry/default/ui/select.tsx",
@@ -172,7 +172,7 @@
       "name": "scroll-area",
       "type": "registry:ui",
       "dependencies": ["@radix-ui/react-scroll-area"],
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utis.json"],
+      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
           "path": "registry/default/ui/scroll-area.tsx",
@@ -217,7 +217,7 @@
     {
       "name": "textarea",
       "type": "registry:ui",
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utis.json"],
+      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
           "path": "registry/default/ui/textarea.tsx",
