@@ -45,7 +45,6 @@ export default function Hero() {
       <Weather07 key="weather07" />,
       <Clock12 key="clock12" />,
       <Stocks04 key="stocks04a" />,
-      <Stocks04 key="stocks04b" />,
       <Weather09 key="weather09" />,
       <Sports05 key="sports05" />,
       <Clock07 key="clock07" />,
