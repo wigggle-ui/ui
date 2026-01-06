@@ -121,7 +121,7 @@ export default function Hero() {
                 key={i}
                 className="animate-depth-in h-48 w-48 rounded-lg"
                 style={{
-                  animationDelay: `${i * 0.05}s`,
+                  animationDelay: `${i * 0.1}s`,
                   transform: `translate(${randomOffsets[i]?.[0] || 0}px, ${
                     randomOffsets[i]?.[1] || 0
                   }px)`,
