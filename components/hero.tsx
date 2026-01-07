@@ -45,7 +45,6 @@ export default function Hero() {
       <Weather07 key="weather07" />,
       <Clock12 key="clock12" />,
       <Stocks04 key="stocks04a" />,
-      <Stocks04 key="stocks04b" />,
       <Weather09 key="weather09" />,
       <Sports05 key="sports05" />,
       <Clock07 key="clock07" />,
@@ -54,23 +53,6 @@ export default function Hero() {
     ],
     [],
   );
-
-  const positions = [
-    "top-62 left-0",
-    "top-62 left-1/6",
-    "top-62 left-2/6",
-    "top-62 left-3/6",
-    "top-62 left-4/6",
-    "top-62 left-5/6",
-    "top-62 left-6/6",
-    "top-[480px] left-0",
-    "top-[480px] left-1/6",
-    "top-[480px] left-2/6",
-    "top-[480px] left-3/6",
-    "top-[480px] left-4/6",
-    "top-[480px] left-5/6",
-    "top-[480px] left-6/6",
-  ];
 
   const [mounted, setMounted] = useState(false);
   const [randomOffsets, setRandomOffsets] = useState<number[][]>([]);
@@ -87,7 +69,7 @@ export default function Hero() {
 
   return (
     <div>
-      <div className="relative z-10 hidden h-[700px] w-full items-start justify-start overflow-hidden perspective-distant xl:flex">
+      <div className="relative z-10 hidden h-[700px] w-full items-center justify-start overflow-hidden perspective-distant xl:flex xl:flex-col">
         <div className="flex w-full flex-col items-center justify-center gap-5">
           <h1 className="text-foreground text-4xl/[1.1] font-semibold md:text-5xl/[1.1]">
             The first ever collection of Widgets for the Web.
@@ -132,21 +114,24 @@ export default function Hero() {
             </Tooltip>
           </TooltipProvider>
         </div>
-        {mounted &&
-          widgets.map((widget, i) => (
-            <div
-              key={i}
-              className={`animate-depth-in absolute h-48 w-48 rounded-lg ${positions[i]}`}
-              style={{
-                animationDelay: `${i * 0.05}s`,
-                transform: `translate(${randomOffsets[i]?.[0] || 0}px, ${
-                  randomOffsets[i]?.[1] || 0
-                }px)`,
-              }}
-            >
-              {widget}
-            </div>
-          ))}
+        {mounted && (
+          <div className="mt-12 grid grid-cols-6 gap-8">
+            {widgets.map((widget, i) => (
+              <div
+                key={i}
+                className="animate-depth-in h-48 w-48 rounded-lg"
+                style={{
+                  animationDelay: `${i * 0.1}s`,
+                  transform: `translate(${randomOffsets[i]?.[0] || 0}px, ${
+                    randomOffsets[i]?.[1] || 0
+                  }px)`,
+                }}
+              >
+                {widget}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="relative z-10 flex w-full flex-col gap-5 text-center xl:hidden">
