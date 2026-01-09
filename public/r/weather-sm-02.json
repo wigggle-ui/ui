@@ -7,12 +7,14 @@
   ],
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json",
-    "https://wigggle-ui.vercel.app/r/label.json"
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/use-location.json",
+    "https://wigggle-ui.vercel.app/r/use-weather.json"
   ],
   "files": [
     {
       "path": "registry/default/widgets/weather/sm/weather-02.tsx",
-      "content": "import { SunIcon } from \"lucide-react\";\nimport * as React from \"react\";\n\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\n\nexport default function WidgetDemo() {\n  return (\n    <Widget>\n      <WidgetHeader>\n        <WidgetTitle>Mumbai</WidgetTitle>\n        <SunIcon className=\"size-5 fill-current\" />\n      </WidgetHeader>\n      <WidgetContent>\n        <Label className=\"text-5xl\">29&deg;</Label>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "content": "import {\n  CloudFogIcon,\n  CloudLightningIcon,\n  CloudRainIcon,\n  CloudSunIcon,\n  SnowflakeIcon,\n  SunIcon,\n} from \"lucide-react\";\n\nimport { useLocation } from \"@/registry/default/hooks/use-location\";\nimport { useWeather } from \"@/registry/default/hooks/use-weather\";\nimport { Label } from \"@/registry/default/ui/label\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nexport default function WidgetDemo() {\n  const { coordinates, city, isLoading: isLoadingLocation } = useLocation();\n  const { data: weather, isLoading: isLoadingWeather } = useWeather(\n    coordinates?.lat ?? null,\n    coordinates?.lon ?? null,\n  );\n\n  const isLoading = isLoadingLocation || isLoadingWeather;\n\n  const getWeatherIcon = (code: number) => {\n    const className = \"size-5\";\n    if (code === 0)\n      return <SunIcon className={`${className} stroke-amber-400`} />;\n    if (code >= 1 && code <= 3)\n      return <CloudSunIcon className={`${className} stroke-gray-400`} />;\n    if (code >= 45 && code <= 48)\n      return <CloudFogIcon className={`${className} stroke-gray-400`} />;\n    if (code >= 51 && code <= 67)\n      return <CloudRainIcon className={`${className} stroke-blue-400`} />;\n    if (code >= 71 && code <= 77)\n      return <SnowflakeIcon className={`${className} stroke-blue-200`} />;\n    if (code >= 80 && code <= 82)\n      return <CloudRainIcon className={`${className} stroke-blue-500`} />;\n    if (code >= 95 && code <= 99)\n      return (\n        <CloudLightningIcon className={`${className} stroke-purple-500`} />\n      );\n    return <SunIcon className={`${className} stroke-amber-400`} />;\n  };\n\n  if (isLoading) {\n    return (\n      <Widget>\n        <WidgetContent className=\"flex items-center justify-center\">\n          <Label className=\"animate-pulse\">Loading...</Label>\n        </WidgetContent>\n      </Widget>\n    );\n  }\n\n  return (\n    <Widget>\n      <WidgetHeader>\n        <WidgetTitle>{city || \"Unknown\"}</WidgetTitle>\n        {weather && getWeatherIcon(weather.weatherCode)}\n      </WidgetHeader>\n      <WidgetContent>\n        <Label className=\"text-5xl\">{weather?.temperature}&deg;</Label>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
       "type": "registry:component"
     }
   ],
