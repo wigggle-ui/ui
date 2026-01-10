@@ -1,25 +1,57 @@
-import * as React from "react";
-import { MoveDownIcon, MoveUpIcon, SunIcon } from "lucide-react";
+import { MoveDownIcon, MoveUpIcon } from "lucide-react";
 
+import {
+  DEFAULT_LOCATION,
+  useLocation,
+} from "@/registry/default/hooks/use-location";
+import { useWeather } from "@/registry/default/hooks/use-weather";
+import { getWeatherIcon } from "@/registry/default/lib/weather-utils";
+import { Label } from "@/registry/default/ui/label";
 import {
   Widget,
   WidgetContent,
   WidgetHeader,
   WidgetTitle,
 } from "@/registry/default/ui/widget";
-import { Label } from "@/registry/default/ui/label";
 
 export default function WidgetDemo() {
+  const { coordinates, city, isLoading: isLoadingLocation } = useLocation();
+  const { data: weather, isLoading: isLoadingWeather } = useWeather(
+    coordinates?.lat ?? DEFAULT_LOCATION.lat,
+    coordinates?.lon ?? DEFAULT_LOCATION.lon,
+  );
+
+  const isLoading = isLoadingLocation || isLoadingWeather;
+
+  const highTemp = weather?.hourly?.temperature
+    ? Math.max(...weather.hourly.temperature)
+    : null;
+  const lowTemp = weather?.hourly?.temperature
+    ? Math.min(...weather.hourly.temperature)
+    : null;
+
+  if (isLoading) {
+    return (
+      <Widget>
+        <WidgetContent className="flex items-center justify-center">
+          <Label className="animate-pulse">Loading...</Label>
+        </WidgetContent>
+      </Widget>
+    );
+  }
+
   return (
     <Widget>
       <WidgetHeader className="flex-col gap-3">
-        <WidgetTitle>Mumbai</WidgetTitle>
+        <WidgetTitle>{city || "Unknown"}</WidgetTitle>
         <div className="flex flex-col">
           <div className="flex items-center gap-x-2">
-            <SunIcon className="size-8 fill-current" />
-            <Label className="text-4xl">29&deg;</Label>
+            {weather && getWeatherIcon(weather.weatherCode, "size-8")}
+            <Label className="text-4xl">{weather?.temperature}&deg;</Label>
           </div>
-          <Label className="text-muted-foreground">Feels Like 28&deg;</Label>
+          <Label className="text-muted-foreground">
+            Feels Like {weather?.feelsLike}&deg;
+          </Label>
         </div>
       </WidgetHeader>
       <WidgetContent className="items-end">
@@ -29,7 +61,7 @@ export default function WidgetDemo() {
             className="mr-1 size-4"
             strokeWidth={4}
           />
-          <Label>32&deg;</Label>
+          <Label>{highTemp !== null ? `${highTemp}\u00b0` : "--"}</Label>
         </div>
         <div className="flex w-full items-center justify-end">
           <MoveDownIcon
@@ -37,7 +69,7 @@ export default function WidgetDemo() {
             className="mr-1 size-4"
             strokeWidth={4}
           />
-          <Label>28&deg;</Label>
+          <Label>{lowTemp !== null ? `${lowTemp}\u00b0` : "--"}</Label>
         </div>
       </WidgetContent>
     </Widget>
