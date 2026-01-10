@@ -1,17 +1,13 @@
 import {
-  CloudFogIcon,
-  CloudLightningIcon,
   CloudRainIcon,
-  CloudSunIcon,
   DropletsIcon,
-  SnowflakeIcon,
-  SunIcon,
   ThermometerIcon,
   WindIcon,
 } from "lucide-react";
 
 import { useLocation } from "@/registry/default/hooks/use-location";
 import { useWeather } from "@/registry/default/hooks/use-weather";
+import { getWeatherIcon } from "@/registry/default/lib/weather-utils";
 import { Label } from "@/registry/default/ui/label";
 import {
   Tooltip,
@@ -28,23 +24,6 @@ export default function WidgetDemo() {
   );
 
   const isLoading = isLoadingLocation || isLoadingWeather;
-
-  const getWeatherIcon = (code: number) => {
-    if (code === 0) return <SunIcon className="size-16 stroke-amber-300" />;
-    if (code >= 1 && code <= 3)
-      return <CloudSunIcon className="size-16 stroke-gray-400" />;
-    if (code >= 45 && code <= 48)
-      return <CloudFogIcon className="size-16 stroke-gray-400" />;
-    if (code >= 51 && code <= 67)
-      return <CloudRainIcon className="size-16 stroke-blue-400" />;
-    if (code >= 71 && code <= 77)
-      return <SnowflakeIcon className="size-16 stroke-blue-200" />;
-    if (code >= 80 && code <= 82)
-      return <CloudRainIcon className="size-16 stroke-blue-500" />;
-    if (code >= 95 && code <= 99)
-      return <CloudLightningIcon className="size-16 stroke-purple-500" />;
-    return <SunIcon className="size-16 stroke-amber-300" />;
-  };
 
   if (isLoading) {
     return (

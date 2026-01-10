@@ -1681,7 +1681,8 @@
         "https://wigggle-ui.vercel.app/r/widget.json",
         "https://wigggle-ui.vercel.app/r/label.json",
         "https://wigggle-ui.vercel.app/r/use-location.json",
-        "https://wigggle-ui.vercel.app/r/use-weather.json"
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1702,7 +1703,8 @@
         "https://wigggle-ui.vercel.app/r/widget.json",
         "https://wigggle-ui.vercel.app/r/label.json",
         "https://wigggle-ui.vercel.app/r/use-location.json",
-        "https://wigggle-ui.vercel.app/r/use-weather.json"
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1723,7 +1725,8 @@
         "https://wigggle-ui.vercel.app/r/widget.json",
         "https://wigggle-ui.vercel.app/r/label.json",
         "https://wigggle-ui.vercel.app/r/use-location.json",
-        "https://wigggle-ui.vercel.app/r/use-weather.json"
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1743,7 +1746,8 @@
         "https://wigggle-ui.vercel.app/r/widget.json",
         "https://wigggle-ui.vercel.app/r/label.json",
         "https://wigggle-ui.vercel.app/r/use-location.json",
-        "https://wigggle-ui.vercel.app/r/use-weather.json"
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1764,7 +1768,8 @@
         "https://wigggle-ui.vercel.app/r/widget.json",
         "https://wigggle-ui.vercel.app/r/label.json",
         "https://wigggle-ui.vercel.app/r/use-location.json",
-        "https://wigggle-ui.vercel.app/r/use-weather.json"
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1785,7 +1790,8 @@
         "https://wigggle-ui.vercel.app/r/widget.json",
         "https://wigggle-ui.vercel.app/r/label.json",
         "https://wigggle-ui.vercel.app/r/use-location.json",
-        "https://wigggle-ui.vercel.app/r/use-weather.json"
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1806,7 +1812,8 @@
         "https://wigggle-ui.vercel.app/r/widget.json",
         "https://wigggle-ui.vercel.app/r/label.json",
         "https://wigggle-ui.vercel.app/r/use-location.json",
-        "https://wigggle-ui.vercel.app/r/use-weather.json"
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1827,7 +1834,8 @@
         "https://wigggle-ui.vercel.app/r/widget.json",
         "https://wigggle-ui.vercel.app/r/label.json",
         "https://wigggle-ui.vercel.app/r/use-location.json",
-        "https://wigggle-ui.vercel.app/r/use-weather.json"
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1848,7 +1856,8 @@
         "https://wigggle-ui.vercel.app/r/widget.json",
         "https://wigggle-ui.vercel.app/r/label.json",
         "https://wigggle-ui.vercel.app/r/use-location.json",
-        "https://wigggle-ui.vercel.app/r/use-weather.json"
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1869,7 +1878,8 @@
         "https://wigggle-ui.vercel.app/r/label.json",
         "https://wigggle-ui.vercel.app/r/tooltip.json",
         "https://wigggle-ui.vercel.app/r/use-location.json",
-        "https://wigggle-ui.vercel.app/r/use-weather.json"
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1889,7 +1899,8 @@
         "https://wigggle-ui.vercel.app/r/widget.json",
         "https://wigggle-ui.vercel.app/r/label.json",
         "https://wigggle-ui.vercel.app/r/use-location.json",
-        "https://wigggle-ui.vercel.app/r/use-weather.json"
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1919,6 +1930,17 @@
         {
           "path": "registry/default/hooks/use-weather.ts",
           "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "weather-utils",
+      "type": "registry:lib",
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/default/lib/weather-utils.tsx",
+          "type": "registry:lib"
         }
       ]
     }

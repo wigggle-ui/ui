@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "weather-utils",
+  "type": "registry:lib",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/default/lib/weather-utils.tsx",
+      "content": "import {\r\n  CloudFogIcon,\r\n  CloudLightningIcon,\r\n  CloudRainIcon,\r\n  CloudSunIcon,\r\n  SnowflakeIcon,\r\n  SunIcon,\r\n} from \"lucide-react\";\r\nimport type { JSX } from \"react\";\r\n\r\nexport function getWeatherIcon(\r\n  code: number,\r\n  size: string = \"size-16\",\r\n  props: Record<string, string | number> = {},\r\n): JSX.Element {\r\n  if (code === 0)\r\n    return <SunIcon className={size + \" stroke-amber-300\"} {...props} />;\r\n  if (code >= 1 && code <= 3)\r\n    return <CloudSunIcon className={size + \" stroke-gray-400\"} {...props} />;\r\n  if (code >= 45 && code <= 48)\r\n    return <CloudFogIcon className={size + \" stroke-gray-400\"} {...props} />;\r\n  if (code >= 51 && code <= 67)\r\n    return <CloudRainIcon className={size + \" stroke-blue-400\"} {...props} />;\r\n  if (code >= 71 && code <= 77)\r\n    return <SnowflakeIcon className={size + \" stroke-blue-200\"} {...props} />;\r\n  if (code >= 80 && code <= 82)\r\n    return <CloudRainIcon className={size + \" stroke-blue-500\"} {...props} />;\r\n  if (code >= 95 && code <= 99)\r\n    return (\r\n      <CloudLightningIcon className={size + \" stroke-purple-500\"} {...props} />\r\n    );\r\n  return <SunIcon className={size + \" stroke-amber-300\"} {...props} />;\r\n}\r\n\r\nexport function getSmallWeatherIcon(code: number): JSX.Element {\r\n  if (code === 0) return <SunIcon className=\"stroke-muted-foreground size-6\" />;\r\n  if (code >= 1 && code <= 3)\r\n    return <CloudSunIcon className=\"stroke-muted-foreground size-6\" />;\r\n  if (code >= 45 && code <= 48)\r\n    return <CloudFogIcon className=\"stroke-muted-foreground size-6\" />;\r\n  if (code >= 51 && code <= 67)\r\n    return <CloudRainIcon className=\"stroke-muted-foreground size-6\" />;\r\n  if (code >= 71 && code <= 77)\r\n    return <SnowflakeIcon className=\"stroke-muted-foreground size-6\" />;\r\n  if (code >= 80 && code <= 82)\r\n    return <CloudRainIcon className=\"stroke-muted-foreground size-6\" />;\r\n  if (code >= 95 && code <= 99)\r\n    return <CloudLightningIcon className=\"stroke-muted-foreground size-6\" />;\r\n  return <SunIcon className=\"stroke-muted-foreground size-6\" />;\r\n}\r\n\r\nexport function getWeatherDescription(code: number): string {\r\n  if (code === 0) return \"Clear Sky\";\r\n  if (code >= 1 && code <= 3) return \"Partly Cloudy\";\r\n  if (code >= 45 && code <= 48) return \"Foggy\";\r\n  if (code >= 51 && code <= 67) return \"Rainy\";\r\n  if (code >= 71 && code <= 77) return \"Snowy\";\r\n  if (code >= 80 && code <= 82) return \"Heavy Rain\";\r\n  if (code >= 95 && code <= 99) return \"Thunderstorm\";\r\n  return \"Clear Sky\";\r\n}\r\n",
+      "type": "registry:lib"
+    }
+  ]
+}
