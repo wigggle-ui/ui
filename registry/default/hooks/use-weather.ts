@@ -45,22 +45,28 @@ export function useWeather(lat: number | null, lon: number | null) {
         const result = await response.json();
 
         setData({
-          temperature: result.current.temperature_2m,
+          temperature: Math.round(result.current.temperature_2m),
           humidity: result.current.relative_humidity_2m,
           windSpeed: result.current.wind_speed_10m,
-          feelsLike: result.current.apparent_temperature,
+          feelsLike: Math.round(result.current.apparent_temperature),
           chanceOfRain: result.current.precipitation,
           weatherCode: result.current.weather_code,
           isDay: result.current.is_day === 1,
           hourly: {
             time: result.hourly.time,
-            temperature: result.hourly.temperature_2m,
+            temperature: result.hourly.temperature_2m.map((t: number) =>
+              Math.round(t),
+            ),
             weatherCode: result.hourly.weather_code,
           },
           daily: {
             time: result.daily.time,
-            temperatureMax: result.daily.temperature_2m_max,
-            temperatureMin: result.daily.temperature_2m_min,
+            temperatureMax: result.daily.temperature_2m_max.map((t: number) =>
+              Math.round(t),
+            ),
+            temperatureMin: result.daily.temperature_2m_min.map((t: number) =>
+              Math.round(t),
+            ),
             weatherCode: result.daily.weather_code,
           },
         });
