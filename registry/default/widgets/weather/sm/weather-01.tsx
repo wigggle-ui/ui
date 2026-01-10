@@ -1,4 +1,7 @@
-import { useLocation } from "@/registry/default/hooks/use-location";
+import {
+  DEFAULT_LOCATION,
+  useLocation,
+} from "@/registry/default/hooks/use-location";
 import { useWeather } from "@/registry/default/hooks/use-weather";
 import { getWeatherIcon } from "@/registry/default/lib/weather-utils";
 import { Label } from "@/registry/default/ui/label";
@@ -11,8 +14,8 @@ import {
 export default function WidgetDemo() {
   const { coordinates, city, isLoading: isLoadingLocation } = useLocation();
   const { data: weather, isLoading: isLoadingWeather } = useWeather(
-    coordinates?.lat ?? null,
-    coordinates?.lon ?? null,
+    coordinates?.lat ?? DEFAULT_LOCATION.lat,
+    coordinates?.lon ?? DEFAULT_LOCATION.lon,
   );
 
   const isLoading = isLoadingLocation || isLoadingWeather;

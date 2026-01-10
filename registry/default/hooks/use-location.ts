@@ -12,7 +12,7 @@ interface LocationData {
   isLoading: boolean;
 }
 
-const DEFAULT_LOCATION: Coordinates = {
+export const DEFAULT_LOCATION: Coordinates = {
   lat: 19.076, // Mumbai
   lon: 72.8777,
 };
