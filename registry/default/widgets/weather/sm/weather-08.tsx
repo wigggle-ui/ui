@@ -44,7 +44,7 @@ export default function WidgetDemo() {
           getWeatherIcon(weather.weatherCode, "size-10", { strokeWidth: 2 })}
         <Label className="text-5xl">{weather?.temperature}&deg;</Label>
       </WidgetContent>
-      <WidgetFooter className="justify-start gap-3">
+      <WidgetFooter className="justify-between gap-3">
         <div className="flex items-center justify-start">
           <MoveDownIcon
             fill="currentColor"

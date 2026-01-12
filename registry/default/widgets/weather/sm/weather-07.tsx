@@ -75,7 +75,7 @@ export default function WidgetDemo() {
         </div>
       </WidgetContent>
       <WidgetFooter className="bg-muted w-full rounded-xl">
-        <div className="flex w-full items-center justify-between gap-3 p-2">
+        <div className="flex w-full items-center justify-between gap-1 p-2">
           {next5Hours.map((h, i) => (
             <div key={i} className="flex flex-col items-center gap-2">
               {getWeatherIcon(h.code, "size-4")}
