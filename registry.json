@@ -1679,7 +1679,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1698,7 +1701,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1717,7 +1723,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1735,7 +1744,10 @@
       "type": "registry:component",
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1754,7 +1766,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1773,7 +1788,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1792,7 +1810,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1811,7 +1832,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1830,7 +1854,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1849,7 +1876,10 @@
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
         "https://wigggle-ui.vercel.app/r/label.json",
-        "https://wigggle-ui.vercel.app/r/tooltip.json"
+        "https://wigggle-ui.vercel.app/r/tooltip.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1867,7 +1897,10 @@
       "type": "registry:component",
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1879,6 +1912,37 @@
         "tags": ["weather"],
         "size": "md"
       }
+    },
+    {
+      "name": "use-location",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/default/hooks/use-location.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-weather",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/default/hooks/use-weather.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "weather-utils",
+      "type": "registry:lib",
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/default/lib/weather-utils.tsx",
+          "type": "registry:lib"
+        }
+      ]
     }
   ]
 }

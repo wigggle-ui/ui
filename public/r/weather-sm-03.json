@@ -7,12 +7,15 @@
   ],
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json",
-    "https://wigggle-ui.vercel.app/r/label.json"
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/use-location.json",
+    "https://wigggle-ui.vercel.app/r/use-weather.json",
+    "https://wigggle-ui.vercel.app/r/weather-utils.json"
   ],
   "files": [
     {
       "path": "registry/default/widgets/weather/sm/weather-03.tsx",
-      "content": "import { SunIcon } from \"lucide-react\";\nimport * as React from \"react\";\n\nimport {\n  Widget,\n  WidgetHeader,\n  WidgetTitle,\n  WidgetContent,\n} from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\n\nexport default function WidgetDemo() {\n  return (\n    <Widget>\n      <WidgetHeader>\n        <WidgetTitle className=\"text-4xl\">29&deg;</WidgetTitle>\n      </WidgetHeader>\n      <WidgetContent className=\"items-end\">\n        <div className=\"flex w-full flex-col items-end gap-1.5\">\n          <SunIcon className=\"size-8\" />\n          <Label className=\"text-lg font-medium\">Mumbai</Label>\n        </div>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "content": "import {\n  DEFAULT_LOCATION,\n  useLocation,\n} from \"@/registry/default/hooks/use-location\";\nimport { useWeather } from \"@/registry/default/hooks/use-weather\";\nimport { getWeatherIcon } from \"@/registry/default/lib/weather-utils\";\nimport { Label } from \"@/registry/default/ui/label\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nexport default function WidgetDemo() {\n  const { coordinates, city, isLoading: isLoadingLocation } = useLocation();\n  const { data: weather, isLoading: isLoadingWeather } = useWeather(\n    coordinates?.lat ?? DEFAULT_LOCATION.lat,\n    coordinates?.lon ?? DEFAULT_LOCATION.lon,\n  );\n\n  const isLoading = isLoadingLocation || isLoadingWeather;\n\n  if (isLoading) {\n    return (\n      <Widget>\n        <WidgetContent className=\"flex items-center justify-center\">\n          <Label className=\"animate-pulse\">Loading...</Label>\n        </WidgetContent>\n      </Widget>\n    );\n  }\n\n  return (\n    <Widget>\n      <WidgetHeader>\n        <WidgetTitle className=\"text-4xl\">\n          {weather?.temperature}&deg;\n        </WidgetTitle>\n      </WidgetHeader>\n      <WidgetContent className=\"items-end\">\n        <div className=\"flex w-full flex-col items-end gap-1.5\">\n          {weather && getWeatherIcon(weather.weatherCode, \"size-8\")}\n          <Label className=\"text-lg font-medium\">{city || \"Unknown\"}</Label>\n        </div>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
       "type": "registry:component"
     }
   ],

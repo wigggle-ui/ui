@@ -1,42 +1,79 @@
 import {
   CloudRainIcon,
   DropletsIcon,
-  SunIcon,
   ThermometerIcon,
   WindIcon,
 } from "lucide-react";
 
-import { Widget, WidgetContent } from "@/registry/default/ui/widget";
+import {
+  DEFAULT_LOCATION,
+  useLocation,
+} from "@/registry/default/hooks/use-location";
+import { useWeather } from "@/registry/default/hooks/use-weather";
+import { getWeatherIcon } from "@/registry/default/lib/weather-utils";
 import { Label } from "@/registry/default/ui/label";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/default/ui/tooltip";
+import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
 export default function WidgetDemo() {
+  const { coordinates, city, isLoading: isLoadingLocation } = useLocation();
+  const { data: weather, isLoading: isLoadingWeather } = useWeather(
+    coordinates?.lat ?? DEFAULT_LOCATION.lat,
+    coordinates?.lon ?? DEFAULT_LOCATION.lon,
+  );
+
+  const isLoading = isLoadingLocation || isLoadingWeather;
+
+  if (isLoading) {
+    return (
+      <Widget size="md">
+        <WidgetContent>
+          <div className="flex w-full items-center justify-center">
+            <Label className="animate-pulse">Loading weather data...</Label>
+          </div>
+        </WidgetContent>
+      </Widget>
+    );
+  }
+
   return (
     <Widget size="md">
       <WidgetContent>
         <div className="flex w-full flex-col items-center justify-center gap-3">
-          <SunIcon className="size-16 stroke-amber-300" />
+          {weather && getWeatherIcon(weather.weatherCode)}
           <div className="flex flex-col items-center justify-center gap-2">
-            <Label className="text-3xl">25&deg;C</Label>
-            <Label>Mumbai</Label>
+            <Label className="text-3xl">{weather?.temperature}&deg;C</Label>
+            <Label>{city || "Unknown Location"}</Label>
           </div>
         </div>
         <div className="flex w-full flex-col items-center justify-center gap-5">
           <div className="flex w-full items-center justify-center gap-16">
-            <InfoItem icon={WindIcon} label="Wind Speed" value="3.7" />
+            <InfoItem
+              icon={WindIcon}
+              label="Wind Speed"
+              value={`${weather?.windSpeed} km/h`}
+            />
             <InfoItem
               icon={ThermometerIcon}
               label="Feels like"
-              value="27&deg;"
+              value={`${weather?.feelsLike}\u00b0`}
             />
           </div>
           <div className="flex w-full items-center justify-center gap-16">
-            <InfoItem icon={CloudRainIcon} label="Chance of Rain" value="12%" />
-            <InfoItem icon={DropletsIcon} label="Humidity" value="83%" />
+            <InfoItem
+              icon={CloudRainIcon}
+              label="Precipitation"
+              value={`${weather?.chanceOfRain} mm`}
+            />
+            <InfoItem
+              icon={DropletsIcon}
+              label="Humidity"
+              value={`${weather?.humidity}%`}
+            />
           </div>
         </div>
       </WidgetContent>
