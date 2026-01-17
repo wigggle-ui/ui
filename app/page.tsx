@@ -1,7 +1,7 @@
 import Features from "@/components/features";
 import Hero from "@/components/hero";
 // Only import the requested component
-import SocialTestimonials from "@/components/SocialTestimonials"; 
+import SocialTestimonials from "@/components/social-testimonials"; 
 
 export default function Home() {
   return (
