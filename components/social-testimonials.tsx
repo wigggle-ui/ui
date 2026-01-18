@@ -1,33 +1,30 @@
+import Link from "next/link";
+
+import { TweetCard, YouTubeCard, ArticleCard } from "@/components/social-cards";
+
 import { testimonials } from "@/config/testimonials";
-import { 
-  TweetCard, 
-  YouTubeCard, 
-  ArticleCard, 
-  ActivityCard 
-} from "@/components/social-cards";
-
-
 
 export default function SocialTestimonials() {
   return (
-    <section className="py-16 relative overflow-hidden">
-      <div className="container px-4 mx-auto">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+    <section className="relative overflow-hidden py-8">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto mb-16 max-w-2xl text-center">
+          <h2 className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
             Loved by the Community
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="text-muted-foreground mt-4 text-lg">
             Join thousands of developers building the future of the web.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((item, i) => (
-            <div key={i} className={item.colSpan}>
-              {item.type === "twitter" && <TweetCard item={item} />}
-              {item.type === "youtube" && <YouTubeCard item={item} />}
-              {item.type === "article" && <ArticleCard item={item} />}
-              {item.type === "activity" && <ActivityCard item={item} />}
-            </div>
+            <Link href={item.link} key={i} className={item.colSpan}>
+              <div key={i} className="size-full">
+                {item.type === "twitter" && <TweetCard item={item} />}
+                {item.type === "youtube" && <YouTubeCard item={item} />}
+                {item.type === "article" && <ArticleCard item={item} />}
+              </div>
+            </Link>
           ))}
         </div>
       </div>
