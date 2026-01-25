@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { OpenPanelComponent } from "@openpanel/nextjs";
 
 import "./globals.css";
 
@@ -29,6 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${outfit.className} antialiased`}>
+        <OpenPanelComponent
+          clientId={process.env.OPEN_PANEL_CLIENT_ID!}
+          trackScreenViews={true}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

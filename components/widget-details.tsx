@@ -163,7 +163,10 @@ export default function WidgetDetails({ widget }: { widget: RegistryItem }) {
                       lang="tsx"
                       preHighlighted={highlightedCode}
                     />
-                    <CopyButton componentSource={code} />
+                    <CopyButton
+                      widgetName={widget.name}
+                      componentSource={code}
+                    />
                   </>
                 )}
               </div>

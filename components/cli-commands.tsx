@@ -68,6 +68,7 @@ export default function CliCommands({ name }: { name: string }) {
         ))}
       </Tabs>
       <CopyButton
+        widgetName={`${baseURL}/${name}`}
         componentSource={commands[packageManager as keyof typeof commands]}
         className="top-1"
       />
