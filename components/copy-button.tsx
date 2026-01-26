@@ -1,5 +1,7 @@
 "use client";
 
+import { useOpenPanel } from "@openpanel/nextjs";
+
 import { useCopy } from "@/hooks/use-copy";
 import { cn } from "@/registry/default/lib/utils";
 import { Button } from "@/registry/default/ui/button";
@@ -13,13 +15,21 @@ import {
 import { Icons } from "@/components/icons";
 
 const CopyButton = ({
+  widgetName,
   componentSource,
   className,
 }: {
+  widgetName: string;
   componentSource: string | null;
   className?: string;
 }) => {
+  const op = useOpenPanel();
   const { copied, copy } = useCopy();
+
+  const handleCopyCode = () => {
+    () => op.track(widgetName, { location: "copy_code" });
+    copy(componentSource || "");
+  };
 
   return (
     <div className={cn("dark absolute top-2 right-2", className)}>
@@ -30,7 +40,7 @@ const CopyButton = ({
               variant="ghost"
               size="icon"
               className="text-muted-foreground hover:text-foreground transition-none hover:bg-transparent disabled:opacity-100"
-              onClick={() => copy(componentSource || "")}
+              onClick={handleCopyCode}
               aria-label={copied ? "Copied" : "Copy component source"}
               disabled={copied}
             >

@@ -14,6 +14,32 @@ Licensed under the [MIT license](https://github.com/wigggle-ui/ui/blob/main/LICE
 
 Have questions, comments or feedback? [File an Issue](https://github.com/wigggle-ui/ui/issues/new).
 
+## Sponsors
+
+This project is proudly supported by:
+
+<table>
+  <tbody>
+    <tr>
+    <tr>
+      <td>
+        <a href="https://openpanel.dev?utm_source=react-wheel-picker#gh-light-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/openpanel.svg?v=1#gh-light-mode-only"
+            alt="OpenPanel"
+          />
+        </a>
+        <a href="https://openpanel.dev?utm_source=react-wheel-picker#gh-dark-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/openpanel-dark.svg?v=1#gh-dark-mode-only"
+            alt="OpenPanel"
+          />
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=wigggle-ui/ui&type=date&legend=top-left)](https://www.star-history.com/#wigggle-ui/ui&type=date&legend=top-left)
