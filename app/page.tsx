@@ -1,6 +1,7 @@
 import Features from "@/components/features";
 import Hero from "@/components/hero";
-import SocialTestimonials from "@/components/social-testimonials"; 
+import SocialTestimonials from "@/components/social-testimonials";
+import Sponsors from "@/components/sponsors";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <Features />
       <SocialTestimonials />
+      <Sponsors />
     </div>
   );
 }
