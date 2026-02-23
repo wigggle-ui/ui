@@ -21,7 +21,6 @@ This project is proudly supported by:
 <table>
   <tbody>
     <tr>
-    <tr>
       <td>
         <a href="https://openpanel.dev?utm_source=react-wheel-picker#gh-light-mode-only">
           <img
@@ -33,6 +32,14 @@ This project is proudly supported by:
           <img
             src="https://assets.chanhdai.com/images/sponsors/openpanel-dark.svg?v=1#gh-dark-mode-only"
             alt="OpenPanel"
+          />
+        </a>
+      </td>
+      <td>
+        <a href="https://vercel.com/oss">
+          <img
+            src="https://vercel.com/oss/program-badge.svg"
+            alt="Vercel OSS Program"
           />
         </a>
       </td>
