@@ -1,7 +1,8 @@
+import Link from "next/link";
+
+import { Card, CardHeader } from "@/components/ui/card";
 import { SponsorType } from "@/types";
 import { sponsors } from "@/constants/sponsors";
-import { Card, CardHeader } from "@/components/ui/card";
-import Link from "next/link";
 
 export default function Sponsors() {
   return (
@@ -31,7 +32,7 @@ const SponsorCard = ({ name, url, logo: Logo, tier }: SponsorType) => {
     <Link href={url} target="_blank">
       <Card className="group shadow-zinc-950/5">
         <CardHeader>
-          <Logo />
+          <Logo className="mx-auto" />
         </CardHeader>
       </Card>
     </Link>

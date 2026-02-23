@@ -8,4 +8,10 @@ export const sponsors: SponsorType[] = [
     logo: Icons.openPanel,
     tier: "platinum",
   },
+  {
+    name: "Vercel OSS Program",
+    url: "https://vercel.com/oss?utm_source=wigggle-ui&utm_medium=sponsor&utm_campaign=website",
+    logo: Icons.vercelOSS,
+    tier: "platinum",
+  },
 ];
