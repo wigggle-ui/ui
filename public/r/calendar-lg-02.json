@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-lg-02",
+  "type": "registry:component",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/separator.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/calendar/lg/calendar-02.tsx",
+      "content": "import { twJoin } from \"tailwind-merge\";\n\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\nimport { Separator } from \"@/registry/default/ui/separator\";\n\nexport default function WidgetDemo() {\n  const now = new Date();\n\n  const dayName = now.toLocaleDateString(\"en-US\", { weekday: \"long\" });\n  const monthName = now.toLocaleDateString(\"en-US\", { month: \"short\" });\n  const date = now.getDate();\n\n  const events = [\n    {\n      title: \"Apartment cleaning\",\n      startTime: \"17:00 \",\n      endTime: \"17:30\",\n      color: \"border-destructive\",\n      location: \"Home\",\n    },\n    {\n      title: \"Pickeball\",\n      startTime: \"20:00\",\n      endTime: \"21:00\",\n      color: \"border-yellow-500\",\n      location: \"Wankhede Stadium\",\n    },\n    {\n      title: \"Bedtime Meditation\",\n      startTime: \"11:30\",\n      endTime: \"11:45\",\n      color: \"border-green-500\",\n      location: \"Home\",\n    },\n  ];\n\n  return (\n    <Widget size=\"lg\" className=\"gap-3\">\n      <WidgetHeader>\n        <WidgetTitle className=\"font-normal text-blue-500 uppercase\">\n          {dayName} {date} {monthName}\n        </WidgetTitle>\n      </WidgetHeader>\n      <Separator />\n      <WidgetContent className=\"flex-col items-center justify-start gap-4\">\n        {events.map((el) => (\n          <div\n            key={el.title}\n            className=\"flex w-full items-center justify-between\"\n          >\n            <div className={twJoin(el.color, \"border-l-4 ps-3\")}>\n              <Label className=\"text-sm\">{el.title}</Label>\n              <Label className=\"text-muted-foreground text-sm\">\n                {el.location}\n              </Label>\n            </div>\n            <div className=\"flex flex-col items-end justify-end gap-1.5\">\n              <Label className=\"text-muted-foreground font-normal\">\n                {el.startTime}\n              </Label>\n              <Label className=\"text-muted-foreground font-normal\">\n                {el.endTime}\n              </Label>\n            </div>\n          </div>\n        ))}\n      </WidgetContent>\n      <WidgetHeader className=\"mt-2\">\n        <WidgetTitle className=\"font-normal text-blue-500 uppercase\">\n          Tomorrow\n        </WidgetTitle>\n      </WidgetHeader>\n      <Separator />\n      <WidgetContent className=\"flex-col items-center justify-start gap-4\">\n        <div className=\"flex w-full items-center justify-between\">\n          <div className=\"border-destructive border-l-4 ps-3\">\n            <Label className=\"text-sm\">Design New Widgets</Label>\n            <Label className=\"text-muted-foreground text-sm\">\n              Right Cerebral Ave\n            </Label>\n          </div>\n          <div className=\"flex flex-col items-end justify-end gap-1.5\">\n            <Label className=\"text-muted-foreground font-normal\">10:30</Label>\n            <Label className=\"text-muted-foreground font-normal\">12:30</Label>\n          </div>\n        </div>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "calendar"
+    ],
+    "size": "lg"
+  }
+}

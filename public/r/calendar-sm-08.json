@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-sm-08",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/label.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/calendar/sm/calendar-08.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { BikeIcon, BookOpenIcon, DumbbellIcon } from \"lucide-react\";\n\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\n\nconst activities = [\n  {\n    date: \"prev\",\n    icon: BookOpenIcon,\n    task: \"30 m\",\n  },\n  {\n    date: \"today\",\n    icon: BikeIcon,\n    task: \"5 km\",\n  },\n  {\n    date: \"next\",\n    icon: DumbbellIcon,\n    task: \"1 hr\",\n  },\n];\n\nexport default function WidgetDemo() {\n  const now = new Date();\n\n  const day = now.toLocaleDateString(\"en-US\", { weekday: \"short\" });\n  const date = now.getDate().toString().padStart(2, \"0\");\n\n  const format = (offset: number) => {\n    const d = new Date();\n    d.setDate(now.getDate() + offset);\n    return {\n      day: d.toLocaleDateString(\"en-US\", { weekday: \"short\" }),\n      date: d.getDate().toString().padStart(2, \"0\"),\n    };\n  };\n\n  const prev = format(-1);\n  const next = format(1);\n\n  const [selectedDate, setSelectedDate] = React.useState<string>(\"today\");\n\n  const dateButtons = [\n    { offset: -1, label: \"prev\", formattedDate: prev, isCurrent: false },\n    {\n      offset: 0,\n      label: \"today\",\n      formattedDate: { day, date },\n      isCurrent: true,\n    },\n    { offset: 1, label: \"next\", formattedDate: next, isCurrent: false },\n  ];\n\n  return (\n    <Widget>\n      <WidgetContent className=\"flex-col items-center justify-between gap-4\">\n        <div className=\"grid w-full grid-cols-3 items-center gap-2 rounded-sm\">\n          {dateButtons.map((btn) => (\n            <button\n              key={btn.label}\n              onClick={() => {\n                setSelectedDate(btn.label);\n              }}\n              className={`flex flex-col items-center justify-center space-y-1 rounded-sm p-1 hover:cursor-pointer ${\n                selectedDate === btn.label\n                  ? \"bg-white text-black\"\n                  : \"bg-secondary hover:opacity-75\"\n              }`}\n            >\n              <span className=\"text-xs\">{btn.formattedDate.day}</span>\n              <span className=\"text-2xl\">{btn.formattedDate.date}</span>\n            </button>\n          ))}\n        </div>\n        <div className=\"bg-secondary grid w-full flex-1 grid-cols-2 items-center gap-x-2 rounded-sm px-2 py-1\">\n          {activities\n            .filter((activity) => activity.date === selectedDate)\n            .map((activity) => {\n              const IconComponent = activity.icon;\n              return (\n                <React.Fragment key={activity.date}>\n                  <IconComponent className=\"stroke-destructive mx-auto size-10\" />\n                  <Label className=\"mx-auto text-xl font-semibold text-wrap\">\n                    {activity.task}\n                  </Label>\n                </React.Fragment>\n              );\n            })}\n        </div>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "calendar"
+    ]
+  }
+}

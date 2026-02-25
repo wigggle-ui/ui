@@ -6,7 +6,7 @@
     "@radix-ui/react-scroll-area"
   ],
   "registryDependencies": [
-    "https://wigggle-ui.vercel.app/r/utis.json"
+    "https://wigggle-ui.vercel.app/r/utils.json"
   ],
   "files": [
     {

@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 import { Label } from "@/registry/default/ui/label";
 

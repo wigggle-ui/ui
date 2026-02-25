@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-lg-05",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/button.json",
+    "https://wigggle-ui.vercel.app/r/textarea.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/calendar/lg/calendar-05.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport {\n  CheckIcon,\n  Clock3Icon,\n  MapPinIcon,\n  NotebookPenIcon,\n  SquarePenIcon,\n} from \"lucide-react\";\n\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { Textarea } from \"@/registry/default/ui/textarea\";\n\nconst docNotes =\n  \"Have a light meal before your appointment and continue your regular medications unless advised otherwise.\";\n\nexport default function WidgetDemo() {\n  const now = new Date();\n\n  const monthName = now.toLocaleDateString(\"en-US\", { month: \"long\" });\n  const date = now.getDate();\n\n  const [isEditing, setIsEditing] = React.useState<boolean>(false);\n\n  return (\n    <Widget size=\"lg\" className=\"gap-4\">\n      <WidgetHeader className=\"items-center justify-between gap-4\">\n        <div className=\"flex space-x-4\">\n          <WidgetTitle className=\"text-destructive text-2xl\">\n            {date} {monthName}\n          </WidgetTitle>\n        </div>\n        <Button\n          variant={isEditing ? \"productive\" : \"outline\"}\n          size=\"sm\"\n          onClick={() => setIsEditing(!isEditing)}\n        >\n          {isEditing ? (\n            <>\n              <CheckIcon /> Save Event\n            </>\n          ) : (\n            <>\n              <SquarePenIcon /> Edit Event\n            </>\n          )}\n        </Button>\n      </WidgetHeader>\n      <WidgetContent className=\"flex-col items-start justify-start gap-4\">\n        <Label className=\"text-xl\">Henil's Dental Appointment</Label>\n        <div className=\"flex w-full items-center justify-start gap-3\">\n          <Clock3Icon className=\"stroke-muted-foreground size-6\" />\n          <Label className=\"text-base\">8:45 AM</Label>\n        </div>\n        <div className=\"flex w-full items-center justify-start gap-3\">\n          <MapPinIcon className=\"stroke-muted-foreground size-6\" />\n          <Label className=\"text-base\">Apple Park, Cupertino</Label>\n        </div>\n        <div className=\"flex size-full flex-1 items-start justify-start gap-3\">\n          <NotebookPenIcon className=\"stroke-muted-foreground size-6 min-w-6\" />\n          {isEditing ? (\n            <Textarea\n              className=\"size-full flex-1\"\n              placeholder=\"Type your message here.\"\n              autoFocus={isEditing}\n              defaultValue={docNotes}\n            />\n          ) : (\n            <Label className=\"bg-secondary border-muted-foreground/50 size-full items-start rounded-md border px-2 py-2 text-sm text-wrap\">\n              {docNotes}\n            </Label>\n          )}\n        </div>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "calendar"
+    ],
+    "size": "lg"
+  }
+}

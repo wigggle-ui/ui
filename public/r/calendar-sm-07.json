@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-sm-07",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/tabs.json",
+    "https://wigggle-ui.vercel.app/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/calendar/sm/calendar-07.tsx",
+      "content": "import { CalendarPlusIcon } from \"lucide-react\";\n\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\nimport {\n  Tabs,\n  TabsList,\n  TabsTrigger,\n  TabsContent,\n} from \"@/registry/default/ui/tabs\";\nimport { Button } from \"@/registry/default/ui/button\";\n\nexport default function WidgetDemo() {\n  const now = new Date();\n\n  const month = now.toLocaleDateString(\"en-US\", { month: \"short\" });\n  const date = now.getDate().toString().padStart(2, \"0\");\n  const year = now.getFullYear();\n  const daysInMonth = new Date(year, now.getMonth() + 1, 0).getDate();\n  const firstDayOfMonth = new Date(year, now.getMonth(), 1).getDay();\n\n  const weekDates = Array.from(\n    { length: 7 },\n    (_, i) =>\n      new Date(\n        now.getFullYear(),\n        now.getMonth(),\n        now.getDate() - now.getDay() + i,\n      ),\n  );\n\n  const fillerDays = Array(firstDayOfMonth).fill(null);\n  const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);\n\n  return (\n    <Widget className=\"p-0\">\n      <Tabs className=\"size-full\" defaultValue=\"week\">\n        <TabsList className=\"size-full border-b-2\" variant=\"line\">\n          <TabsTrigger value=\"week\">Week</TabsTrigger>\n          <TabsTrigger value=\"month\">Month</TabsTrigger>\n        </TabsList>\n        <TabsContent className=\"flex size-full px-3\" value=\"week\">\n          <WidgetContent className=\"flex-col items-center justify-between gap-3 py-3\">\n            <div className=\"flex w-full flex-col items-center justify-center space-y-2\">\n              <Label className=\"text-destructive -mt-2 space-x-2 text-3xl font-semibold\">\n                <span>{date}</span>\n                <span>{month}</span>\n              </Label>\n              <div className=\"w-full space-y-0.5\">\n                <div className=\"grid w-full grid-cols-7 items-center gap-1\">\n                  {[\"S\", \"M\", \"T\", \"W\", \"T\", \"F\", \"S\"].map((day, i) => (\n                    <Label\n                      key={`weekday-${i}-${day}`}\n                      className=\"text-muted-foreground mx-auto text-xs\"\n                    >\n                      {day}\n                    </Label>\n                  ))}\n                </div>\n                <div className=\"grid w-full grid-cols-7 gap-1 text-center\">\n                  {weekDates.map((d, i) => {\n                    const isToday = d.toDateString() === now.toDateString();\n                    return (\n                      <Label\n                        key={i}\n                        className={`mx-auto text-xs ${isToday ? \"text-destructive\" : \"\"}`}\n                      >\n                        {d.getDate()}\n                      </Label>\n                    );\n                  })}\n                </div>\n              </div>\n            </div>\n            <Button variant=\"outline\" size=\"sm\" className=\"w-full\">\n              <CalendarPlusIcon /> New Event\n            </Button>\n          </WidgetContent>\n        </TabsContent>\n        <TabsContent className=\"flex size-full px-3\" value=\"month\">\n          <div className=\"grid size-full grid-cols-7 gap-1 text-center\">\n            {[\"S\", \"M\", \"T\", \"W\", \"T\", \"F\", \"S\"].map((day, i) => (\n              <div key={`weekday-${i}-${day}`} className=\"text-xs\">\n                {day}\n              </div>\n            ))}\n            {fillerDays.map((_, i) => (\n              <div key={`filler-${i}`} className=\"text-xs\">\n                &nbsp;\n              </div>\n            ))}\n            {days.map((day) => (\n              <div key={day} className=\"text-muted-foreground text-xs\">\n                {day === parseInt(date) ? (\n                  <Label className=\"text-destructive flex justify-center text-xs font-semibold\">\n                    {day}\n                  </Label>\n                ) : (\n                  day\n                )}\n              </div>\n            ))}\n          </div>\n        </TabsContent>\n      </Tabs>\n    </Widget>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "calendar"
+    ]
+  }
+}

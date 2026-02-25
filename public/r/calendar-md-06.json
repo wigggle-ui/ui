@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-md-06",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/calendar/md/calendar-06.tsx",
+      "content": "import { PlusIcon } from \"lucide-react\";\n\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\nimport { Button } from \"@/registry/default/ui/button\";\n\nexport default function WidgetDemo() {\n  const now = new Date();\n\n  const monthName = now.toLocaleDateString(\"en-US\", { month: \"long\" });\n  const year = now.getFullYear();\n\n  const weekDates = Array.from(\n    { length: 7 },\n    (_, i) =>\n      new Date(\n        now.getFullYear(),\n        now.getMonth(),\n        now.getDate() - now.getDay() + i,\n      ),\n  );\n\n  return (\n    <Widget size=\"md\" className=\"gap-2\" design=\"mumbai\">\n      <WidgetHeader>\n        <WidgetTitle className=\"text-xl\">\n          {monthName} {year}\n        </WidgetTitle>\n        <Button variant=\"outline\" size=\"sm\">\n          <PlusIcon /> Add Event\n        </Button>\n      </WidgetHeader>\n      <WidgetContent className=\"flex-col gap-4\">\n        <div className=\"w-full space-y-0.5\">\n          <div className=\"grid w-full grid-cols-7 items-center gap-x-4\">\n            {[\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"].map((day, i) => (\n              <Label\n                key={`weekday-${i}-${day}`}\n                className=\"text-muted-foreground mx-auto text-sm\"\n              >\n                {day}\n              </Label>\n            ))}\n            {weekDates.map((d, i) => {\n              const isToday = d.toDateString() === now.toDateString();\n              return (\n                <Label\n                  key={i}\n                  className={`mx-auto text-lg ${isToday ? \"text-destructive\" : \"\"}`}\n                >\n                  {d.getDate()}\n                </Label>\n              );\n            })}\n          </div>\n        </div>\n        <div className=\"w-full\">\n          <div className=\"border-destructive flex w-full items-center justify-between border-l-4 ps-3\">\n            <div className=\"space-y-0.5\">\n              <Label className=\"text-base font-normal\">PRX vs RRQ</Label>\n              <Label className=\"text-muted-foreground text-sm font-normal\">\n                VCT Pacific Kickoff Lower Final (BO5)\n              </Label>\n            </div>\n            <Label className=\"text-lg\">3:30 PM</Label>\n          </div>\n        </div>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "calendar"
+    ],
+    "size": "md"
+  }
+}

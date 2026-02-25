@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-lg-04",
+  "type": "registry:component",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/separator.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/calendar/lg/calendar-04.tsx",
+      "content": "import {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\nimport { Separator } from \"@/registry/default/ui/separator\";\n\nexport default function WidgetDemo() {\n  const now = new Date();\n\n  const monthName = now.toLocaleDateString(\"en-US\", { month: \"long\" });\n  const date = now.getDate();\n  const day = now.toLocaleDateString(\"en-US\", { weekday: \"short\" });\n\n  const tomorrow = new Date(now.getTime() + 86400000);\n  const nextDate = tomorrow.getDate();\n  const nextDay = tomorrow.toLocaleDateString(\"en-US\", { weekday: \"short\" });\n\n  return (\n    <Widget size=\"lg\" className=\"p-0\">\n      <WidgetHeader className=\"bg-destructive rounded-t-3xl p-4\">\n        <WidgetTitle className=\"w-max text-center text-2xl\">\n          {monthName}\n        </WidgetTitle>\n      </WidgetHeader>\n      <WidgetContent className=\"flex flex-col justify-start gap-4 p-4\">\n        <div className=\"flex w-full items-start justify-start gap-4\">\n          <div className=\"flex flex-col items-center justify-center\">\n            <Label className=\"text-3xl\">{date}</Label>\n            <Label className=\"text-center text-sm font-light\">{day}</Label>\n          </div>\n          <div className=\"w-full space-y-2\">\n            <div className=\"bg-secondary flex w-full items-center justify-between rounded-lg px-3 py-2\">\n              <div className=\"space-y-1\">\n                <Label className=\"text-sm font-normal\">Vercel Stand Up</Label>\n                <Label className=\"text-muted-foreground\">California</Label>\n              </div>\n              <div className=\"flex flex-col items-end justify-end gap-1.5\">\n                <Label>09:00</Label>\n                <Label className=\"text-muted-foreground\">10:00</Label>\n              </div>\n            </div>\n            <div className=\"bg-secondary flex w-full items-center justify-between rounded-lg px-3 py-2\">\n              <div className=\"space-y-1\">\n                <Label className=\"text-sm font-normal\">Vercel Sit Down</Label>\n                <Label className=\"text-muted-foreground\">New York</Label>\n              </div>\n              <div className=\"flex flex-col items-end justify-end gap-1.5\">\n                <Label>12:00</Label>\n                <Label className=\"text-muted-foreground\">13:00</Label>\n              </div>\n            </div>\n          </div>\n        </div>\n        <Separator />\n        <div className=\"flex w-full items-start justify-start gap-4\">\n          <div className=\"flex flex-col items-center justify-center\">\n            <Label className=\"text-3xl\">{nextDate}</Label>\n            <Label className=\"text-center text-sm font-light\">{nextDay}</Label>\n          </div>\n          <div className=\"w-full space-y-2\">\n            <div className=\"bg-secondary flex w-full items-center justify-between rounded-lg px-3 py-2\">\n              <div className=\"space-y-1\">\n                <Label className=\"text-sm font-normal\">Vercel Dream</Label>\n                <Label className=\"text-muted-foreground\">Mumbai</Label>\n              </div>\n              <div className=\"flex flex-col items-end justify-end gap-1.5\">\n                <Label>22:00</Label>\n                <Label className=\"text-muted-foreground\">24:00</Label>\n              </div>\n            </div>\n            <div className=\"bg-secondary flex w-full items-center justify-between rounded-lg px-3 py-2\">\n              <div className=\"space-y-1\">\n                <Label className=\"text-sm font-normal\">Vercel Stand Up</Label>\n                <Label className=\"text-muted-foreground\">California</Label>\n              </div>\n              <div className=\"flex flex-col items-end justify-end gap-1.5\">\n                <Label>09:00</Label>\n                <Label className=\"text-muted-foreground\">10:00</Label>\n              </div>\n            </div>\n          </div>\n        </div>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "calendar"
+    ],
+    "size": "lg"
+  }
+}

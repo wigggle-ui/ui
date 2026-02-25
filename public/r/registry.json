@@ -148,7 +148,7 @@
       "name": "progress",
       "type": "registry:ui",
       "dependencies": ["@radix-ui/react-progress"],
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utis.json"],
+      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
           "path": "registry/default/ui/progress.tsx",
@@ -160,7 +160,7 @@
       "name": "select",
       "type": "registry:ui",
       "dependencies": ["@radix-ui/react-select", "lucide-react"],
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utis.json"],
+      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
           "path": "registry/default/ui/select.tsx",
@@ -172,7 +172,7 @@
       "name": "scroll-area",
       "type": "registry:ui",
       "dependencies": ["@radix-ui/react-scroll-area"],
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utis.json"],
+      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
           "path": "registry/default/ui/scroll-area.tsx",
@@ -217,7 +217,7 @@
     {
       "name": "textarea",
       "type": "registry:ui",
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utis.json"],
+      "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
           "path": "registry/default/ui/textarea.tsx",
@@ -383,6 +383,78 @@
       }
     },
     {
+      "name": "calendar-sm-07",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/tabs.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/calendar/sm/calendar-07.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"]
+      }
+    },
+    {
+      "name": "calendar-sm-08",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/label.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/calendar/sm/calendar-08.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"]
+      }
+    },
+    {
+      "name": "calendar-sm-09",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/label.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/calendar/sm/calendar-09.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"]
+      }
+    },
+    {
+      "name": "calendar-sm-10",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/label.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/calendar/sm/calendar-10.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"]
+      }
+    },
+    {
       "name": "calendar-md-01",
       "type": "registry:component",
       "registryDependencies": [
@@ -439,6 +511,192 @@
       "meta": {
         "tags": ["calendar"],
         "size": "md"
+      }
+    },
+    {
+      "name": "calendar-md-04",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/badge.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/calendar/md/calendar-04.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"],
+        "size": "md"
+      }
+    },
+    {
+      "name": "calendar-md-05",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/button.json",
+        "https://wigggle-ui.vercel.app/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/calendar/md/calendar-05.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"],
+        "size": "md"
+      }
+    },
+    {
+      "name": "calendar-md-06",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/calendar/md/calendar-06.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"],
+        "size": "md"
+      }
+    },
+    {
+      "name": "calendar-lg-01",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/button.json",
+        "https://wigggle-ui.vercel.app/r/separator.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/calendar/lg/calendar-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"],
+        "size": "lg"
+      }
+    },
+    {
+      "name": "calendar-lg-02",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/separator.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/calendar/lg/calendar-02.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"],
+        "size": "lg"
+      }
+    },
+    {
+      "name": "calendar-lg-03",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/button.json",
+        "https://wigggle-ui.vercel.app/r/avatar.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/calendar/lg/calendar-03.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"],
+        "size": "lg"
+      }
+    },
+    {
+      "name": "calendar-lg-04",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/separator.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/calendar/lg/calendar-04.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"],
+        "size": "lg"
+      }
+    },
+    {
+      "name": "calendar-lg-05",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/button.json",
+        "https://wigggle-ui.vercel.app/r/textarea.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/calendar/lg/calendar-05.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"],
+        "size": "lg"
+      }
+    },
+    {
+      "name": "calendar-lg-06",
+      "type": "registry:component",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/badge.json",
+        "https://wigggle-ui.vercel.app/r/button.json",
+        "https://wigggle-ui.vercel.app/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/calendar/lg/calendar-06.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["calendar"],
+        "size": "lg"
       }
     },
     {
@@ -1679,7 +1937,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1698,7 +1959,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1717,7 +1981,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1735,7 +2002,10 @@
       "type": "registry:component",
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1754,7 +2024,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1773,7 +2046,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1792,7 +2068,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1811,7 +2090,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1830,7 +2112,10 @@
       "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1849,7 +2134,10 @@
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
         "https://wigggle-ui.vercel.app/r/label.json",
-        "https://wigggle-ui.vercel.app/r/tooltip.json"
+        "https://wigggle-ui.vercel.app/r/tooltip.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1867,7 +2155,10 @@
       "type": "registry:component",
       "registryDependencies": [
         "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
+        "https://wigggle-ui.vercel.app/r/label.json",
+        "https://wigggle-ui.vercel.app/r/use-location.json",
+        "https://wigggle-ui.vercel.app/r/use-weather.json",
+        "https://wigggle-ui.vercel.app/r/weather-utils.json"
       ],
       "files": [
         {
@@ -1879,6 +2170,37 @@
         "tags": ["weather"],
         "size": "md"
       }
+    },
+    {
+      "name": "use-location",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/default/hooks/use-location.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-weather",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/default/hooks/use-weather.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "weather-utils",
+      "type": "registry:lib",
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/default/lib/weather-utils.tsx",
+          "type": "registry:lib"
+        }
+      ]
     }
   ]
 }

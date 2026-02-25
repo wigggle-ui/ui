@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-md-05",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/button.json",
+    "https://wigggle-ui.vercel.app/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/calendar/md/calendar-05.tsx",
+      "content": "import { VideoIcon } from \"lucide-react\";\n\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { cn } from \"@/registry/default/lib/utils\";\n\nexport default function WidgetDemo() {\n  const meetings = [\n    {\n      title: \"Daily Scrum\",\n      time: \"7:00 - 8:30 AM\",\n      room: \"Online\",\n      borderColor: \"border-destructive\",\n    },\n    {\n      title: \"Design Roundup\",\n      time: \"11:15 - 12:00 PM\",\n      room: \"Figma Room\",\n      borderColor: \"border-blue-500\",\n    },\n    {\n      title: \"UAT Testing\",\n      time: \"1:00 - 2:00 PM\",\n      room: \"Jest Room\",\n      borderColor: \"border-yellow-500\",\n    },\n    {\n      title: \"PROD Launch\",\n      time: \"6:00 PM\",\n      room: \"SpaceX Room\",\n      borderColor: \"border-productive\",\n    },\n  ];\n\n  return (\n    <Widget design=\"mumbai\" size=\"md\">\n      <WidgetContent className=\"grid grid-cols-2 items-center gap-5\">\n        {meetings.map((el) => (\n          <div\n            key={el.title}\n            className={cn(\n              el.borderColor,\n              \"flex w-full items-center justify-between border-l-4 ps-3\",\n            )}\n          >\n            <div className=\"space-y-1\">\n              <Label className=\"text-sm font-normal\">{el.title}</Label>\n              <Label className=\"text-muted-foreground text-xs font-normal\">\n                {el.room}\n              </Label>\n              <Label className=\"text-xs font-light\">{el.time}</Label>\n            </div>\n            {el.room === \"Online\" && (\n              <Button variant=\"outline\" size=\"icon-sm\">\n                <VideoIcon />\n              </Button>\n            )}\n          </div>\n        ))}\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "calendar"
+    ],
+    "size": "md"
+  }
+}

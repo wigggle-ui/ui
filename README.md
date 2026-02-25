@@ -49,4 +49,4 @@ This project is proudly supported by:
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=wigggle-ui/ui&type=date&legend=top-left)](https://www.star-history.com/#wigggle-ui/ui&type=date&legend=top-left)
+[![RepoStars](https://repostars.dev/api/embed?repo=wigggle-ui%2Fui&theme=terminal)](https://repostars.dev/?repos=wigggle-ui%2Fui&theme=terminal)

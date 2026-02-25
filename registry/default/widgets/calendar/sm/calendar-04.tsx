@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import React from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 import {
   Widget,
@@ -14,11 +14,11 @@ import { Button } from "@/registry/default/ui/button";
 import { Separator } from "@/registry/default/ui/separator";
 
 export default function WidgetDemo() {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = React.useState(new Date());
   const { getFullYear: y, getMonth: m } = date;
   const [year, month] = [y.call(date), m.call(date)];
 
-  const calendarDays = useMemo(() => {
+  const calendarDays = React.useMemo(() => {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     return [
@@ -54,7 +54,7 @@ export default function WidgetDemo() {
           className="size-4 p-0 hover:cursor-pointer"
           onClick={() => changeMonth(-1)}
         >
-          <ChevronLeft className="h-4 w-4" />
+          <ChevronLeftIcon className="size-4" />
         </Button>
         <WidgetTitle>
           {monthName} {year}
@@ -65,7 +65,7 @@ export default function WidgetDemo() {
           className="size-4 p-0 hover:cursor-pointer"
           onClick={() => changeMonth(1)}
         >
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRightIcon className="size-4" />
         </Button>
       </WidgetHeader>
       <Separator className="h-0.5 rounded-full" />

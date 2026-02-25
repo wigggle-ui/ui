@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-lg-01",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/button.json",
+    "https://wigggle-ui.vercel.app/r/separator.json",
+    "https://wigggle-ui.vercel.app/r/label.json",
+    "https://wigggle-ui.vercel.app/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/calendar/lg/calendar-01.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { ChevronLeftIcon, ChevronRightIcon } from \"lucide-react\";\n\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { Separator } from \"@/registry/default/ui/separator\";\nimport { Label } from \"@/registry/default/ui/label\";\nimport { cn } from \"@/registry/default/lib/utils\";\n\nconst WEEKDAY_LABELS = [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"];\nconst MIN_PRICE = 80;\nconst MAX_PRICE = 250;\n\nexport default function WidgetDemo() {\n  const [date, setDate] = React.useState(new Date());\n  const year = date.getFullYear();\n  const month = date.getMonth();\n\n  const calendarDays = React.useMemo(() => {\n    const firstDay = new Date(year, month, 1).getDay();\n    const daysInMonth = new Date(year, month + 1, 0).getDate();\n    return [\n      ...Array(firstDay).fill(null),\n      ...Array.from({ length: daysInMonth }, (_, i) => i + 1),\n    ];\n  }, [year, month]);\n\n  const prices = React.useMemo(() => {\n    const priceMap: Record<number, number> = {};\n    calendarDays.forEach((day) => {\n      if (day !== null) {\n        priceMap[day] =\n          Math.floor(Math.random() * (MAX_PRICE - MIN_PRICE + 1)) + MIN_PRICE;\n      }\n    });\n    return priceMap;\n  }, [calendarDays]);\n\n  const handlePreviousMonth = () =>\n    setDate((prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1));\n\n  const handleNextMonth = () =>\n    setDate((prev) => new Date(prev.getFullYear(), prev.getMonth() + 1, 1));\n\n  const monthName = new Intl.DateTimeFormat(\"en-US\", { month: \"short\" }).format(\n    new Date(year, month),\n  );\n\n  return (\n    <Widget className=\"gap-3\" size=\"lg\">\n      <WidgetHeader className=\"items-center justify-between\">\n        <Button variant=\"outline\" size=\"icon-sm\" onClick={handlePreviousMonth}>\n          <ChevronLeftIcon className=\"size-4\" />\n        </Button>\n        <WidgetTitle className=\"text-2xl\">\n          {monthName} {year}\n        </WidgetTitle>\n        <Button variant=\"outline\" size=\"icon-sm\" onClick={handleNextMonth}>\n          <ChevronRightIcon className=\"size-4\" />\n        </Button>\n      </WidgetHeader>\n      <Separator />\n      <WidgetContent className=\"flex-col! items-stretch! justify-start!\">\n        <div className=\"grid h-full w-full auto-rows-fr grid-cols-7 gap-2\">\n          {WEEKDAY_LABELS.map((day, i) => (\n            <div\n              key={`weekday-${i}`}\n              className=\"text-muted-foreground m-auto text-center text-sm font-semibold\"\n            >\n              {day}\n            </div>\n          ))}\n          {calendarDays.map((day, i) => (\n            <div\n              key={i}\n              className=\"flex flex-col items-center justify-center gap-0.5 rounded-lg text-center\"\n            >\n              {day ? (\n                <>\n                  <Label className=\"text-sm leading-none font-semibold\">\n                    {day}\n                  </Label>\n                  <Label\n                    className={cn(\n                      prices[day] < 120\n                        ? \"text-productive\"\n                        : \"text-muted-foreground\",\n                      \"text-xs leading-tight\",\n                    )}\n                  >\n                    ${prices[day]}\n                  </Label>\n                </>\n              ) : (\n                <></>\n              )}\n            </div>\n          ))}\n        </div>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "calendar"
+    ],
+    "size": "lg"
+  }
+}

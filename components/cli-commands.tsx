@@ -33,27 +33,27 @@ export default function CliCommands({ name }: { name: string }) {
         }}
         className="rounded-md bg-zinc-950 dark:bg-zinc-900"
       >
-        <TabsList className="dark h-auto w-full justify-start rounded-none border-b bg-transparent px-4 py-0">
+        <TabsList className="dark h-auto w-full justify-start rounded-none border-b bg-transparent py-0">
           <TabsTrigger
-            className="data-[state=active]:after:bg-primary relative rounded-none py-3 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+            className="data-[state=active]:after:bg-primary relative py-3 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:rounded-t-lg data-[state=active]:bg-transparent data-[state=active]:shadow-none"
             value="pnpm"
           >
             pnpm
           </TabsTrigger>
           <TabsTrigger
-            className="data-[state=active]:after:bg-primary relative rounded-none py-3 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+            className="data-[state=active]:after:bg-primary relative py-3 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
             value="npm"
           >
             npm
           </TabsTrigger>
           <TabsTrigger
-            className="data-[state=active]:after:bg-primary relative rounded-none py-3 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+            className="data-[state=active]:after:bg-primary relative py-3 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
             value="yarn"
           >
             yarn
           </TabsTrigger>
           <TabsTrigger
-            className="data-[state=active]:after:bg-primary relative rounded-none py-3 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+            className="data-[state=active]:after:bg-primary relative py-3 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
             value="bun"
           >
             bun
@@ -61,17 +61,19 @@ export default function CliCommands({ name }: { name: string }) {
         </TabsList>
         {Object.entries(commands).map(([pkg, command]) => (
           <TabsContent className="m-0" key={pkg} value={pkg}>
-            <pre className="overflow-auto p-4 text-xs text-yellow-500">
+            <pre className="overflow-auto p-4 text-sm text-yellow-500">
               {command}
             </pre>
           </TabsContent>
         ))}
       </Tabs>
-      <CopyButton
-        widgetName={`${baseURL}/${name}`}
-        componentSource={commands[packageManager as keyof typeof commands]}
-        className="top-1"
-      />
+      <div className="absolute top-10 right-0">
+        <CopyButton
+          widgetName={`${baseURL}/${name}`}
+          componentSource={commands[packageManager as keyof typeof commands]}
+          className="top-1"
+        />
+      </div>
     </div>
   );
 }
