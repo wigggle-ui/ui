@@ -12,8 +12,8 @@ export default function WidgetDemo() {
       <WidgetContent className="flex-col items-center justify-between">
         <div className="bg-destructive w-full rounded-t-3xl">
           <div className="space-y-1 p-4">
-            <Label className="font-normal">{day}</Label>
-            <Label className="text-4xl font-normal">{date}</Label>
+            <Label className="font-normal text-white">{day}</Label>
+            <Label className="text-4xl font-normal text-white">{date}</Label>
           </div>
         </div>
         <div className="w-full space-y-2 px-4 pb-4">
