@@ -83,7 +83,7 @@ export default function WidgetDemo() {
   return (
     <Widget size="lg" className="p-0">
       <WidgetHeader className="bg-destructive rounded-t-3xl p-4">
-        <WidgetTitle className="w-max text-center text-2xl">
+        <WidgetTitle className="w-max text-center text-2xl text-white">
           {date} {monthName}
         </WidgetTitle>
         <Button
