@@ -3,6 +3,9 @@ import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
+  experimental: {
+    agentUpgrade: "security",
+  },
   partialPrefetching: true,
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 };
