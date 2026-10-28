@@ -1,12 +1,12 @@
 "use client";
 
-import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import * as React from "react";
 
-export function ThemeProvider({
+export const ThemeProvider = ({
   children,
   ...props
-}: React.ComponentProps<typeof NextThemesProvider>) {
+}: React.ComponentProps<typeof NextThemesProvider>) => {
   const scriptProps =
     typeof window === "undefined"
       ? undefined
@@ -17,4 +17,4 @@ export function ThemeProvider({
       {children}
     </NextThemesProvider>
   );
-}
+};
