@@ -1,41 +1,39 @@
 "use client";
 
-import type { ComponentProps } from "react";
 import { CheckIcon, CircleXIcon, CopyIcon } from "lucide-react";
 import { motion } from "motion/react";
+import type { ComponentProps } from "react";
 
-import { cn } from "@/lib/utils";
+import { IconSwap, IconSwapItem } from "@/components/icon-swap";
+import { Button } from "@/components/ui/button";
 import type { CopyState } from "@/hooks/use-copy-to-clipboard";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
-import { Button } from "@/components/ui/button";
-import { IconSwap, IconSwapItem } from "@/components/icon-swap";
+import { cn } from "@/lib/utils";
 
-export type CopyStateIconProps = {
+export interface CopyStateIconProps {
   state: CopyState;
   idleIcon?: React.ReactNode;
   doneIcon?: React.ReactNode;
   errorIcon?: React.ReactNode;
-};
+}
 
-export function CopyStateIcon({
+const CopyStateIcon = ({
   state,
   idleIcon,
   doneIcon,
   errorIcon,
-}: CopyStateIconProps) {
-  return (
-    <IconSwap>
-      <IconSwapItem key={state} as={motion.span}>
-        {state === "idle" && (idleIcon ?? <CopyIcon data-slot="idle-icon" />)}
+}: CopyStateIconProps) => (
+  <IconSwap>
+    <IconSwapItem key={state} as={motion.span}>
+      {state === "idle" && (idleIcon ?? <CopyIcon data-slot="idle-icon" />)}
 
-        {state === "done" && (doneIcon ?? <CheckIcon data-slot="done-icon" />)}
+      {state === "done" && (doneIcon ?? <CheckIcon data-slot="done-icon" />)}
 
-        {state === "error" &&
-          (errorIcon ?? <CircleXIcon data-slot="error-icon" />)}
-      </IconSwapItem>
-    </IconSwap>
-  );
-}
+      {state === "error" &&
+        (errorIcon ?? <CircleXIcon data-slot="error-icon" />)}
+    </IconSwapItem>
+  </IconSwap>
+);
 
 export type CopyButtonProps = ComponentProps<typeof Button> & {
   text: string | (() => string);
@@ -43,7 +41,7 @@ export type CopyButtonProps = ComponentProps<typeof Button> & {
   onCopyError?: (error: Error) => void;
 } & Omit<CopyStateIconProps, "state">;
 
-export function CopyButton({
+const CopyButton = ({
   className,
   size = "icon",
   children,
@@ -55,10 +53,10 @@ export function CopyButton({
   onCopySuccess,
   onCopyError,
   ...props
-}: CopyButtonProps) {
+}: CopyButtonProps) => {
   const { state, copy } = useCopyToClipboard({
-    onCopySuccess,
     onCopyError,
+    onCopySuccess,
   });
 
   return (
@@ -82,4 +80,6 @@ export function CopyButton({
       {children}
     </Button>
   );
-}
+};
+
+export default CopyButton;

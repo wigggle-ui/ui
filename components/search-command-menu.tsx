@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { SearchIcon } from "lucide-react";
+import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -16,9 +16,13 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 import { Kbd } from "@/components/ui/kbd";
-import { MENU_LINKS, SOCIAL_LINKS, WIDGET_CATEGORY_LINKS } from "@/config/links";
+import {
+  MENU_LINKS,
+  SOCIAL_LINKS,
+  WIDGET_CATEGORY_LINKS,
+} from "@/config/links";
 
-export function SearchCommandMenu() {
+const SearchCommandMenu = () => {
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -43,9 +47,7 @@ export function SearchCommandMenu() {
                 <CommandItem key={link.href}>
                   {link.icon}
                   <span>{link.title}</span>
-                  <CommandShortcut className="font-mono">
-                    {link.shortcut}
-                  </CommandShortcut>
+                  <CommandShortcut monoFont>{link.shortcut}</CommandShortcut>
                 </CommandItem>
               ))}
             </CommandGroup>
@@ -72,4 +74,6 @@ export function SearchCommandMenu() {
       </CommandDialog>
     </div>
   );
-}
+};
+
+export default SearchCommandMenu;

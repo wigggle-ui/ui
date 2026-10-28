@@ -1,16 +1,25 @@
 "use client";
 
-import { JSX, useLayoutEffect, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { transformerRenderLineNumber } from "@shikijs/transformers";
 import { toJsxRuntime } from "hast-util-to-jsx-runtime";
+import { FileTextIcon } from "lucide-react";
+import type { JSX } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import type { BundledLanguage } from "shiki/bundle/web";
 import { codeToHast } from "shiki/bundle/web";
-import { CopyButton } from "./copy-button";
 
-export async function highlight(code: string, lang: BundledLanguage) {
+import CopyButton from "@/components/copy-button";
+
+const highlight = async (
+  code: string,
+  lang: BundledLanguage,
+  isDark: boolean
+) => {
   const hast = await codeToHast(code, {
     lang,
-    theme: "github-dark",
+    theme: isDark ? "github-dark" : "github-light",
+    transformers: [transformerRenderLineNumber()],
   });
 
   return toJsxRuntime(hast, {
@@ -18,55 +27,85 @@ export async function highlight(code: string, lang: BundledLanguage) {
     jsx,
     jsxs,
   }) as JSX.Element;
-}
+};
 
-type Props = {
+interface Props {
   code: string | null;
   lang: BundledLanguage;
   initial?: JSX.Element;
   preHighlighted?: JSX.Element | null;
-};
+  isFile: string;
+}
 
-export default function CodeBlock({
-  code,
-  lang,
-  initial,
-  preHighlighted,
-}: Props) {
+const CodeBlock = ({ code, lang, initial, preHighlighted, isFile }: Props) => {
+  const [isDark, setIsDark] = useState(false);
   const [content, setContent] = useState<JSX.Element | null>(
-    preHighlighted || initial || null,
+    preHighlighted ?? initial ?? null
   );
 
+  useEffect(() => {
+    const updateTheme = () => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    };
+
+    updateTheme();
+
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributeFilter: ["class"],
+      attributes: true,
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   useLayoutEffect(() => {
-    // If we have pre-highlighted content, use that
-    if (preHighlighted) {
-      setContent(preHighlighted);
+    if (preHighlighted || !code) {
       return;
     }
 
     let isMounted = true;
 
-    if (code) {
-      highlight(code, lang).then((result) => {
-        if (isMounted) setContent(result);
-      });
-    } else {
-      setContent(
-        <pre className="rounded-md bg-zinc-950 p-4">No code available</pre>,
-      );
-    }
+    const loadHighlight = async () => {
+      const result = await highlight(code, lang, isDark);
+      if (isMounted) {
+        setContent(result);
+      }
+    };
+
+    void loadHighlight();
 
     return () => {
       isMounted = false;
     };
-  }, [code, lang, preHighlighted]);
+  }, [code, lang, preHighlighted, isDark]);
 
-  return content ? (
-    <div className="relative [&_code]:font-mono [&_code]:text-[13px] [&_pre]:max-h-100 [&_pre]:overflow-auto [&_pre]:rounded-md [&_pre]:bg-zinc-950! [&_pre]:p-4 [&_pre]:leading-snug dark:[&_pre]:bg-zinc-900!">
-      {code && <div className="absolute top-2 right-4"><CopyButton size='icon-sm' text={code} /></div>}
-      {content}
+  const displayedContent =
+    preHighlighted ??
+    (code ? (
+      content
+    ) : (
+      <pre className="bg-primary rounded-md p-4">No code available</pre>
+    ));
+
+  return displayedContent ? (
+    <div className="border-border bg-code/50 rounded-md border">
+      {isFile && code && (
+        <div className="flex items-center justify-between px-2.5 py-2">
+          <div className="flex items-center justify-start gap-3">
+            <FileTextIcon className="text-muted-foreground size-5" />
+            <p className="text-muted-foreground">{isFile}</p>
+          </div>
+          <CopyButton size="icon-sm" text={code} />
+        </div>
+      )}
+      <div className="[&_pre]:bg-code! relative [&_code]:font-mono [&_code]:text-sm [&_pre]:max-h-120 [&_pre]:overflow-auto [&_pre]:rounded-b-md [&_pre]:p-4 [&_pre]:leading-snug">
+        {displayedContent}
+      </div>
     </div>
   ) : (
-    <pre className="rounded-md bg-zinc-950 p-4">Loading...</pre>
+    <pre className="bg-primary rounded-md p-4">Loading...</pre>
   );
-}
+};
+
+export default CodeBlock;
