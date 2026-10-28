@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import { useEffect, useState } from "react";
 
 import {
   Widget,
@@ -8,28 +8,31 @@ import {
   WidgetTitle,
 } from "@/registry/default/ui/widget";
 
-export default function WidgetDemo() {
-  const [time, setTime] = React.useState(new Date());
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
+const now = new Date();
 
-    return () => {
-      clearInterval(timer);
-    };
+const WidgetDemo = () => {
+  const [time, setTime] = useState<Date>(now);
+
+  useEffect(() => {
+    const updateTime = () => setTime(new Date());
+
+    updateTime();
+
+    const timer = setInterval(updateTime, 1000);
+
+    return () => clearInterval(timer);
   }, []);
 
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
   const day = days[time.getDay()];
 
   const hours = time.getHours() % 12;
@@ -45,4 +48,6 @@ export default function WidgetDemo() {
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

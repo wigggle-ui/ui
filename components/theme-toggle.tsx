@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
 import { Moon, Sun } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 
 interface ThemeToggleProps extends React.ComponentPropsWithoutRef<"button"> {
@@ -25,15 +25,17 @@ export const ThemeToggle = ({
 
     const observer = new MutationObserver(updateTheme);
     observer.observe(document.documentElement, {
-      attributes: true,
       attributeFilter: ["class"],
+      attributes: true,
     });
 
     return () => observer.disconnect();
   }, []);
 
   const toggleTheme = useCallback(async () => {
-    if (!buttonRef.current) return;
+    if (!buttonRef.current) {
+      return;
+    }
 
     await document.startViewTransition(() => {
       flushSync(() => {
@@ -50,7 +52,7 @@ export const ThemeToggle = ({
     const y = top + height / 2;
     const maxRadius = Math.hypot(
       Math.max(left, window.innerWidth - left),
-      Math.max(top, window.innerHeight - top),
+      Math.max(top, window.innerHeight - top)
     );
 
     document.documentElement.animate(
@@ -64,12 +66,13 @@ export const ThemeToggle = ({
         duration,
         easing: "ease-in-out",
         pseudoElement: "::view-transition-new(root)",
-      },
+      }
     );
   }, [isDark, duration]);
 
   return (
     <button
+      type="button"
       ref={buttonRef}
       onClick={toggleTheme}
       className={className}

@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   PlayIcon,
   PauseIcon,
@@ -8,11 +7,12 @@ import {
   SkipForwardIcon,
   Volume2Icon,
   VolumeXIcon,
-  type LucideIcon,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { useState } from "react";
 
+import { Button } from "@/components/ui/button";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
-import { Button } from "@/registry/default/ui/button";
 
 const SIZE = 192;
 const CENTER = SIZE / 2;
@@ -62,14 +62,14 @@ const SEGMENTS: {
   { angles: [-45, 45], icon: SkipForwardIcon, label: "Next" },
 ];
 
-export default function WidgetDemo() {
+const WidgetDemo = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <Widget>
       <WidgetContent>
         <div className="relative size-full">
-          <button>
+          <button type="button">
             <svg
               viewBox={`0 0 ${SIZE} ${SIZE}`}
               className="absolute inset-0 size-full"
@@ -80,11 +80,9 @@ export default function WidgetDemo() {
                   <g key={label}>
                     <path
                       d={arcPath(s, e)}
-                      className="fill-secondary hover:fill-muted-foreground/30 cursor-pointer transition-colors focus:outline-none"
+                      className="fill-secondary hover:fill-muted-foreground/30 cursor-pointer transition-colors"
                       strokeWidth={1}
-                      role="button"
                       aria-label={label}
-                      tabIndex={0}
                     />
                     <foreignObject
                       x={pos.x}
@@ -102,8 +100,9 @@ export default function WidgetDemo() {
           </button>
           <Button
             variant="ghost"
+            size="icon-circle"
             onClick={() => setIsPlaying((p) => !p)}
-            className="absolute top-1/2 left-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full"
+            className="absolute top-1/2 left-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center"
             aria-label={isPlaying ? "Pause" : "Play"}
           >
             {isPlaying ? (
@@ -116,4 +115,6 @@ export default function WidgetDemo() {
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

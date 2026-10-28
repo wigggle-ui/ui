@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "clock-sm-10",
-  "type": "registry:component",
   "dependencies": [
     "lucide-react"
   ],
@@ -13,7 +12,7 @@
   "files": [
     {
       "path": "registry/default/widgets/clock/sm/clock-10.tsx",
-      "content": "import * as React from \"react\";\nimport { AlarmClockIcon } from \"lucide-react\";\n\nimport { Switch } from \"@/registry/default/ui/switch\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\n\nconst alarms = [\"7:00 AM\", \"12:30 PM\", \"5:30 PM\", \"10:00 PM\"];\n\nexport default function WidgetDemo() {\n  return (\n    <Widget design=\"mumbai\">\n      <WidgetHeader>\n        <WidgetTitle>Alarms</WidgetTitle>\n        <AlarmClockIcon className=\"size-5\" />\n      </WidgetHeader>\n      <WidgetContent className=\"mt-3 flex-col gap-3\">\n        {alarms.map((alarm) => (\n          <div\n            key={alarm}\n            className=\"flex w-full items-center justify-between space-x-2\"\n          >\n            <Label htmlFor={alarm} className=\"font-semibold\">\n              {alarm}\n            </Label>\n            <Switch id={alarm} />\n          </div>\n        ))}\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "content": "import { AlarmClockIcon } from \"lucide-react\";\n\nimport { Label } from \"@/components/ui/label\";\nimport { Switch } from \"@/components/ui/switch\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nconst alarms = [\"7:00 AM\", \"12:30 PM\", \"5:30 PM\", \"10:00 PM\"];\n\nconst WidgetDemo = () => (\n  <Widget design=\"mumbai\">\n    <WidgetHeader>\n      <WidgetTitle>Alarms</WidgetTitle>\n      <AlarmClockIcon className=\"size-5\" />\n    </WidgetHeader>\n    <WidgetContent className=\"mt-3 flex-col gap-3\">\n      {alarms.map((alarm) => (\n        <div\n          key={alarm}\n          className=\"flex w-full items-center justify-between space-x-2\"\n        >\n          <Label htmlFor={alarm} weight=\"semibold\">\n            {alarm}\n          </Label>\n          <Switch id={alarm} />\n        </div>\n      ))}\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -22,5 +21,6 @@
       "clock"
     ],
     "size": "sm"
-  }
+  },
+  "type": "registry:component"
 }

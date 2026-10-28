@@ -1,12 +1,14 @@
+"use client";
+
 import { MoveDownIcon, MoveUpIcon } from "lucide-react";
 
+import { Label } from "@/components/ui/label";
 import {
   DEFAULT_LOCATION,
   useLocation,
 } from "@/registry/default/hooks/use-location";
 import { useWeather } from "@/registry/default/hooks/use-weather";
 import { getWeatherIcon } from "@/registry/default/lib/weather-utils";
-import { Label } from "@/registry/default/ui/label";
 import {
   Widget,
   WidgetContent,
@@ -14,11 +16,11 @@ import {
   WidgetTitle,
 } from "@/registry/default/ui/widget";
 
-export default function WidgetDemo() {
+const WidgetDemo = () => {
   const { coordinates, city, isLoading: isLoadingLocation } = useLocation();
   const { data: weather, isLoading: isLoadingWeather } = useWeather(
     coordinates?.lat ?? DEFAULT_LOCATION.lat,
-    coordinates?.lon ?? DEFAULT_LOCATION.lon,
+    coordinates?.lon ?? DEFAULT_LOCATION.lon
   );
 
   const isLoading = isLoadingLocation || isLoadingWeather;
@@ -30,7 +32,9 @@ export default function WidgetDemo() {
     return (
       <Widget>
         <WidgetContent className="flex items-center justify-center">
-          <Label className="animate-pulse">Loading...</Label>
+          <Label>
+            <span className="animate-pulse">Loading...</span>
+          </Label>
         </WidgetContent>
       </Widget>
     );
@@ -42,7 +46,7 @@ export default function WidgetDemo() {
       <WidgetContent className="flex items-center justify-center gap-2">
         {weather &&
           getWeatherIcon(weather.weatherCode, "size-10", { strokeWidth: 2 })}
-        <Label className="text-5xl">{weather?.temperature}&deg;</Label>
+        <Label size="xxxxl">{weather?.temperature}&deg;</Label>
       </WidgetContent>
       <WidgetFooter className="justify-between gap-3">
         <div className="flex items-center justify-start">
@@ -64,4 +68,6 @@ export default function WidgetDemo() {
       </WidgetFooter>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

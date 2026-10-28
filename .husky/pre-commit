@@ -1,0 +1,26 @@
+# ultracite
+#!/bin/sh
+# Check if there are any staged files
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR)
+if [ -z "$STAGED_FILES" ]; then
+  echo "No staged files to format"
+else
+  # Run formatter, capturing the exit code so we can still re-stage and report
+  FORMAT_EXIT_CODE=0
+  npx ultracite fix || FORMAT_EXIT_CODE=$?
+
+  # Re-stage files that were already staged
+  echo "$STAGED_FILES" | while IFS= read -r file; do
+    if [ -f "$file" ]; then
+      git add -- "$file"
+    fi
+  done
+
+  if [ $FORMAT_EXIT_CODE -ne 0 ]; then
+    echo "Ultracite found issues that could not be auto-fixed."
+    exit $FORMAT_EXIT_CODE
+  fi
+
+  echo "✨ Files formatted by Ultracite"
+fi
+# ultracite end

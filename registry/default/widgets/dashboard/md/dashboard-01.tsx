@@ -1,24 +1,10 @@
-"use client";
-
-import {
-  Label,
-  PolarGrid,
-  PolarRadiusAxis,
-  RadialBar,
-  RadialBarChart,
-} from "recharts";
-
+import { Gauge, GaugeArc, GaugeTrack, GaugeValue } from "@/components/gauge";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import {
   Widget,
   WidgetContent,
   WidgetHeader,
 } from "@/registry/default/ui/widget";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-} from "@/registry/default/ui/table";
 
 const dbInfo = [
   {
@@ -46,98 +32,68 @@ const dbInfo = [
     value: "2025-11-06 02:13 UTC",
   },
 ];
-import { ChartConfig, ChartContainer } from "@/registry/default/ui/chart";
 
-const chartData = [
-  { browser: "safari", visitors: 31, fill: "var(--color-safari)" },
-];
+const WidgetDemo = () => (
+  <Widget design="mumbai" size="md" className="gap-3 pt-2">
+    <WidgetContent className="justify-between gap-3">
+      <div className="mt-2 flex h-full w-max flex-col items-center justify-center gap-3">
+        <WidgetHeader className="bg-muted mx-auto w-max items-center justify-center rounded-md px-2 py-1">
+          <p>wigggle_db</p>
+        </WidgetHeader>
+        <Gauge
+          value={64}
+          min={0}
+          max={100}
+          startAngle={180}
+          endAngle={540}
+          radius={30}
+          padding={6}
+          fit="content"
+          transition={{ bounce: 0.1, type: "spring", visualDuration: 0.5 }}
+        >
+          <GaugeTrack
+            width={4}
+            color="var(--muted)"
+            opacity={1}
+            cap="round"
+            offset={0}
+          />
+          <GaugeArc
+            width={4}
+            color="var(--primary)"
+            opacity={1}
+            cap="round"
+            offset={0}
+          />
+          <GaugeValue
+            x={0}
+            y={0}
+            fontSize={20}
+            color="var(--foreground)"
+            font="sans"
+            weight="semibold"
+            decimals={0}
+          />
+        </Gauge>
+      </div>
+      <div className="h-full w-full">
+        <Table>
+          <TableBody>
+            {dbInfo.map((el) => (
+              <TableRow key={el.label}>
+                <TableCell>
+                  <div className="text-muted-foreground -my-1">{el.label}</div>
+                </TableCell>
+                <TableCell>
+                  <div className="-my-1 text-right">{el.value}</div>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+    </WidgetContent>
+  </Widget>
+);
 
-const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  safari: {
-    label: "Safari",
-    color: "var(--chart-2)",
-  },
-} satisfies ChartConfig;
-
-export default function WidgetDemo() {
-  return (
-    <Widget design="mumbai" size="md" className="gap-3 pt-2">
-      <WidgetContent className="justify-between gap-3">
-        <div className="mt-2 flex h-full w-max flex-col items-center justify-center gap-3">
-          <WidgetHeader className="bg-muted mx-auto w-max items-center justify-center rounded-md px-2 py-1">
-            <p>wigggle_db</p>
-          </WidgetHeader>
-          <ChartContainer
-            config={chartConfig}
-            className="mx-auto aspect-square h-full max-h-28 w-full"
-          >
-            <RadialBarChart
-              data={chartData}
-              startAngle={90}
-              endAngle={220}
-              innerRadius={40}
-              outerRadius={60}
-            >
-              <PolarGrid
-                gridType="circle"
-                radialLines={false}
-                stroke="none"
-                className="first:fill-muted last:fill-background"
-                polarRadius={[45, 36]}
-              />
-              <RadialBar dataKey="visitors" background cornerRadius={10} />
-              <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
-                <Label
-                  content={({ viewBox }) => {
-                    if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                      return (
-                        <text
-                          x={viewBox.cx}
-                          y={viewBox.cy}
-                          textAnchor="middle"
-                          dominantBaseline="middle"
-                        >
-                          <tspan
-                            x={viewBox.cx}
-                            y={(viewBox.cy || 0) - 6}
-                            className="fill-foreground text-xl font-bold"
-                          >
-                            {chartData[0].visitors.toLocaleString()}
-                          </tspan>
-                          <tspan
-                            x={viewBox.cx}
-                            y={(viewBox.cy || 0) + 10}
-                            className="fill-muted-foreground"
-                          >
-                            MB used
-                          </tspan>
-                        </text>
-                      );
-                    }
-                  }}
-                />
-              </PolarRadiusAxis>
-            </RadialBarChart>
-          </ChartContainer>
-        </div>
-        <div className="h-full w-full">
-          <Table>
-            <TableBody>
-              {dbInfo.map((el) => (
-                <TableRow key={el.label}>
-                  <TableCell className="text-muted-foreground py-1">
-                    {el.label}
-                  </TableCell>
-                  <TableCell className="py-1 text-right">{el.value}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-      </WidgetContent>
-    </Widget>
-  );
-}
+export default WidgetDemo;

@@ -1,81 +1,111 @@
 "use client";
 
-import React from "react";
 import { PauseIcon, PlayIcon, RotateCcwIcon } from "lucide-react";
+import React from "react";
 
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import {
   Widget,
   WidgetContent,
   WidgetFooter,
   WidgetHeader,
 } from "@/registry/default/ui/widget";
-import { Label } from "@/registry/default/ui/label";
-import { Button } from "@/registry/default/ui/button";
 
-export default function WidgetDemo() {
-  const [isCountingDown, setIsCountingDown] = React.useState(false);
-  const [timeLeft, setTimeLeft] = React.useState(1800);
-  const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
+const TIMER_DURATION_SECONDS = 30 * 60;
+
+interface TimerState {
+  isCountingDown: boolean;
+  timeLeft: number;
+}
+
+interface TimerAction {
+  type: "reset" | "tick" | "toggle";
+}
+
+const initialTimerState: TimerState = {
+  isCountingDown: false,
+  timeLeft: TIMER_DURATION_SECONDS,
+};
+
+const timerReducer = (state: TimerState, action: TimerAction): TimerState => {
+  switch (action.type) {
+    case "reset": {
+      return initialTimerState;
+    }
+    case "tick": {
+      if (state.timeLeft <= 1) {
+        return { isCountingDown: false, timeLeft: 0 };
+      }
+
+      return { ...state, timeLeft: state.timeLeft - 1 };
+    }
+    case "toggle": {
+      return {
+        ...state,
+        isCountingDown: !state.isCountingDown && state.timeLeft > 0,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+};
+
+const WidgetDemo = () => {
+  const [{ isCountingDown, timeLeft }, dispatch] = React.useReducer(
+    timerReducer,
+    initialTimerState
+  );
 
   const minutes = Math.floor(timeLeft / 60);
   const seconds = (timeLeft % 60).toString().padStart(2, "0");
 
-  const resetTimer = React.useCallback(() => {
-    setIsCountingDown(false);
-    setTimeLeft(1800);
-  }, []);
-
-  const handleToggle = React.useCallback(() => {
-    setIsCountingDown((prev) => !prev);
-  }, []);
-
   React.useEffect(() => {
-    if (isCountingDown && !intervalRef.current) {
-      intervalRef.current = setInterval(() => {
-        setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
-      }, 1000);
+    if (!isCountingDown) {
+      return;
     }
 
-    if (!isCountingDown) {
-      clearInterval(intervalRef.current!);
-      intervalRef.current = null;
-    }
+    const intervalId = window.setInterval(() => {
+      dispatch({ type: "tick" });
+    }, 1000);
 
     return () => {
-      clearInterval(intervalRef.current!);
-      intervalRef.current = null;
+      window.clearInterval(intervalId);
     };
   }, [isCountingDown]);
 
   return (
     <Widget design="mumbai">
       <WidgetHeader className="justify-center">
-        <Label className="text-muted-foreground text-3xl">🚀</Label>
+        <Label size="xxxl" variant="muted-foreground">
+          🚀
+        </Label>
       </WidgetHeader>
       <WidgetContent>
         <div className="flex h-full w-full flex-col items-center justify-center gap-0.5">
-          <Label className="text-4xl">
+          <Label size="xxxxl">
             {minutes}:{seconds}
           </Label>
-          <Label className="text-muted-foreground text-xs">POMODORO</Label>
+          <Label size="xs" variant="muted-foreground">
+            POMODORO
+          </Label>
         </div>
       </WidgetContent>
       <WidgetFooter>
         <Button
           aria-label="Reset timer"
-          onClick={resetTimer}
+          onClick={() => dispatch({ type: "reset" })}
           variant="outline"
-          size="icon-sm"
-          className="rounded-full"
+          size="icon-sm-circle"
         >
           <RotateCcwIcon />
         </Button>
         <Button
           aria-label={isCountingDown ? "Pause timer" : "Start timer"}
-          onClick={handleToggle}
+          onClick={() => dispatch({ type: "toggle" })}
           variant="outline"
-          size="icon-sm"
-          className="rounded-full"
+          size="icon-sm-circle"
         >
           {isCountingDown ? (
             <PauseIcon className="size-4 fill-current stroke-none" />
@@ -86,4 +116,6 @@ export default function WidgetDemo() {
       </WidgetFooter>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

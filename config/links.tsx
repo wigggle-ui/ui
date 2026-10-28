@@ -1,5 +1,3 @@
-import { LinkItem } from "@/types";
-import { Icons } from "@/components/icons";
 import {
   BookOpenTextIcon,
   CalendarIcon,
@@ -17,108 +15,111 @@ import {
   TrophyIcon,
 } from "lucide-react";
 
+import { Icons } from "@/components/icons";
+import type { LinkItem } from "@/types";
+
 export const MENU_LINKS: LinkItem[] = [
   {
-    title: "Home",
     href: "/",
-    icon: <Icons.logo />,
+    icon: <Icons.Logo />,
     shortcut: "GH",
+    title: "Home",
   },
   {
-    title: "Docs",
     href: "/docs",
     icon: <BookOpenTextIcon />,
     shortcut: "GD",
+    title: "Docs",
   },
   {
-    title: "Widgets",
     href: "/widgets",
     icon: <LayoutGridCirclesIcon />,
     shortcut: "GW",
+    title: "Widgets",
   },
   {
-    title: "Playground",
     href: "/playground",
     icon: <Gamepad2Icon />,
     shortcut: "GP",
+    title: "Playground",
   },
   {
-    title: "Sponsors",
     href: "/sponsors",
     icon: <IndianRupeeIcon />,
     shortcut: "GS",
+    title: "Sponsors",
   },
   {
-    title: "Testimonials",
     href: "/testimonials",
     icon: <SpeechIcon />,
     shortcut: "GT",
+    title: "Testimonials",
   },
   {
-    title: "Changelog",
     href: "/changelog",
     icon: <ScrollTextIcon />,
     shortcut: "GC",
+    title: "Changelog",
   },
 ];
 
 export const WIDGET_CATEGORY_LINKS: LinkItem[] = [
   {
-    title: "Calendar",
     href: "/widgets/calendar",
     icon: <CalendarIcon />,
+    title: "Calendar",
   },
   {
-    title: "Clock",
     href: "/widgets/clock",
     icon: <Clock3Icon />,
+    title: "Clock",
   },
   {
-    title: "Dashboard",
     href: "/widgets/dashboard",
     icon: <LayoutDashboardIcon />,
+    title: "Dashboard",
   },
   {
-    title: "Media",
     href: "/widgets/media",
     icon: <CirclePlayIcon />,
+    title: "Media",
   },
   {
-    title: "Productivity",
     href: "/widgets/productivity",
     icon: <GoalIcon />,
+    title: "Productivity",
   },
   {
-    title: "Sports",
     href: "/widgets/sports",
     icon: <TrophyIcon />,
+    title: "Sports",
   },
   {
-    title: "Stocks",
     href: "/widgets/stocks",
     icon: <ChartNoAxesCombinedIcon />,
+    title: "Stocks",
   },
   {
-    title: "Weather",
     href: "/widgets/weather",
     icon: <CloudSunIcon />,
+    title: "Weather",
   },
 ];
 
 export const SOCIAL_LINKS: LinkItem[] = [
   {
-    title: "X",
     href: "https://x.com/henil106",
     icon: <Icons.X />,
+    title: "X",
   },
   {
-    title: "GitHub",
     href: "https://github.com/henilshahdev",
     icon: <Icons.GitHub />,
+    title: "GitHub",
   },
   {
-    title: "LinkedIn",
     href: "https://linkedin.com/in/henilshahdev",
-    icon: <Icons.apple />,
+    icon: <Icons.Apple />,
+    title: "LinkedIn",
   },
 ];

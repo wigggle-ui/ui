@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "clock-sm-08",
-  "type": "registry:component",
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json",
     "https://wigggle-ui.vercel.app/r/label.json"
@@ -9,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/widgets/clock/sm/clock-08.tsx",
-      "content": "import * as React from \"react\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetTitle,\r\n} from \"@/registry/default/ui/widget\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <Widget>\r\n      <WidgetContent className=\"flex-col justify-between\">\r\n        <div className=\"flex w-full items-center justify-between gap-2\">\r\n          <Label className=\"text-sm\">Mumbai</Label>\r\n          <WidgetTitle>8:15 AM</WidgetTitle>\r\n        </div>\r\n        <div className=\"flex w-full items-center justify-between gap-2\">\r\n          <Label className=\"text-sm\">London</Label>\r\n          <WidgetTitle>6:45 PM</WidgetTitle>\r\n        </div>\r\n        <div className=\"flex w-full items-center justify-between gap-2\">\r\n          <Label className=\"text-sm\">Tokyo</Label>\r\n          <WidgetTitle>8:15 AM</WidgetTitle>\r\n        </div>\r\n        <div className=\"flex w-full items-center justify-between gap-2\">\r\n          <Label className=\"text-sm\">Seoul</Label>\r\n          <WidgetTitle>6:45 PM</WidgetTitle>\r\n        </div>\r\n      </WidgetContent>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "import { Label } from \"@/components/ui/label\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget>\n    <WidgetContent className=\"flex-col justify-between\">\n      <div className=\"flex w-full items-center justify-between gap-2\">\n        <Label size=\"sm\">Mumbai</Label>\n        <WidgetTitle>8:15 AM</WidgetTitle>\n      </div>\n      <div className=\"flex w-full items-center justify-between gap-2\">\n        <Label size=\"sm\">London</Label>\n        <WidgetTitle>6:45 PM</WidgetTitle>\n      </div>\n      <div className=\"flex w-full items-center justify-between gap-2\">\n        <Label size=\"sm\">Tokyo</Label>\n        <WidgetTitle>8:15 AM</WidgetTitle>\n      </div>\n      <div className=\"flex w-full items-center justify-between gap-2\">\n        <Label size=\"sm\">Seoul</Label>\n        <WidgetTitle>6:45 PM</WidgetTitle>\n      </div>\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -18,5 +17,6 @@
       "clock"
     ],
     "size": "sm"
-  }
+  },
+  "type": "registry:component"
 }

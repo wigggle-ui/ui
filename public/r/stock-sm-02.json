@@ -1,14 +1,13 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "stock-sm-02",
-  "type": "registry:component",
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json"
   ],
   "files": [
     {
       "path": "registry/default/widgets/stocks/sm/stock-02.tsx",
-      "content": "import * as React from \"react\";\n\nimport {\n  Widget,\n  WidgetHeader,\n  WidgetTitle,\n  WidgetContent,\n  WidgetFooter,\n} from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\n\nexport default function WidgetDemo() {\n  return (\n    <Widget design=\"mumbai\">\n      <WidgetHeader>\n        <WidgetTitle className=\"flex w-full flex-col items-start justify-start\">\n          <Label className=\"text-2xl font-medium\">AAPL</Label>\n          <Label className=\"text-muted-foreground text-lg\">Apple Inc</Label>\n        </WidgetTitle>\n      </WidgetHeader>\n      <WidgetContent className=\"justify-between\"></WidgetContent>\n      <WidgetFooter className=\"flex-col items-end\">\n        <Label className=\"text-destructive text-4xl\">262.24</Label>\n      </WidgetFooter>\n    </Widget>\n  );\n}\n",
+      "content": "import { Label } from \"@/components/ui/label\";\nimport {\n  Widget,\n  WidgetHeader,\n  WidgetTitle,\n  WidgetContent,\n  WidgetFooter,\n} from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget design=\"mumbai\">\n    <WidgetHeader>\n      <WidgetTitle className=\"flex w-full flex-col items-start justify-start\">\n        <Label weight=\"medium\" size=\"xxl\">\n          AAPL\n        </Label>\n        <Label variant=\"muted-foreground\" size=\"lg\">\n          Apple Inc\n        </Label>\n      </WidgetTitle>\n    </WidgetHeader>\n    <WidgetContent className=\"justify-between\" />\n    <WidgetFooter className=\"flex-col items-end\">\n      <Label variant=\"destructive\" size=\"xxxxl\">\n        262.24\n      </Label>\n    </WidgetFooter>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -17,5 +16,6 @@
       "stocks"
     ],
     "size": "sm"
-  }
+  },
+  "type": "registry:component"
 }

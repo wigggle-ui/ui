@@ -1,15 +1,15 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "wheel-picker",
-  "type": "registry:ui",
   "dependencies": [
     "@ncdai/react-wheel-picker"
   ],
   "files": [
     {
-      "path": "registry/default/ui/wheel-picker.tsx",
-      "content": "import \"@ncdai/react-wheel-picker/style.css\";\r\n\r\nimport * as WheelPickerPrimitive from \"@ncdai/react-wheel-picker\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ntype WheelPickerOption = WheelPickerPrimitive.WheelPickerOption;\r\ntype WheelPickerClassNames = WheelPickerPrimitive.WheelPickerClassNames;\r\n\r\nfunction WheelPickerWrapper({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<typeof WheelPickerPrimitive.WheelPickerWrapper>) {\r\n  return (\r\n    <WheelPickerPrimitive.WheelPickerWrapper\r\n      className={cn(\r\n        \"w-full px-1\",\r\n        \"*:data-rwp:first:*:data-rwp-highlight-wrapper:rounded-s-md\",\r\n        \"*:data-rwp:last:*:data-rwp-highlight-wrapper:rounded-e-md\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nfunction WheelPicker({\r\n  classNames,\r\n  ...props\r\n}: React.ComponentProps<typeof WheelPickerPrimitive.WheelPicker>) {\r\n  return (\r\n    <WheelPickerPrimitive.WheelPicker\r\n      classNames={{\r\n        optionItem: \"text-zinc-400 dark:text-zinc-500\",\r\n        highlightWrapper:\r\n          \"bg-zinc-100 text-zinc-950 dark:bg-zinc-800 dark:text-zinc-50\",\r\n        ...classNames,\r\n      }}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nexport { WheelPicker, WheelPickerWrapper };\r\nexport type { WheelPickerClassNames, WheelPickerOption };\r\n",
+      "path": "components/ui/wheel-picker.tsx",
+      "content": "import \"@ncdai/react-wheel-picker/style.css\";\nimport * as WheelPickerPrimitive from \"@ncdai/react-wheel-picker\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype WheelPickerOption = WheelPickerPrimitive.WheelPickerOption;\ntype WheelPickerClassNames = WheelPickerPrimitive.WheelPickerClassNames;\n\nconst WheelPickerWrapper = ({\n  className,\n  ...props\n}: React.ComponentProps<typeof WheelPickerPrimitive.WheelPickerWrapper>) => (\n  <WheelPickerPrimitive.WheelPickerWrapper\n    className={cn(\n      \"w-full px-1\",\n      \"*:data-rwp:first:*:data-rwp-highlight-wrapper:rounded-s-md\",\n      \"*:data-rwp:last:*:data-rwp-highlight-wrapper:rounded-e-md\",\n      className\n    )}\n    {...props}\n  />\n);\n\nconst WheelPicker = ({\n  classNames,\n  ...props\n}: React.ComponentProps<typeof WheelPickerPrimitive.WheelPicker>) => (\n  <WheelPickerPrimitive.WheelPicker\n    classNames={{\n      highlightWrapper:\n        \"bg-border text-code-foreground dark:bg-muted dark:text-primary\",\n      optionItem: \"text-ring dark:text-muted-foreground\",\n      ...classNames,\n    }}\n    {...props}\n  />\n);\n\nexport { WheelPicker, WheelPickerWrapper };\nexport type { WheelPickerClassNames, WheelPickerOption };\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

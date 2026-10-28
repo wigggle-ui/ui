@@ -1,8 +1,7 @@
+import { cn } from "cn";
 import type { RegistryItem } from "shadcn/schema";
 
-import { cn } from "@/registry/default/lib/utils";
-
-export default function WidgetCard({
+const WidgetCard = ({
   children,
   widget,
   className,
@@ -10,27 +9,16 @@ export default function WidgetCard({
   children: React.ReactNode;
   widget: RegistryItem;
   className?: string;
-}) {
-  const getColSpanClasses = () => {
-    if (widget.meta?.size === "md") {
-      return "col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-6 xl:col-span-6";
-    } else if (widget.meta?.size === "lg") {
-      return "col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-6 xl:col-span-6";
-    } else {
-      return "col-span-12 sm:col-span-6 lg:col-span-3";
-    }
-  };
+}) => (
+  <div
+    className={cn(
+      "group group/item relative col-span-12 mx-auto flex w-full items-center justify-center sm:col-span-6 lg:col-span-4",
+      className
+    )}
+    data-slot={widget.name}
+  >
+    {children}
+  </div>
+);
 
-  return (
-    <div
-      className={cn(
-        "group/item relative mx-auto border-zinc-200 has-data-[comp-loading=true]:border-none dark:border-zinc-900",
-        getColSpanClasses(),
-        className,
-      )}
-      data-slot={widget.name}
-    >
-      {children}
-    </div>
-  );
-}
+export default WidgetCard;

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "calendar-sm-02",
-  "type": "registry:component",
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json",
     "https://wigggle-ui.vercel.app/r/badge.json",
@@ -10,7 +9,7 @@
   "files": [
     {
       "path": "registry/default/widgets/calendar/sm/calendar-02.tsx",
-      "content": "import * as React from \"react\";\n\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\nimport { Badge } from \"@/registry/default/ui/badge\";\nimport { Label } from \"@/registry/default/ui/label\";\n\nexport default function WidgetDemo() {\n  const now = new Date();\n\n  const day = now.toLocaleDateString(\"en-US\", { weekday: \"long\" });\n  const month = now.toLocaleDateString(\"en-US\", { month: \"long\" });\n  const date = now.getDate();\n\n  return (\n    <Widget>\n      <WidgetContent className=\"flex flex-col gap-2\">\n        <Label className=\"text-muted-foreground\">{day}</Label>\n        <Label className=\"text-5xl font-bold\">{date}</Label>\n        <Label className=\"text-muted-foreground\">{month}</Label>\n        <Badge variant=\"outline\">{now.getFullYear()}</Badge>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "content": "import { Badge } from \"@/components/ui/badge\";\nimport { Label } from \"@/components/ui/label\";\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\nconst now = new Date();\n\nconst day = now.toLocaleDateString(\"en-US\", { weekday: \"long\" });\nconst month = now.toLocaleDateString(\"en-US\", { month: \"long\" });\nconst date = now.getDate();\n\nconst WidgetDemo = () => (\n  <Widget>\n    <WidgetContent className=\"flex flex-col gap-2\">\n      <Label variant=\"muted-foreground\">{day}</Label>\n      <Label weight=\"bold\" size=\"xxxxl\">\n        {date}\n      </Label>\n      <Label variant=\"muted-foreground\">{month}</Label>\n      <Badge variant=\"outline\">{now.getFullYear()}</Badge>\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -18,5 +17,6 @@
     "tags": [
       "calendar"
     ]
-  }
+  },
+  "type": "registry:component"
 }

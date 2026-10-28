@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "stock-sm-05",
-  "type": "registry:component",
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json",
     "https://wigggle-ui.vercel.app/r/icons.json",
@@ -11,7 +10,7 @@
   "files": [
     {
       "path": "registry/default/widgets/stocks/sm/stock-05.tsx",
-      "content": "import * as React from \"react\";\r\n\r\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\nimport { Icons } from \"@/components/icons\";\r\nimport {\r\n  Tooltip,\r\n  TooltipContent,\r\n  TooltipTrigger,\r\n} from \"@/registry/default/ui/tooltip\";\r\n\r\ntype Stock = {\r\n  logo: React.FC<React.SVGProps<SVGSVGElement>>;\r\n  ticker: string;\r\n  companyName: string;\r\n  price: number;\r\n};\r\n\r\nconst stocks: Stock[] = [\r\n  {\r\n    logo: Icons.apple,\r\n    ticker: \"AAPL\",\r\n    price: 262.82,\r\n    companyName: \"Apple Inc.\",\r\n  },\r\n  {\r\n    logo: Icons.salesforce,\r\n    ticker: \"CRM\",\r\n    price: 307.46,\r\n    companyName: \"Salesforce, Inc.\",\r\n  },\r\n  {\r\n    logo: Icons.starbucks,\r\n    ticker: \"SBUX\",\r\n    price: 86.09,\r\n    companyName: \"Starbucks Corp.\",\r\n  },\r\n  {\r\n    logo: Icons.tesla,\r\n    ticker: \"TSLA\",\r\n    price: 433.72,\r\n    companyName: \"Tesla Inc.\",\r\n  },\r\n];\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <Widget>\r\n      <WidgetContent className=\"items-center\">\r\n        <div className=\"grid size-full grid-cols-2 items-center gap-6\">\r\n          {stocks.map(({ logo: Logo, ticker, price, companyName }) => (\r\n            <Tooltip delayDuration={300} key={ticker}>\r\n              <TooltipTrigger asChild>\r\n                <div className=\"flex flex-col items-center justify-center gap-1\">\r\n                  <Logo className=\"fill-foreground size-8 rounded-full\" />\r\n                  <Label className=\"text-base\">${price}</Label>\r\n                </div>\r\n              </TooltipTrigger>\r\n              <TooltipContent>\r\n                <p>{companyName}</p>\r\n              </TooltipContent>\r\n            </Tooltip>\r\n          ))}\r\n        </div>\r\n      </WidgetContent>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "import * as React from \"react\";\n\nimport { Icons } from \"@/components/icons\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\";\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\ninterface Stock {\n  logo: React.FC<React.SVGProps<SVGSVGElement>>;\n  ticker: string;\n  companyName: string;\n  price: number;\n}\n\nconst stocks: Stock[] = [\n  {\n    companyName: \"Apple Inc.\",\n    logo: Icons.Apple,\n    price: 262.82,\n    ticker: \"AAPL\",\n  },\n  {\n    companyName: \"Salesforce, Inc.\",\n    logo: Icons.Salesforce,\n    price: 307.46,\n    ticker: \"CRM\",\n  },\n  {\n    companyName: \"Starbucks Corp.\",\n    logo: Icons.Starbucks,\n    price: 86.09,\n    ticker: \"SBUX\",\n  },\n  {\n    companyName: \"Tesla Inc.\",\n    logo: Icons.Tesla,\n    price: 433.72,\n    ticker: \"TSLA\",\n  },\n];\n\nconst WidgetDemo = () => (\n  <Widget>\n    <WidgetContent className=\"items-center\">\n      <div className=\"grid size-full grid-cols-2 items-center gap-6\">\n        {stocks.map(({ logo: Logo, ticker, price, companyName }) => (\n          <Tooltip delayDuration={300} key={ticker}>\n            <TooltipTrigger asChild>\n              <div className=\"flex flex-col items-center justify-center gap-1\">\n                <Logo className=\"fill-foreground size-8 rounded-full\" />\n                <Label>${price}</Label>\n              </div>\n            </TooltipTrigger>\n            <TooltipContent>\n              <p>{companyName}</p>\n            </TooltipContent>\n          </Tooltip>\n        ))}\n      </div>\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -20,5 +19,6 @@
       "stocks"
     ],
     "size": "sm"
-  }
+  },
+  "type": "registry:component"
 }

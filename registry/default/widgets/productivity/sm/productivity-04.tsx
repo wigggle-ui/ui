@@ -1,22 +1,25 @@
 "use client";
 
-import React from "react";
+import { cn } from "cn";
+import { useEffect, useState } from "react";
+
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 import {
   Widget,
   WidgetHeader,
   WidgetTitle,
   WidgetContent,
 } from "@/registry/default/ui/widget";
-import { Separator } from "@/registry/default/ui/separator";
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-} from "@/registry/default/ui/tooltip";
-import { Label } from "@/registry/default/ui/label";
-import { cn } from "@/registry/default/lib/utils";
 
 const dayInitials = ["S", "M", "T", "W", "T", "F", "S"];
+
+const date = new Date();
 
 const taskColor = (level: number | null) =>
   level === null
@@ -29,11 +32,17 @@ const taskColor = (level: number | null) =>
         "bg-muted-foreground",
       ][Math.min(level, 4)];
 
-export default function WidgetDemo() {
-  const [now, setNow] = React.useState(() => new Date(2025, 0, 1));
+const WidgetDemo = () => {
+  const [now, setNow] = useState<Date>(date);
 
-  React.useEffect(() => {
-    setNow(new Date());
+  useEffect(() => {
+    const updateTime = () => setNow(new Date());
+
+    updateTime();
+
+    const timer = setInterval(updateTime, 1000);
+
+    return () => clearInterval(timer);
   }, []);
 
   const month = now.toLocaleString("en-US", { month: "short" });
@@ -42,7 +51,7 @@ export default function WidgetDemo() {
   const firstDay = new Date(year, now.getMonth(), 1).getDay();
   const tasks = Array.from(
     { length: daysInMonth },
-    (_, day) => (day * 13 + now.getMonth() * 7 + year) % 5,
+    (_, day) => (day * 13 + now.getMonth() * 7 + year) % 5
   );
   const totalTasks = tasks.reduce((a, b) => a + b, 0);
 
@@ -52,7 +61,7 @@ export default function WidgetDemo() {
         <WidgetTitle className="font-normal">{`${month} ${year}`}</WidgetTitle>
         <WidgetTitle className="font-normal">{totalTasks}</WidgetTitle>
       </WidgetHeader>
-      <Separator className="h-0.5 rounded-full" />
+      <Separator className="h-0.5" />
       <WidgetContent>
         <div className="grid size-full grid-cols-7 gap-1 text-center">
           {dayInitials.map((d, i) => (
@@ -73,17 +82,24 @@ export default function WidgetDemo() {
                   <div
                     className={cn(
                       "size-3 rounded-xs transition-all duration-300 hover:scale-125 hover:cursor-pointer",
-                      taskColor(count),
+                      taskColor(count)
                     )}
                   />
                 </div>
               </TooltipTrigger>
-              <TooltipContent className="flex gap-1">
-                <Label className="font-normal">
-                  {count} task{count !== 1 ? "s" : ""}
-                </Label>
-                <Label className="font-normal">on</Label>
-                <Label className="font-normal">{`${i + 1} ${month}`}</Label>
+              <TooltipContent>
+                <div className="flex gap-1">
+                  <Label variant="background" size="sm">
+                    {count} task{count === 1 ? "" : "s"}
+                  </Label>
+                  <Label variant="background" size="sm">
+                    on
+                  </Label>
+                  <Label
+                    variant="background"
+                    size="sm"
+                  >{`${i + 1} ${month}`}</Label>
+                </div>
               </TooltipContent>
             </Tooltip>
           ))}
@@ -91,4 +107,6 @@ export default function WidgetDemo() {
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

@@ -1,12 +1,14 @@
+"use client";
+
 import { MoveDownIcon, MoveUpIcon } from "lucide-react";
 
+import { Label } from "@/components/ui/label";
 import {
   DEFAULT_LOCATION,
   useLocation,
 } from "@/registry/default/hooks/use-location";
 import { useWeather } from "@/registry/default/hooks/use-weather";
 import { getWeatherIcon } from "@/registry/default/lib/weather-utils";
-import { Label } from "@/registry/default/ui/label";
 import {
   Widget,
   WidgetContent,
@@ -15,11 +17,11 @@ import {
   WidgetTitle,
 } from "@/registry/default/ui/widget";
 
-export default function WidgetDemo() {
+const WidgetDemo = () => {
   const { coordinates, city, isLoading: isLoadingLocation } = useLocation();
   const { data: weather, isLoading: isLoadingWeather } = useWeather(
     coordinates?.lat ?? DEFAULT_LOCATION.lat,
-    coordinates?.lon ?? DEFAULT_LOCATION.lon,
+    coordinates?.lon ?? DEFAULT_LOCATION.lon
   );
 
   const isLoading = isLoadingLocation || isLoadingWeather;
@@ -29,26 +31,28 @@ export default function WidgetDemo() {
 
   const next5Hours =
     weather?.hourly.time.slice(0, 5).map((time, index) => ({
-      temp: weather.hourly.temperature[index],
       code: weather.hourly.weatherCode[index],
+      temp: weather.hourly.temperature[index],
     })) || [];
 
   if (isLoading) {
     return (
       <Widget design="mumbai" className="gap-6">
         <WidgetContent className="flex items-center justify-center">
-          <Label className="animate-pulse">Loading...</Label>
+          <Label>
+            <span className="animate-pulse">Loading...</span>
+          </Label>
         </WidgetContent>
       </Widget>
     );
   }
 
   return (
-    <Widget design="mumbai" className="gap-6">
+    <Widget design="mumbai" className="gap-4">
       <WidgetHeader className="flex items-center justify-between gap-3">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-0">
           <Label>{city || "Unknown"}</Label>
-          <Label className="text-muted-foreground">
+          <Label size="xs" variant="muted-foreground">
             Feels Like {weather?.feelsLike}&deg;
           </Label>
         </div>
@@ -79,11 +83,15 @@ export default function WidgetDemo() {
           {next5Hours.map((h, i) => (
             <div key={i} className="flex flex-col items-center gap-2">
               {getWeatherIcon(h.code, "size-4")}
-              <Label className="text-xs font-light">{h.temp}&deg;</Label>
+              <Label size="xs" weight="light">
+                {h.temp}&deg;
+              </Label>
             </div>
           ))}
         </div>
       </WidgetFooter>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

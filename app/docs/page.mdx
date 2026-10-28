@@ -1,8 +1,8 @@
 import { SparklesIcon } from "lucide-react";
 
-import WidgetsDisplay from "./_components/widgets-display";
+import WidgetsDisplay from "./components/widgets-display";
 import { getFileContent } from "@/lib/utils.server";
-import { convertNpmCommand } from "@/lib/convert-npm-command";
+import convertNpmCommand from "@/lib/convert-npm-command";
 
 export const baseWidgetFileCode = await getFileContent("widget.tsx");
 
@@ -18,7 +18,7 @@ export const usageCode = `import {
 
 # Introduction
 
-Wigggle UI is a free and open source UI collection of beautifully designed Widgets. It's built with Next.js, Tailwind CSS and shadcn/ui. <br />Works with your favorite frameworks and AI models. Open Source. Open Code.
+Wigggle UI is a free and open source UI collection of beautifully designed Widgets. Works with your favorite frameworks and AI models. <br /> Open Source. Open Code.
 
 Wigggle UI is a trusted registry for shadcn/ui. You can start adding widgets right away!
 
@@ -28,39 +28,89 @@ Wigggle UI is a trusted registry for shadcn/ui. You can start adding widgets rig
   />
 </div>
 
-# What is a Widget?
+<hr className="bg-border" />
 
-A flexible container component used to build UI widgets. It supports multiple sizes, design variations, color variants, and includes a collection of sub-components to structure your layout.
-Widgets are built using **class-variance-authority** for consistent styling and composability.
+<ForNerds />
+
+# Widget
+
+A flexible container component used to build UI widgets. It supports multiple sizes, design variations, color variants, and includes a collection of sub-components to structure your layout. Widgets are built using **class-variance-authority** for consistent styling and composability.
 
 <WidgetsDisplay />
 
-<Callout icon={<SparklesIcon className="stroke-yellow-500" />}>
-
-We're working on adding more styles like **Circle** widgets to the collection. In the meantime, you can check out the existing widgets in the [widget registry](https://wiggle-ui.vercel.app/widgets) to get a feel for how they look. We'll have an official release soon.
-
-</Callout>
-
 # Installation
 
-<div className="mt-3">
-  <CodeBlockCommand
-    {...convertNpmCommand("npx shadcn@latest add @wigggle-ui/widget")}
-  />
-</div>
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+    <TabsIndicator className="h-0.5 translate-y-0" />
+  </TabsList>
+  <TabsContent value="cli" className="p-6">
+    <span>
+      Being a trusted shadcn registry, you can directly install any widget of
+      your choice.
+    </span>
+    <span>You can start with the basic Clock Widget using this command.</span>
+    <div className="mt-6">
+      <CodeBlockCommand
+        {...convertNpmCommand("npx shadcn@latest add @wigggle-ui/clock-sm-01")}
+      />
+    </div>
+  </TabsContent>
+  <TabsContent value="manual" className="px-6">
+    <Steps>
+      <Step>Install the following dependencies</Step>
+      <div className="mt-3">
+        <CodeBlockCommand
+          {...convertNpmCommand("npm install cn class-variance-authority")}
+        />
+      </div>
+      <Step>Add a cn helper</Step>
+      <div className="mt-3">
+        <CodeBlock
+          code='export { cn } from "cn"'
+          lang="tsx"
+          preHighlighted={null}
+          isFile="lib/utils.ts"
+        />
+      </div>
+      <Step>Copy and paste the following code into your project</Step>
+      <div className="mt-3">
+        <CodeBlock
+          code={baseWidgetFileCode}
+          lang="tsx"
+          preHighlighted={null}
+          isFile="components/ui/widget.tsx"
+        />
+      </div>
+      <Step>Update the import paths to match your project setup</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
 
 # Usage
 
 <div className="relative mt-6">
-  <CodeBlock code={usageCode} lang="tsx" preHighlighted={null} />
+  <CodeBlock
+    code={usageCode}
+    lang="tsx"
+    preHighlighted={null}
+    isFile="/app/page.tsx"
+  />
 </div>
 
-# Widget.tsx
+# Base Widget
 
 Every widget is directly dependent on the `widget.tsx` file. This file contains the core logic for the widget, including the logic for rendering the widget and handling user interactions. This widget file exposes a few **Variants** and **Components** that you can use to customize the widget's appearance and behavior.
 
 <div className="relative mt-6">
-  <CodeBlock code={baseWidgetFileCode} lang="tsx" preHighlighted={null} />
+  <CodeBlock
+    code={baseWidgetFileCode}
+    lang="tsx"
+    preHighlighted={null}
+    isFile="/components/ui/widget.tsx"
+  />
 </div>
 
 # API Reference
@@ -89,11 +139,6 @@ Every widget is directly dependent on the `widget.tsx` file. This file contains 
       name: "className",
       type: "string",
       description: "Additional CSS classes to apply to the root element.",
-    },
-    {
-      name: "...rest",
-      type: "React.HTMLAttributes<HTMLDivElement>",
-      description: "Additional properties for the HTML div element.",
     },
   ]}
 />

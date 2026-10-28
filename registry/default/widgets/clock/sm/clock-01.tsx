@@ -1,29 +1,32 @@
 "use client";
 
-import * as React from "react";
+import { useEffect, useState } from "react";
+
 import {
   Widget,
   WidgetContent,
   WidgetTitle,
 } from "@/registry/default/ui/widget";
 
-export default function WidgetDemo() {
-  const [time, setTime] = React.useState(new Date());
+const now = new Date();
 
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
+const formatTime = (value: number) => String(value).padStart(2, "0");
 
-    return () => {
-      clearInterval(timer);
-    };
+const WidgetDemo = () => {
+  const [time, setTime] = useState<Date>(now);
+
+  useEffect(() => {
+    const updateTime = () => setTime(new Date());
+
+    updateTime();
+
+    const timer = setInterval(updateTime, 1000);
+
+    return () => clearInterval(timer);
   }, []);
 
-  const formatTime = (num: number) => String(num).padStart(2, "0");
-
-  const minutes = formatTime(time.getMinutes());
   const hours = time.getHours() % 12 || 12;
+  const minutes = formatTime(time.getMinutes());
 
   return (
     <Widget>
@@ -34,4 +37,6 @@ export default function WidgetDemo() {
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

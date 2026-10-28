@@ -1,34 +1,21 @@
-import { promises as fs } from "fs";
-import path from "path";
+import { promises as fs } from "node:fs";
+import path from "node:path";
 
-async function buildRegistryJsonFile() {
+const buildRegistryJsonFile = async (): Promise<void> => {
   const cwd = process.cwd();
   const src = path.join(cwd, "registry.json");
   const destDir = path.join(cwd, "public", "r");
   const dest = path.join(destDir, "registry.json");
 
-  try {
-    // Check if source file exists
-    await fs.access(src).catch(() => {
-      console.warn("⚠️  registry.json not found, do not deploy!");
-      return Promise.reject();
-    });
-
-    // Copy file
-    await fs.copyFile(src, dest);
-    console.log(`✔ Copied registry.json to public/r`);
-  } catch (err: any) {
-    if (err) {
-      console.error("❌ Failed to copy registry.json:", err.message);
-      process.exit(1);
-    }
-  }
-}
+  await fs.copyFile(src, dest);
+  console.log("✔ Copied registry.json to public/r");
+};
 
 try {
   await buildRegistryJsonFile();
   console.log("✔ Registry updated successfully.");
-} catch (error) {
-  console.error(error);
-  process.exit(1);
+} catch (error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  console.error("❌ Failed to copy registry.json:", message);
+  process.exitCode = 1;
 }

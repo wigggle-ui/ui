@@ -1,21 +1,23 @@
 "use client";
 
-import * as React from "react";
+import { useEffect, useState } from "react";
+import type { CSSProperties } from "react";
+
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
-export default function Clock04() {
-  const [time, setTime] = React.useState<Date | null>(null);
+const now = new Date();
 
-  React.useEffect(() => {
-    setTime(new Date());
+const WidgetDemo = () => {
+  const [time, setTime] = useState<Date>(now);
 
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
+  useEffect(() => {
+    const updateTime = () => setTime(new Date());
 
-    return () => {
-      clearInterval(timer);
-    };
+    updateTime();
+
+    const timer = setInterval(updateTime, 1000);
+
+    return () => clearInterval(timer);
   }, []);
 
   const hours = time ? time.getHours() % 12 : 0;
@@ -30,27 +32,26 @@ export default function Clock04() {
     <Widget>
       <WidgetContent>
         <div className="relative size-22">
+          {/* Hours Hand */}
           <div
-            className="absolute bottom-1/2 left-1/2 h-12 w-1 origin-bottom rounded-full bg-gray-800 dark:bg-gray-200"
-            style={{
-              transform: `translateX(-50%) rotate(${hoursDegrees}deg)`,
-            }}
+            className="bg-primary dark:bg-primary absolute bottom-1/2 left-1/2 h-10 w-1 origin-bottom -translate-x-1/2 rotate-(--rotation) rounded-full"
+            style={{ "--rotation": `${hoursDegrees}deg` } as CSSProperties}
           />
+          {/* Minutes Hand */}
           <div
-            className="absolute bottom-1/2 left-1/2 h-12 w-1 origin-bottom rounded-full bg-gray-600 dark:bg-gray-400"
-            style={{
-              transform: `translateX(-50%) rotate(${minutesDegrees}deg)`,
-            }}
+            className="bg-muted-foreground dark:bg-ring absolute bottom-1/2 left-1/2 h-15 w-1 origin-bottom -translate-x-1/2 rotate-(--rotation) rounded-full"
+            style={{ "--rotation": `${minutesDegrees}deg` } as CSSProperties}
           />
+          {/* Seconds Hand */}
           <div
-            className="absolute bottom-1/2 left-1/2 h-12 w-0.5 origin-bottom rounded-full bg-red-500"
-            style={{
-              transform: `translateX(-50%) rotate(${secondsDegrees}deg)`,
-            }}
+            className="bg-destructive absolute bottom-1/2 left-1/2 h-12 w-0.5 origin-bottom -translate-x-1/2 rotate-(--rotation) rounded-full"
+            style={{ "--rotation": `${secondsDegrees}deg` } as CSSProperties}
           />
-          <div className="absolute top-1/2 left-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gray-800 dark:bg-gray-200" />
+          <div className="bg-primary dark:bg-primary absolute top-1/2 left-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full" />
         </div>
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

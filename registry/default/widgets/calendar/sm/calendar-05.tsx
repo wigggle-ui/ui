@@ -1,40 +1,38 @@
-import * as React from "react";
-
+import { Label } from "@/components/ui/label";
 import {
   Widget,
   WidgetHeader,
   WidgetContent,
 } from "@/registry/default/ui/widget";
-import { Badge } from "@/registry/default/ui/badge";
-import { Label } from "@/registry/default/ui/label";
 
-export default function WidgetDemo() {
-  const now = new Date();
+const now = new Date();
 
-  const day = now.toLocaleDateString("en-US", { weekday: "long" });
-  const date = now.getDate().toString().padStart(2, "0");
+const day = now.toLocaleDateString("en-US", { weekday: "long" });
+const date = now.getDate().toString().padStart(2, "0");
 
-  const events = [
-    { title: "Scrum", time: "9 AM" },
-    { title: "Design Roundup", time: "11 AM" },
-  ];
+const events = [
+  { time: "9 AM", title: "Scrum" },
+  { time: "11 AM", title: "Design Roundup" },
+];
 
-  return (
-    <Widget design="mumbai">
-      <WidgetHeader className="text-destructive text-base">{day}</WidgetHeader>
-      <WidgetContent className="flex-col items-start justify-start gap-2">
-        <Label className="text-3xl">{date}</Label>
-        {events.map((event, i) => (
-          <Badge
-            key={i}
-            variant="secondary"
-            className="flex w-full items-center justify-between gap-2 px-2 py-1 text-xs"
-          >
-            {event.title}
-            <span className="text-muted-foreground">{event.time}</span>
-          </Badge>
-        ))}
-      </WidgetContent>
-    </Widget>
-  );
-}
+const WidgetDemo = () => (
+  <Widget design="mumbai">
+    <WidgetHeader className="text-destructive text-base">{day}</WidgetHeader>
+    <WidgetContent className="flex-col items-start justify-start gap-2">
+      <Label size="xxxxl">{date}</Label>
+      {events.map((event, i) => (
+        <div
+          key={i}
+          className="flex w-full items-center justify-between border-t-2 pt-1.5"
+        >
+          <Label size="sm">{event.title}</Label>
+          <Label size="sm" variant="muted-foreground">
+            {event.time}
+          </Label>
+        </div>
+      ))}
+    </WidgetContent>
+  </Widget>
+);
+
+export default WidgetDemo;

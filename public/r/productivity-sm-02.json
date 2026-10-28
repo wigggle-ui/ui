@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "productivity-sm-02",
-  "type": "registry:component",
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json",
     "https://wigggle-ui.vercel.app/r/button.json",
@@ -12,7 +11,7 @@
   "files": [
     {
       "path": "registry/default/widgets/productivity/sm/productivity-02.tsx",
-      "content": "import React from \"react\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetFooter,\r\n  WidgetHeader,\r\n  WidgetTitle,\r\n} from \"@/registry/default/ui/widget\";\r\nimport { Button } from \"@/registry/default/ui/button\";\r\nimport {\r\n  Select,\r\n  SelectContent,\r\n  SelectItem,\r\n  SelectTrigger,\r\n  SelectValue,\r\n} from \"@/registry/default/ui/select\";\r\nimport { Textarea } from \"@/registry/default/ui/textarea\";\r\nimport { cn } from \"@/registry/default/lib/utils\";\r\n\r\ntype StatusOption = {\r\n  value: string;\r\n  color: string;\r\n};\r\n\r\nconst STATUS_OPTIONS: StatusOption[] = [\r\n  { value: \"1\", color: \"bg-productive\" },\r\n  { value: \"2\", color: \"bg-blue-500\" },\r\n  { value: \"3\", color: \"bg-yellow-500\" },\r\n  { value: \"4\", color: \"bg-destructive\" },\r\n];\r\n\r\nexport default function WidgetDemo() {\r\n  const id = React.useId();\r\n\r\n  return (\r\n    <Widget design=\"mumbai\" className=\"gap-3\">\r\n      <WidgetHeader className=\"justify-center\">\r\n        <WidgetTitle>Add Task</WidgetTitle>\r\n      </WidgetHeader>\r\n      <WidgetContent className=\"flex-col justify-center gap-4\">\r\n        <Textarea className=\"h-full max-h-28\" placeholder=\"Add something...\" />\r\n      </WidgetContent>\r\n      <WidgetFooter className=\"flex w-full justify-between\">\r\n        <Select defaultValue=\"1\">\r\n          <SelectTrigger\r\n            id={id}\r\n            className=\"w-16 [&>span]:flex [&>span]:items-center [&>span]:gap-2 [&>span_svg]:shrink-0\"\r\n          >\r\n            <SelectValue placeholder=\"Select status\" />\r\n          </SelectTrigger>\r\n\r\n          <SelectContent className=\"max-w-16 min-w-0\">\r\n            {STATUS_OPTIONS.map((s) => (\r\n              <SelectItem key={s.value} value={s.value}>\r\n                <span className=\"flex items-center gap-2\">\r\n                  <div className={cn(\"size-3 rounded-full\", s.color)} />\r\n                </span>\r\n              </SelectItem>\r\n            ))}\r\n          </SelectContent>\r\n        </Select>\r\n        <Button className=\"w-max\" size=\"sm\">\r\n          Add Task\r\n        </Button>\r\n      </WidgetFooter>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "import { cn } from \"cn\";\nimport React from \"react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/components/ui/select\";\nimport { Textarea } from \"@/components/ui/textarea\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\ninterface StatusOption {\n  value: string;\n  color: string;\n}\n\nconst STATUS_OPTIONS: StatusOption[] = [\n  { color: \"bg-productive\", value: \"1\" },\n  { color: \"bg-blue-500\", value: \"2\" },\n  { color: \"bg-yellow-500\", value: \"3\" },\n  { color: \"bg-destructive\", value: \"4\" },\n];\n\nconst WidgetDemo = () => {\n  const id = React.useId();\n\n  return (\n    <Widget design=\"mumbai\" className=\"gap-3\">\n      <WidgetHeader className=\"justify-center\">\n        <WidgetTitle>Add Task</WidgetTitle>\n      </WidgetHeader>\n      <WidgetContent className=\"w-full flex-col items-start justify-start gap-2\">\n        <Textarea\n          className=\"h-full max-h-20\"\n          placeholder=\"Put Claude to rest!\"\n        />\n      </WidgetContent>\n      <WidgetFooter className=\"flex w-full justify-between\">\n        <Select defaultValue=\"1\">\n          <SelectTrigger\n            id={id}\n            className=\"w-16 [&>span]:flex [&>span]:items-center [&>span_svg]:shrink-0\"\n          >\n            <SelectValue placeholder=\"Select status\" />\n          </SelectTrigger>\n          <SelectContent className=\"max-w-16 min-w-0\">\n            {STATUS_OPTIONS.map((s) => (\n              <SelectItem key={s.value} value={s.value}>\n                <span className=\"flex items-center gap-2\">\n                  <div className={cn(\"size-3 rounded-full\", s.color)} />\n                </span>\n              </SelectItem>\n            ))}\n          </SelectContent>\n        </Select>\n        <Button className=\"w-max\" size=\"sm\">\n          Add Task\n        </Button>\n      </WidgetFooter>\n    </Widget>\n  );\n};\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -21,5 +20,6 @@
       "productivity"
     ],
     "size": "sm"
-  }
+  },
+  "type": "registry:component"
 }

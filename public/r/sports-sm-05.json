@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sports-sm-05",
-  "type": "registry:component",
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json",
     "https://wigggle-ui.vercel.app/r/label.json"
@@ -9,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/widgets/sports/sm/sports-05.tsx",
-      "content": "import * as React from \"react\";\nimport Image from \"next/image\";\n\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\n\nconst scoreCard = [\n  {\n    teamName: \"IND\",\n    image: \"/assets/logos/ind.png\",\n    score: \"387/3\",\n    overs: 49,\n  },\n  {\n    teamName: \"AUS\",\n    image: \"/assets/logos/aus.png\",\n    score: \"200/6\",\n    overs: 30,\n  },\n];\n\nexport default function WidgetDemo() {\n  return (\n    <Widget design=\"mumbai\">\n      <WidgetHeader>\n        <WidgetTitle className=\"text-muted-foreground\">ODI 2</WidgetTitle>\n      </WidgetHeader>\n      <WidgetContent className=\"flex-col items-center gap-4\">\n        {scoreCard.map((team, i) => (\n          <div key={i} className=\"flex w-full items-center justify-between\">\n            <div className=\"flex items-center justify-start gap-1\">\n              <Image\n                className=\"size-5\"\n                src={team.image}\n                alt={team.teamName}\n                width={24}\n                height={24}\n              />\n              <Label className=\"text-base\">{team.teamName}</Label>\n            </div>\n            <div className=\"flex items-center justify-end gap-1\">\n              <Label className=\"text-base\">{team.score}</Label>\n              <Label className=\"text-muted-foreground text-xs\">\n                ({team.overs})\n              </Label>\n            </div>\n          </div>\n        ))}\n      </WidgetContent>\n      <WidgetFooter className=\"justify-center\">\n        <p className=\"text-muted-foreground text-sm\">\n          AUS needs <span className=\"text-productive\">187</span> from{\" \"}\n          <span className=\"text-productive\">120</span>\n        </p>\n      </WidgetFooter>\n    </Widget>\n  );\n}\n",
+      "content": "import Image from \"next/image\";\n\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nconst scoreCard = [\n  {\n    image: \"/assets/logos/ind.png\",\n    overs: 49,\n    score: \"387/3\",\n    teamName: \"IND\",\n  },\n  {\n    image: \"/assets/logos/aus.png\",\n    overs: 30,\n    score: \"200/6\",\n    teamName: \"AUS\",\n  },\n];\n\nconst WidgetDemo = () => (\n  <Widget design=\"mumbai\">\n    <WidgetHeader>\n      <WidgetTitle className=\"text-muted-foreground\">ODI 2</WidgetTitle>\n    </WidgetHeader>\n    <WidgetContent className=\"flex-col items-center gap-4\">\n      {scoreCard.map((team, i) => (\n        <div key={i} className=\"flex w-full items-center justify-between\">\n          <div className=\"flex items-center justify-start gap-1\">\n            <Image\n              className=\"size-5\"\n              src={team.image}\n              alt={team.teamName}\n              width={24}\n              height={24}\n            />\n            <Label>{team.teamName}</Label>\n          </div>\n          <div className=\"flex items-center justify-end gap-1\">\n            <Label>{team.score}</Label>\n            <Label variant=\"muted-foreground\" size=\"xs\">\n              ({team.overs})\n            </Label>\n          </div>\n        </div>\n      ))}\n    </WidgetContent>\n    <WidgetFooter className=\"justify-center\">\n      <p className=\"text-muted-foreground text-sm\">\n        AUS needs <span className=\"text-productive\">187</span> from{\" \"}\n        <span className=\"text-productive\">120</span>\n      </p>\n    </WidgetFooter>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -18,5 +17,6 @@
       "sports"
     ],
     "size": "sm"
-  }
+  },
+  "type": "registry:component"
 }

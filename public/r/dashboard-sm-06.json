@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dashboard-sm-06",
-  "type": "registry:component",
   "dependencies": [
     "recharts"
   ],
@@ -13,7 +12,7 @@
   "files": [
     {
       "path": "registry/default/widgets/dashboard/sm/dashboard-06.tsx",
-      "content": "import {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetFooter,\r\n} from \"@/registry/default/ui/widget\";\r\nimport { Textarea } from \"@/registry/default/ui/textarea\";\r\nimport { Button } from \"@/registry/default/ui/button\";\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <Widget className=\"gap-3\" design=\"mumbai\">\r\n      <WidgetContent className=\"w-full flex-col items-start justify-start gap-2\">\r\n        <Textarea\r\n          className=\"h-full max-h-28\"\r\n          placeholder=\"Type your message here.\"\r\n        />\r\n      </WidgetContent>\r\n      <WidgetFooter>\r\n        <Button className=\"w-full\" size=\"sm\">\r\n          Send Feedback\r\n        </Button>\r\n      </WidgetFooter>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport { Textarea } from \"@/components/ui/textarea\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n} from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget className=\"gap-3\" design=\"mumbai\">\n    <WidgetContent className=\"w-full flex-col items-start justify-start gap-2\">\n      <Textarea\n        className=\"h-full max-h-28\"\n        placeholder=\"Type your message here.\"\n      />\n    </WidgetContent>\n    <WidgetFooter>\n      <Button className=\"w-full\" size=\"sm\">\n        Send Feedback\n      </Button>\n    </WidgetFooter>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -21,5 +20,6 @@
     "tags": [
       "dashboard"
     ]
-  }
+  },
+  "type": "registry:component"
 }

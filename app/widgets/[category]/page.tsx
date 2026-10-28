@@ -1,126 +1,115 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
+import PageHeader from "@/components/page-header";
+import WidgetCard from "@/components/widget-card";
+import WidgetInfo from "@/components/widget-info";
 import { categories, getCategory } from "@/config/widgets";
+import { getWidgetInfo } from "@/lib/get-widget-info";
 import { getWidgetsByNames } from "@/lib/utils";
 
-import PageHeader from "@/components/page-header";
-import PageGrid from "@/components/page-grid";
-import WidgetCard from "@/components/widget-card";
-import WidgetLoader from "@/components/widget-loader-client";
-import WidgetDetails from "@/components/widget-details";
-
-type PageProps = {
+interface PageProps {
   params: Promise<{ category: string }>;
-};
+}
 
-export async function generateMetadata({
+export const generateMetadata = async ({
   params,
-}: PageProps): Promise<Metadata> {
-  const category = getCategory((await params).category);
+}: PageProps): Promise<Metadata> => {
+  const { category: categorySlug } = await params;
+  const category = getCategory(categorySlug);
 
-  if (!category) return {};
+  if (!category) {
+    return {};
+  }
 
   return {
-    title: `${category.name} widgets ~ Wigggle UI`,
     description: `Ready to use ${category.name} widgets for your next web project.`,
+    title: `${category.name} widgets ~ Wigggle UI`,
   };
-}
+};
 
-export async function generateStaticParams() {
-  return categories.map((category) => ({
+export const generateStaticParams = () =>
+  categories.map((category) => ({
     category: category.slug,
   }));
-}
 
-export default function Page({ params }: PageProps) {
-  return (
-    <Suspense fallback={<CategoryPageFallback />}>
-      <CategoryContent params={params} />
-    </Suspense>
-  );
-}
-
-async function CategoryContent({ params }: PageProps) {
-  const category = getCategory((await params).category);
+const CategoryContent = async ({ params }: PageProps) => {
+  const { category: categorySlug } = await params;
+  const category = getCategory(categorySlug);
 
   if (!category) {
     notFound();
   }
 
   const smWidgets = getWidgetsByNames(
-    category.widgets.sm.map((item) => item.name),
+    category.widgets.sm.map((item) => item.name)
   );
   const mdWidgets = getWidgetsByNames(
-    category.widgets.md?.map((item) => item.name) ?? [],
+    category.widgets.md?.map((item) => item.name) ?? []
   );
   const lgWidgets = getWidgetsByNames(
-    category.widgets.lg?.map((item) => item.name) ?? [],
+    category.widgets.lg?.map((item) => item.name) ?? []
   );
 
-  const getDescription = () => {
-    return `A collection of ${category.name} widgets from Wigggle UI.`;
-  };
+  const allWidgets = [...smWidgets, ...mdWidgets, ...lgWidgets];
 
-  return (
-    <>
-      <PageHeader title={category.name}>{getDescription()}</PageHeader>
-      <PageGrid title="sm">
-        {smWidgets.map((widget) => (
-          <WidgetCard key={widget.name} widget={widget}>
-            <WidgetLoader widget={widget} />
-            <WidgetDetails widget={widget} />
-          </WidgetCard>
-        ))}
-      </PageGrid>
-      {category.widgets.md && category.widgets.md?.length >= 1 && (
-        <PageGrid title="md">
-          {mdWidgets.map((widget) => (
-            <WidgetCard key={widget.name} widget={widget}>
-              <WidgetLoader widget={widget} />
-              <WidgetDetails widget={widget} />
-            </WidgetCard>
-          ))}
-        </PageGrid>
-      )}
-      {category.widgets.lg && category.widgets.lg?.length >= 1 && (
-        <PageGrid title="lg">
-          {lgWidgets.map((widget) => (
-            <WidgetCard key={widget.name} widget={widget}>
-              <WidgetLoader widget={widget} />
-              <WidgetDetails widget={widget} />
-            </WidgetCard>
-          ))}
-        </PageGrid>
-      )}
-    </>
+  const widgetInfos = await Promise.all(
+    allWidgets.map((widget) => getWidgetInfo(widget))
   );
-}
 
-function CategoryPageFallback() {
   return (
-    <div role="status" aria-label="Loading category widgets">
-      <div aria-hidden="true" className="relative mb-16 space-y-3 text-center">
-        <div className="bg-muted mx-auto h-12 max-w-sm animate-pulse rounded-md" />
-        <div className="bg-muted mx-auto h-6 max-w-3xl animate-pulse rounded-md" />
-      </div>
-      <div
-        aria-hidden="true"
-        className="md:border-border relative z-10 my-6 space-y-8 overflow-hidden rounded-4xl p-3 sm:border-2"
-      >
-        <div className="bg-muted mx-auto h-10 max-w-xs animate-pulse rounded-full sm:mx-0" />
-        <div className="-m-px grid grid-cols-12 gap-6 *:px-1 *:py-12 sm:*:px-8 xl:*:px-12">
-          {Array.from({ length: 6 }, (_, index) => (
-            <div
-              key={index}
-              className="col-span-12 sm:col-span-6 lg:col-span-3"
-            >
-              <div className="bg-muted aspect-square animate-pulse rounded-lg" />
-            </div>
-          ))}
-        </div>
+    <div className="grid h-full min-h-0 w-full grid-rows-[auto_minmax(0,1fr)] gap-12">
+      <PageHeader title={`${category.name} Widgets`}>
+        A collection of {category.name} widgets from Wigggle UI.
+      </PageHeader>
+      <div className="page-grid -m-px grid min-h-0 w-full grid-cols-12 overflow-y-auto *:px-1 *:py-12 sm:*:px-8 xl:*:px-12">
+        {widgetInfos.map((info, index) => {
+          if (!info) {
+            return null;
+          }
+          const widget = allWidgets[index];
+          return (
+            <WidgetCard key={widget.name} widget={widget}>
+              {info.preview}
+              <WidgetInfo
+                widget={widget}
+                preview={info.preview}
+                code={info.code}
+              />
+            </WidgetCard>
+          );
+        })}
       </div>
     </div>
   );
-}
+};
+
+const CategoryPageFallback = () => (
+  <output aria-label="Loading category widgets" className="block">
+    <div aria-hidden="true" className="relative space-y-3 text-center">
+      <div className="bg-muted mx-auto h-12 max-w-sm animate-pulse rounded-md" />
+      <div className="bg-muted mx-auto h-6 max-w-3xl animate-pulse rounded-md" />
+    </div>
+    <div
+      aria-hidden="true"
+      className="relative z-10 my-6 space-y-8 overflow-hidden p-3"
+    >
+      <div className="-m-px grid grid-cols-12 gap-6 *:px-1 *:py-12 sm:*:px-8 xl:*:px-12">
+        {Array.from({ length: 6 }, (_, index) => (
+          <div key={index} className="col-span-12 sm:col-span-6 lg:col-span-4">
+            <div className="bg-muted mx-auto aspect-square size-56 animate-pulse rounded-lg" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </output>
+);
+
+const Page = ({ params }: PageProps) => (
+  <Suspense fallback={<CategoryPageFallback />}>
+    <CategoryContent params={params} />
+  </Suspense>
+);
+
+export default Page;

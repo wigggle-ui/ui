@@ -1,32 +1,38 @@
+"use client";
+
+import { Label } from "@/components/ui/label";
 import {
   DEFAULT_LOCATION,
   useLocation,
 } from "@/registry/default/hooks/use-location";
 import { useWeather } from "@/registry/default/hooks/use-weather";
 import { getWeatherDescription } from "@/registry/default/lib/weather-utils";
-import { Label } from "@/registry/default/ui/label";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
-export default function WidgetDemo() {
+const date = new Date();
+
+const currentDate = date.toLocaleDateString("en-US", {
+  day: "numeric",
+  month: "short",
+  weekday: "short",
+});
+
+const WidgetDemo = () => {
   const { coordinates, isLoading: isLoadingLocation } = useLocation();
   const { data: weather, isLoading: isLoadingWeather } = useWeather(
     coordinates?.lat ?? DEFAULT_LOCATION.lat,
-    coordinates?.lon ?? DEFAULT_LOCATION.lon,
+    coordinates?.lon ?? DEFAULT_LOCATION.lon
   );
 
   const isLoading = isLoadingLocation || isLoadingWeather;
-
-  const currentDate = new Date().toLocaleDateString("en-US", {
-    weekday: "short",
-    month: "short",
-    day: "numeric",
-  });
 
   if (isLoading) {
     return (
       <Widget>
         <WidgetContent className="mx-auto flex-col items-center justify-center">
-          <Label className="animate-pulse">Loading...</Label>
+          <Label>
+            <span className="animate-pulse">Loading...</span>
+          </Label>
         </WidgetContent>
       </Widget>
     );
@@ -35,12 +41,16 @@ export default function WidgetDemo() {
   return (
     <Widget>
       <WidgetContent className="mx-auto flex-col items-start">
-        <Label className="text-6xl">{weather?.temperature}&deg;</Label>
-        <Label className="text-2xl">
+        <Label weight="medium" size="xxxxl">
+          {weather?.temperature}&deg;
+        </Label>
+        <Label size="xxl" weight="light">
           {weather ? getWeatherDescription(weather.weatherCode) : "Sunny"}
         </Label>
-        <Label>{currentDate}</Label>
+        <Label weight="light">{currentDate}</Label>
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

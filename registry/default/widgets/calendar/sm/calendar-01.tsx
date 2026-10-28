@@ -1,29 +1,24 @@
-"use client";
-
-import React from "react";
+import { Label } from "@/components/ui/label";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
-import { Label } from "@/registry/default/ui/label";
 
-export default function WidgetDemo() {
-  const [now, setNow] = React.useState(() => new Date(2025, 0, 1));
+const now = new Date();
 
-  React.useEffect(() => {
-    setNow(new Date());
-  }, []);
+const day = now.toLocaleDateString("en-US", { weekday: "short" });
+const month = now.toLocaleDateString("en-US", { month: "short" });
+const date = now.getDate().toString().padStart(2, "0");
 
-  const day = now.toLocaleDateString("en-US", { weekday: "short" });
-  const month = now.toLocaleDateString("en-US", { month: "short" });
-  const date = now.getDate().toString().padStart(2, "0");
+const WidgetDemo = () => (
+  <Widget>
+    <WidgetContent className="mx-auto flex-col items-start">
+      <div className="flex w-full items-center justify-center gap-2">
+        <Label size="xxl" variant="destructive">
+          {day}
+        </Label>
+        <Label size="xxl">{month}</Label>
+      </div>
+      <div className="text-8xl">{date}</div>
+    </WidgetContent>
+  </Widget>
+);
 
-  return (
-    <Widget>
-      <WidgetContent className="mx-auto flex-col items-start">
-        <div className="flex w-full items-center justify-center gap-2">
-          <Label className="text-destructive text-2xl">{day}</Label>
-          <Label className="text-2xl">{month}</Label>
-        </div>
-        <Label className="text-8xl">{date}</Label>
-      </WidgetContent>
-    </Widget>
-  );
-}
+export default WidgetDemo;

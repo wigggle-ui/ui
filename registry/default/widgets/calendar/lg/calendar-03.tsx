@@ -1,165 +1,182 @@
-import React from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+"use client";
 
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import React from "react";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import {
   Widget,
   WidgetContent,
   WidgetHeader,
   WidgetTitle,
 } from "@/registry/default/ui/widget";
-import { Label } from "@/registry/default/ui/label";
-import { Button } from "@/registry/default/ui/button";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/default/ui/avatar";
 
-export default function WidgetDemo() {
-  const now = new Date();
+const WEEKDAY_LABELS = ["S", "M", "T", "W", "T", "F", "S"];
 
-  const monthName = now.toLocaleDateString("en-US", { month: "long" });
-  const date = now.getDate();
+const now = new Date();
+const today = now.getDate();
+const monthName = now.toLocaleDateString("en-US", { month: "long" });
 
-  const [selectedDate, setSelectedDate] = React.useState<number>(now.getDate());
+const lowerLimit = today - 3;
+const upperLimit = today + 3;
 
-  const weekDates = Array.from(
-    { length: 7 },
-    (_, i) =>
-      new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate() - now.getDay() + i,
-      ),
+const allTasks = [
+  {
+    imageURL: "https://avatars.githubusercontent.com/u/6751787?v=4",
+    time: "8:30 AM",
+    title: "Teach Theo Elixir",
+  },
+  {
+    imageURL: "https://avatars.githubusercontent.com/u/124599?v=4",
+    time: "12:30 PM",
+    title: "Meeting with ShadCN",
+  },
+  {
+    imageURL: "https://owcdn.net/img/62bbebb185a7e.png",
+    time: "3:30 PM",
+    title: "PRX vs G2",
+  },
+  {
+    imageURL: "https://avatars.githubusercontent.com/u/7549148?v=4",
+    time: "7:30 PM",
+    title: "Warcraft with Orc! ⚔️",
+  },
+  {
+    imageURL: "https://avatars.githubusercontent.com/u/23276437?v=4",
+    time: "10:00 AM",
+    title: "Teaching Tailwind",
+  },
+  {
+    imageURL: "https://avatars.githubusercontent.com/u/14985020?s=200&v=4",
+    time: "4:30 PM",
+    title: "Wigggle UI Vercel OSS",
+  },
+];
+
+const getTasksForDay = (day: number) => {
+  const shuffled = [...allTasks].toSorted(
+    (a, b) =>
+      (((a.title.codePointAt(0) ?? 0) * day) % 17) -
+      (((b.title.codePointAt(0) ?? 0) * day) % 17)
   );
 
-  const lowerLimit = now.getDate() - 3;
-  const upperLimit = now.getDate() + 3;
+  const count = day % 2 === 0 ? 2 : 3;
 
-  const allTasks = [
-    {
-      imageURL: "https://avatars.githubusercontent.com/u/6751787?v=4",
-      title: "Teach Theo Elixir",
-      time: "8:30 AM",
-    },
-    {
-      imageURL: "https://avatars.githubusercontent.com/u/124599?v=4",
-      title: "Meeting with ShadCN",
-      time: "12:30 PM",
-    },
-    {
-      imageURL: "https://owcdn.net/img/62bbebb185a7e.png",
-      title: "PRX vs G2",
-      time: "3:30 PM",
-    },
-    {
-      imageURL: "https://avatars.githubusercontent.com/u/7549148?v=4",
-      title: "Warcraft with Orc! ⚔️",
-      time: "7:30 PM",
-    },
-    {
-      imageURL: "https://avatars.githubusercontent.com/u/23276437?v=4",
-      title: "Teaching Tailwind",
-      time: "10:00 AM",
-    },
-    {
-      imageURL: "https://avatars.githubusercontent.com/u/14985020?s=200&v=4",
-      title: "Wigggle UI Vercel OSS",
-      time: "4:30 PM",
-    },
-  ];
+  return shuffled.slice(0, count);
+};
 
-  const getRandomTasks = () => {
-    const count = Math.random() > 0.5 ? 2 : 3;
-    const indices = new Set<number>();
-    while (indices.size < count) {
-      indices.add(Math.floor(Math.random() * allTasks.length));
-    }
-    return Array.from(indices).map((i) => allTasks[i]);
+const WidgetDemo = () => {
+  const [selectedDate, setSelectedDate] = React.useState(today);
+  const tasks = React.useMemo(
+    () => getTasksForDay(selectedDate),
+    [selectedDate]
+  );
+
+  const weekDates = React.useMemo(
+    () =>
+      Array.from(
+        { length: 7 },
+        (_, i) =>
+          new Date(now.getFullYear(), now.getMonth(), today - now.getDay() + i)
+      ),
+    []
+  );
+
+  const handlePreviousDay = () => {
+    setSelectedDate((prev) => Math.max(lowerLimit, prev - 1));
   };
 
-  const tasks = getRandomTasks();
+  const handleNextDay = () => {
+    setSelectedDate((prev) => Math.min(upperLimit, prev + 1));
+  };
 
   return (
     <Widget size="lg" className="p-0">
       <WidgetHeader className="bg-destructive rounded-t-3xl p-4">
         <WidgetTitle className="w-max text-center text-2xl">
-          {date} {monthName}
+          {selectedDate} {monthName}
         </WidgetTitle>
+
         <Button
-          onClick={() => {
-            setSelectedDate(now.getDate());
-          }}
+          onClick={() => setSelectedDate(today)}
           variant="secondary"
           size="sm"
         >
           Today
         </Button>
       </WidgetHeader>
+
       <WidgetContent className="flex-col items-center justify-start gap-4 p-4">
         <div className="flex w-full items-center justify-between gap-2">
           <Button
-            onClick={() => {
-              selectedDate > lowerLimit
-                ? setSelectedDate(selectedDate - 1)
-                : setSelectedDate(lowerLimit);
-            }}
+            onClick={handlePreviousDay}
             variant="outline"
             size="icon-sm"
+            disabled={selectedDate <= lowerLimit}
           >
             <ChevronLeftIcon />
           </Button>
+
           <div className="grid w-full grid-cols-7 items-center gap-x-4 px-3">
-            {["S", "M", "T", "W", "T", "F", "S"].map((day, i) => (
+            {WEEKDAY_LABELS.map((day, i) => (
               <Label
-                key={`weekday-${i}-${day}`}
-                className="text-muted-foreground mx-auto text-sm"
+                key={`weekday-${i}`}
+                size="sm"
+                variant="muted-foreground"
+                className="mx-auto"
               >
                 {day}
               </Label>
             ))}
-            {weekDates.map((d, i) => {
-              const isToday = d.getDate() === selectedDate;
+
+            {weekDates.map((day) => {
+              const dayNumber = day.getDate();
+              const isSelected = dayNumber === selectedDate;
+
               return (
                 <Label
-                  key={i}
-                  className={`mx-auto text-xl ${isToday ? "text-destructive" : ""}`}
+                  key={day.toISOString()}
+                  variant={isSelected ? "destructive" : "default"}
+                  size="xl"
+                  className="mx-auto"
                 >
-                  {d.getDate()}
+                  {dayNumber}
                 </Label>
               );
             })}
           </div>
+
           <Button
-            onClick={() => {
-              selectedDate < upperLimit
-                ? setSelectedDate(selectedDate + 1)
-                : setSelectedDate(upperLimit);
-            }}
+            onClick={handleNextDay}
             variant="outline"
             size="icon-sm"
+            disabled={selectedDate >= upperLimit}
           >
             <ChevronRightIcon />
           </Button>
         </div>
-        {tasks.map((el) => (
+
+        {tasks.map((task) => (
           <div
-            key={el.title}
+            key={task.title}
             className="flex w-full items-center justify-start gap-x-4 pb-3 not-last:border-b-2"
           >
             <Avatar size="lg">
-              <AvatarImage src={el.imageURL} alt={el.title} />
-              <AvatarFallback>{el.title.slice(0, 1)}</AvatarFallback>
+              <AvatarImage src={task.imageURL} alt={task.title} />
+              <AvatarFallback>{task.title.slice(0, 1)}</AvatarFallback>
             </Avatar>
+
             <div className="space-y-1">
-              <Label className="text-base">{el.title}</Label>
-              <Label className="text-muted-foreground font-normal">
-                {el.time}
-              </Label>
+              <Label>{task.title}</Label>
+              <Label variant="muted-foreground">{task.time}</Label>
             </div>
           </div>
         ))}
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

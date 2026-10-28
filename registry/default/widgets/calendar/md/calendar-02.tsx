@@ -1,54 +1,68 @@
 "use client";
 
-import * as React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import * as React from "react";
 
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import {
   Widget,
   WidgetContent,
   WidgetHeader,
   WidgetTitle,
 } from "@/registry/default/ui/widget";
-import { Label } from "@/registry/default/ui/label";
-import { Button } from "@/registry/default/ui/button";
-import { Badge } from "@/registry/default/ui/badge";
 
-export default function WidgetDemo() {
+const today = new Date();
+
+const WEEKDAY_NAMES = ["S", "M", "T", "W", "T", "F", "S"] as const;
+
+const EVENTS = [
+  { time: "9 AM", title: "Scrum" },
+  { time: "11 AM", title: "Design Roundup" },
+  { time: "7 PM", title: "Launch" },
+] as const;
+
+type CalendarDay = number | null;
+
+const getCalendarDays = (year: number, month: number): CalendarDay[] => {
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  return [
+    ...Array.from({ length: firstDay }, () => null),
+    ...Array.from({ length: daysInMonth }, (_, index) => index + 1),
+  ];
+};
+
+const isSameDay = (first: Date, second: Date): boolean =>
+  first.getFullYear() === second.getFullYear() &&
+  first.getMonth() === second.getMonth() &&
+  first.getDate() === second.getDate();
+
+const WidgetDemo = () => {
   const [date, setDate] = React.useState(() => new Date());
-  const today = new Date();
 
   const year = date.getFullYear();
   const month = date.getMonth();
 
-  const monthName = new Intl.DateTimeFormat("en-US", {
+  const monthName = date.toLocaleDateString("en-US", {
     month: "short",
-  }).format(date);
+  });
 
-  const weekdayNames = ["S", "M", "T", "W", "T", "F", "S"];
+  const calendarDays = getCalendarDays(year, month);
 
-  const calendarDays = React.useMemo(() => {
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    return [
-      ...Array(firstDay).fill(null),
-      ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
-    ];
-  }, [year, month]);
+  const changeMonth = (step: number) => {
+    setDate((current) => {
+      const next = new Date(
+        current.getFullYear(),
+        current.getMonth() + step,
+        1
+      );
 
-  const isToday = (d: number | null) =>
-    d &&
-    today.getFullYear() === year &&
-    today.getMonth() === month &&
-    today.getDate() === d;
-
-  const changeMonth = (step: number) =>
-    setDate((d) => new Date(d.getFullYear(), d.getMonth() + step, 1));
-
-  const events = [
-    { title: "Scrum", time: "9 AM" },
-    { title: "Design Roundup", time: "11 AM" },
-    { title: "Launch", time: "7 PM" },
-  ];
+      return next;
+    });
+  };
 
   return (
     <Widget design="mumbai" size="md">
@@ -56,9 +70,9 @@ export default function WidgetDemo() {
         <div className="flex h-full w-full flex-col items-center justify-center gap-2">
           <div className="flex w-full items-center justify-between">
             <Button
+              aria-label="Previous month"
               variant="ghost"
-              size="icon"
-              className="size-4 p-0"
+              size="icon-xs"
               onClick={() => changeMonth(-1)}
             >
               <ChevronLeft className="h-4 w-4" />
@@ -67,49 +81,57 @@ export default function WidgetDemo() {
               {monthName} {year}
             </WidgetTitle>
             <Button
+              aria-label="Next month"
               variant="ghost"
-              size="icon"
-              className="size-4 p-0"
+              size="icon-xs"
               onClick={() => changeMonth(1)}
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
-
           <div className="grid size-full grid-cols-7 gap-1 text-center">
-            {weekdayNames.map((d, i) => (
-              <div key={i} className="text-xs">
-                {d}
+            {WEEKDAY_NAMES.map((day, index) => (
+              <div key={`${day}-${index}`} className="text-xs">
+                {day}
               </div>
             ))}
-            {calendarDays.map((d, i) => (
-              <div key={i} className="text-muted-foreground text-xs">
-                {isToday(d) ? (
-                  <Badge className="flex size-4 items-center justify-center p-2">
-                    {d}
-                  </Badge>
-                ) : (
-                  (d ?? <>&nbsp;</>)
-                )}
-              </div>
-            ))}
+            {calendarDays.map((day, index) => {
+              const isCurrentDay =
+                day !== null && isSameDay(new Date(year, month, day), today);
+
+              return (
+                <div
+                  key={`${year}-${month}-${index}`}
+                  className="text-muted-foreground text-xs"
+                >
+                  {isCurrentDay ? (
+                    <Badge className="flex size-4 items-center justify-center">
+                      {day}
+                    </Badge>
+                  ) : (
+                    (day ?? <>&nbsp;</>)
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
-
         <div className="flex h-full w-full flex-col items-center justify-start">
           <WidgetHeader className="text-destructive text-base">
-            {today.toLocaleDateString("en-US", { weekday: "long" })}
+            {today.toLocaleDateString("en-US", {
+              weekday: "long",
+            })}
           </WidgetHeader>
-          <div className="w-full flex-col items-end justify-end">
-            <Label className="mx-auto w-max text-3xl">
+          <div className="w-full">
+            <Label size="xxxl" className="mx-auto w-max">
               {today.getDate().toString().padStart(2, "0")}
             </Label>
             <div className="mt-2 space-y-2">
-              {events.map((event, i) => (
+              {EVENTS.map((event) => (
                 <Badge
-                  key={i}
+                  key={event.title}
                   variant="secondary"
-                  className="flex w-full items-center justify-between gap-2 px-2 py-1 text-xs"
+                  className="flex w-full items-center justify-between"
                 >
                   {event.title}
                   <span className="text-muted-foreground">{event.time}</span>
@@ -121,4 +143,6 @@ export default function WidgetDemo() {
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

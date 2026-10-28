@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dashboard-sm-03",
-  "type": "registry:component",
   "dependencies": [
     "lucide-react"
   ],
@@ -12,7 +11,7 @@
   "files": [
     {
       "path": "registry/default/widgets/dashboard/sm/dashboard-03.tsx",
-      "content": "import Link from \"next/link\";\r\nimport { MoveDownIcon, MoveUpIcon } from \"lucide-react\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetHeader,\r\n  WidgetTitle,\r\n} from \"@/registry/default/ui/widget\";\r\nimport {\r\n  Table,\r\n  TableBody,\r\n  TableCell,\r\n  TableRow,\r\n} from \"@/registry/default/ui/table\";\r\n\r\nconst visitors = [\r\n  {\r\n    day: \"Today\",\r\n    count: 54,\r\n    hasGrown: true,\r\n  },\r\n  {\r\n    day: \"7 days\",\r\n    count: 374,\r\n    hasGrown: false,\r\n  },\r\n  {\r\n    day: \"30 days\",\r\n    count: 1498,\r\n    hasGrown: true,\r\n  },\r\n  {\r\n    day: \"90 days\",\r\n    count: 1498,\r\n    hasGrown: true,\r\n  },\r\n];\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <Widget className=\"gap-3\" design=\"mumbai\">\r\n      <WidgetHeader>\r\n        <Link className=\"mx-auto\" href=\"#\">\r\n          <WidgetTitle className=\"w-full text-blue-500 underline-offset-2 hover:underline\">\r\n            website.com\r\n          </WidgetTitle>\r\n        </Link>\r\n      </WidgetHeader>\r\n      <WidgetContent>\r\n        <Table className=\"w-full\">\r\n          <TableBody>\r\n            {visitors.map((visitor) => (\r\n              <TableRow key={visitor.day}>\r\n                <TableCell className=\"py-1.5 font-medium\">\r\n                  {visitor.day}\r\n                </TableCell>\r\n                <TableCell className=\"flex items-center justify-end gap-1.5 py-1.5 text-right\">\r\n                  {visitor.count}\r\n                  {visitor.hasGrown ? (\r\n                    <MoveUpIcon\r\n                      className=\"stroke-productive size-4\"\r\n                      strokeWidth={3}\r\n                    />\r\n                  ) : (\r\n                    <MoveDownIcon\r\n                      className=\"stroke-destructive size-4\"\r\n                      strokeWidth={3}\r\n                    />\r\n                  )}\r\n                </TableCell>\r\n              </TableRow>\r\n            ))}\r\n          </TableBody>\r\n        </Table>\r\n      </WidgetContent>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "import { MoveDownIcon, MoveUpIcon } from \"lucide-react\";\n\nimport { Table, TableBody, TableCell, TableRow } from \"@/components/ui/table\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nconst visitors = [\n  {\n    count: 54,\n    day: \"Today\",\n    hasGrown: true,\n  },\n  {\n    count: 374,\n    day: \"7 days\",\n    hasGrown: false,\n  },\n  {\n    count: 1498,\n    day: \"30 days\",\n    hasGrown: true,\n  },\n  {\n    count: 1498,\n    day: \"90 days\",\n    hasGrown: true,\n  },\n];\n\nconst WidgetDemo = () => (\n  <Widget className=\"gap-3\" design=\"mumbai\">\n    <WidgetHeader>\n      <WidgetTitle className=\"w-full text-center\">acme.com</WidgetTitle>\n    </WidgetHeader>\n    <WidgetContent>\n      <Table className=\"w-full\">\n        <TableBody>\n          {visitors.map((visitor) => (\n            <TableRow key={visitor.day}>\n              <TableCell>\n                <div className=\"text-muted-foreground -my-0.5 font-medium\">\n                  {visitor.day}\n                </div>\n              </TableCell>\n              <TableCell>\n                <div className=\"-my-0.5 flex items-center justify-end gap-1.5 text-right\">\n                  {visitor.count}\n                  {visitor.hasGrown ? (\n                    <MoveUpIcon\n                      className=\"stroke-productive size-4\"\n                      strokeWidth={3}\n                    />\n                  ) : (\n                    <MoveDownIcon\n                      className=\"stroke-destructive size-4\"\n                      strokeWidth={3}\n                    />\n                  )}\n                </div>\n              </TableCell>\n            </TableRow>\n          ))}\n        </TableBody>\n      </Table>\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -20,5 +19,6 @@
     "tags": [
       "dashboard"
     ]
-  }
+  },
+  "type": "registry:component"
 }

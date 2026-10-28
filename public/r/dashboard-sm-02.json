@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dashboard-sm-02",
-  "type": "registry:component",
   "dependencies": [
     "recharts"
   ],
@@ -13,7 +12,7 @@
   "files": [
     {
       "path": "registry/default/widgets/dashboard/sm/dashboard-02.tsx",
-      "content": "\"use client\";\r\n\r\nimport { Pie, PieChart } from \"recharts\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetFooter,\r\n  WidgetHeader,\r\n  WidgetTitle,\r\n} from \"@/registry/default/ui/widget\";\r\nimport {\r\n  ChartConfig,\r\n  ChartContainer,\r\n  ChartTooltip,\r\n  ChartTooltipContent,\r\n} from \"@/registry/default/ui/chart\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\n\r\nconst chartData = [\r\n  { device: \"desktop\", visitors: 275, fill: \"var(--color-desktop)\" },\r\n  { device: \"mobile\", visitors: 187, fill: \"var(--color-mobile)\" },\r\n];\r\n\r\nconst chartConfig = {\r\n  devices: {\r\n    label: \"Devices\",\r\n  },\r\n  desktop: {\r\n    label: \"Chrome\",\r\n    color: \"var(--muted-foreground)\",\r\n  },\r\n  mobile: {\r\n    label: \"Firefox\",\r\n    color: \"var(--secondary-foreground)\",\r\n  },\r\n} satisfies ChartConfig;\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <Widget className=\"gap-0\" design=\"mumbai\">\r\n      <WidgetHeader className=\"items-center\">\r\n        <WidgetTitle className=\"text-lg font-normal\">Visitors</WidgetTitle>\r\n        <WidgetTitle className=\"text-lg font-normal\">462</WidgetTitle>\r\n      </WidgetHeader>\r\n      <WidgetContent className=\"-mt-2\">\r\n        <ChartContainer config={chartConfig} className=\"size-full\">\r\n          <PieChart>\r\n            <ChartTooltip\r\n              cursor={false}\r\n              content={<ChartTooltipContent hideLabel />}\r\n            />\r\n            <Pie data={chartData} dataKey=\"visitors\" nameKey=\"device\" />\r\n          </PieChart>\r\n        </ChartContainer>\r\n      </WidgetContent>\r\n      <WidgetFooter className=\"items-center\">\r\n        <div className=\"flex w-full items-center justify-center gap-1\">\r\n          <div className=\"bg-muted-foreground size-3 rounded-xs\" />\r\n          <Label className=\"font-normal\">Desktop</Label>\r\n        </div>\r\n        <div className=\"flex w-full items-center justify-center gap-1\">\r\n          <div className=\"bg-secondary-foreground size-3 rounded-xs\" />\r\n          <Label className=\"font-normal\">Mobile</Label>\r\n        </div>\r\n      </WidgetFooter>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport { Pie, PieChart } from \"recharts\";\n\nimport type { ChartConfig } from \"@/components/ui/chart\";\nimport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/components/ui/chart\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nconst chartData = [\n  { device: \"desktop\", fill: \"var(--color-desktop)\", visitors: 275 },\n  { device: \"mobile\", fill: \"var(--color-mobile)\", visitors: 187 },\n];\n\nconst chartConfig = {\n  desktop: {\n    color: \"var(--muted-foreground)\",\n    label: \"Chrome\",\n  },\n  devices: {\n    label: \"Devices\",\n  },\n  mobile: {\n    color: \"var(--secondary-foreground)\",\n    label: \"Firefox\",\n  },\n} satisfies ChartConfig;\n\nconst WidgetDemo = () => (\n  <Widget className=\"gap-0\" design=\"mumbai\">\n    <WidgetHeader className=\"items-center\">\n      <WidgetTitle className=\"text-lg font-normal\">Visitors</WidgetTitle>\n      <WidgetTitle className=\"text-lg font-normal\">462</WidgetTitle>\n    </WidgetHeader>\n    <WidgetContent className=\"-mt-2\">\n      <ChartContainer config={chartConfig} className=\"size-full\">\n        <PieChart>\n          <ChartTooltip\n            cursor={false}\n            content={<ChartTooltipContent hideLabel />}\n          />\n          <Pie data={chartData} dataKey=\"visitors\" nameKey=\"device\" />\n        </PieChart>\n      </ChartContainer>\n    </WidgetContent>\n    <WidgetFooter className=\"items-center\">\n      <div className=\"flex w-full items-center justify-center gap-1\">\n        <div className=\"bg-muted-foreground size-3 rounded-xs\" />\n        <Label size=\"sm\">Desktop</Label>\n      </div>\n      <div className=\"flex w-full items-center justify-center gap-1\">\n        <div className=\"bg-secondary-foreground size-3 rounded-xs\" />\n        <Label size=\"sm\">Mobile</Label>\n      </div>\n    </WidgetFooter>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -21,5 +20,6 @@
     "tags": [
       "dashboard"
     ]
-  }
+  },
+  "type": "registry:component"
 }
