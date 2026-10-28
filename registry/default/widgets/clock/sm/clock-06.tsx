@@ -1,21 +1,38 @@
 "use client";
 
-import * as React from "react";
+import { useEffect, useState } from "react";
+import type { CSSProperties } from "react";
+
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
-export default function WidgetDemo() {
-  const [time, setTime] = React.useState<Date | null>(null);
+const now = new Date();
 
-  React.useEffect(() => {
-    setTime(new Date());
+const romanNumerals = [
+  "XII",
+  "I",
+  "II",
+  "III",
+  "IV",
+  "V",
+  "VI",
+  "VII",
+  "VIII",
+  "IX",
+  "X",
+  "XI",
+];
 
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
+const WidgetDemo = () => {
+  const [time, setTime] = useState<Date>(now);
 
-    return () => {
-      clearInterval(timer);
-    };
+  useEffect(() => {
+    const updateTime = () => setTime(new Date());
+
+    updateTime();
+
+    const timer = setInterval(updateTime, 1000);
+
+    return () => clearInterval(timer);
   }, []);
 
   const hours = time ? time.getHours() % 12 : 0;
@@ -25,21 +42,6 @@ export default function WidgetDemo() {
   const hoursDegrees = ((hours + minutes / 60) / 12) * 360;
   const minutesDegrees = ((minutes + seconds / 60) / 60) * 360;
   const secondsDegrees = (seconds / 60) * 360;
-
-  const romanNumerals = [
-    "XII",
-    "I",
-    "II",
-    "III",
-    "IV",
-    "V",
-    "VI",
-    "VII",
-    "VIII",
-    "IX",
-    "X",
-    "XI",
-  ];
 
   return (
     <Widget>
@@ -52,38 +54,35 @@ export default function WidgetDemo() {
           const y = (-Math.cos(radians) * 70).toFixed(2);
           return (
             <div
-              key={hour}
-              className="absolute text-sm font-semibold text-gray-800 dark:text-gray-200"
-              style={{
-                transform: `translate(${x}px, ${y}px)`,
-              }}
+              key={numeral}
+              className="dark:text-primary text-primary absolute transform-[translate(var(--x),var(--y))] text-sm font-semibold"
+              style={{ "--x": `${x}px`, "--y": `${y}px` } as CSSProperties}
             >
               {numeral}
             </div>
           );
         })}
         <div className="relative size-22">
+          {/* Hours Hand */}
           <div
-            className="absolute bottom-1/2 left-1/2 h-12 w-1 origin-bottom rounded-full bg-gray-800 dark:bg-gray-200"
-            style={{
-              transform: `translateX(-50%) rotate(${hoursDegrees}deg)`,
-            }}
+            className="bg-primary dark:bg-primary absolute bottom-1/2 left-1/2 h-10 w-1 origin-bottom -translate-x-1/2 rotate-(--rotation) rounded-full"
+            style={{ "--rotation": `${hoursDegrees}deg` } as CSSProperties}
           />
+          {/* Minutes Hand */}
           <div
-            className="absolute bottom-1/2 left-1/2 h-12 w-1 origin-bottom rounded-full bg-gray-600 dark:bg-gray-400"
-            style={{
-              transform: `translateX(-50%) rotate(${minutesDegrees}deg)`,
-            }}
+            className="bg-muted-foreground dark:bg-ring absolute bottom-1/2 left-1/2 h-15 w-1 origin-bottom -translate-x-1/2 rotate-(--rotation) rounded-full"
+            style={{ "--rotation": `${minutesDegrees}deg` } as CSSProperties}
           />
+          {/* Seconds Hand */}
           <div
-            className="absolute bottom-1/2 left-1/2 h-12 w-0.5 origin-bottom rounded-full bg-red-500"
-            style={{
-              transform: `translateX(-50%) rotate(${secondsDegrees}deg)`,
-            }}
+            className="bg-destructive absolute bottom-1/2 left-1/2 h-12 w-0.5 origin-bottom -translate-x-1/2 rotate-(--rotation) rounded-full"
+            style={{ "--rotation": `${secondsDegrees}deg` } as CSSProperties}
           />
-          <div className="absolute top-1/2 left-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gray-800 dark:bg-gray-200" />
+          <div className="bg-primary dark:bg-primary absolute top-1/2 left-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full" />
         </div>
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

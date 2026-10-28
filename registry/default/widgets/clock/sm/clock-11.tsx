@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import {
   MinusIcon,
   PauseIcon,
@@ -8,19 +7,20 @@ import {
   PlusIcon,
   RotateCcw,
 } from "lucide-react";
+import * as React from "react";
 
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import {
   Widget,
   WidgetContent,
   WidgetFooter,
   WidgetHeader,
 } from "@/registry/default/ui/widget";
-import { Label } from "@/registry/default/ui/label";
-import { Button } from "@/registry/default/ui/button";
 
 type TimeAction = "add" | "subtract";
 
-export default function WidgetDemo() {
+const WidgetDemo = () => {
   const [isCountingDown, setIsCountingDown] = React.useState(false);
   const [timeLeft, setTimeLeft] = React.useState(60);
   const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
@@ -30,8 +30,12 @@ export default function WidgetDemo() {
 
   const updateTime = React.useCallback((action: TimeAction) => {
     setTimeLeft((prev) => {
-      if (action === "add") return prev + 60;
-      if (action === "subtract" && prev >= 60) return prev - 60;
+      if (action === "add") {
+        return prev + 60;
+      }
+      if (action === "subtract" && prev >= 60) {
+        return prev - 60;
+      }
       return prev;
     });
   }, []);
@@ -52,14 +56,16 @@ export default function WidgetDemo() {
       }, 1000);
     }
 
-    if (!isCountingDown) {
-      clearInterval(intervalRef.current!);
+    if (!isCountingDown && intervalRef.current) {
+      clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
 
     return () => {
-      clearInterval(intervalRef.current!);
-      intervalRef.current = null;
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
     };
   }, [isCountingDown]);
 
@@ -77,8 +83,8 @@ export default function WidgetDemo() {
           <MinusIcon />
         </Button>
 
-        <Label className="text-muted-foreground text-base">
-          {minutes} Min{minutes !== 1 ? "s" : ""}
+        <Label variant="muted-foreground">
+          {minutes} Min{minutes === 1 ? "" : "s"}
         </Label>
         <Button
           aria-label="Add one minute"
@@ -93,7 +99,7 @@ export default function WidgetDemo() {
       </WidgetHeader>
       <WidgetContent>
         <div className="flex h-full w-full items-center justify-center">
-          <Label className="text-5xl">
+          <Label size="xxxxl">
             {minutes}:{seconds}
           </Label>
         </div>
@@ -103,8 +109,7 @@ export default function WidgetDemo() {
           aria-label="Reset timer"
           onClick={resetTimer}
           variant="outline"
-          size="icon-sm"
-          className="rounded-full"
+          size="icon-sm-circle"
         >
           <RotateCcw />
         </Button>
@@ -112,8 +117,7 @@ export default function WidgetDemo() {
           aria-label={isCountingDown ? "Pause timer" : "Start timer"}
           onClick={handleToggle}
           variant="outline"
-          size="icon-sm"
-          className="rounded-full"
+          size="icon-sm-circle"
         >
           {isCountingDown ? (
             <PauseIcon className="size-4 fill-current stroke-none" />
@@ -124,4 +128,6 @@ export default function WidgetDemo() {
       </WidgetFooter>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;
