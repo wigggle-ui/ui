@@ -1,20 +1,20 @@
 "use client";
-import React from "react";
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 import {
   ActivityIcon,
   CalendarIcon,
   ClockIcon,
   StickyNoteIcon,
 } from "lucide-react";
+import React from "react";
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 
 import {
-  Widget,
-  WidgetHeader,
-  WidgetContent,
-  WidgetTitle,
-} from "@/registry/default/ui/widget";
-import { Label } from "@/registry/default/ui/label";
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import type { ChartConfig } from "@/components/ui/chart";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -22,47 +22,63 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/select";
+} from "@/components/ui/select";
 import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/registry/default/ui/chart";
+  Widget,
+  WidgetHeader,
+  WidgetContent,
+  WidgetTitle,
+} from "@/registry/default/ui/widget";
 
 const orgOptions = ["wigggle-ui", "acme-inc"];
 
 const acmeIncChartData = [
-  { month: "January", desktop: 16 },
-  { month: "February", desktop: 35 },
-  { month: "March", desktop: 12 },
-  { month: "April", desktop: 34 },
-  { month: "May", desktop: 29 },
-  { month: "June", desktop: 24 },
+  { desktop: 16, month: "January" },
+  { desktop: 35, month: "February" },
+  { desktop: 12, month: "March" },
+  { desktop: 34, month: "April" },
+  { desktop: 29, month: "May" },
+  { desktop: 24, month: "June" },
 ];
 const acmeIncChartConfig = {
   desktop: {
-    label: "Desktop",
     color: "var(--destructive)",
+    label: "Desktop",
   },
 } satisfies ChartConfig;
 
 const wigggleUIChartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+  { desktop: 186, month: "January" },
+  { desktop: 305, month: "February" },
+  { desktop: 237, month: "March" },
+  { desktop: 73, month: "April" },
+  { desktop: 209, month: "May" },
+  { desktop: 214, month: "June" },
 ];
 const wigggleUIChartConfig = {
   desktop: {
-    label: "Desktop",
     color: "var(--productive)",
+    label: "Desktop",
   },
 } satisfies ChartConfig;
 
-export default function WidgetDemo() {
+interface StatsItemProps {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  label: string;
+  value: string;
+}
+
+const StatsItem = (item: StatsItemProps) => (
+  <div className="flex w-full items-center justify-between border-t-2 py-2 first:border-0">
+    <div className="flex items-center justify-start gap-x-2">
+      <item.icon className="stroke-muted-foreground size-4" />
+      <Label size="sm">{item.label}</Label>
+    </div>
+    <Label size="sm">{item.value}</Label>
+  </div>
+);
+
+const WidgetDemo = () => {
   const [org, setOrg] = React.useState(orgOptions[0]);
 
   return (
@@ -180,22 +196,6 @@ export default function WidgetDemo() {
       </WidgetContent>
     </Widget>
   );
-}
-
-type StatsItemProps = {
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  label: string;
-  value: string;
 };
 
-function StatsItem(item: StatsItemProps) {
-  return (
-    <div className="flex w-full items-center justify-between border-t-2 py-2.5 first:border-0">
-      <div className="flex items-center justify-start gap-x-2">
-        <item.icon className="stroke-muted-foreground size-4" />
-        <Label className="font-light">{item.label}</Label>
-      </div>
-      <Label>{item.value}</Label>
-    </div>
-  );
-}
+export default WidgetDemo;
