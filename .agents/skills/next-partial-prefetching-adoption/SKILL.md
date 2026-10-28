@@ -1,13 +1,7 @@
 ---
 name: next-partial-prefetching-adoption
 description: >
-  Turn on Partial Prefetching in a Next.js app and work through the
-  insights it surfaces. Use when the user wants to enable or adopt
-  Partial Prefetching, flip the `partialPrefetching` flag, opt routes
-  in with `export const prefetch = 'partial'`, audit
-  `Link prefetch={true}` behavior, preserve existing prefetched UI
-  with `instant()` tests, or resolve the
-  instant-link-prefetch-partial and instant-shell-url-data insights.
+  Turn on Partial Prefetching in a Next.js app and work through the insights it surfaces. Use when the user wants to enable or adopt Partial Prefetching, flip the `partialPrefetching` flag, opt routes in with `export const prefetch = 'partial'`, audit `Link prefetch={true}` behavior, preserve existing prefetched UI with `instant()` tests, or resolve the instant-link-prefetch-partial and instant-shell-url-data insights.
 ---
 
 # next-partial-prefetching-adoption
@@ -97,7 +91,7 @@ Adopt every audited destination with the temporary route config. The route expor
 
 ```tsx
 // See: https://nextjs.org/docs/app/guides/adopting-partial-prefetching
-export const prefetch = 'partial'
+export const prefetch = "partial";
 ```
 
 If other URL-specific UI might be worth prefetching but was not part of the legacy contract, keep `prefetch={true}` on its links and mark the route for step 7:
@@ -105,7 +99,7 @@ If other URL-specific UI might be worth prefetching but was not part of the lega
 ```tsx
 // TODO(per-link-prefetch): assess with the user whether URL data should resolve before click.
 // See: https://nextjs.org/docs/app/guides/optimizing-prefetching
-export const prefetch = 'partial'
+export const prefetch = "partial";
 ```
 
 Use that exact prefix so step 7 can grep them back. Do not select new target UI now; restore only the target chosen from the legacy behavior.
