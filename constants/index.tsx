@@ -1,54 +1,40 @@
-import { WidgetEntryType } from "@/types";
-
+// SM
+import CalendarLg01 from "@/registry/default/widgets/calendar/lg/calendar-01";
+import CalendarLg02 from "@/registry/default/widgets/calendar/lg/calendar-02";
+import CalendarLg06 from "@/registry/default/widgets/calendar/lg/calendar-06";
+import CalendarMd01 from "@/registry/default/widgets/calendar/md/calendar-01";
+import CalendarMd06 from "@/registry/default/widgets/calendar/md/calendar-06";
 import CalendarSm01 from "@/registry/default/widgets/calendar/sm/calendar-01";
 import CalendarSm04 from "@/registry/default/widgets/calendar/sm/calendar-04";
 import CalendarSm06 from "@/registry/default/widgets/calendar/sm/calendar-06";
-import CalendarSm09 from "@/registry/default/widgets/calendar/sm/calendar-09";
-
+import CalendarSm09 from "@/registry/default/widgets/calendar/sm/calendar-08";
 import ClockSm04 from "@/registry/default/widgets/clock/sm/clock-04";
 import ClockSm05 from "@/registry/default/widgets/clock/sm/clock-05";
 import ClockSm11 from "@/registry/default/widgets/clock/sm/clock-11";
 import ClockSm12 from "@/registry/default/widgets/clock/sm/clock-12";
 import ClockSm13 from "@/registry/default/widgets/clock/sm/clock-13";
-
+import DashboardLg01 from "@/registry/default/widgets/dashboard/lg/dashboard-01";
+import DashboardLg02 from "@/registry/default/widgets/dashboard/lg/dashboard-02";
+import DashboardMd02 from "@/registry/default/widgets/dashboard/md/dashboard-02";
 import DashboardSm04 from "@/registry/default/widgets/dashboard/sm/dashboard-04";
 import DashboardSm05 from "@/registry/default/widgets/dashboard/sm/dashboard-05";
 import DashboardSm06 from "@/registry/default/widgets/dashboard/sm/dashboard-06";
-
+import MediaMd01 from "@/registry/default/widgets/media/md/media-01";
+import MediaMd03 from "@/registry/default/widgets/media/md/media-03";
+// MD
 import MediaSm02 from "@/registry/default/widgets/media/sm/media-02";
 import MediaSm06 from "@/registry/default/widgets/media/sm/media-06";
-
+import ProductivityMd02 from "@/registry/default/widgets/productivity/md/productivity-02";
+import ProductivityMd04 from "@/registry/default/widgets/productivity/md/productivity-04";
 import ProductivitySm01 from "@/registry/default/widgets/productivity/sm/productivity-01";
 import ProductivitySm02 from "@/registry/default/widgets/productivity/sm/productivity-02";
 import ProductivitySm04 from "@/registry/default/widgets/productivity/sm/productivity-04";
-
+// LG
 import SportsSm02 from "@/registry/default/widgets/sports/sm/sports-02";
 import SportsSm05 from "@/registry/default/widgets/sports/sm/sports-05";
-
 import StocksSm01 from "@/registry/default/widgets/stocks/sm/stock-01";
 import StocksSm04 from "@/registry/default/widgets/stocks/sm/stock-04";
-
-// MD
-
-import CalendarMd01 from "@/registry/default/widgets/calendar/md/calendar-01";
-import CalendarMd06 from "@/registry/default/widgets/calendar/md/calendar-06";
-
-import DashboardMd02 from "@/registry/default/widgets/dashboard/md/dashboard-02";
-
-import MediaMd01 from "@/registry/default/widgets/media/md/media-01";
-import MediaMd03 from "@/registry/default/widgets/media/md/media-03";
-
-import ProductivityMd02 from "@/registry/default/widgets/productivity/md/productivity-02";
-import ProductivityMd04 from "@/registry/default/widgets/productivity/md/productivity-04";
-
-// LG
-
-import CalendarLg01 from "@/registry/default/widgets/calendar/lg/calendar-01";
-import CalendarLg02 from "@/registry/default/widgets/calendar/lg/calendar-02";
-import CalendarLg06 from "@/registry/default/widgets/calendar/lg/calendar-06";
-
-import DashboardLg01 from "@/registry/default/widgets/dashboard/lg/dashboard-01";
-import DashboardLg02 from "@/registry/default/widgets/dashboard/lg/dashboard-02";
+import type { WidgetEntryType } from "@/types";
 
 export const SM_WIDGETS: WidgetEntryType[] = [
   {

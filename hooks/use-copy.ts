@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function useCopy(duration = 1500) {
+const useCopy = (duration = 1500) => {
   const [copied, setCopied] = useState<boolean>(false);
 
   const copy = async (text: string) => {
@@ -9,8 +9,8 @@ export function useCopy(duration = 1500) {
       setCopied(true);
       setTimeout(() => setCopied(false), duration);
       return true;
-    } catch (err) {
-      console.error("Failed to copy text: ", err);
+    } catch (error) {
+      console.error("Failed to copy text:", error);
       return false;
     }
   };
@@ -19,4 +19,6 @@ export function useCopy(duration = 1500) {
     copied,
     copy,
   };
-}
+};
+
+export default useCopy;
