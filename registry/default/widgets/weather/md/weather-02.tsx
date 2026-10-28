@@ -1,3 +1,6 @@
+"use client";
+
+import { Label } from "@/components/ui/label";
 import {
   DEFAULT_LOCATION,
   useLocation,
@@ -7,18 +10,17 @@ import {
   getSmallWeatherIcon,
   getWeatherIcon,
 } from "@/registry/default/lib/weather-utils";
-import { Label } from "@/registry/default/ui/label";
 import {
   Widget,
   WidgetContent,
   WidgetHeader,
 } from "@/registry/default/ui/widget";
 
-export default function WidgetDemo() {
+const WidgetDemo = () => {
   const { coordinates, city, isLoading: isLoadingLocation } = useLocation();
   const { data: weather, isLoading: isLoadingWeather } = useWeather(
     coordinates?.lat ?? DEFAULT_LOCATION.lat,
-    coordinates?.lon ?? DEFAULT_LOCATION.lon,
+    coordinates?.lon ?? DEFAULT_LOCATION.lon
   );
 
   const isLoading = isLoadingLocation || isLoadingWeather;
@@ -32,8 +34,8 @@ export default function WidgetDemo() {
       const hour12 = hour % 12 || 12;
 
       return {
-        time: `${hour12} ${ampm}`,
         temp: weather.hourly.temperature[index],
+        time: `${hour12} ${ampm}`,
         weatherCode: weather.hourly.weatherCode[index],
       };
     }) || [];
@@ -43,7 +45,9 @@ export default function WidgetDemo() {
       <Widget size="md">
         <WidgetContent>
           <div className="flex w-full items-center justify-center">
-            <Label className="animate-pulse">Loading weather data...</Label>
+            <Label>
+              <span className="animate-pulse">Loading weather data...</span>
+            </Label>
           </div>
         </WidgetContent>
       </Widget>
@@ -55,7 +59,7 @@ export default function WidgetDemo() {
       <WidgetHeader className="items-start">
         <div className="flex flex-col items-start">
           <Label>{city || "Unknown Location"}</Label>
-          <Label className="text-4xl">{weather?.temperature}&deg;</Label>
+          <Label size="xxxxl">{weather?.temperature}&deg;</Label>
         </div>
         <div className="flex flex-col items-start">
           {weather && getWeatherIcon(weather.weatherCode)}
@@ -64,12 +68,16 @@ export default function WidgetDemo() {
       <WidgetContent className="mt-4 grid w-full grid-cols-6 items-end gap-6">
         {next6Hours.map((el, index) => (
           <div key={index} className="flex flex-col items-center gap-1">
-            <Label className="text-muted-foreground text-xs">{el.time}</Label>
+            <Label size="xs" variant="muted-foreground">
+              {el.time}
+            </Label>
             <Label>{getSmallWeatherIcon(el.weatherCode)}</Label>
-            <Label className="text-lg">{el.temp}&deg;</Label>
+            <Label size="lg">{el.temp}&deg;</Label>
           </div>
         ))}
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

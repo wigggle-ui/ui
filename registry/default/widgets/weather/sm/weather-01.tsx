@@ -1,21 +1,23 @@
+"use client";
+
+import { Label } from "@/components/ui/label";
 import {
   DEFAULT_LOCATION,
   useLocation,
 } from "@/registry/default/hooks/use-location";
 import { useWeather } from "@/registry/default/hooks/use-weather";
 import { getWeatherIcon } from "@/registry/default/lib/weather-utils";
-import { Label } from "@/registry/default/ui/label";
 import {
   Widget,
   WidgetContent,
   WidgetFooter,
 } from "@/registry/default/ui/widget";
 
-export default function WidgetDemo() {
+const WidgetDemo = () => {
   const { coordinates, city, isLoading: isLoadingLocation } = useLocation();
   const { data: weather, isLoading: isLoadingWeather } = useWeather(
     coordinates?.lat ?? DEFAULT_LOCATION.lat,
-    coordinates?.lon ?? DEFAULT_LOCATION.lon,
+    coordinates?.lon ?? DEFAULT_LOCATION.lon
   );
 
   const isLoading = isLoadingLocation || isLoadingWeather;
@@ -24,7 +26,9 @@ export default function WidgetDemo() {
     return (
       <Widget>
         <WidgetContent className="flex items-center justify-center">
-          <Label className="animate-pulse">Loading...</Label>
+          <Label>
+            <span className="animate-pulse">Loading...</span>
+          </Label>
         </WidgetContent>
       </Widget>
     );
@@ -35,13 +39,13 @@ export default function WidgetDemo() {
       <WidgetContent className="flex-col gap-4">
         {weather &&
           getWeatherIcon(weather.weatherCode, "size-16", { strokeWidth: 2 })}
-        <Label className="text-4xl">{weather?.temperature}&deg;</Label>
+        <Label size="xxxl">{weather?.temperature}&deg;</Label>
       </WidgetContent>
       <WidgetFooter className="justify-center">
-        <Label className="text-lg font-semibold">
-          {city || "Unknown Location"}
-        </Label>
+        <Label>{city || "Unknown Location"}</Label>
       </WidgetFooter>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;
