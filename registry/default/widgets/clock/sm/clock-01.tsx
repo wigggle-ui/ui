@@ -8,12 +8,10 @@ import {
   WidgetTitle,
 } from "@/registry/default/ui/widget";
 
-const now = new Date();
-
 const formatTime = (value: number) => String(value).padStart(2, "0");
 
 const WidgetDemo = () => {
-  const [time, setTime] = useState<Date>(now);
+  const [time, setTime] = useState<Date>(() => new Date(2000, 0, 1));
 
   useEffect(() => {
     const updateTime = () => setTime(new Date());
