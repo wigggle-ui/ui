@@ -122,7 +122,7 @@ export const CodeBlockCommand = ({
   );
 
   return (
-    <div className="bg-code relative max-w-max min-w-xl overflow-hidden rounded-md">
+    <div className="bg-code relative max-w-max overflow-hidden rounded-md">
       <Tabs
         value={packageManager}
         onValueChange={(value) => {

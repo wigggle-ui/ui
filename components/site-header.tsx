@@ -1,9 +1,11 @@
 import Link from "next/link";
 
 import { Icons } from "@/components/icons";
+import MobileNav from "@/components/mobile-nav";
 import SearchCommandMenu from "@/components/search-command-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import { siteConfig } from "@/config/site";
 
 const LINKS = [
@@ -15,20 +17,26 @@ const LINKS = [
 ];
 
 const SiteHeader = () => (
-  <header className="bg-background border-border sticky inset-x-0 top-0 z-50 flex h-12 w-full items-center justify-between border-b px-3">
-    <div className="flex items-center justify-start gap-6">
-      <Link href="/">
+  <header className="bg-background border-border sticky inset-x-0 top-0 z-50 flex h-16 w-screen items-center justify-between border-b px-3">
+    <div className="flex items-center justify-start gap-3">
+      <div className="block md:hidden">
+        <MobileNav />
+      </div>
+      <Link className="flex items-center justify-center gap-1.5" href="/">
         <Icons.Logo className="size-5" />
+        <Label>Wigggle UI</Label>
       </Link>
-      {LINKS.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          className="text-muted-foreground hover:text-foreground text-sm no-underline transition-colors duration-300"
-        >
-          {link.label}
-        </Link>
-      ))}
+      <div className="hidden md:flex">
+        {LINKS.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="text-muted-foreground hover:text-foreground text-sm no-underline transition-colors duration-300"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </div>
     </div>
     <div className="flex items-center justify-end gap-4">
       <SearchCommandMenu />

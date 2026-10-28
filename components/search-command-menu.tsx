@@ -55,7 +55,7 @@ const SearchCommandMenu = () => {
             <CommandGroup heading="Widget Categories">
               {WIDGET_CATEGORY_LINKS.map((link) => (
                 <CommandItem key={link.href}>
-                  {link.icon}
+                  <link.icon />
                   <span>{link.title} Widgets</span>
                 </CommandItem>
               ))}

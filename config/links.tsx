@@ -14,6 +14,7 @@ import {
   SpeechIcon,
   TrophyIcon,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 import { Icons } from "@/components/icons";
 import type { LinkItem } from "@/types";
@@ -63,45 +64,47 @@ export const MENU_LINKS: LinkItem[] = [
   },
 ];
 
-export const WIDGET_CATEGORY_LINKS: LinkItem[] = [
+type WidgetCategoryLinkItem = Omit<LinkItem, "icon"> & { icon: LucideIcon };
+
+export const WIDGET_CATEGORY_LINKS: WidgetCategoryLinkItem[] = [
   {
     href: "/widgets/calendar",
-    icon: <CalendarIcon />,
+    icon: CalendarIcon,
     title: "Calendar",
   },
   {
     href: "/widgets/clock",
-    icon: <Clock3Icon />,
+    icon: Clock3Icon,
     title: "Clock",
   },
   {
     href: "/widgets/dashboard",
-    icon: <LayoutDashboardIcon />,
+    icon: LayoutDashboardIcon,
     title: "Dashboard",
   },
   {
     href: "/widgets/media",
-    icon: <CirclePlayIcon />,
+    icon: CirclePlayIcon,
     title: "Media",
   },
   {
     href: "/widgets/productivity",
-    icon: <GoalIcon />,
+    icon: GoalIcon,
     title: "Productivity",
   },
   {
     href: "/widgets/sports",
-    icon: <TrophyIcon />,
+    icon: TrophyIcon,
     title: "Sports",
   },
   {
     href: "/widgets/stocks",
-    icon: <ChartNoAxesCombinedIcon />,
+    icon: ChartNoAxesCombinedIcon,
     title: "Stocks",
   },
   {
     href: "/widgets/weather",
-    icon: <CloudSunIcon />,
+    icon: CloudSunIcon,
     title: "Weather",
   },
 ];
