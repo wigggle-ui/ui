@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "media-sm-05",
-  "type": "registry:component",
   "dependencies": [
     "lucide-react"
   ],
@@ -12,7 +11,7 @@
   "files": [
     {
       "path": "registry/default/widgets/media/sm/media-05.tsx",
-      "content": "import {\r\n  ChevronDownIcon,\r\n  ChevronLeftIcon,\r\n  ChevronRightIcon,\r\n  ChevronUpIcon,\r\n  CircleIcon,\r\n} from \"lucide-react\";\r\n\r\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\r\nimport { Button } from \"@/registry/default/ui/button\";\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <Widget className=\"justify-between\">\r\n      <WidgetContent className=\"inline-grid w-full grid-cols-3 gap-1\">\r\n        <Button\r\n          aria-label=\"Pan camera up\"\r\n          className=\"col-start-2 mx-auto\"\r\n          size=\"icon\"\r\n          variant=\"outline\"\r\n        >\r\n          <ChevronUpIcon aria-hidden=\"true\" size={16} />\r\n        </Button>\r\n        <Button\r\n          aria-label=\"Pan camera left\"\r\n          className=\"col-start-1 mx-auto\"\r\n          size=\"icon\"\r\n          variant=\"outline\"\r\n        >\r\n          <ChevronLeftIcon aria-hidden=\"true\" size={16} />\r\n        </Button>\r\n        <div aria-hidden=\"true\" className=\"flex items-center justify-center\">\r\n          <CircleIcon className=\"opacity-60\" size={20} />\r\n        </div>\r\n        <Button\r\n          aria-label=\"Pan camera right\"\r\n          size=\"icon\"\r\n          variant=\"outline\"\r\n          className=\"mx-auto\"\r\n        >\r\n          <ChevronRightIcon aria-hidden=\"true\" size={16} />\r\n        </Button>\r\n        <Button\r\n          aria-label=\"Pan camera down\"\r\n          className=\"col-start-2 mx-auto\"\r\n          size=\"icon\"\r\n          variant=\"outline\"\r\n        >\r\n          <ChevronDownIcon aria-hidden=\"true\" size={16} />\r\n        </Button>\r\n      </WidgetContent>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "import {\n  ChevronDownIcon,\n  ChevronLeftIcon,\n  ChevronRightIcon,\n  ChevronUpIcon,\n  CircleIcon,\n} from \"lucide-react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget className=\"justify-between\">\n    <WidgetContent className=\"inline-grid w-full grid-cols-3 gap-1\">\n      <Button\n        aria-label=\"Pan camera up\"\n        className=\"col-start-2 mx-auto\"\n        size=\"icon\"\n        variant=\"outline\"\n      >\n        <ChevronUpIcon aria-hidden=\"true\" size={16} />\n      </Button>\n      <Button\n        aria-label=\"Pan camera left\"\n        className=\"col-start-1 mx-auto\"\n        size=\"icon\"\n        variant=\"outline\"\n      >\n        <ChevronLeftIcon aria-hidden=\"true\" size={16} />\n      </Button>\n      <div aria-hidden=\"true\" className=\"flex items-center justify-center\">\n        <CircleIcon className=\"opacity-60\" size={20} />\n      </div>\n      <Button\n        aria-label=\"Pan camera right\"\n        size=\"icon\"\n        variant=\"outline\"\n        className=\"mx-auto\"\n      >\n        <ChevronRightIcon aria-hidden=\"true\" size={16} />\n      </Button>\n      <Button\n        aria-label=\"Pan camera down\"\n        className=\"col-start-2 mx-auto\"\n        size=\"icon\"\n        variant=\"outline\"\n      >\n        <ChevronDownIcon aria-hidden=\"true\" size={16} />\n      </Button>\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -21,5 +20,6 @@
       "media"
     ],
     "size": "sm"
-  }
+  },
+  "type": "registry:component"
 }

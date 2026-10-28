@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "separator",
-  "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-separator"
   ],
@@ -10,9 +9,10 @@
   ],
   "files": [
     {
-      "path": "registry/default/ui/separator.tsx",
-      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport * as SeparatorPrimitive from \"@radix-ui/react-separator\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nfunction Separator({\r\n  className,\r\n  orientation = \"horizontal\",\r\n  decorative = true,\r\n  ...props\r\n}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {\r\n  return (\r\n    <SeparatorPrimitive.Root\r\n      data-slot=\"separator\"\r\n      decorative={decorative}\r\n      orientation={orientation}\r\n      className={cn(\r\n        \"bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nexport { Separator };\r\n",
+      "path": "components/ui/separator.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"cn\";\nimport { Separator as SeparatorPrimitive } from \"radix-ui\";\nimport * as React from \"react\";\n\nconst Separator = ({\n  className,\n  orientation = \"horizontal\",\n  decorative = true,\n  ...props\n}: React.ComponentProps<typeof SeparatorPrimitive.Root>) => (\n  <SeparatorPrimitive.Root\n    data-slot=\"separator\"\n    decorative={decorative}\n    orientation={orientation}\n    className={cn(\n      \"bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px\",\n      className\n    )}\n    {...props}\n  />\n);\n\nexport { Separator };\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

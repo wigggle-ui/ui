@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "productivity-sm-05",
-  "type": "registry:component",
   "dependencies": [
     "lucide-react"
   ],
@@ -14,7 +13,7 @@
   "files": [
     {
       "path": "registry/default/widgets/productivity/sm/productivity-05.tsx",
-      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { BookOpenIcon, CheckIcon } from \"lucide-react\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetFooter,\r\n} from \"@/registry/default/ui/widget\";\r\nimport { Button } from \"@/registry/default/ui/button\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\nimport { cn } from \"@/registry/default/lib/utils\";\r\n\r\nconst streak = 8;\r\n\r\nexport default function WidgetDemo() {\r\n  const [status, setStatus] = React.useState<boolean>(false);\r\n\r\n  return (\r\n    <Widget className=\"gap-3\">\r\n      <WidgetContent className=\"flex-col items-end justify-start gap-4\">\r\n        <div className=\"flex w-full flex-col\">\r\n          <Label className=\"text-xl\">Read 10 Mins</Label>\r\n          <Label className=\"text-muted-foreground text-sm font-normal\">\r\n            Streak: {status ? streak + 1 : streak} days\r\n          </Label>\r\n        </div>\r\n      </WidgetContent>\r\n      <WidgetFooter className=\"flex w-full items-center justify-between\">\r\n        <BookOpenIcon\r\n          className={cn(\r\n            \"size-14\",\r\n            status ? \"stroke-productive\" : \"stroke-destructive\",\r\n          )}\r\n          strokeWidth={1.5}\r\n        />\r\n        <Button\r\n          disabled={status}\r\n          onClick={() => setStatus(true)}\r\n          className=\"hover:cursor-pointer disabled:pointer-events-none disabled:cursor-not-allowed\"\r\n          variant=\"outline\"\r\n          size=\"icon-sm\"\r\n        >\r\n          <CheckIcon />\r\n        </Button>\r\n      </WidgetFooter>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport { cn } from \"cn\";\nimport { BookOpenIcon, CheckIcon } from \"lucide-react\";\nimport React from \"react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n} from \"@/registry/default/ui/widget\";\n\nconst streak = 8;\n\nconst WidgetDemo = () => {\n  const [status, setStatus] = React.useState<boolean>(false);\n\n  return (\n    <Widget className=\"gap-3\">\n      <WidgetContent className=\"flex-col items-end justify-start gap-4\">\n        <div className=\"flex w-full flex-col\">\n          <Label size=\"xl\">Read 10 Mins</Label>\n          <Label size=\"sm\" variant=\"muted-foreground\">\n            Streak: {status ? streak + 1 : streak} days\n          </Label>\n        </div>\n      </WidgetContent>\n      <WidgetFooter className=\"flex w-full items-center justify-between\">\n        <BookOpenIcon\n          className={cn(\n            \"size-14\",\n            status ? \"stroke-productive\" : \"stroke-destructive\"\n          )}\n          strokeWidth={1.5}\n        />\n        <Button\n          disabled={status}\n          onClick={() => setStatus(true)}\n          className=\"hover:cursor-pointer disabled:pointer-events-none disabled:cursor-not-allowed\"\n          variant=\"outline\"\n          size=\"icon-sm\"\n        >\n          <CheckIcon />\n        </Button>\n      </WidgetFooter>\n    </Widget>\n  );\n};\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -23,5 +22,6 @@
       "productivity"
     ],
     "size": "sm"
-  }
+  },
+  "type": "registry:component"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "calendar-sm-05",
-  "type": "registry:component",
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json",
     "https://wigggle-ui.vercel.app/r/badge.json",
@@ -10,7 +9,7 @@
   "files": [
     {
       "path": "registry/default/widgets/calendar/sm/calendar-05.tsx",
-      "content": "import * as React from \"react\";\n\nimport {\n  Widget,\n  WidgetHeader,\n  WidgetContent,\n} from \"@/registry/default/ui/widget\";\nimport { Badge } from \"@/registry/default/ui/badge\";\nimport { Label } from \"@/registry/default/ui/label\";\n\nexport default function WidgetDemo() {\n  const now = new Date();\n\n  const day = now.toLocaleDateString(\"en-US\", { weekday: \"long\" });\n  const date = now.getDate().toString().padStart(2, \"0\");\n\n  const events = [\n    { title: \"Scrum\", time: \"9 AM\" },\n    { title: \"Design Roundup\", time: \"11 AM\" },\n  ];\n\n  return (\n    <Widget design=\"mumbai\">\n      <WidgetHeader className=\"text-destructive text-base\">{day}</WidgetHeader>\n      <WidgetContent className=\"flex-col items-start justify-start gap-2\">\n        <Label className=\"text-3xl\">{date}</Label>\n        {events.map((event, i) => (\n          <Badge\n            key={i}\n            variant=\"secondary\"\n            className=\"flex w-full items-center justify-between gap-2 px-2 py-1 text-xs\"\n          >\n            {event.title}\n            <span className=\"text-muted-foreground\">{event.time}</span>\n          </Badge>\n        ))}\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "content": "import { Label } from \"@/components/ui/label\";\nimport {\n  Widget,\n  WidgetHeader,\n  WidgetContent,\n} from \"@/registry/default/ui/widget\";\n\nconst now = new Date();\n\nconst day = now.toLocaleDateString(\"en-US\", { weekday: \"long\" });\nconst date = now.getDate().toString().padStart(2, \"0\");\n\nconst events = [\n  { time: \"9 AM\", title: \"Scrum\" },\n  { time: \"11 AM\", title: \"Design Roundup\" },\n];\n\nconst WidgetDemo = () => (\n  <Widget design=\"mumbai\">\n    <WidgetHeader className=\"text-destructive text-base\">{day}</WidgetHeader>\n    <WidgetContent className=\"flex-col items-start justify-start gap-2\">\n      <Label size=\"xxxxl\">{date}</Label>\n      {events.map((event, i) => (\n        <div\n          key={i}\n          className=\"flex w-full items-center justify-between border-t-2 pt-1.5\"\n        >\n          <Label size=\"sm\">{event.title}</Label>\n          <Label size=\"sm\" variant=\"muted-foreground\">\n            {event.time}\n          </Label>\n        </div>\n      ))}\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -18,5 +17,6 @@
     "tags": [
       "calendar"
     ]
-  }
+  },
+  "type": "registry:component"
 }

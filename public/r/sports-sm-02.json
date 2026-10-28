@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sports-sm-02",
-  "type": "registry:component",
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json",
     "https://wigggle-ui.vercel.app/r/label.json",
@@ -10,7 +9,7 @@
   "files": [
     {
       "path": "registry/default/widgets/sports/sm/sports-02.tsx",
-      "content": "import * as React from \"react\";\r\nimport Image from \"next/image\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetFooter,\r\n  WidgetHeader,\r\n  WidgetTitle,\r\n} from \"@/registry/default/ui/widget\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\nimport { Badge } from \"@/registry/default/ui/badge\";\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <Widget design=\"mumbai\">\r\n      <WidgetHeader>\r\n        <WidgetTitle className=\"text-muted-foreground flex items-center gap-1 text-sm font-normal\">\r\n          <div className=\"bg-productive size-2 rounded-full\" />\r\n          Live\r\n        </WidgetTitle>\r\n      </WidgetHeader>\r\n      <WidgetContent className=\"grid grid-cols-[1fr_auto_1fr] items-center gap-3\">\r\n        <div className=\"me-auto flex flex-col items-center gap-2\">\r\n          <Image\r\n            className=\"size-9\"\r\n            src=\"/assets/logos/bvb.png\"\r\n            alt=\"FC Barcelona\"\r\n            width={40}\r\n            height={40}\r\n          />\r\n          <Label className=\"text-3xl\">4</Label>\r\n        </div>\r\n        <Badge className=\"animate-pulse text-sm\" variant=\"secondary\">\r\n          34'\r\n        </Badge>\r\n        <div className=\"ms-auto flex flex-col items-center gap-2\">\r\n          <Image\r\n            className=\"size-9\"\r\n            src=\"/assets/logos/mci.png\"\r\n            alt=\"FC Barcelona\"\r\n            width={40}\r\n            height={40}\r\n          />\r\n          <Label className=\"text-3xl\">4</Label>\r\n        </div>\r\n      </WidgetContent>\r\n      <WidgetFooter className=\"justify-center\">\r\n        <Label className=\"text-muted-foreground\">UCL Final</Label>\r\n      </WidgetFooter>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "import Image from \"next/image\";\n\nimport { Badge } from \"@/components/ui/badge\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget design=\"mumbai\">\n    <WidgetHeader>\n      <WidgetTitle className=\"text-muted-foreground flex items-center gap-1 text-sm font-normal\">\n        <div className=\"bg-productive size-2 rounded-full\" />\n        Live\n      </WidgetTitle>\n    </WidgetHeader>\n    <WidgetContent className=\"grid grid-cols-[1fr_auto_1fr] items-center gap-3\">\n      <div className=\"me-auto flex flex-col items-center gap-2\">\n        <Image\n          className=\"size-9\"\n          src=\"/assets/logos/bvb.png\"\n          alt=\"FC Barcelona\"\n          width={40}\n          height={40}\n        />\n        <Label size=\"xxxl\">4</Label>\n      </div>\n      <Badge variant=\"secondary\">\n        <div className=\"animate-pulse text-sm\">34&apos;</div>\n      </Badge>\n      <div className=\"ms-auto flex flex-col items-center gap-2\">\n        <Image\n          className=\"size-9\"\n          src=\"/assets/logos/mci.png\"\n          alt=\"FC Barcelona\"\n          width={40}\n          height={40}\n        />\n        <Label size=\"xxxl\">4</Label>\n      </div>\n    </WidgetContent>\n    <WidgetFooter className=\"justify-center\">\n      <Label variant=\"muted-foreground\">UCL Final</Label>\n    </WidgetFooter>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -19,5 +18,6 @@
       "sports"
     ],
     "size": "sm"
-  }
+  },
+  "type": "registry:component"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "utils",
-  "type": "registry:lib",
   "dependencies": [
     "clsx",
     "tailwind-merge"
@@ -9,8 +8,9 @@
   "files": [
     {
       "path": "registry/default/lib/utils.ts",
-      "content": "import { clsx, type ClassValue } from \"clsx\";\r\nimport { twMerge } from \"tailwind-merge\";\r\n\r\nexport function cn(...inputs: ClassValue[]) {\r\n  return twMerge(clsx(inputs));\r\n}\r\n\r\nexport function truncate(text: string, maxLength = 15): string {\r\n  if (typeof text !== \"string\") return \"\";\r\n  if (text.length <= maxLength) return text;\r\n  return text.slice(0, maxLength - 3) + \"...\";\r\n}\r\n",
+      "content": "import { clsx } from \"clsx\";\nimport type { ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));\n\nexport const truncate = (text: string, maxLength = 15): string => {\n  if (typeof text !== \"string\") {\n    return \"\";\n  }\n  if (text.length <= maxLength) {\n    return text;\n  }\n  return `${text.slice(0, maxLength - 3)}...`;\n};\n",
       "type": "registry:lib"
     }
-  ]
+  ],
+  "type": "registry:lib"
 }

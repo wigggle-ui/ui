@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sports-sm-01",
-  "type": "registry:component",
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json",
     "https://wigggle-ui.vercel.app/r/label.json"
@@ -9,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/widgets/sports/sm/sports-01.tsx",
-      "content": "import * as React from \"react\";\nimport Image from \"next/image\";\n\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\nimport { Label } from \"@/registry/default/ui/label\";\n\nconst details = [\n  {\n    image: \"/assets/logos/fcb.png\",\n    name: \"FCB\",\n    teamName: \"FC Barcelona\",\n    score: \"2\",\n  },\n  {\n    image: \"/assets/logos/rma.png\",\n    name: \"RMA\",\n    teamName: \"Real Madrid FC\",\n    score: \"1\",\n  },\n];\n\nexport default function WidgetDemo() {\n  return (\n    <Widget>\n      <WidgetHeader>\n        <WidgetTitle className=\"text-muted-foreground text-sm\">\n          La Liga\n        </WidgetTitle>\n        <WidgetTitle className=\"text-muted-foreground text-sm\">\n          21 Oct\n        </WidgetTitle>\n      </WidgetHeader>\n      <WidgetContent className=\"items-end justify-between\">\n        {details.map((team) => (\n          <div key={team.name} className=\"flex flex-col items-center gap-1\">\n            <Image\n              className=\"size-8\"\n              src={team.image}\n              alt={team.teamName}\n              width={32}\n              height={32}\n            />\n            <Label className=\"text-lg tracking-wider\">{team.name}</Label>\n            <Label className=\"text-3xl\">{team.score}</Label>\n          </div>\n        ))}\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "content": "import Image from \"next/image\";\n\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nconst details = [\n  {\n    image: \"/assets/logos/fcb.png\",\n    name: \"FCB\",\n    score: \"2\",\n    teamName: \"FC Barcelona\",\n  },\n  {\n    image: \"/assets/logos/rma.png\",\n    name: \"RMA\",\n    score: \"1\",\n    teamName: \"Real Madrid FC\",\n  },\n];\n\nconst WidgetDemo = () => (\n  <Widget>\n    <WidgetHeader>\n      <WidgetTitle className=\"text-muted-foreground text-sm\">\n        La Liga\n      </WidgetTitle>\n      <WidgetTitle className=\"text-muted-foreground text-sm\">\n        21 Oct\n      </WidgetTitle>\n    </WidgetHeader>\n    <WidgetContent className=\"items-end justify-between\">\n      {details.map((team) => (\n        <div key={team.name} className=\"flex flex-col items-center gap-1\">\n          <Image\n            className=\"size-8\"\n            src={team.image}\n            alt={team.teamName}\n            width={32}\n            height={32}\n          />\n          <Label size=\"lg\">{team.name}</Label>\n          <Label size=\"xxxl\">{team.score}</Label>\n        </div>\n      ))}\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -18,5 +17,6 @@
       "sports"
     ],
     "size": "sm"
-  }
+  },
+  "type": "registry:component"
 }

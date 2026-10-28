@@ -1,15 +1,15 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "label",
-  "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-label"
   ],
   "files": [
     {
-      "path": "registry/default/ui/label.tsx",
-      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport * as LabelPrimitive from \"@radix-ui/react-label\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nfunction Label({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<typeof LabelPrimitive.Root>) {\r\n  return (\r\n    <LabelPrimitive.Root\r\n      data-slot=\"label\"\r\n      className={cn(\r\n        \"flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nexport { Label };\r\n",
+      "path": "components/ui/label.tsx",
+      "content": "\"use client\";\n\nimport type { VariantProps } from \"class-variance-authority\";\nimport { cva } from \"class-variance-authority\";\nimport { cn } from \"cn\";\nimport { Label as LabelPrimitive } from \"radix-ui\";\nimport * as React from \"react\";\n\nconst labelVariants = cva(\n  \"flex items-center gap-2 leading-none select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n  {\n    defaultVariants: {\n      size: \"default\",\n      variant: \"default\",\n      weight: \"default\",\n    },\n    variants: {\n      size: {\n        default: \"text-base\",\n        lg: \"text-lg\",\n        md: \"text-base\",\n        sm: \"text-sm\",\n        xl: \"text-xl\",\n        xs: \"text-xs\",\n        xxl: \"text-2xl\",\n        xxxl: \"text-3xl\",\n        xxxxl: \"text-4xl\",\n      },\n      variant: {\n        background: \"text-background\",\n        default: \"text-primary\",\n        destructive: \"text-destructive\",\n        foreground: \"text-foreground\",\n        info: \"text-vercel-blue\",\n        \"muted-foreground\": \"text-muted-foreground\",\n        productive: \"text-productive\",\n        secondary: \"text-secondary\",\n        warning: \"text-vercel-yellow\",\n      },\n      weight: {\n        black: \"font-black\",\n        bold: \"font-bold\",\n        default: \"font-normal\",\n        light: \"font-light\",\n        medium: \"font-medium\",\n        semibold: \"font-semibold\",\n      },\n    },\n  }\n);\n\nconst Label = ({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  weight = \"default\",\n  ...props\n}: React.ComponentProps<typeof LabelPrimitive.Root> &\n  VariantProps<typeof labelVariants>) => (\n  <LabelPrimitive.Root\n    data-slot=\"label\"\n    className={cn(labelVariants({ className, size, variant, weight }))}\n    {...props}\n  />\n);\n\nexport { Label };\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

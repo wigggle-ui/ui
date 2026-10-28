@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "productivity-sm-07",
-  "type": "registry:component",
   "dependencies": [
     "lucide-react"
   ],
@@ -13,7 +12,7 @@
   "files": [
     {
       "path": "registry/default/widgets/productivity/sm/productivity-07.tsx",
-      "content": "import { GlassWaterIcon } from \"lucide-react\";\n\nimport {\n  Widget,\n  WidgetHeader,\n  WidgetTitle,\n  WidgetContent,\n} from \"@/registry/default/ui/widget\";\nimport { Separator } from \"@/registry/default/ui/separator\";\nimport { Badge } from \"@/registry/default/ui/badge\";\n\nconst now = new Date();\nconst year = now.getFullYear();\nconst date = now.getDate();\n\nconst daysInMonth = new Date(year, now.getMonth() + 1, 0).getDate();\nconst firstDay = new Date(year, now.getMonth(), 1).getDay();\n\nconst days = Array.from({ length: daysInMonth }, (_, i) => i + 1);\n\nconst skippedDays: number[] = Array.from(\n  { length: 3 },\n  () => Math.floor(Math.random() * 30) + 1,\n);\n\nexport default function WidgetDemo() {\n  return (\n    <Widget className=\"gap-2 p-3\" design=\"mumbai\">\n      <WidgetHeader className=\"justify-start gap-1 px-1\">\n        <GlassWaterIcon className=\"size-4\" />\n        <WidgetTitle className=\"font-normal\">Water Streak</WidgetTitle>\n      </WidgetHeader>\n      <Separator className=\"h-0.5 rounded-full\" />\n      <WidgetContent>\n        <div className=\"grid size-full grid-cols-7 gap-1 text-center\">\n          {Array.from({ length: firstDay }).map((_, i) => (\n            <div key={`f-${i}`} className=\"text-xs\">\n              &nbsp;\n            </div>\n          ))}\n          {days.map((day) => (\n            <div key={day} className=\"text-muted-foreground text-xs\">\n              {!skippedDays.includes(day) && day < date ? (\n                <Badge\n                  variant=\"success\"\n                  className=\"flex size-4 items-center justify-center rounded-xs p-2\"\n                >\n                  {day}\n                </Badge>\n              ) : day === date ? (\n                <Badge className=\"bg-foreground/80 flex size-4 items-center justify-center p-2\">\n                  {day}\n                </Badge>\n              ) : (\n                day\n              )}\n            </div>\n          ))}\n        </div>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "content": "import { GlassWaterIcon } from \"lucide-react\";\n\nimport { Badge } from \"@/components/ui/badge\";\nimport { Separator } from \"@/components/ui/separator\";\nimport {\n  Widget,\n  WidgetHeader,\n  WidgetTitle,\n  WidgetContent,\n} from \"@/registry/default/ui/widget\";\n\nconst now = new Date();\nconst year = now.getFullYear();\nconst date = now.getDate();\n\nconst daysInMonth = new Date(year, now.getMonth() + 1, 0).getDate();\nconst firstDay = new Date(year, now.getMonth(), 1).getDay();\n\nconst days = Array.from({ length: daysInMonth }, (_, i) => i + 1);\n\nconst skippedDays = new Set<number>(\n  Array.from({ length: 3 }, () => Math.floor(Math.random() * 30) + 1)\n);\n\nconst renderDay = (day: number) => {\n  if (!skippedDays.has(day) && day < date) {\n    return (\n      <Badge\n        variant=\"success\"\n        className=\"flex size-4 items-center justify-center\"\n      >\n        <span className=\"text-xs\">{day}</span>\n      </Badge>\n    );\n  }\n  if (day === date) {\n    return (\n      <Badge className=\"flex size-4 items-center justify-center\">\n        <span className=\"text-xs\">{day}</span>\n      </Badge>\n    );\n  }\n  return day;\n};\nconst WidgetDemo = () => (\n  <Widget className=\"gap-2 p-3\" design=\"mumbai\">\n    <WidgetHeader className=\"justify-start gap-1 px-1\">\n      <GlassWaterIcon className=\"size-4\" />\n      <WidgetTitle className=\"font-normal\">Water Streak</WidgetTitle>\n    </WidgetHeader>\n    <Separator className=\"h-0.5\" />\n    <WidgetContent>\n      <div className=\"grid size-full grid-cols-7 gap-1 text-center\">\n        {Array.from({ length: firstDay }).map((_, i) => (\n          <div key={`f-${i}`} className=\"text-xs\">\n            &nbsp;\n          </div>\n        ))}\n        {days.map((day) => (\n          <div key={day} className=\"text-muted-foreground text-xs\">\n            {renderDay(day)}\n          </div>\n        ))}\n      </div>\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -22,5 +21,6 @@
       "productivity"
     ],
     "size": "sm"
-  }
+  },
+  "type": "registry:component"
 }

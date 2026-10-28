@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sports-sm-04",
-  "type": "registry:component",
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json",
     "https://wigggle-ui.vercel.app/r/label.json"
@@ -9,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/widgets/sports/sm/sports-04.tsx",
-      "content": "import * as React from \"react\";\r\nimport Image from \"next/image\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetHeader,\r\n  WidgetTitle,\r\n} from \"@/registry/default/ui/widget\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\n\r\nconst upcomingMatches = [\r\n  {\r\n    home: \"/assets/logos/fcb.png\",\r\n    away: \"/assets/logos/bvb.png\",\r\n    date: \"25 Oct\",\r\n    time: \"8:30 PM\",\r\n  },\r\n  {\r\n    home: \"/assets/logos/mci.png\",\r\n    away: \"/assets/logos/fcb.png\",\r\n    date: \"29 Oct\",\r\n    time: \"12:30 PM\",\r\n  },\r\n  {\r\n    home: \"/assets/logos/bvb.png\",\r\n    away: \"/assets/logos/fcb.png\",\r\n    date: \"31 Oct\",\r\n    time: \"8:30 PM\",\r\n  },\r\n];\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <Widget design=\"mumbai\">\r\n      <WidgetHeader>\r\n        <WidgetTitle className=\"text-muted-foreground text-sm font-normal\">\r\n          Fixtures\r\n        </WidgetTitle>\r\n      </WidgetHeader>\r\n      <WidgetContent className=\"mt-2 flex-col items-center gap-1.5\">\r\n        {upcomingMatches.map((match, i) => (\r\n          <div\r\n            key={i}\r\n            className=\"bg-secondary flex w-full items-center justify-between rounded-lg px-2 py-1\"\r\n          >\r\n            <Image\r\n              className=\"size-7\"\r\n              src={match.home}\r\n              alt={match.home}\r\n              width={64}\r\n              height={64}\r\n            />\r\n            <div className=\"flex flex-col items-center justify-center gap-0\">\r\n              <Label className=\"text-muted-foreground text-xs\">\r\n                {match.date}\r\n              </Label>\r\n              <Label className=\"text-muted-foreground text-xs\">\r\n                {match.time}\r\n              </Label>\r\n            </div>\r\n            <Image\r\n              className=\"size-7\"\r\n              src={match.away}\r\n              alt={match.away}\r\n              width={64}\r\n              height={64}\r\n            />\r\n          </div>\r\n        ))}\r\n      </WidgetContent>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "import Image from \"next/image\";\n\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nconst upcomingMatches = [\n  {\n    away: \"/assets/logos/bvb.png\",\n    date: \"25 Oct\",\n    home: \"/assets/logos/fcb.png\",\n    time: \"8:30 PM\",\n  },\n  {\n    away: \"/assets/logos/fcb.png\",\n    date: \"29 Oct\",\n    home: \"/assets/logos/mci.png\",\n    time: \"12:30 PM\",\n  },\n  {\n    away: \"/assets/logos/fcb.png\",\n    date: \"31 Oct\",\n    home: \"/assets/logos/bvb.png\",\n    time: \"8:30 PM\",\n  },\n];\n\nconst WidgetDemo = () => (\n  <Widget design=\"mumbai\">\n    <WidgetHeader>\n      <WidgetTitle className=\"text-sm font-normal\">Fixtures</WidgetTitle>\n    </WidgetHeader>\n    <WidgetContent className=\"mt-2 flex-col items-center gap-1.5\">\n      {upcomingMatches.map((match, i) => (\n        <div\n          key={i}\n          className=\"bg-secondary flex w-full items-center justify-between rounded-lg px-2 py-1\"\n        >\n          <Image\n            className=\"size-7\"\n            src={match.home}\n            alt={match.home}\n            width={64}\n            height={64}\n          />\n          <div className=\"flex flex-col items-center justify-center gap-0\">\n            <Label variant=\"muted-foreground\" size=\"xs\">\n              {match.date}\n            </Label>\n            <Label variant=\"muted-foreground\" size=\"xs\">\n              {match.time}\n            </Label>\n          </div>\n          <Image\n            className=\"size-7\"\n            src={match.away}\n            alt={match.away}\n            width={64}\n            height={64}\n          />\n        </div>\n      ))}\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -18,5 +17,6 @@
       "sports"
     ],
     "size": "sm"
-  }
+  },
+  "type": "registry:component"
 }

@@ -32,7 +32,7 @@
       "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
-          "path": "registry/default/ui/avatar.tsx",
+          "path": "components/ui/avatar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -44,7 +44,7 @@
       "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
-          "path": "registry/default/ui/badge.tsx",
+          "path": "components/ui/badge.tsx",
           "type": "registry:ui"
         }
       ]
@@ -56,7 +56,7 @@
       "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
-          "path": "registry/default/ui/button.tsx",
+          "path": "components/ui/button.tsx",
           "type": "registry:ui"
         }
       ]
@@ -71,7 +71,7 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/carousel.tsx",
+          "path": "components/ui/carousel.tsx",
           "type": "registry:ui"
         }
       ]
@@ -82,7 +82,7 @@
       "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
-          "path": "registry/default/ui/circular-progress.tsx",
+          "path": "components/ui/circular-progress.tsx",
           "type": "registry:ui"
         }
       ]
@@ -93,7 +93,7 @@
       "dependencies": ["@radix-ui/react-dialog"],
       "files": [
         {
-          "path": "registry/default/ui/dialog.tsx",
+          "path": "components/ui/dialog.tsx",
           "type": "registry:ui"
         }
       ]
@@ -105,7 +105,7 @@
       "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
-          "path": "registry/default/ui/dropdown-menu.tsx",
+          "path": "components/ui/dropdown-menu.tsx",
           "type": "registry:ui"
         }
       ]
@@ -117,7 +117,7 @@
       "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
-          "path": "registry/default/ui/input.tsx",
+          "path": "components/ui/input.tsx",
           "type": "registry:ui"
         }
       ]
@@ -128,7 +128,7 @@
       "dependencies": ["@radix-ui/react-label"],
       "files": [
         {
-          "path": "registry/default/ui/label.tsx",
+          "path": "components/ui/label.tsx",
           "type": "registry:ui"
         }
       ]
@@ -139,7 +139,7 @@
       "dependencies": ["@radix-ui/react-popover"],
       "files": [
         {
-          "path": "registry/default/ui/popover.tsx",
+          "path": "components/ui/popover.tsx",
           "type": "registry:ui"
         }
       ]
@@ -151,7 +151,7 @@
       "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
-          "path": "registry/default/ui/progress.tsx",
+          "path": "components/ui/progress.tsx",
           "type": "registry:ui"
         }
       ]
@@ -163,7 +163,7 @@
       "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
-          "path": "registry/default/ui/select.tsx",
+          "path": "components/ui/select.tsx",
           "type": "registry:ui"
         }
       ]
@@ -175,7 +175,7 @@
       "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
-          "path": "registry/default/ui/scroll-area.tsx",
+          "path": "components/ui/scroll-area.tsx",
           "type": "registry:ui"
         }
       ]
@@ -187,7 +187,7 @@
       "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
-          "path": "registry/default/ui/separator.tsx",
+          "path": "components/ui/separator.tsx",
           "type": "registry:ui"
         }
       ]
@@ -198,7 +198,7 @@
       "dependencies": ["@radix-ui/react-switch"],
       "files": [
         {
-          "path": "registry/default/ui/switch.tsx",
+          "path": "components/ui/switch.tsx",
           "type": "registry:ui"
         }
       ]
@@ -209,7 +209,7 @@
       "dependencies": ["@radix-ui/react-tabs"],
       "files": [
         {
-          "path": "registry/default/ui/tabs.tsx",
+          "path": "components/ui/tabs.tsx",
           "type": "registry:ui"
         }
       ]
@@ -220,7 +220,7 @@
       "registryDependencies": ["https://wigggle-ui.vercel.app/r/utils.json"],
       "files": [
         {
-          "path": "registry/default/ui/textarea.tsx",
+          "path": "components/ui/textarea.tsx",
           "type": "registry:ui"
         }
       ]
@@ -231,7 +231,7 @@
       "dependencies": ["@radix-ui/react-tooltip"],
       "files": [
         {
-          "path": "registry/default/ui/tooltip.tsx",
+          "path": "components/ui/tooltip.tsx",
           "type": "registry:ui"
         }
       ]
@@ -245,7 +245,7 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/item.tsx",
+          "path": "components/ui/item.tsx",
           "type": "registry:ui"
         }
       ]
@@ -256,7 +256,7 @@
       "dependencies": ["@ncdai/react-wheel-picker"],
       "files": [
         {
-          "path": "registry/default/ui/wheel-picker.tsx",
+          "path": "components/ui/wheel-picker.tsx",
           "type": "registry:ui"
         }
       ]
@@ -430,23 +430,6 @@
       "files": [
         {
           "path": "registry/default/widgets/calendar/sm/calendar-09.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "meta": {
-        "tags": ["calendar"]
-      }
-    },
-    {
-      "name": "calendar-sm-10",
-      "type": "registry:component",
-      "registryDependencies": [
-        "https://wigggle-ui.vercel.app/r/widget.json",
-        "https://wigggle-ui.vercel.app/r/label.json"
-      ],
-      "files": [
-        {
-          "path": "registry/default/widgets/calendar/sm/calendar-10.tsx",
           "type": "registry:component"
         }
       ],

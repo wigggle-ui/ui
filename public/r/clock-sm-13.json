@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "clock-sm-13",
-  "type": "registry:component",
   "dependencies": [
     "lucide-react"
   ],
@@ -13,7 +12,7 @@
   "files": [
     {
       "path": "registry/default/widgets/clock/sm/clock-13.tsx",
-      "content": "import { CheckIcon, XIcon } from \"lucide-react\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetFooter,\r\n} from \"@/registry/default/ui/widget\";\r\nimport { Button } from \"@/registry/default/ui/button\";\r\n\r\nimport type { WheelPickerOption } from \"@/components/wheel-picker\";\r\nimport { WheelPicker, WheelPickerWrapper } from \"@/components/wheel-picker\";\r\n\r\nconst createArray = (length: number, add = 0): WheelPickerOption[] =>\r\n  Array.from({ length }, (_, i) => {\r\n    const value = i + add;\r\n    return {\r\n      label: value.toString().padStart(2, \"0\"),\r\n      value: value.toString(),\r\n    };\r\n  });\r\n\r\nconst hourOptions = createArray(12, 1);\r\nconst minuteOptions = createArray(60);\r\nconst meridiemOptions: WheelPickerOption[] = [\r\n  { label: \"AM\", value: \"AM\" },\r\n  { label: \"PM\", value: \"PM\" },\r\n];\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <Widget className=\"gap-3\" design=\"mumbai\">\r\n      <WidgetContent>\r\n        <WheelPickerWrapper className=\"rounded-lg border-2\">\r\n          <WheelPicker\r\n            visibleCount={12}\r\n            options={hourOptions}\r\n            defaultValue=\"9\"\r\n            infinite\r\n          />\r\n          <WheelPicker\r\n            visibleCount={12}\r\n            options={minuteOptions}\r\n            defaultValue=\"41\"\r\n            infinite\r\n          />\r\n          <WheelPicker\r\n            visibleCount={12}\r\n            options={meridiemOptions}\r\n            defaultValue=\"AM\"\r\n          />\r\n        </WheelPickerWrapper>\r\n      </WidgetContent>\r\n      <WidgetFooter>\r\n        <Button\r\n          size=\"icon-sm\"\r\n          variant=\"outline\"\r\n          className=\"rounded-full\"\r\n          aria-label=\"Reset stopwatch\"\r\n        >\r\n          <XIcon className=\"stroke-destructive size-4 stroke-3\" />\r\n        </Button>\r\n        <Button\r\n          size=\"icon-sm\"\r\n          variant=\"outline\"\r\n          className=\"rounded-full\"\r\n          aria-label={\"Start stopwatch\"}\r\n        >\r\n          <CheckIcon className=\"stroke-productive size-4 stroke-3\" />\r\n        </Button>\r\n      </WidgetFooter>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "import { CheckIcon, XIcon } from \"lucide-react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport type { WheelPickerOption } from \"@/components/ui/wheel-picker\";\nimport { WheelPicker, WheelPickerWrapper } from \"@/components/ui/wheel-picker\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n} from \"@/registry/default/ui/widget\";\n\nconst createArray = (length: number, add = 0): WheelPickerOption[] =>\n  Array.from({ length }, (_, i) => {\n    const value = i + add;\n    return {\n      label: value.toString().padStart(2, \"0\"),\n      value: value.toString(),\n    };\n  });\n\nconst hourOptions = createArray(12, 1);\nconst minuteOptions = createArray(60);\nconst meridiemOptions: WheelPickerOption[] = [\n  { label: \"AM\", value: \"AM\" },\n  { label: \"PM\", value: \"PM\" },\n];\n\nconst WidgetDemo = () => (\n  <Widget className=\"gap-3\" design=\"mumbai\">\n    <WidgetContent>\n      <WheelPickerWrapper>\n        <WheelPicker\n          visibleCount={12}\n          options={hourOptions}\n          defaultValue=\"9\"\n          infinite\n        />\n        <WheelPicker\n          visibleCount={12}\n          options={minuteOptions}\n          defaultValue=\"41\"\n          infinite\n        />\n        <WheelPicker\n          visibleCount={12}\n          options={meridiemOptions}\n          defaultValue=\"AM\"\n        />\n      </WheelPickerWrapper>\n    </WidgetContent>\n    <WidgetFooter>\n      <Button\n        size=\"icon-sm-circle\"\n        variant=\"outline\"\n        aria-label=\"Reset stopwatch\"\n      >\n        <XIcon className=\"stroke-destructive size-4 stroke-3\" />\n      </Button>\n      <Button\n        size=\"icon-sm-circle\"\n        variant=\"outline\"\n        aria-label=\"Start stopwatch\"\n      >\n        <CheckIcon className=\"stroke-productive size-4 stroke-3\" />\n      </Button>\n    </WidgetFooter>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -30,5 +29,6 @@
         "logo": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 640 640'><path fill='var(--foreground)' d='M0 0h640v640H0z'/><path fill='var(--background)' d='M256 448H128v-64h128v64ZM512 256H384v128h128v64H320V192h192v64ZM128 384H64V256h64v128ZM576 384h-64V256h64v128ZM256 256H128v-64h128v64Z'/></svg>"
       }
     ]
-  }
+  },
+  "type": "registry:component"
 }

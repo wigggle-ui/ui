@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "calendar-sm-03",
-  "type": "registry:component",
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json",
     "https://wigggle-ui.vercel.app/r/badge.json",
@@ -10,7 +9,7 @@
   "files": [
     {
       "path": "registry/default/widgets/calendar/sm/calendar-03.tsx",
-      "content": "import * as React from \"react\";\n\nimport {\n  Widget,\n  WidgetHeader,\n  WidgetTitle,\n  WidgetContent,\n} from \"@/registry/default/ui/widget\";\nimport { Badge } from \"@/registry/default/ui/badge\";\nimport { Separator } from \"@/registry/default/ui/separator\";\n\nexport default function WidgetDemo() {\n  const now = new Date();\n\n  const month = now.toLocaleString(\"en-US\", { month: \"long\" });\n  const year = now.getFullYear();\n  const date = now.getDate();\n\n  const daysInMonth = new Date(year, now.getMonth() + 1, 0).getDate();\n  const firstDayOfMonth = new Date(year, now.getMonth(), 1).getDay();\n\n  const fillerDays = Array(firstDayOfMonth).fill(null);\n  const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);\n\n  return (\n    <Widget className=\"gap-2\" design=\"mumbai\">\n      <WidgetHeader className=\"justify-center\">\n        <WidgetTitle>\n          {month} {year}\n        </WidgetTitle>\n      </WidgetHeader>\n      <Separator className=\"h-0.5 rounded-full\" />\n      <WidgetContent>\n        <div className=\"grid size-full grid-cols-7 gap-1 text-center\">\n          {[\"S\", \"M\", \"T\", \"W\", \"T\", \"F\", \"S\"].map((day, i) => (\n            <div key={`weekday-${i}-${day}`} className=\"text-xs\">\n              {day}\n            </div>\n          ))}\n\n          {fillerDays.map((_, i) => (\n            <div key={`filler-${i}`} className=\"text-xs\">\n              &nbsp;\n            </div>\n          ))}\n\n          {days.map((day) => (\n            <div key={day} className=\"text-muted-foreground text-xs\">\n              {day === date ? (\n                <Badge className=\"flex size-4 items-center justify-center p-2\">\n                  {day}\n                </Badge>\n              ) : (\n                day\n              )}\n            </div>\n          ))}\n        </div>\n      </WidgetContent>\n    </Widget>\n  );\n}\n",
+      "content": "import { Badge } from \"@/components/ui/badge\";\nimport { Separator } from \"@/components/ui/separator\";\nimport {\n  Widget,\n  WidgetHeader,\n  WidgetTitle,\n  WidgetContent,\n} from \"@/registry/default/ui/widget\";\n\nconst now = new Date();\n\nconst month = now.toLocaleString(\"en-US\", { month: \"long\" });\nconst year = now.getFullYear();\nconst date = now.getDate();\n\nconst daysInMonth = new Date(year, now.getMonth() + 1, 0).getDate();\nconst firstDayOfMonth = new Date(year, now.getMonth(), 1).getDay();\n\nconst fillerDays = Array.from({ length: firstDayOfMonth }).fill(null);\nconst days = Array.from({ length: daysInMonth }, (_, i) => i + 1);\n\nconst WidgetDemo = () => (\n  <Widget className=\"gap-2\" design=\"mumbai\">\n    <WidgetHeader className=\"justify-center\">\n      <WidgetTitle>\n        {month} {year}\n      </WidgetTitle>\n    </WidgetHeader>\n    <Separator className=\"h-0.5\" />\n    <WidgetContent>\n      <div className=\"grid size-full grid-cols-7 gap-1 text-center\">\n        {[\"S\", \"M\", \"T\", \"W\", \"T\", \"F\", \"S\"].map((day, i) => (\n          <div key={`weekday-${i}-${day}`} className=\"text-xs\">\n            {day}\n          </div>\n        ))}\n\n        {fillerDays.map((_, i) => (\n          <div key={`filler-${i}`} className=\"text-xs\">\n            &nbsp;\n          </div>\n        ))}\n\n        {days.map((day) => (\n          <div key={day} className=\"text-muted-foreground text-xs\">\n            {day === date ? (\n              <Badge\n                className=\"flex size-4 items-center justify-center\"\n                radius=\"xs\"\n              >\n                {day}\n              </Badge>\n            ) : (\n              day\n            )}\n          </div>\n        ))}\n      </div>\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -18,5 +17,6 @@
     "tags": [
       "calendar"
     ]
-  }
+  },
+  "type": "registry:component"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "media-sm-03",
-  "type": "registry:component",
   "dependencies": [
     "lucide-react"
   ],
@@ -14,7 +13,7 @@
   "files": [
     {
       "path": "registry/default/widgets/media/sm/media-03.tsx",
-      "content": "import { SkipBackIcon, SkipForwardIcon } from \"lucide-react\";\r\n\r\nimport {\r\n  Widget,\r\n  WidgetContent,\r\n  WidgetFooter,\r\n} from \"@/registry/default/ui/widget\";\r\nimport {\r\n  AudioPlayerButton,\r\n  AudioPlayerProvider,\r\n  exampleTrack,\r\n} from \"@/components/ui/audio-player\";\r\nimport { Label } from \"@/registry/default/ui/label\";\r\nimport { Button } from \"@/registry/default/ui/button\";\r\n\r\nexport default function WidgetDemo() {\r\n  return (\r\n    <AudioPlayerProvider>\r\n      <Widget design=\"mumbai\" className=\"justify-between gap-3\">\r\n        <WidgetContent>\r\n          <div className=\"relative size-full\">\r\n            <img\r\n              src=\"https://i.scdn.co/image/ab67616d0000b273dfd5b5d99cf81f1864deef01\"\r\n              alt=\"Code Monkey\"\r\n              className=\"max-h-28 w-full rounded-lg object-cover\"\r\n            />\r\n            <div className=\"absolute inset-0 z-10 rounded-md bg-linear-to-t from-black via-black/50 to-transparent\" />\r\n            <Label className=\"text-muted-foreground absolute bottom-7 left-2 z-10 text-xs font-normal\">\r\n              Now Playing\r\n            </Label>\r\n            <Label className=\"absolute bottom-2 left-2 z-10 w-36 overflow-hidden text-sm\">\r\n              <span className=\"inline-block whitespace-nowrap\">\r\n                {exampleTrack.data.title}\r\n              </span>\r\n            </Label>\r\n          </div>\r\n        </WidgetContent>\r\n        <WidgetFooter className=\"gap-2\">\r\n          <AudioPlayerButton\r\n            variant=\"outline\"\r\n            className=\"flex-1 rounded-full\"\r\n            item={exampleTrack}\r\n          />\r\n          <Button className=\"rounded-full\" variant=\"outline\" size=\"icon-sm\">\r\n            <SkipBackIcon />\r\n          </Button>\r\n          <Button className=\"rounded-full\" variant=\"outline\" size=\"icon-sm\">\r\n            <SkipForwardIcon />\r\n          </Button>\r\n        </WidgetFooter>\r\n      </Widget>\r\n    </AudioPlayerProvider>\r\n  );\r\n}\r\n",
+      "content": "import { SkipBackIcon, SkipForwardIcon } from \"lucide-react\";\nimport Image from \"next/image\";\n\nimport {\n  AudioPlayerButton,\n  AudioPlayerProvider,\n} from \"@/components/ui/audio-player\";\nimport { Button } from \"@/components/ui/button\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n} from \"@/registry/default/ui/widget\";\n\nconst track = {\n  data: { artist: \"Jonathan Coulton\", title: \"Code Monkey\" },\n  id: \"0\",\n  src: \"/code-monkey.mp3\",\n};\n\nconst WidgetDemo = () => (\n  <AudioPlayerProvider>\n    <Widget design=\"mumbai\" className=\"justify-between gap-3\">\n      <WidgetContent>\n        <div className=\"relative size-full\">\n          <Image\n            fill\n            src=\"https://i.scdn.co/image/ab67616d0000b273dfd5b5d99cf81f1864deef01\"\n            alt=\"Code Monkey\"\n            className=\"max-h-28 w-full rounded-lg object-cover\"\n          />\n          <div className=\"absolute inset-0 z-10 rounded-md bg-linear-to-t from-black via-black/50 to-transparent\" />\n          <Label\n            variant=\"muted-foreground\"\n            size=\"xs\"\n            className=\"absolute bottom-7 left-2 z-10\"\n          >\n            Now Playing\n          </Label>\n          <Label\n            size=\"sm\"\n            className=\"absolute bottom-2 left-2 z-10 w-36 overflow-hidden\"\n          >\n            <span className=\"inline-block whitespace-nowrap\">\n              {track.data.title}\n            </span>\n          </Label>\n        </div>\n      </WidgetContent>\n      <WidgetFooter className=\"gap-2\">\n        <AudioPlayerButton variant=\"outline\" className=\"flex-1\" item={track} />\n        <Button variant=\"outline\" size=\"icon-sm-circle\">\n          <SkipBackIcon />\n        </Button>\n        <Button variant=\"outline\" size=\"icon-sm-circle\">\n          <SkipForwardIcon />\n        </Button>\n      </WidgetFooter>\n    </Widget>\n  </AudioPlayerProvider>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -31,5 +30,6 @@
         "logo": "<svg xmlns='http://www.w3.org/2000/svg' role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'></path></svg>"
       }
     ]
-  }
+  },
+  "type": "registry:component"
 }

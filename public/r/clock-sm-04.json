@@ -1,14 +1,13 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "clock-sm-04",
-  "type": "registry:component",
   "registryDependencies": [
     "https://wigggle-ui.vercel.app/r/widget.json"
   ],
   "files": [
     {
       "path": "registry/default/widgets/clock/sm/clock-04.tsx",
-      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\r\n\r\nexport default function Clock04() {\r\n  const [time, setTime] = React.useState(new Date());\r\n\r\n  React.useEffect(() => {\r\n    const timer = setInterval(() => {\r\n      setTime(new Date());\r\n    }, 1000);\r\n\r\n    return () => {\r\n      clearInterval(timer);\r\n    };\r\n  }, []);\r\n\r\n  const hours = time.getHours() % 12;\r\n  const minutes = time.getMinutes();\r\n  const seconds = time.getSeconds();\r\n\r\n  const hoursDegrees = ((hours + minutes / 60) / 12) * 360;\r\n  const minutesDegrees = ((minutes + seconds / 60) / 60) * 360;\r\n  const secondsDegrees = (seconds / 60) * 360;\r\n\r\n  return (\r\n    <Widget>\r\n      <WidgetContent>\r\n        <div className=\"relative size-[88px]\">\r\n          <div\r\n            className=\"absolute bottom-1/2 left-1/2 h-12 w-1 origin-bottom rounded-full bg-gray-800 dark:bg-gray-200\"\r\n            style={{\r\n              transform: `translateX(-50%) rotate(${hoursDegrees}deg)`,\r\n            }}\r\n          />\r\n          <div\r\n            className=\"absolute bottom-1/2 left-1/2 h-12 w-1 origin-bottom rounded-full bg-gray-600 dark:bg-gray-400\"\r\n            style={{\r\n              transform: `translateX(-50%) rotate(${minutesDegrees}deg)`,\r\n            }}\r\n          />\r\n          <div\r\n            className=\"absolute bottom-1/2 left-1/2 h-12 w-0.5 origin-bottom rounded-full bg-red-500\"\r\n            style={{\r\n              transform: `translateX(-50%) rotate(${secondsDegrees}deg)`,\r\n            }}\r\n          />\r\n          <div className=\"absolute top-1/2 left-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gray-800 dark:bg-gray-200\" />\r\n        </div>\r\n      </WidgetContent>\r\n    </Widget>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\nimport type { CSSProperties } from \"react\";\n\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\nconst now = new Date();\n\nconst WidgetDemo = () => {\n  const [time, setTime] = useState<Date>(now);\n\n  useEffect(() => {\n    const updateTime = () => setTime(new Date());\n\n    updateTime();\n\n    const timer = setInterval(updateTime, 1000);\n\n    return () => clearInterval(timer);\n  }, []);\n\n  const hours = time ? time.getHours() % 12 : 0;\n  const minutes = time?.getMinutes() ?? 0;\n  const seconds = time?.getSeconds() ?? 0;\n\n  const hoursDegrees = ((hours + minutes / 60) / 12) * 360;\n  const minutesDegrees = ((minutes + seconds / 60) / 60) * 360;\n  const secondsDegrees = (seconds / 60) * 360;\n\n  return (\n    <Widget>\n      <WidgetContent>\n        <div className=\"relative size-22\">\n          {/* Hours Hand */}\n          <div\n            className=\"bg-primary dark:bg-primary absolute bottom-1/2 left-1/2 h-10 w-1 origin-bottom -translate-x-1/2 rotate-(--rotation) rounded-full\"\n            style={{ \"--rotation\": `${hoursDegrees}deg` } as CSSProperties}\n          />\n          {/* Minutes Hand */}\n          <div\n            className=\"bg-muted-foreground dark:bg-ring absolute bottom-1/2 left-1/2 h-15 w-1 origin-bottom -translate-x-1/2 rotate-(--rotation) rounded-full\"\n            style={{ \"--rotation\": `${minutesDegrees}deg` } as CSSProperties}\n          />\n          {/* Seconds Hand */}\n          <div\n            className=\"bg-destructive absolute bottom-1/2 left-1/2 h-12 w-0.5 origin-bottom -translate-x-1/2 rotate-(--rotation) rounded-full\"\n            style={{ \"--rotation\": `${secondsDegrees}deg` } as CSSProperties}\n          />\n          <div className=\"bg-primary dark:bg-primary absolute top-1/2 left-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full\" />\n        </div>\n      </WidgetContent>\n    </Widget>\n  );\n};\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
@@ -17,5 +16,6 @@
       "clock"
     ],
     "size": "sm"
-  }
+  },
+  "type": "registry:component"
 }
