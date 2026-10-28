@@ -1,100 +1,100 @@
+import { cva } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+
 import { cn } from "@/lib/utils";
 
 const widgetVariants = cva(
-  "relative flex flex-col border-2 whitespace-nowrap shadow-md dark:shadow-secondary/50 rounded-3xl",
+  "dark:shadow-secondary/50 relative flex flex-col rounded-3xl border-2 whitespace-nowrap shadow-md",
   {
+    defaultVariants: {
+      design: "default",
+      size: "sm",
+      variant: "default",
+    },
     variants: {
-      size: {
-        sm: "size-48",
-        md: "w-96 h-48",
-        lg: "size-96",
-      },
       design: {
         default: "p-6",
         mumbai: "p-4",
+      },
+      size: {
+        lg: "size-96",
+        md: "h-48 w-96",
+        sm: "size-48",
       },
       variant: {
         default: "bg-background text-foreground",
         secondary: "bg-secondary text-secondary-foreground",
       },
     },
-    defaultVariants: {
-      size: "sm",
-      design: "default",
-      variant: "default",
-    },
-  },
+  }
 );
 
 export interface WidgetProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.ComponentPropsWithRef<"div">,
     VariantProps<typeof widgetVariants> {
   asChild?: boolean;
 }
 
-const Widget = React.forwardRef<HTMLDivElement, WidgetProps>(
-  ({ className, size, design, variant, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn(widgetVariants({ size, design, variant, className }))}
-      {...props}
-    />
-  ),
-);
-Widget.displayName = "Widget";
-
-const WidgetHeader = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+const Widget = ({
+  className,
+  size,
+  design,
+  variant,
+  ...props
+}: WidgetProps) => (
   <div
-    ref={ref}
+    className={cn(widgetVariants({ className, design, size, variant }))}
+    {...props}
+  />
+);
+
+const WidgetHeader = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<"div">) => (
+  <div
     className={cn(
-      "text-semibold flex flex-none items-start justify-between",
-      className,
+      "flex flex-none items-start justify-between font-semibold",
+      className
     )}
     {...props}
   />
-));
-WidgetHeader.displayName = "WidgetHeader";
+);
 
-const WidgetTitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
+type WidgetTitleProps = React.ComponentPropsWithRef<"h5"> & {
+  children: React.ReactNode;
+};
+
+const WidgetTitle = ({ className, children, ...props }: WidgetTitleProps) => (
   <h5
-    ref={ref}
     className={cn("leading-none font-semibold tracking-tight", className)}
     {...props}
-  />
-));
-WidgetTitle.displayName = "WidgetTitle";
+  >
+    {children}
+  </h5>
+);
 
-const WidgetContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+const WidgetContent = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<"div">) => (
   <div
-    ref={ref}
     className={cn("flex flex-1 items-center justify-center", className)}
     {...props}
   />
-));
-WidgetContent.displayName = "WidgetContent";
+);
 
-const WidgetFooter = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+const WidgetFooter = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<"div">) => (
   <div
-    ref={ref}
     className={cn("flex flex-none items-center justify-between", className)}
     {...props}
   />
-));
-WidgetFooter.displayName = "WidgetFooter";
+);
 
 export {
   Widget,

@@ -2,18 +2,18 @@
 
 import React from "react";
 
-type Props = {
+interface Props {
   percentageComplete: number;
   taskType: string;
   ringColor?: string;
-};
+}
 
-function CircularProgress({
+const CircularProgress = ({
   percentageComplete,
   taskType,
   ringColor = "stroke-blue-600",
   ...props
-}: React.ComponentProps<"div"> & Props) {
+}: React.ComponentProps<"div"> & Props) => {
   const radius = 16;
   const circumference = 2 * Math.PI * radius;
 
@@ -26,10 +26,13 @@ function CircularProgress({
 
     // small delay so the transition triggers
     requestAnimationFrame(() => setOffset(finalOffset));
-  }, [percentageComplete]);
+  }, [circumference, percentageComplete]);
 
   return (
-    <div className="flex size-full flex-col items-center justify-center gap-1">
+    <div
+      className="flex size-full flex-col items-center justify-center gap-1"
+      {...props}
+    >
       <div className="relative">
         <svg className="size-full scale-y-[-1] -rotate-90" viewBox="0 0 36 36">
           {/* Background */}
@@ -52,7 +55,7 @@ function CircularProgress({
             strokeDasharray={circumference}
             strokeDashoffset={offset}
             strokeLinecap="round"
-            className={`${ringColor} transition-[stroke-dashoffset] duration-700 ease-out`}
+            className={`${ringColor} transition-all duration-700 ease-out`}
           />
         </svg>
 
@@ -64,6 +67,6 @@ function CircularProgress({
       <p className="text-xs">{taskType}</p>
     </div>
   );
-}
+};
 
 export { CircularProgress };
