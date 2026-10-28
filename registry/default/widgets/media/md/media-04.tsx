@@ -1,22 +1,23 @@
 "use client";
 
-import React from "react";
+import { cn } from "cn";
 import { MusicIcon } from "lucide-react";
+import Image from "next/image";
+import React from "react";
 
-import {
-  Widget,
-  WidgetContent,
-  WidgetHeader,
-} from "@/registry/default/ui/widget";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from "@/components/ui/carousel";
-import { cn } from "@/registry/default/lib/utils";
+import type { CarouselApi } from "@/components/ui/carousel";
+import {
+  Widget,
+  WidgetContent,
+  WidgetHeader,
+} from "@/registry/default/ui/widget";
 
 const albums = [
   "https://i.scdn.co/image/ab6761610000e5ebd55c95ad400aed87da52daec",
@@ -26,56 +27,70 @@ const albums = [
   "https://i.scdn.co/image/ab67616d0000b273627b5b17cb48f6e6956b842e",
 ];
 
-export default function WidgetDemo() {
+const noCleanup = (): undefined => undefined;
+
+const WidgetDemo = () => {
   const [api, setApi] = React.useState<CarouselApi>();
-  const [current, setCurrent] = React.useState(0);
 
-  React.useEffect(() => {
-    if (!api) {
-      return;
-    }
+  const subscribe = React.useCallback(
+    (onStoreChange: () => void) => {
+      if (!api) {
+        return noCleanup;
+      }
 
-    setCurrent(api.selectedScrollSnap() + 1);
+      api.on("reInit", onStoreChange);
+      api.on("select", onStoreChange);
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
+      return () => {
+        api.off("reInit", onStoreChange);
+        api.off("select", onStoreChange);
+      };
+    },
+    [api]
+  );
+  const getCurrent = React.useCallback(
+    () => api?.selectedScrollSnap() ?? 0,
+    [api]
+  );
+  const current =
+    React.useSyncExternalStore(subscribe, getCurrent, () => 0) + 1;
 
   return (
-    <Widget size="md" design="mumbai">
+    <Widget className="relative gap-4" size="md" design="mumbai">
       <WidgetHeader className="items-center justify-start gap-x-2">
         <MusicIcon className="size-5" />
         Top 100 in India
       </WidgetHeader>
-      <WidgetContent className="h-max max-h-32">
-        <div className="mx-auto">
-          <Carousel
-            setApi={setApi}
-            className="w-full max-w-xs"
-            opts={{ loop: true }}
-          >
-            <CarouselContent className="pb-4">
-              {albums.map((image, index) => (
-                <CarouselItem key={index} className={cn("basis-[33%]", {})}>
-                  <img
-                    src={image}
-                    alt={`Album ${index + 1}`}
-                    className={cn(
-                      "aspect-square rounded-lg transition-transform duration-500",
-                      {
-                        "scale-[0.7]": index !== current - 1,
-                      },
-                    )}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="top-[calc(100%-1rem)] left-0 translate-y-0" />
-            <CarouselNext className="top-[calc(100%-1rem)] right-0 translate-y-0" />
-          </Carousel>
-        </div>
+      <WidgetContent className="h-full items-start">
+        <Carousel
+          setApi={setApi}
+          className="w-full max-w-xs"
+          opts={{ loop: true }}
+        >
+          <CarouselContent>
+            {albums.map((image, index) => (
+              <CarouselItem key={index} className={cn("basis-[33%]", {})}>
+                <Image
+                  width={90}
+                  height={90}
+                  src={image}
+                  alt={`Album ${index + 1}`}
+                  className={cn(
+                    "aspect-square rounded-lg transition-transform duration-500",
+                    {
+                      "scale-[0.7]": index !== current - 1,
+                    }
+                  )}
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute top-[calc(100%-0rem)] -left-5 translate-y-0" />
+          <CarouselNext className="absolute top-[calc(100%-0rem)] -right-5 translate-y-0" />
+        </Carousel>
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;
