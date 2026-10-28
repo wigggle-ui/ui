@@ -1,28 +1,29 @@
-import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next";
 import { OpenPanelComponent } from "@openpanel/nextjs";
+import { Analytics } from "@vercel/analytics/next";
+import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 
 import "./globals.css";
 
-import { ThemeProvider } from "@/components/theme-provider";
-import SiteHeader from "@/components/site-header";
+import React from "react";
+
 import SiteFooter from "@/components/site-footer";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
+import SiteHeader from "@/components/site-header";
+import { ThemeProvider } from "@/components/theme-provider";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { siteConfig } from "@/config/site";
 
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
 });
+const openPanelClientId = process.env.OPEN_PANEL_CLIENT_ID;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: siteConfig.title,
-    template: `%s | ${siteConfig.name}`,
-  },
   description: siteConfig.description,
+  icons: {
+    shortcut: "/favicon.ico",
+  },
   keywords: [
     "react widgets",
     "react components",
@@ -33,80 +34,85 @@ export const metadata: Metadata = {
     "customizable components",
     "dark mode components",
   ],
+  metadataBase: new URL(siteConfig.url),
   openGraph: {
-    title: siteConfig.title,
     description: siteConfig.description,
-    url: siteConfig.url,
-    siteName: siteConfig.name,
     images: [
       {
-        width: 1200,
+        alt: `${siteConfig.name} Cover`,
         height: 630,
         url: siteConfig.ogImage,
-        alt: `${siteConfig.name} Cover`,
+        width: 1200,
       },
     ],
     locale: "en_US",
+    siteName: siteConfig.name,
+    title: siteConfig.title,
     type: "website",
+    url: siteConfig.url,
+  },
+  robots: {
+    follow: true,
+    googleBot: {
+      follow: true,
+      index: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+    index: true,
+  },
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
   },
   twitter: {
-    title: siteConfig.title,
-    description: siteConfig.description,
     card: "summary_large_image",
+    creator: siteConfig.author,
+    description: siteConfig.description,
     images: [
       {
-        width: 1200,
+        alt: `${siteConfig.name} Cover`,
         height: 630,
         url: siteConfig.ogImage,
-        alt: `${siteConfig.name} Cover`,
+        width: 1200,
       },
     ],
     site: siteConfig.author,
-    creator: siteConfig.author,
-  },
-  icons: {
-    shortcut: "/favicon.ico",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+    title: siteConfig.title,
   },
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
-      <body className={`${outfit.className} typeset typeset-app antialiased`}>
+}>): React.JSX.Element => (
+  <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
+    <body className={`${outfit.className} antialiased`}>
+      {openPanelClientId && (
         <OpenPanelComponent
-          clientId={process.env.OPEN_PANEL_CLIENT_ID!}
+          clientId={openPanelClientId}
           trackScreenViews={true}
         />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="bg-background text-foreground relative min-h-screen w-full font-sans grid grid-rows-[auto_1fr_auto]">
+      )}
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <TooltipProvider>
+          <div className="bg-background text-foreground relative grid min-h-screen w-full grid-rows-[auto_1fr_auto] font-sans">
             <SiteHeader />
             <div className="p-6">{children}</div>
             <SiteFooter />
           </div>
-          <TailwindIndicator />
-        </ThemeProvider>
-        <Analytics />
-      </body>
-    </html>
-  );
-}
+        </TooltipProvider>
+      </ThemeProvider>
+      <Analytics />
+    </body>
+  </html>
+);
+
+export default RootLayout;

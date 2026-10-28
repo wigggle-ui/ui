@@ -1,3 +1,9 @@
 allowBuilds:
+  esbuild: false
   sharp: set this to true or false
   unrs-resolver: true
+minimumReleaseAgeExclude:
+  - "@shadcn/lint@0.2.1"
+permissions:
+  ultracite:
+    skills: true

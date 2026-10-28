@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "postToolUse": [
+      {
+        "command": "npm run fix -- --hook",
+        "type": "command"
+      }
+    ]
+  },
+  "version": 1
+}
