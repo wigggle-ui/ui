@@ -6,8 +6,7 @@ Thank you for your interest in contributing to Wigggle UI! We appreciate your su
 
 ### Fork and Clone the Repository
 
-1. **Fork this repository**
-   Click [here](https://github.com/wigggle-ui/ui/fork) to fork the repository.
+1. **Fork this repository** Click [here](https://github.com/wigggle-ui/ui/fork) to fork the repository.
 
 2. **Clone your forked repository to your local machine**
 
@@ -64,11 +63,9 @@ Make sure categories follow the same naming convention.
 
 Check the category folders inside `registry/default/widgets` and create a file for your new widget. Every widget is a numbered file inside the category folder.
 
-Widget Naming Convention:
-**[CATEGORY-NAME]-[WIDGET-NUMBER].tsx**
+Widget Naming Convention: **[CATEGORY-NAME]-[WIDGET-NUMBER].tsx**
 
-Example:
-**calendar-07.tsx**
+Example: **calendar-07.tsx**
 
 ### 2. Create Widget
 
@@ -159,30 +156,20 @@ Pointers:
 
 ### 8. Commit Conventions
 
-Before you create a Pull Request, please check whether your commits comply with
-the commit conventions used in this repository.
+Before you create a Pull Request, please check whether your commits comply with the commit conventions used in this repository.
 
-When you create a commit we kindly ask you to follow the convention
-`category(scope or module): message` in your commit message while using one of
-the following categories:
+When you create a commit we kindly ask you to follow the convention `category(scope or module): message` in your commit message while using one of the following categories:
 
-- `feat / feature`: all changes that introduce completely new code or new
-  features
-- `fix`: changes that fix a bug (ideally you will additionally reference an
-  issue if present)
+- `feat / feature`: all changes that introduce completely new code or new features
+- `fix`: changes that fix a bug (ideally you will additionally reference an issue if present)
 - `refactor`: any code related change that is not a fix nor a feature
-- `docs`: changing existing or creating new documentation (i.e. README, docs for
-  usage of a lib or cli usage)
-- `build`: all changes regarding the build of the software, changes to
-  dependencies or the addition of new dependencies
-- `chore`: all changes to the repository that do not fit into any of the above
-  categories
+- `docs`: changing existing or creating new documentation (i.e. README, docs for usage of a lib or cli usage)
+- `build`: all changes regarding the build of the software, changes to dependencies or the addition of new dependencies
+- `chore`: all changes to the repository that do not fit into any of the above categories
 
   e.g. `feat(widgets): add new prop to the clock-12 widget`
 
-If you are interested in the detailed specification you can visit
-https://www.conventionalcommits.org/ or check out the
-[Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
+If you are interested in the detailed specification you can visit https://www.conventionalcommits.org/ or check out the [Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
 
 ### 9. Submit your widget
 
