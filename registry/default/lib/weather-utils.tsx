@@ -58,109 +58,136 @@ export enum WeatherCode {
   THUNDERSTORM_HAIL_HEAVY = 99,
 }
 
-export function getWeatherIcon(
+export const getWeatherIcon = (
   code: number,
-  size: string = "size-16",
-  props: Record<string, string | number> = {},
-): JSX.Element {
-  if (code === WeatherCode.CLEAR_SKY)
-    return <SunIcon className={size + " stroke-amber-300"} {...props} />;
+  size = "size-12",
+  props: Record<string, string | number> = {}
+): JSX.Element => {
+  if (code === WeatherCode.CLEAR_SKY) {
+    return <SunIcon className={`${size}`} {...props} />;
+  }
 
-  if (code >= WeatherCode.MAINLY_CLEAR && code <= WeatherCode.OVERCAST)
-    return <CloudSunIcon className={size + " stroke-gray-400"} {...props} />;
+  if (code >= WeatherCode.MAINLY_CLEAR && code <= WeatherCode.OVERCAST) {
+    return <CloudSunIcon className={`${size} stroke-ring`} {...props} />;
+  }
 
-  if (code >= WeatherCode.FOG && code <= WeatherCode.DEPOSITING_RIME_FOG)
-    return <CloudFogIcon className={size + " stroke-gray-400"} {...props} />;
+  if (code >= WeatherCode.FOG && code <= WeatherCode.DEPOSITING_RIME_FOG) {
+    return <CloudFogIcon className={`${size} stroke-ring`} {...props} />;
+  }
 
   if (
     code >= WeatherCode.DRIZZLE_LIGHT &&
     code <= WeatherCode.FREEZING_RAIN_HEAVY
-  )
-    return <CloudRainIcon className={size + " stroke-blue-400"} {...props} />;
+  ) {
+    return <CloudRainIcon className={`${size} stroke-chart-2`} {...props} />;
+  }
 
-  if (code >= WeatherCode.SNOW_FALL_SLIGHT && code <= WeatherCode.SNOW_GRAINS)
-    return <SnowflakeIcon className={size + " stroke-blue-200"} {...props} />;
+  if (code >= WeatherCode.SNOW_FALL_SLIGHT && code <= WeatherCode.SNOW_GRAINS) {
+    return <SnowflakeIcon className={`${size} stroke-border`} {...props} />;
+  }
 
   if (
     code >= WeatherCode.RAIN_SHOWERS_SLIGHT &&
     code <= WeatherCode.RAIN_SHOWERS_VIOLENT
-  )
-    return <CloudRainIcon className={size + " stroke-blue-500"} {...props} />;
-
-  if (
-    code >= WeatherCode.THUNDERSTORM_SLIGHT_MODERATE &&
-    code <= WeatherCode.THUNDERSTORM_HAIL_HEAVY
-  )
+  ) {
     return (
-      <CloudLightningIcon className={size + " stroke-purple-500"} {...props} />
+      <CloudRainIcon className={`${size} stroke-vercel-blue`} {...props} />
     );
-
-  return <SunIcon className={size + " stroke-amber-300"} {...props} />;
-}
-
-export function getSmallWeatherIcon(code: number): JSX.Element {
-  if (code === WeatherCode.CLEAR_SKY)
-    return <SunIcon className="stroke-muted-foreground size-6" />;
-
-  if (code >= WeatherCode.MAINLY_CLEAR && code <= WeatherCode.OVERCAST)
-    return <CloudSunIcon className="stroke-muted-foreground size-6" />;
-
-  if (code >= WeatherCode.FOG && code <= WeatherCode.DEPOSITING_RIME_FOG)
-    return <CloudFogIcon className="stroke-muted-foreground size-6" />;
-
-  if (
-    code >= WeatherCode.DRIZZLE_LIGHT &&
-    code <= WeatherCode.FREEZING_RAIN_HEAVY
-  )
-    return <CloudRainIcon className="stroke-muted-foreground size-6" />;
-
-  if (code >= WeatherCode.SNOW_FALL_SLIGHT && code <= WeatherCode.SNOW_GRAINS)
-    return <SnowflakeIcon className="stroke-muted-foreground size-6" />;
-
-  if (
-    code >= WeatherCode.RAIN_SHOWERS_SLIGHT &&
-    code <= WeatherCode.RAIN_SHOWERS_VIOLENT
-  )
-    return <CloudRainIcon className="stroke-muted-foreground size-6" />;
+  }
 
   if (
     code >= WeatherCode.THUNDERSTORM_SLIGHT_MODERATE &&
     code <= WeatherCode.THUNDERSTORM_HAIL_HEAVY
-  )
+  ) {
+    return (
+      <CloudLightningIcon
+        className={`${size} stroke-vercel-purple`}
+        {...props}
+      />
+    );
+  }
+
+  return <SunIcon className={`${size} stroke-vercel-yellow`} {...props} />;
+};
+
+export const getSmallWeatherIcon = (code: number): JSX.Element => {
+  if (code === WeatherCode.CLEAR_SKY) {
+    return <SunIcon className="stroke-muted-foreground size-6" />;
+  }
+
+  if (code >= WeatherCode.MAINLY_CLEAR && code <= WeatherCode.OVERCAST) {
+    return <CloudSunIcon className="stroke-muted-foreground size-6" />;
+  }
+
+  if (code >= WeatherCode.FOG && code <= WeatherCode.DEPOSITING_RIME_FOG) {
+    return <CloudFogIcon className="stroke-muted-foreground size-6" />;
+  }
+
+  if (
+    code >= WeatherCode.DRIZZLE_LIGHT &&
+    code <= WeatherCode.FREEZING_RAIN_HEAVY
+  ) {
+    return <CloudRainIcon className="stroke-muted-foreground size-6" />;
+  }
+
+  if (code >= WeatherCode.SNOW_FALL_SLIGHT && code <= WeatherCode.SNOW_GRAINS) {
+    return <SnowflakeIcon className="stroke-muted-foreground size-6" />;
+  }
+
+  if (
+    code >= WeatherCode.RAIN_SHOWERS_SLIGHT &&
+    code <= WeatherCode.RAIN_SHOWERS_VIOLENT
+  ) {
+    return <CloudRainIcon className="stroke-muted-foreground size-6" />;
+  }
+
+  if (
+    code >= WeatherCode.THUNDERSTORM_SLIGHT_MODERATE &&
+    code <= WeatherCode.THUNDERSTORM_HAIL_HEAVY
+  ) {
     return <CloudLightningIcon className="stroke-muted-foreground size-6" />;
+  }
 
   return <SunIcon className="stroke-muted-foreground size-6" />;
-}
+};
 
-export function getWeatherDescription(code: number): string {
-  if (code === WeatherCode.CLEAR_SKY) return "Clear Sky";
+export const getWeatherDescription = (code: number): string => {
+  if (code === WeatherCode.CLEAR_SKY) {
+    return "Clear Sky";
+  }
 
-  if (code >= WeatherCode.MAINLY_CLEAR && code <= WeatherCode.OVERCAST)
+  if (code >= WeatherCode.MAINLY_CLEAR && code <= WeatherCode.OVERCAST) {
     return "Partly Cloudy";
+  }
 
-  if (code >= WeatherCode.FOG && code <= WeatherCode.DEPOSITING_RIME_FOG)
+  if (code >= WeatherCode.FOG && code <= WeatherCode.DEPOSITING_RIME_FOG) {
     return "Foggy";
+  }
 
   if (
     code >= WeatherCode.DRIZZLE_LIGHT &&
     code <= WeatherCode.FREEZING_RAIN_HEAVY
-  )
+  ) {
     return "Rainy";
+  }
 
-  if (code >= WeatherCode.SNOW_FALL_SLIGHT && code <= WeatherCode.SNOW_GRAINS)
+  if (code >= WeatherCode.SNOW_FALL_SLIGHT && code <= WeatherCode.SNOW_GRAINS) {
     return "Snowy";
+  }
 
   if (
     code >= WeatherCode.RAIN_SHOWERS_SLIGHT &&
     code <= WeatherCode.RAIN_SHOWERS_VIOLENT
-  )
+  ) {
     return "Heavy Rain";
+  }
 
   if (
     code >= WeatherCode.THUNDERSTORM_SLIGHT_MODERATE &&
     code <= WeatherCode.THUNDERSTORM_HAIL_HEAVY
-  )
+  ) {
     return "Thunderstorm";
+  }
 
   return "Clear Sky";
-}
+};
