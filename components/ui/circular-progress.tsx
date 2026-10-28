@@ -1,15 +1,15 @@
-type Props = {
+interface Props {
   percentageComplete: number;
   taskType: string;
   ringColor?: string;
-};
+}
 
-function CircularProgress({
+const CircularProgress = ({
   percentageComplete,
   taskType,
   ringColor = "stroke-blue-600",
   ...props
-}: React.ComponentProps<"div"> & Props) {
+}: React.ComponentProps<"div"> & Props) => {
   const radius = 16;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (percentageComplete / 100) * circumference;
@@ -56,6 +56,6 @@ function CircularProgress({
       <p className="text-xs">{taskType}</p>
     </div>
   );
-}
+};
 
 export { CircularProgress };
