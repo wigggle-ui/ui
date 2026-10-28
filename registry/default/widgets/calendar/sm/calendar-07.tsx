@@ -1,108 +1,100 @@
-import { CalendarPlusIcon } from "lucide-react";
+"use client";
 
+import { BikeIcon, BookOpenIcon, DumbbellIcon } from "lucide-react";
+import React from "react";
+
+import { Label } from "@/components/ui/label";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
-import { Label } from "@/registry/default/ui/label";
-import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-} from "@/registry/default/ui/tabs";
-import { Button } from "@/registry/default/ui/button";
 
-export default function WidgetDemo() {
-  const now = new Date();
+const activities = [
+  {
+    date: "prev",
+    icon: BookOpenIcon,
+    task: "30 m",
+  },
+  {
+    date: "today",
+    icon: BikeIcon,
+    task: "5 km",
+  },
+  {
+    date: "next",
+    icon: DumbbellIcon,
+    task: "1 hr",
+  },
+];
 
-  const month = now.toLocaleDateString("en-US", { month: "short" });
-  const date = now.getDate().toString().padStart(2, "0");
-  const year = now.getFullYear();
-  const daysInMonth = new Date(year, now.getMonth() + 1, 0).getDate();
-  const firstDayOfMonth = new Date(year, now.getMonth(), 1).getDay();
+const now = new Date();
 
-  const weekDates = Array.from(
-    { length: 7 },
-    (_, i) =>
-      new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate() - now.getDay() + i,
-      ),
-  );
+const day = now.toLocaleDateString("en-US", { weekday: "short" });
+const date = now.getDate().toString().padStart(2, "0");
 
-  const fillerDays = Array(firstDayOfMonth).fill(null);
-  const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+const format = (offset: number) => {
+  const d = new Date();
+  d.setDate(now.getDate() + offset);
+  return {
+    date: d.getDate().toString().padStart(2, "0"),
+    day: d.toLocaleDateString("en-US", { weekday: "short" }),
+  };
+};
+
+const prev = format(-1);
+const next = format(1);
+
+const dateButtons = [
+  { formattedDate: prev, isCurrent: false, label: "prev", offset: -1 },
+  {
+    formattedDate: { date, day },
+    isCurrent: true,
+    label: "today",
+    offset: 0,
+  },
+  { formattedDate: next, isCurrent: false, label: "next", offset: 1 },
+];
+
+const WidgetDemo = () => {
+  const [selectedDate, setSelectedDate] = React.useState<string>("today");
 
   return (
-    <Widget className="p-0">
-      <Tabs className="size-full" defaultValue="week">
-        <TabsList className="size-full border-b-2" variant="line">
-          <TabsTrigger value="week">Week</TabsTrigger>
-          <TabsTrigger value="month">Month</TabsTrigger>
-        </TabsList>
-        <TabsContent className="flex size-full px-3" value="week">
-          <WidgetContent className="flex-col items-center justify-between gap-3 py-3">
-            <div className="flex w-full flex-col items-center justify-center space-y-2">
-              <Label className="text-destructive -mt-2 space-x-2 text-3xl font-semibold">
-                <span>{date}</span>
-                <span>{month}</span>
-              </Label>
-              <div className="w-full space-y-0.5">
-                <div className="grid w-full grid-cols-7 items-center gap-1">
-                  {["S", "M", "T", "W", "T", "F", "S"].map((day, i) => (
-                    <Label
-                      key={`weekday-${i}-${day}`}
-                      className="text-muted-foreground mx-auto text-xs"
-                    >
-                      {day}
-                    </Label>
-                  ))}
-                </div>
-                <div className="grid w-full grid-cols-7 gap-1 text-center">
-                  {weekDates.map((d, i) => {
-                    const isToday = d.toDateString() === now.toDateString();
-                    return (
-                      <Label
-                        key={i}
-                        className={`mx-auto text-xs ${isToday ? "text-destructive" : ""}`}
-                      >
-                        {d.getDate()}
-                      </Label>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-            <Button variant="outline" size="sm" className="w-full">
-              <CalendarPlusIcon /> New Event
-            </Button>
-          </WidgetContent>
-        </TabsContent>
-        <TabsContent className="flex size-full px-3" value="month">
-          <div className="grid size-full grid-cols-7 gap-1 text-center">
-            {["S", "M", "T", "W", "T", "F", "S"].map((day, i) => (
-              <div key={`weekday-${i}-${day}`} className="text-xs">
-                {day}
-              </div>
-            ))}
-            {fillerDays.map((_, i) => (
-              <div key={`filler-${i}`} className="text-xs">
-                &nbsp;
-              </div>
-            ))}
-            {days.map((day) => (
-              <div key={day} className="text-muted-foreground text-xs">
-                {day === parseInt(date) ? (
-                  <Label className="text-destructive flex justify-center text-xs font-semibold">
-                    {day}
+    <Widget>
+      <WidgetContent className="flex-col items-center justify-between gap-4">
+        <div className="grid w-full grid-cols-3 items-center gap-2 rounded-sm">
+          {dateButtons.map((btn) => (
+            <button
+              type="button"
+              key={btn.label}
+              onClick={() => {
+                setSelectedDate(btn.label);
+              }}
+              className={`flex flex-col items-center justify-center space-y-1 rounded-sm p-1 hover:cursor-pointer ${
+                selectedDate === btn.label
+                  ? "bg-white text-black"
+                  : "bg-secondary hover:opacity-75"
+              }`}
+            >
+              <span className="text-xs">{btn.formattedDate.day}</span>
+              <span className="text-2xl">{btn.formattedDate.date}</span>
+            </button>
+          ))}
+        </div>
+        <div className="bg-secondary grid w-full flex-1 grid-cols-2 items-center gap-x-2 rounded-sm px-2 py-1">
+          {activities
+            .filter((activity) => activity.date === selectedDate)
+            .map((activity) => {
+              const IconComponent = activity.icon;
+              return (
+                <React.Fragment key={activity.date}>
+                  <IconComponent className="stroke-destructive mx-auto size-10" />
+                  <Label size="xl" weight="semibold" className="mx-auto">
+                    {activity.task}
                   </Label>
-                ) : (
-                  day
-                )}
-              </div>
-            ))}
-          </div>
-        </TabsContent>
-      </Tabs>
+                </React.Fragment>
+              );
+            })}
+        </div>
+      </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

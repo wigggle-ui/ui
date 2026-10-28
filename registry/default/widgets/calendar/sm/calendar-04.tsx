@@ -1,82 +1,83 @@
 "use client";
 
-import React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { useEffect, useMemo, useState, startTransition } from "react";
 
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import {
   Widget,
   WidgetContent,
   WidgetHeader,
   WidgetTitle,
 } from "@/registry/default/ui/widget";
-import { Badge } from "@/registry/default/ui/badge";
-import { Button } from "@/registry/default/ui/button";
-import { Separator } from "@/registry/default/ui/separator";
 
-export default function WidgetDemo() {
-  const [date, setDate] = React.useState(() => new Date(2025, 0, 1));
-  const [today, setToday] = React.useState(() => new Date(2025, 0, 1));
+const WidgetDemo = () => {
+  const [calendar, setCalendar] = useState(() => {
+    const initialDate = new Date(2025, 0, 1);
+    return { date: initialDate, today: initialDate };
+  });
+  const { date, today } = calendar;
 
-  React.useEffect(() => {
+  useEffect(() => {
     const currentDate = new Date();
-    setDate(currentDate);
-    setToday(currentDate);
+    startTransition(() => {
+      setCalendar({ date: currentDate, today: currentDate });
+    });
   }, []);
 
-  const { getFullYear: y, getMonth: m } = date;
-  const [year, month] = [y.call(date), m.call(date)];
+  const year = date.getFullYear();
+  const month = date.getMonth();
 
-  const calendarDays = React.useMemo(() => {
+  const calendarDays = useMemo<(number | null)[]>(() => {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     return [
-      ...Array(firstDay).fill(null),
+      ...Array.from({ length: firstDay }, () => null),
       ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
     ];
   }, [year, month]);
 
   const changeMonth = (step: number) =>
-    setDate((d) => new Date(d.getFullYear(), d.getMonth() + step, 1));
+    setCalendar((currentCalendar) => ({
+      ...currentCalendar,
+      date: new Date(
+        currentCalendar.date.getFullYear(),
+        currentCalendar.date.getMonth() + step,
+        1
+      ),
+    }));
 
   const isToday = (day: number | null) =>
-    day &&
+    day !== null &&
     new Date(year, month, day).toDateString() === today.toDateString();
 
   const monthName = new Intl.DateTimeFormat("en-US", { month: "short" }).format(
-    new Date(year, month),
+    new Date(year, month)
   );
   const days = Array.from(
     { length: 7 },
     (_, i) =>
       new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(
-        new Date(2025, 0, i + 4),
-      )[0],
+        new Date(2025, 0, i + 5)
+      )[0]
   );
 
   return (
-    <Widget className="gap-2" design="mumbai">
+    <Widget className="gap-1" design="mumbai">
       <WidgetHeader>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="size-4 p-0 hover:cursor-pointer"
-          onClick={() => changeMonth(-1)}
-        >
+        <Button variant="ghost" size="icon-xs" onClick={() => changeMonth(-1)}>
           <ChevronLeftIcon className="size-4" />
         </Button>
         <WidgetTitle>
           {monthName} {year}
         </WidgetTitle>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="size-4 p-0 hover:cursor-pointer"
-          onClick={() => changeMonth(1)}
-        >
+        <Button variant="ghost" size="icon-xs" onClick={() => changeMonth(1)}>
           <ChevronRightIcon className="size-4" />
         </Button>
       </WidgetHeader>
-      <Separator className="h-0.5 rounded-full" />
+      <Separator className="h-0.5" />
       <WidgetContent>
         <div className="grid size-full grid-cols-7 gap-1 text-center">
           {days.map((day, i) => (
@@ -85,9 +86,15 @@ export default function WidgetDemo() {
             </div>
           ))}
           {calendarDays.map((day, i) => (
-            <div key={i} className="text-muted-foreground text-xs">
+            <div
+              key={day === null ? `empty-${i}` : `day-${day}`}
+              className="text-muted-foreground text-xs"
+            >
               {day && isToday(day) ? (
-                <Badge className="flex size-4 items-center justify-center p-2">
+                <Badge
+                  radius="xs"
+                  className="flex size-4 items-center justify-center"
+                >
                   {day}
                 </Badge>
               ) : (
@@ -99,4 +106,6 @@ export default function WidgetDemo() {
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

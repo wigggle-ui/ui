@@ -1,38 +1,30 @@
-"use client";
-
-import React from "react";
+import { Label } from "@/components/ui/label";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
-import { Label } from "@/registry/default/ui/label";
 
-export default function WidgetDemo() {
-  const [now, setNow] = React.useState(() => new Date(2025, 0, 1));
+const now = new Date();
 
-  React.useEffect(() => {
-    setNow(new Date());
-  }, []);
-
-  const day = now.toLocaleDateString("en-US", { weekday: "long" });
-  const date = now.getDate().toString().padStart(2, "0");
-
-  return (
-    <Widget design="mumbai">
-      <WidgetContent className="flex-col items-center justify-between gap-4">
-        <div className="w-full space-y-1">
-          <Label className="font-normal">{day}</Label>
-          <Label className="text-5xl font-normal">{date}</Label>
+const day = now.toLocaleDateString("en-US", { weekday: "long" });
+const date = now.getDate().toString().padStart(2, "0");
+const WidgetDemo = () => (
+  <Widget className="p-0" design="mumbai">
+    <WidgetContent className="flex-col items-center justify-between">
+      <div className="bg-destructive w-full rounded-t-3xl">
+        <div className="space-y-1 p-4">
+          <Label>{day}</Label>
+          <Label size="xxxxl">{date}</Label>
         </div>
-        <div className="w-full space-y-2">
-          <Label className="text-muted-foreground text-base font-normal uppercase">
-            Up Next
+      </div>
+      <div className="w-full space-y-2 px-4 pb-4">
+        <Label variant="muted-foreground">Up Next</Label>
+        <div className="border-destructive space-y-0.5 border-l-2 ps-2">
+          <Label size="sm">Cypress Hike</Label>
+          <Label size="sm" variant="muted-foreground">
+            7:30 AM
           </Label>
-          <div className="border-destructive space-y-0.5 border-l-2 ps-2">
-            <Label className="truncate text-sm font-normal">
-              45 mins Yoga with Henil Shah
-            </Label>
-            <Label className="text-muted-foreground text-sm">7:30 AM</Label>
-          </div>
         </div>
-      </WidgetContent>
-    </Widget>
-  );
-}
+      </div>
+    </WidgetContent>
+  </Widget>
+);
+
+export default WidgetDemo;

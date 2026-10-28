@@ -1,35 +1,35 @@
+import { cn } from "cn";
 import { VideoIcon } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
-import { Label } from "@/registry/default/ui/label";
-import { Button } from "@/registry/default/ui/button";
-import { cn } from "@/registry/default/lib/utils";
 
-export default function WidgetDemo() {
+const WidgetDemo = () => {
   const meetings = [
     {
-      title: "Daily Scrum",
-      time: "7:00 - 8:30 AM",
-      room: "Online",
       borderColor: "border-destructive",
+      room: "Online",
+      time: "7:00 - 8:30 AM",
+      title: "Daily Scrum",
     },
     {
-      title: "Design Roundup",
-      time: "11:15 - 12:00 PM",
-      room: "Figma Room",
       borderColor: "border-blue-500",
+      room: "Figma Room",
+      time: "11:15 - 12:00 PM",
+      title: "Design Roundup",
     },
     {
-      title: "UAT Testing",
-      time: "1:00 - 2:00 PM",
-      room: "Jest Room",
       borderColor: "border-yellow-500",
+      room: "Jest Room",
+      time: "1:00 - 2:00 PM",
+      title: "UAT Testing",
     },
     {
-      title: "PROD Launch",
-      time: "6:00 PM",
-      room: "SpaceX Room",
       borderColor: "border-productive",
+      room: "SpaceX Room",
+      time: "6:00 PM",
+      title: "PROD Launch",
     },
   ];
 
@@ -41,15 +41,17 @@ export default function WidgetDemo() {
             key={el.title}
             className={cn(
               el.borderColor,
-              "flex w-full items-center justify-between border-l-4 ps-3",
+              "flex w-full items-center justify-between border-l-4 ps-3"
             )}
           >
             <div className="space-y-1">
-              <Label className="text-sm font-normal">{el.title}</Label>
-              <Label className="text-muted-foreground text-xs font-normal">
+              <Label size="sm">{el.title}</Label>
+              <Label size="xs" variant="muted-foreground">
                 {el.room}
               </Label>
-              <Label className="text-xs font-light">{el.time}</Label>
+              <Label size="xs" weight="light">
+                {el.time}
+              </Label>
             </div>
             {el.room === "Online" && (
               <Button variant="outline" size="icon-sm">
@@ -61,4 +63,6 @@ export default function WidgetDemo() {
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;
