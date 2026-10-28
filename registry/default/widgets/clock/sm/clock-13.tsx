@@ -1,8 +1,8 @@
 import { CheckIcon, XIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import type { WheelPickerOption } from "@/components/wheel-picker";
-import { WheelPicker, WheelPickerWrapper } from "@/components/wheel-picker";
+import type { WheelPickerOption } from "@/components/ui/wheel-picker";
+import { WheelPicker, WheelPickerWrapper } from "@/components/ui/wheel-picker";
 import {
   Widget,
   WidgetContent,
@@ -28,7 +28,7 @@ const meridiemOptions: WheelPickerOption[] = [
 const WidgetDemo = () => (
   <Widget className="gap-3" design="mumbai">
     <WidgetContent>
-      <WheelPickerWrapper className="rounded-lg border-2">
+      <WheelPickerWrapper>
         <WheelPicker
           visibleCount={12}
           options={hourOptions}
