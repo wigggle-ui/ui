@@ -1,114 +1,122 @@
+import { cn } from "cn";
 import type { MDXComponents } from "mdx/types";
+import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
-import { cn } from "@/registry/default/lib/utils";
-
-import { Button } from "@/registry/default/ui/button";
-import { Callout } from "@/components/callout";
-import CliCommands from "@/components/cli-commands";
 import CodeBlock from "@/components/code-block";
 import { CodeBlockCommand } from "@/components/code-block-command";
-import { CopyButton } from "@/components/copy-button";
+import CopyButton from "@/components/copy-button";
+import ForNerds from "@/components/for-nerds";
+import TypeTable from "@/components/type-table";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { TypeTable } from "./components/type-table";
+import { Step, Steps } from "@/components/ui/step";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  TabsIndicator,
+} from "@/components/ui/tabs";
 import WidgetCard from "@/components/widget-card";
 import WidgetLoader from "@/components/widget-loader-client";
-import WidgetDetails from "@/components/widget-details";
+
+const getNodeText = (node: React.ReactNode): string => {
+  if (typeof node === "string" || typeof node === "number") {
+    return String(node);
+  }
+
+  if (Array.isArray(node)) {
+    return node.map((child) => getNodeText(child)).join("");
+  }
+
+  if (React.isValidElement<{ children?: React.ReactNode }>(node)) {
+    return getNodeText(node.props.children);
+  }
+
+  return "";
+};
+
+const getHeadingId = (children: React.ReactNode) => {
+  const id = getNodeText(children)
+    .trim()
+    .replaceAll(/\s+/gu, "-")
+    .replaceAll("'", "")
+    .replaceAll("?", "")
+    .toLowerCase();
+
+  return id || undefined;
+};
+
+const HeadingAnchor = ({
+  id,
+  children,
+}: {
+  id?: string;
+  children: React.ReactNode;
+}) => {
+  if (!id) {
+    return children;
+  }
+
+  return (
+    <a className="group no-underline" href={`#${id}`}>
+      <span className="underline-offset-4 group-hover:underline">
+        {children}
+      </span>
+      <span
+        aria-hidden="true"
+        className="text-muted-foreground ml-2 opacity-0 group-hover:opacity-100"
+      >
+        #
+      </span>
+    </a>
+  );
+};
 
 export const mdxComponents: MDXComponents = {
-  h1: ({ className, children, ...props }: React.ComponentProps<"h1">) => {
-    const id = children
-      ?.toString()
-      .replace(/\s+/g, "-")
-      .replace(/'/g, "")
-      .replace(/\?/g, "")
-      .toLowerCase();
-    return (
-      <h1
-        id={id}
-        className={cn(
-          "font-heading scroll-m-12 border-b-2 pb-2 text-3xl font-bold tracking-tight not-first:mt-12",
-          className,
-        )}
-        {...props}
-      >
-        {children}
-      </h1>
-    );
-  },
-  h2: ({ className, ...props }: React.ComponentProps<"h2">) => {
-    return (
-      <h2
-        id={props.children
-          ?.toString()
-          .replace(/ /g, "-")
-          .replace(/'/g, "")
-          .replace(/\?/g, "")
-          .toLowerCase()}
-        className={cn(
-          "font-heading [&+]*:[code]:text-xl mt-10 scroll-m-28 text-2xl font-medium tracking-tight first:mt-0 lg:mt-6 [&+.steps]:mt-0! [&+.steps>h3]:mt-4! [&+h3]:mt-6! [&+p]:mt-4!",
-          className,
-        )}
-        {...props}
-      />
-    );
-  },
-  h3: ({ className, ...props }: React.ComponentProps<"h3">) => (
-    <h3
-      className={cn(
-        "font-heading mt-12 scroll-m-28 text-lg font-medium tracking-tight [&+p]:mt-4! *:[code]:text-xl",
-        className,
-      )}
+  Button,
+  CodeBlock,
+  CodeBlockCommand,
+  CopyButton,
+  ForNerds,
+  Image: ({
+    src,
+    className,
+    width,
+    height,
+    alt,
+    ...props
+  }: React.ComponentProps<"img">) => (
+    <Image
+      className={cn("mt-6 rounded-2xl border", className)}
+      src={(src as string) || ""}
+      width={Number(width)}
+      height={Number(height)}
+      alt={alt || ""}
       {...props}
     />
   ),
-  h4: ({ className, ...props }: React.ComponentProps<"h4">) => (
-    <h4
-      className={cn(
-        "font-heading mt-8 scroll-m-28 text-base font-medium tracking-tight",
-        className,
-      )}
-      {...props}
-    />
-  ),
-  h5: ({ className, ...props }: React.ComponentProps<"h5">) => (
-    <h5
-      className={cn(
-        "mt-8 scroll-m-28 text-base font-medium tracking-tight",
-        className,
-      )}
-      {...props}
-    />
-  ),
-  h6: ({ className, ...props }: React.ComponentProps<"h6">) => (
-    <h6
-      className={cn(
-        "mt-8 scroll-m-28 text-base font-medium tracking-tight",
-        className,
-      )}
-      {...props}
-    />
-  ),
-  a: ({ className, ...props }: React.ComponentProps<"a">) => (
+  Link,
+  Separator,
+  Step,
+  Steps,
+  Tabs,
+  TabsContent,
+  TabsIndicator,
+  TabsList,
+  TabsTrigger,
+  TypeTable,
+  WidgetCard,
+  WidgetLoader,
+  a: ({ className, children, ...props }: React.ComponentProps<"a">) => (
     <a
       className={cn("font-medium underline underline-offset-4", className)}
       {...props}
-    />
-  ),
-  p: ({ className, ...props }: React.ComponentProps<"p">) => (
-    <p className={cn("leading-relaxed not-first:mt-6", className)} {...props} />
-  ),
-  strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <strong className={cn("font-medium", className)} {...props} />
-  ),
-  ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
-    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
-  ),
-  ol: ({ className, ...props }: React.ComponentProps<"ol">) => (
-    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
-  ),
-  li: ({ className, ...props }: React.ComponentProps<"li">) => (
-    <li className={cn("mt-2", className)} {...props} />
+    >
+      {children}
+    </a>
   ),
   blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
     <blockquote
@@ -116,74 +124,126 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
-  img: ({ className, alt, ...props }: React.ComponentProps<"img">) => (
-    <img className={cn("rounded-md", className)} alt={alt} {...props} />
+  figure: ({ className, ...props }: React.ComponentProps<"figure">) => (
+    <figure className={cn(className)} {...props} />
   ),
+  h1: ({ children, id, ...props }: React.ComponentProps<"h1">) => {
+    const headingId = id ?? getHeadingId(children);
+
+    return (
+      <h1 id={headingId} {...props}>
+        <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
+      </h1>
+    );
+  },
+  h2: ({ children, id, ...props }: React.ComponentProps<"h2">) => {
+    const headingId = id ?? getHeadingId(children);
+
+    return (
+      <h2 id={headingId} {...props}>
+        <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
+      </h2>
+    );
+  },
+  h3: ({ children, id, ...props }: React.ComponentProps<"h3">) => {
+    const headingId = id ?? getHeadingId(children);
+
+    return (
+      <h3 id={headingId} {...props}>
+        <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
+      </h3>
+    );
+  },
+  h4: ({ children, id, ...props }: React.ComponentProps<"h4">) => {
+    const headingId = id ?? getHeadingId(children);
+
+    return (
+      <h4 id={headingId} {...props}>
+        <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
+      </h4>
+    );
+  },
+  h5: ({ children, id, ...props }: React.ComponentProps<"h5">) => {
+    const headingId = id ?? getHeadingId(children);
+
+    return (
+      <h5 id={headingId} {...props}>
+        <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
+      </h5>
+    );
+  },
+  h6: ({ children, id, ...props }: React.ComponentProps<"h6">) => {
+    const headingId = id ?? getHeadingId(children);
+
+    return (
+      <h6 id={headingId} {...props}>
+        <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
+      </h6>
+    );
+  },
   hr: ({ ...props }: React.ComponentProps<"hr">) => (
     <hr className="my-4 md:my-8" {...props} />
   ),
+  li: ({ className, ...props }: React.ComponentProps<"li">) => (
+    <li className={cn("mt-2", className)} {...props} />
+  ),
+  ol: ({ className, ...props }: React.ComponentProps<"ol">) => (
+    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
+  ),
+  p: ({ className, ...props }: React.ComponentProps<"p">) => (
+    <p className={cn("leading-relaxed not-first:mt-6", className)} {...props} />
+  ),
+  pre: ({ className, children, ...props }: React.ComponentProps<"pre">) => (
+    <pre
+      className={cn(
+        "min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-data-highlighted-line:px-0 has-data-line-numbers:px-0 has-data-[slot=tabs]:p-0",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </pre>
+  ),
+  strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <strong className={cn("font-medium", className)} {...props} />
+  ),
   table: ({ className, ...props }: React.ComponentProps<"table">) => (
-    <div className="no-scrollbar my-6 w-full overflow-y-auto rounded-lg border">
+    <div className="my-6 w-full overflow-y-auto rounded-lg border">
       <table
         className={cn(
           "relative w-full overflow-hidden border-none text-sm [&_tbody_tr:last-child]:border-b-0",
-          className,
+          className
         )}
         {...props}
       />
     </div>
   ),
-  tr: ({ className, ...props }: React.ComponentProps<"tr">) => (
-    <tr className={cn("m-0 border-b", className)} {...props} />
+  td: ({ className, ...props }: React.ComponentProps<"td">) => (
+    <td
+      className={cn(
+        "px-4 py-2 text-left whitespace-nowrap [[align=center]]:text-center [[align=right]]:text-right",
+        className
+      )}
+      {...props}
+    />
   ),
   th: ({ className, ...props }: React.ComponentProps<"th">) => (
     <th
       className={cn(
         "px-4 py-2 text-left font-bold [[align=center]]:text-center [[align=right]]:text-right",
-        className,
+        className
       )}
       {...props}
     />
   ),
-  td: ({ className, ...props }: React.ComponentProps<"td">) => (
-    <td
-      className={cn(
-        "px-4 py-2 text-left whitespace-nowrap [[align=center]]:text-center [[align=right]]:text-right",
-        className,
-      )}
-      {...props}
-    />
+  tr: ({ className, ...props }: React.ComponentProps<"tr">) => (
+    <tr className={cn("m-0 border-b", className)} {...props} />
   ),
-  pre: ({ className, children, ...props }: React.ComponentProps<"pre">) => {
-    return (
-      <pre
-        className={cn(
-          "no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-data-highlighted-line:px-0 has-data-line-numbers:px-0 has-data-[slot=tabs]:p-0",
-          className,
-        )}
-        {...props}
-      >
-        {children}
-      </pre>
-    );
-  },
-  figure: ({ className, ...props }: React.ComponentProps<"figure">) => {
-    return <figure className={cn(className)} {...props} />;
-  },
-  Button,
-  Callout,
-  CliCommands,
-  CodeBlock,
-  CodeBlockCommand,
-  CopyButton,
-  Link,
-  Separator,
-  TypeTable,
-  WidgetCard,
-  WidgetLoader,
-  WidgetDetails,
+  ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
+    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
+  ),
 };
 
-export function useMDXComponents(): MDXComponents {
-  return mdxComponents;
-}
+const useMDXComponents = (): MDXComponents => mdxComponents;
+
+export { useMDXComponents };
