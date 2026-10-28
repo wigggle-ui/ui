@@ -1,29 +1,30 @@
-import React from "react";
-import { CheckCircle2Icon, CircleIcon } from "lucide-react";
+"use client";
 
+import { CheckCircle2Icon, CircleIcon } from "lucide-react";
+import React from "react";
+
+import { Label } from "@/components/ui/label";
 import {
   Widget,
   WidgetContent,
   WidgetHeader,
   WidgetTitle,
 } from "@/registry/default/ui/widget";
-import { cn } from "@/registry/default/lib/utils";
-import { Label } from "@/registry/default/ui/label";
 
-type TodoType = {
+interface TodoType {
   id: number;
   task: string;
   completed: boolean;
-};
+}
 
 const initialTodos = [
-  { id: 1, task: "Refactor code", completed: true },
-  { id: 2, task: "Review designs", completed: true },
-  { id: 3, task: "Testing", completed: false },
-  { id: 4, task: "Deployment", completed: false },
+  { completed: true, id: 1, task: "Refactor code" },
+  { completed: true, id: 2, task: "Review designs" },
+  { completed: false, id: 3, task: "Testing" },
+  { completed: false, id: 4, task: "Deployment" },
 ];
 
-export default function WidgetDemo() {
+const WidgetDemo = () => {
   const [todos, setTodos] = React.useState<TodoType[]>(initialTodos);
 
   const handleToggle = (id: number) => {
@@ -43,9 +44,10 @@ export default function WidgetDemo() {
       <WidgetHeader className="justify-center">
         <WidgetTitle>Tasks</WidgetTitle>
       </WidgetHeader>
-      <WidgetContent className="flex-col gap-1">
+      <WidgetContent className="flex-col gap-0">
         {todos.map((todo) => (
           <button
+            type="button"
             className="w-full"
             onClick={() => handleToggle(todo.id)}
             key={todo.id}
@@ -57,12 +59,19 @@ export default function WidgetDemo() {
                 <CircleIcon className="text-muted-foreground size-4" />
               )}
               <Label
-                className={cn(
-                  "text-muted-foreground group-hover:cursor-pointer",
-                  todo.completed && "text-muted-foreground/70 line-through",
-                )}
+                size="sm"
+                variant="muted-foreground"
+                className="group-hover:cursor-pointer"
               >
-                {todo.task}
+                <span
+                  className={
+                    todo.completed
+                      ? "text-muted-foreground/70 line-through"
+                      : ""
+                  }
+                >
+                  {todo.task}
+                </span>
               </Label>
             </div>
           </button>
@@ -70,4 +79,6 @@ export default function WidgetDemo() {
       </WidgetContent>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;

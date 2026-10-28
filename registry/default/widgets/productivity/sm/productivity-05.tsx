@@ -1,28 +1,28 @@
 "use client";
 
-import React from "react";
+import { cn } from "cn";
 import { BookOpenIcon, CheckIcon } from "lucide-react";
+import React from "react";
 
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import {
   Widget,
   WidgetContent,
   WidgetFooter,
 } from "@/registry/default/ui/widget";
-import { Button } from "@/registry/default/ui/button";
-import { Label } from "@/registry/default/ui/label";
-import { cn } from "@/registry/default/lib/utils";
 
 const streak = 8;
 
-export default function WidgetDemo() {
+const WidgetDemo = () => {
   const [status, setStatus] = React.useState<boolean>(false);
 
   return (
     <Widget className="gap-3">
       <WidgetContent className="flex-col items-end justify-start gap-4">
         <div className="flex w-full flex-col">
-          <Label className="text-xl">Read 10 Mins</Label>
-          <Label className="text-muted-foreground text-sm font-normal">
+          <Label size="xl">Read 10 Mins</Label>
+          <Label size="sm" variant="muted-foreground">
             Streak: {status ? streak + 1 : streak} days
           </Label>
         </div>
@@ -31,7 +31,7 @@ export default function WidgetDemo() {
         <BookOpenIcon
           className={cn(
             "size-14",
-            status ? "stroke-productive" : "stroke-destructive",
+            status ? "stroke-productive" : "stroke-destructive"
           )}
           strokeWidth={1.5}
         />
@@ -47,4 +47,6 @@ export default function WidgetDemo() {
       </WidgetFooter>
     </Widget>
   );
-}
+};
+
+export default WidgetDemo;
