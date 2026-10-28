@@ -4,6 +4,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["192.168.1.12"],
   cacheComponents: true,
+  experimental: {
+    agentUpgrade: "security",
+  },
   images: {
     remotePatterns: [
       new URL(
