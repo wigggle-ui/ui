@@ -105,7 +105,7 @@ const RootLayout = ({
         <TooltipProvider>
           <div className="bg-background text-foreground relative grid min-h-screen w-full grid-rows-[auto_1fr_auto] font-sans">
             <SiteHeader />
-            <div className="p-6">{children}</div>
+            <div className="min-w-0 p-6">{children}</div>
             <SiteFooter />
           </div>
         </TooltipProvider>

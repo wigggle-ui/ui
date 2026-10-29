@@ -1,7 +1,7 @@
 import { siteConfig } from "@/config/site";
 
 const SiteFooter = () => (
-  <footer className="bg-background border-border flex h-12 w-screen items-center justify-center border-t">
+  <footer className="bg-background border-border flex h-12 w-full items-center justify-center border-t">
     <span className="text-muted-foreground text-sm">
       Built by{" "}
       <a

@@ -14,7 +14,7 @@ const WidgetCard = ({ widget }: { widget: React.ReactElement }) => (
 );
 
 const WidgetMarquee = () => (
-  <div className="relative flex w-screen flex-col items-center justify-center overflow-hidden">
+  <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
     <Marquee className="[--duration:30s]">
       {firstRow.map((entry) => (
         <WidgetCard key={entry.key} widget={entry.widget} />
