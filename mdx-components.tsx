@@ -127,11 +127,18 @@ export const mdxComponents: MDXComponents = {
   figure: ({ className, ...props }: React.ComponentProps<"figure">) => (
     <figure className={cn(className)} {...props} />
   ),
-  h1: ({ children, id, ...props }: React.ComponentProps<"h1">) => {
+  h1: ({ children, className, id, ...props }: React.ComponentProps<"h1">) => {
     const headingId = id ?? getHeadingId(children);
 
     return (
-      <h1 id={headingId} {...props}>
+      <h1
+        id={headingId}
+        className={cn(
+          "scroll-mt-20 text-3xl font-semibold tracking-tight",
+          className
+        )}
+        {...props}
+      >
         <HeadingAnchor id={headingId}>{children}</HeadingAnchor>
       </h1>
     );

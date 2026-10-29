@@ -62,7 +62,7 @@ const ForNerds = () => {
   return (
     <div>
       <div className="relative space-y-4">
-        <dl className="grid grid-cols-2 md:grid-cols-4">
+        <dl className="grid grid-cols-3 md:grid-cols-4">
           <Field label="Crafted by">
             <a
               className="link-underline"
