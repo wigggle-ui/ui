@@ -2,10 +2,10 @@ import Link from "next/link";
 
 import { Icons } from "@/components/icons";
 import MobileNav from "@/components/mobile-nav";
+import RotatingLogo from "@/components/rotating-logo";
 import SearchCommandMenu from "@/components/search-command-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { siteConfig } from "@/config/site";
 
 const LINKS = [
@@ -17,16 +17,16 @@ const LINKS = [
 ];
 
 const SiteHeader = () => (
-  <header className="bg-background border-border sticky inset-x-0 top-0 z-50 flex h-16 w-full items-center justify-between border-b px-3">
+  <header className="bg-background border-border sticky inset-x-0 top-0 z-50 flex h-16 w-full items-center justify-between border-b px-6">
     <div className="flex items-center justify-start gap-3 md:gap-6">
       <div className="block md:hidden">
         <MobileNav />
       </div>
       <Link className="group flex items-center justify-center gap-1.5" href="/">
-        <Icons.Logo className="size-5" />
-        <Label className="group-hover:cursor-pointer" size="lg">
+        <RotatingLogo />
+        {/* <Label className="group-hover:cursor-pointer" size="lg">
           Wigggle UI
-        </Label>
+        </Label> */}
       </Link>
       <div className="hidden md:flex md:items-center md:justify-start md:gap-4">
         {LINKS.map((link) => (
