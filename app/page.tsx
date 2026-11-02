@@ -13,7 +13,7 @@ const Home = () => (
         An open-source curated collection of copy-paste widgets for your next
         project.
       </PageHeader>
-      <div className="mx-auto w-full min-w-0 overflow-hidden sm:w-max sm:min-w-xl">
+      <div className="mx-auto w-full min-w-0 overflow-hidden sm:w-max">
         <CodeBlockCommand
           {...convertNpmCommand("npx shadcn@latest add @wigggleui/widget")}
         />
