@@ -5,13 +5,9 @@ import {
   CirclePlayIcon,
   Clock3Icon,
   CloudSunIcon,
-  Gamepad2Icon,
   GoalIcon,
-  IndianRupeeIcon,
   LayoutDashboardIcon,
   LayoutGridCirclesIcon,
-  ScrollTextIcon,
-  SpeechIcon,
   TrophyIcon,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -38,30 +34,30 @@ export const MENU_LINKS: LinkItem[] = [
     shortcut: "GW",
     title: "Widgets",
   },
-  {
-    href: "/playground",
-    icon: <Gamepad2Icon />,
-    shortcut: "GP",
-    title: "Playground",
-  },
-  {
-    href: "/sponsors",
-    icon: <IndianRupeeIcon />,
-    shortcut: "GS",
-    title: "Sponsors",
-  },
-  {
-    href: "/testimonials",
-    icon: <SpeechIcon />,
-    shortcut: "GT",
-    title: "Testimonials",
-  },
-  {
-    href: "/changelog",
-    icon: <ScrollTextIcon />,
-    shortcut: "GC",
-    title: "Changelog",
-  },
+  // {
+  //   href: "/playground",
+  //   icon: <Gamepad2Icon />,
+  //   shortcut: "GP",
+  //   title: "Playground",
+  // },
+  // {
+  //   href: "/sponsors",
+  //   icon: <IndianRupeeIcon />,
+  //   shortcut: "GS",
+  //   title: "Sponsors",
+  // },
+  // {
+  //   href: "/testimonials",
+  //   icon: <SpeechIcon />,
+  //   shortcut: "GT",
+  //   title: "Testimonials",
+  // },
+  // {
+  //   href: "/changelog",
+  //   icon: <ScrollTextIcon />,
+  //   shortcut: "GC",
+  //   title: "Changelog",
+  // },
 ];
 
 type WidgetCategoryLinkItem = Omit<LinkItem, "icon"> & { icon: LucideIcon };

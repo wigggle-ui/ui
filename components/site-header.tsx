@@ -6,15 +6,8 @@ import RotatingLogo from "@/components/rotating-logo";
 import SearchCommandMenu from "@/components/search-command-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
+import { MENU_LINKS } from "@/config/links";
 import { siteConfig } from "@/config/site";
-
-const LINKS = [
-  { href: "/docs", label: "Docs" },
-  { href: "/widgets", label: "Widgets" },
-  { href: "/playground", label: "Playground" },
-  { href: "/sponsors", label: "Sponsors" },
-  { href: "/changelog", label: "Changelog" },
-];
 
 const SiteHeader = () => (
   <header className="bg-background border-border sticky inset-x-0 top-0 z-50 flex h-16 w-full items-center justify-between border-b px-6">
@@ -24,18 +17,15 @@ const SiteHeader = () => (
       </div>
       <Link className="group flex items-center justify-center gap-1.5" href="/">
         <RotatingLogo />
-        {/* <Label className="group-hover:cursor-pointer" size="lg">
-          Wigggle UI
-        </Label> */}
       </Link>
       <div className="hidden md:flex md:items-center md:justify-start md:gap-4">
-        {LINKS.map((link) => (
+        {MENU_LINKS.map((link) => (
           <Link
             key={link.href}
             href={link.href}
             className="text-muted-foreground hover:text-foreground text-sm no-underline transition-colors duration-300"
           >
-            {link.label}
+            {link.title}
           </Link>
         ))}
       </div>
