@@ -1,6 +1,7 @@
 "use client";
 
 import { SearchIcon } from "lucide-react";
+import Link from "next/link";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -39,34 +40,40 @@ const SearchCommandMenu = () => {
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>
-          <CommandInput placeholder="Type a command or search..." />
+          <CommandInput placeholder="Search Wigggle UI..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Navigation">
               {MENU_LINKS.map((link) => (
-                <CommandItem key={link.href}>
-                  {link.icon}
-                  <span>{link.title}</span>
-                  <CommandShortcut monoFont>{link.shortcut}</CommandShortcut>
-                </CommandItem>
+                <Link key={link.href} href={link.href}>
+                  <CommandItem onSelect={() => setOpen(false)}>
+                    {link.icon}
+                    <span>{link.title}</span>
+                    <CommandShortcut monoFont>{link.shortcut}</CommandShortcut>
+                  </CommandItem>
+                </Link>
               ))}
             </CommandGroup>
             <CommandSeparator />
             <CommandGroup heading="Widget Categories">
               {WIDGET_CATEGORY_LINKS.map((link) => (
-                <CommandItem key={link.href}>
-                  <link.icon />
-                  <span>{link.title} Widgets</span>
-                </CommandItem>
+                <Link key={link.href} href={link.href}>
+                  <CommandItem onSelect={() => setOpen(false)}>
+                    <link.icon />
+                    <span>{link.title} Widgets</span>
+                  </CommandItem>
+                </Link>
               ))}
             </CommandGroup>
             <CommandSeparator />
             <CommandGroup heading="Socials">
               {SOCIAL_LINKS.map((link) => (
-                <CommandItem key={link.href}>
-                  {link.icon}
-                  <span>{link.title}</span>
-                </CommandItem>
+                <Link key={link.href} href={link.href}>
+                  <CommandItem onSelect={() => setOpen(false)}>
+                    {link.icon}
+                    <span>{link.title}</span>
+                  </CommandItem>
+                </Link>
               ))}
             </CommandGroup>
           </CommandList>
