@@ -7,7 +7,7 @@ import { Label as LabelPrimitive } from "radix-ui";
 import * as React from "react";
 
 const labelVariants = cva(
-  "flex items-center gap-2 leading-none select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
+  "flex items-center gap-2 leading-none text-wrap select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
   {
     defaultVariants: {
       size: "default",
@@ -15,6 +15,9 @@ const labelVariants = cva(
       weight: "default",
     },
     variants: {
+      decoration: {
+        cancelled: "line-through",
+      },
       size: {
         default: "text-base",
         lg: "text-lg",
@@ -51,15 +54,19 @@ const labelVariants = cva(
 
 const Label = ({
   className,
+  decoration,
   variant = "default",
   size = "default",
   weight = "default",
+
   ...props
 }: React.ComponentProps<typeof LabelPrimitive.Root> &
   VariantProps<typeof labelVariants>) => (
   <LabelPrimitive.Root
     data-slot="label"
-    className={cn(labelVariants({ className, size, variant, weight }))}
+    className={cn(
+      labelVariants({ className, decoration, size, variant, weight })
+    )}
     {...props}
   />
 );

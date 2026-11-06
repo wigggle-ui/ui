@@ -14,8 +14,10 @@ const widgetVariants = cva(
     },
     variants: {
       design: {
+        damn: "p-0",
         default: "p-6",
         mumbai: "p-4",
+        "new-york": "p-2",
       },
       size: {
         lg: "size-96",
