@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sale-sm-01",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/sale/sm/sale-01.tsx",
+      "content": "import { Icons } from \"@/components/icons\";\nimport { Button } from \"@/components/ui/button\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n  WidgetHeader,\n} from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget design=\"mumbai\" className=\"gap-2\">\n    <WidgetHeader className=\"items-center justify-between\">\n      <div className=\"flex items-center justify-start gap-2\">\n        <Icons.Vercel className=\"size-5\" aria-hidden=\"true\" />\n        <Label weight=\"medium\" size=\"lg\">\n          Vercel\n        </Label>\n      </div>\n      <Tooltip delayDuration={300}>\n        <TooltipTrigger asChild>\n          <div className=\"bg-productive size-2.5 animate-pulse rounded-full\" />\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>All Systems Operational</p>\n        </TooltipContent>\n      </Tooltip>\n    </WidgetHeader>\n    <WidgetContent className=\"flex-col items-start justify-start gap-1.5\">\n      <Label size=\"sm\">Deploy your shadcn/ui apps with just one click.</Label>\n      <Label size=\"xs\" variant=\"muted-foreground\">\n        Trusted by OpenAI, Sonos, Adobe, and more.\n      </Label>\n    </WidgetContent>\n    <WidgetFooter>\n      <Button size=\"sm\" className=\"w-full\" variant=\"outline\">\n        Deploy Now\n      </Button>\n    </WidgetFooter>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "sale"
+    ],
+    "size": "sm"
+  },
+  "type": "registry:component"
+}

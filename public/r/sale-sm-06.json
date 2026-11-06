@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sale-sm-06",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/sale/sm/sale-06.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport { Field } from \"@/components/ui/field\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget design=\"mumbai\">\n    <WidgetHeader className=\"flex items-center justify-center\">\n      <WidgetTitle>Wait before you go!</WidgetTitle>\n    </WidgetHeader>\n    <WidgetContent className=\"flex-col gap-2\">\n      <Label size=\"sm\" weight=\"semibold\">\n        15% OFF on next order\n      </Label>\n      <Field>\n        <Input\n          id=\"email\"\n          name=\"email\"\n          type=\"email\"\n          placeholder=\"Your Email\"\n          required\n        />\n      </Field>\n    </WidgetContent>\n    <WidgetFooter>\n      <Button variant=\"productive\" className=\"w-full\" size=\"sm\">\n        Claim 15%\n      </Button>\n    </WidgetFooter>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "sale"
+    ],
+    "size": "sm"
+  },
+  "type": "registry:component"
+}

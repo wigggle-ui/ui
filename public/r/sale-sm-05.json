@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sale-sm-05",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/sale/sm/sale-05.tsx",
+      "content": "\"use client\";\n\nimport { CheckIcon, CopyIcon, TicketIcon } from \"lucide-react\";\nimport { useEffect, useRef, useState } from \"react\";\nimport { toast } from \"sonner\";\n\nimport ScratchCard from \"@/components/spectrumui/scratch-card\";\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\nconst ScratchCardDemo = () => {\n  const [isCopied, setIsCopied] = useState(false);\n  const resetCopyStateTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(\n    null\n  );\n\n  useEffect(\n    () => () => {\n      if (resetCopyStateTimeoutRef.current !== null) {\n        clearTimeout(resetCopyStateTimeoutRef.current);\n      }\n    },\n    []\n  );\n\n  const handleCopy = async () => {\n    try {\n      await navigator.clipboard.writeText(\"WIGGGLE20\");\n      setIsCopied(true);\n\n      if (resetCopyStateTimeoutRef.current !== null) {\n        clearTimeout(resetCopyStateTimeoutRef.current);\n      }\n      resetCopyStateTimeoutRef.current = setTimeout(() => {\n        setIsCopied(false);\n        resetCopyStateTimeoutRef.current = null;\n      }, 2000);\n    } catch {\n      setIsCopied(false);\n      if (resetCopyStateTimeoutRef.current !== null) {\n        clearTimeout(resetCopyStateTimeoutRef.current);\n        resetCopyStateTimeoutRef.current = null;\n      }\n      toast.error(\"Unable to copy coupon code.\");\n    }\n  };\n\n  return (\n    <Widget design=\"damn\">\n      <WidgetContent>\n        <ScratchCard\n          className=\"size-full\"\n          ariaLabel=\"Scratch to reveal your coupon code. Press Enter to reveal.\"\n          revealAnnouncement=\"Coupon revealed: WIGGGLE20 for 20% off\"\n        >\n          <div className=\"flex w-full flex-col items-center gap-2 px-6 py-3 text-center\">\n            <span className=\"flex h-10 w-10 items-center justify-center rounded-full\">\n              <TicketIcon\n                className=\"size-8\"\n                aria-hidden=\"true\"\n                strokeWidth={1.5}\n              />\n            </span>\n            <span className=\"text-ring dark:text-muted-foreground text-xs font-medium tracking-widest uppercase\">\n              Coupon unlocked\n            </span>\n            <span className=\"text-3xl font-semibold tracking-tight\">\n              20% off\n            </span>\n            <button\n              type=\"button\"\n              onClick={handleCopy}\n              className=\"border-border text-muted-foreground hover:bg-muted focus-visible:ring-ring dark:border-muted-foreground/50 dark:text-muted-foreground dark:hover:bg-secondary dark:focus-visible:ring-primary mt-1 flex items-center gap-2 rounded-xl border border-dashed px-4 py-2 font-mono text-sm transition-colors focus-visible:ring-1 focus-visible:outline-hidden\"\n            >\n              WIGGGLE20\n              {isCopied ? (\n                <CheckIcon className=\"h-3.5 w-3.5\" aria-hidden=\"true\" />\n              ) : (\n                <CopyIcon className=\"h-3.5 w-3.5\" aria-hidden=\"true\" />\n              )}\n              <span className=\"sr-only\">\n                {isCopied ? \"Copied to clipboard\" : \"Copy coupon code\"}\n              </span>\n            </button>\n          </div>\n        </ScratchCard>\n      </WidgetContent>\n    </Widget>\n  );\n};\n\nexport default ScratchCardDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "sale"
+    ],
+    "size": "sm",
+    "credits": [
+      {
+        "name": "@spectrumui",
+        "homepage": "https://ui.spectrumhq.in",
+        "url": "https://ui.spectrumhq.in/docs/scratch-card",
+        "logo": "<svg width='36' height='41' viewBox='0 0 36 41' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path d='M17.641 33.4291L11.563 27.3511C7.26395 23.052 0 26.091 0 32.169V40.1001H35.2821V15.7881L17.641 33.4291Z' fill='var(--foreground)'/><path d='M17.641 6.67098L23.719 12.749C28.0181 17.0481 35.2821 14.0091 35.2821 7.93105V0H0V24.312L17.641 6.67098Z' fill='var(--foreground)'/></svg>"
+      }
+    ]
+  },
+  "type": "registry:component"
+}

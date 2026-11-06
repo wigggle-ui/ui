@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sale-md-01",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/sale/md/sale-01.tsx",
+      "content": "\"use client\";\n\nimport Image from \"next/image\";\nimport { useEffect, useRef } from \"react\";\n\nimport CopyButton from \"@/components/copy-button\";\nimport ScratchCard from \"@/components/spectrumui/scratch-card\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\";\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => {\n  const resetCopyStateTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(\n    null\n  );\n\n  useEffect(\n    () => () => {\n      if (resetCopyStateTimeoutRef.current !== null) {\n        clearTimeout(resetCopyStateTimeoutRef.current);\n      }\n    },\n    []\n  );\n\n  return (\n    <Widget size=\"md\" design=\"damn\">\n      <WidgetContent className=\"grid grid-cols-5 items-center\">\n        <div className=\"col-span-2 flex size-full items-center justify-center rounded-l-3xl bg-white\">\n          <Image\n            className=\"bg-transparent\"\n            width={300}\n            height={300}\n            src=\"/assets/other/black-friday-sale.png\"\n            alt=\"Black Friday Sale\"\n          />\n        </div>\n        <div className=\"col-span-3 flex h-full w-full flex-col items-center justify-center gap-3 px-3\">\n          <Label className=\"text-center\">\n            Scratch to reveal your coupon code.\n          </Label>\n          <ScratchCard\n            className=\"h-14 w-full\"\n            overlayLabel=\"Scratch\"\n            ariaLabel=\"Scratch to reveal your coupon code. Press Enter to reveal.\"\n            revealAnnouncement=\"Coupon revealed: BFS123\"\n          >\n            <div className=\"flex h-full w-full flex-col items-center text-center\">\n              <span className=\"mt-2 text-3xl font-semibold tracking-tight\">\n                20% off\n              </span>\n            </div>\n          </ScratchCard>\n          <Tooltip delayDuration={300}>\n            <TooltipTrigger asChild>\n              <CopyButton\n                className=\"w-full\"\n                variant=\"dashed\"\n                size=\"default\"\n                text=\"BFS123\"\n                onCopyError={() => {\n                  console.log(\"Copy failed\");\n                }}\n              >\n                <span className=\"uppercase\">BFS123</span>\n              </CopyButton>\n            </TooltipTrigger>\n            <TooltipContent>\n              <p>Click to Copy</p>\n            </TooltipContent>\n          </Tooltip>\n        </div>\n      </WidgetContent>\n    </Widget>\n  );\n};\n\nexport default WidgetDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "sale"
+    ],
+    "size": "md"
+  },
+  "type": "registry:component"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sale-sm-02",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/sale/sm/sale-02.tsx",
+      "content": "\"use client\";\n\nimport { BadgePercentIcon } from \"lucide-react\";\n\nimport CopyButton from \"@/components/copy-button\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget design=\"damn\">\n    <WidgetHeader className=\"from-vercel-purple to-vercel-yellow flex h-20 items-center justify-center rounded-t-3xl bg-linear-to-b px-6\">\n      <WidgetTitle>\n        <BadgePercentIcon className=\"size-10\" strokeWidth=\"1.5\" />\n      </WidgetTitle>\n    </WidgetHeader>\n    <WidgetContent className=\"mx-auto flex-col items-center justify-center gap-1.5\">\n      <div className=\"flex w-full flex-col items-center justify-center px-3 text-center text-wrap\">\n        <Label size=\"md\">Your code for 20% discount</Label>\n      </div>\n      <Tooltip delayDuration={300}>\n        <TooltipTrigger asChild>\n          <CopyButton\n            variant=\"dashed\"\n            size=\"sm\"\n            text=\"Wigggly20\"\n            onCopyError={() => {\n              console.log(\"Copy failed\");\n            }}\n          >\n            <span className=\"text-xs uppercase\">Wigggly20</span>\n          </CopyButton>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Click to Copy</p>\n        </TooltipContent>\n      </Tooltip>\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "sale"
+    ],
+    "size": "sm"
+  },
+  "type": "registry:component"
+}

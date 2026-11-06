@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sale-md-03",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/sale/md/sale-03.tsx",
+      "content": "import { DitheredLogo } from \"@/components/dithercn/dithered-logo\";\nimport { Button } from \"@/components/ui/button\";\nimport { Label } from \"@/components/ui/label\";\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget\n    size=\"md\"\n    className=\"from-muted-foreground/10 to-foreground/15 dark:to-muted-foreground/5 dark:from-foreground/10 border-0 bg-linear-to-r\"\n  >\n    <WidgetContent className=\"grid grid-cols-2 items-center\">\n      <div className=\"flex size-full flex-col items-start justify-between\">\n        <Label size=\"xl\" weight=\"semibold\">\n          Black Friday Sale\n        </Label>\n        <Label size=\"sm\" weight=\"medium\" variant=\"muted-foreground\">\n          Get 40% off on new domains.\n        </Label>\n        <Button>Deploy Now</Button>\n      </div>\n      <DitheredLogo\n        src=\"/assets/logos/vercel.svg\"\n        alt=\"Acme\"\n        effect=\"scan\"\n        className=\"h-full\"\n      />\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "sale"
+    ],
+    "size": "md",
+    "credits": [
+      {
+        "name": "@dithercn",
+        "homepage": "https://dithercn.dev/",
+        "url": "https://dithercn.dev/docs/images/dithered-logo",
+        "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 23 23' shape-rendering='crispEdges'><rect x='0' y='0' width='5' height='5' fill='#fff'/><rect x='12' y='0' width='5' height='5' fill='#fff'/><rect x='18' y='0' width='5' height='5' fill='#fff'/><rect x='6' y='6' width='5' height='5' fill='#fff'/><rect x='18' y='6' width='5' height='5' fill='#fff'/><rect x='12' y='12' width='5' height='5' fill='#fff'/><rect x='18' y='12' width='5' height='5' fill='#fff'/><rect x='6' y='18' width='5' height='5' fill='#fff'/><rect x='12' y='18' width='5' height='5' fill='#fff'/><rect x='18' y='18' width='5' height='5' fill='#fff'/></svg>"
+      }
+    ]
+  },
+  "type": "registry:component"
+}

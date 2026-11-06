@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sale-sm-03",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/sale/sm/sale-03.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\nimport { toast } from \"sonner\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Field } from \"@/components/ui/field\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => {\n  const [isDark, setIsDark] = useState(false);\n\n  useEffect(() => {\n    const updateTheme = () => {\n      setIsDark(document.documentElement.classList.contains(\"dark\"));\n    };\n\n    updateTheme();\n\n    const observer = new MutationObserver(updateTheme);\n    observer.observe(document.documentElement, {\n      attributeFilter: [\"class\"],\n      attributes: true,\n    });\n\n    return () => observer.disconnect();\n  }, []);\n\n  return (\n    <Widget design=\"new-york\" className=\"border-productive\">\n      <WidgetContent className=\"bg-productive/80 dark:bg-productive/50 mx-auto w-full flex-col items-center justify-center gap-1.5 rounded-2xl px-3\">\n        <Label\n          variant={isDark ? \"foreground\" : \"background\"}\n          className=\"text-center\"\n          size=\"xl\"\n          weight=\"semibold\"\n        >\n          Get 20% Off\n        </Label>\n        <form\n          className=\"[&_[data-slot=input]::placeholder]:text-background/75 **:data-[slot=input]:text-background dark:**:data-[slot=input]:text-foreground dark:[&_[data-slot=input]::placeholder]:text-muted-foreground flex w-full flex-col gap-2\"\n          onSubmit={(event) => {\n            event.preventDefault();\n\n            const formData = new FormData(event.currentTarget);\n            const name = formData.get(\"name\");\n            const email = formData.get(\"email\");\n\n            if (\n              typeof name !== \"string\" ||\n              !name.trim() ||\n              typeof email !== \"string\" ||\n              !email.trim()\n            ) {\n              return;\n            }\n\n            toast.success(`Coupon code sent to ${email}`);\n          }}\n        >\n          <Field>\n            <Input\n              id=\"name\"\n              name=\"name\"\n              type=\"text\"\n              placeholder=\"Your Name\"\n              required\n            />\n          </Field>\n          <Field>\n            <Input\n              id=\"email\"\n              name=\"email\"\n              type=\"email\"\n              placeholder=\"Your Email\"\n              required\n            />\n          </Field>\n          <Field>\n            <Button\n              type=\"submit\"\n              variant=\"productive\"\n              className=\"w-full\"\n              size=\"sm\"\n            >\n              Claim Discount\n            </Button>\n          </Field>\n        </form>\n      </WidgetContent>\n    </Widget>\n  );\n};\n\nexport default WidgetDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "sale"
+    ],
+    "size": "sm"
+  },
+  "type": "registry:component"
+}

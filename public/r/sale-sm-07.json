@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sale-sm-07",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/sale/sm/sale-07.tsx",
+      "content": "import { GiftIcon, VanIcon } from \"lucide-react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Label } from \"@/components/ui/label\";\nimport { Progress } from \"@/components/ui/progress\";\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget design=\"mumbai\">\n    <WidgetContent className=\"flex-col justify-between gap-2\">\n      <div className=\"flex items-center justify-center gap-3\">\n        <div className=\"bg-productive/20 flex size-10 items-center justify-center rounded-full\">\n          <VanIcon className=\"text-productive size-7\" strokeWidth={1.5} />\n        </div>\n        <div className=\"flex flex-col items-start justify-start\">\n          <Label weight=\"semibold\">Free Shipping</Label>\n          <Label size=\"xs\" variant=\"muted-foreground\">\n            On orders over $50\n          </Label>\n        </div>\n      </div>\n      <div className=\"w-full space-y-1.5\">\n        <Progress value={64} className=\"h-1.5\" />\n        <div className=\"flex w-full items-center justify-between\">\n          <Label size=\"sm\">$32 / 50</Label>\n          <Label size=\"sm\" variant=\"productive\">\n            $18 more\n          </Label>\n        </div>\n      </div>\n      <Button variant=\"outline\" size=\"sm\">\n        <GiftIcon /> Browse Products\n      </Button>\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "sale"
+    ],
+    "size": "sm"
+  },
+  "type": "registry:component"
+}

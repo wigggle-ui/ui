@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sale-sm-04",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/sale/sm/sale-04.tsx",
+      "content": "\"use client\";\n\nimport { Countdown } from \"@/components/arc/countdown/countdown\";\nimport CopyButton from \"@/components/copy-button\";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nconst now = new Date();\n\nconst WidgetDemo = () => (\n  <Widget>\n    <WidgetHeader>\n      <WidgetTitle>Flash Deal - 40% Off</WidgetTitle>\n    </WidgetHeader>\n    <WidgetContent>\n      <Countdown\n        target={new Date(\n          now.getTime() + 2 * 60 * 60 * 1000 - 1000\n        ).toISOString()}\n        timeZone=\"America/Los_Angeles\"\n        label=\"Keynote starts in\"\n        units={[\"hours\", \"minutes\", \"seconds\"]}\n      />\n    </WidgetContent>\n    <WidgetFooter>\n      <Tooltip delayDuration={300}>\n        <TooltipTrigger asChild>\n          <CopyButton\n            className=\"w-full\"\n            iconPosition=\"end\"\n            variant=\"secondary\"\n            size=\"lg\"\n            text=\"Summer40\"\n            onCopyError={() => {\n              console.log(\"Copy failed\");\n            }}\n          >\n            <span className=\"text-xs tracking-widest uppercase\">Summer40</span>\n          </CopyButton>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Click to Copy</p>\n        </TooltipContent>\n      </Tooltip>\n    </WidgetFooter>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "sale"
+    ],
+    "size": "sm",
+    "credits": [
+      {
+        "name": "@uiarc",
+        "url": "https://uiarc.dev",
+        "homepage": "https://uiarc.dev/components/countdown",
+        "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='var(--foreground)' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'><path d='M9 48V29C9 15 19 7 32 7s23 8 23 22v19'/><path d='M20 48V31c0-8 5-13 12-13s12 5 12 13v17'/><path d='M32 38v10'/></svg>"
+      }
+    ]
+  },
+  "type": "registry:component"
+}

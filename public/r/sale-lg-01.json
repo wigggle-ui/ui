@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sale-lg-01",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/sale/lg/sale-01.tsx",
+      "content": "\"use client\";\r\n\r\nimport Image from \"next/image\";\r\nimport { useEffect, useRef } from \"react\";\r\n\r\nimport CopyButton from \"@/components/copy-button\";\r\nimport ScratchCard from \"@/components/spectrumui/scratch-card\";\r\nimport { Label } from \"@/components/ui/label\";\r\nimport {\r\n  Tooltip,\r\n  TooltipContent,\r\n  TooltipTrigger,\r\n} from \"@/components/ui/tooltip\";\r\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\r\n\r\nconst WidgetDemo = () => {\r\n  const resetCopyStateTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(\r\n    null\r\n  );\r\n\r\n  useEffect(\r\n    () => () => {\r\n      if (resetCopyStateTimeoutRef.current !== null) {\r\n        clearTimeout(resetCopyStateTimeoutRef.current);\r\n      }\r\n    },\r\n    []\r\n  );\r\n\r\n  return (\r\n    <Widget size=\"md\" design=\"damn\">\r\n      <WidgetContent className=\"grid grid-cols-5 items-center\">\r\n        <div className=\"col-span-2 flex size-full items-center justify-center rounded-l-3xl bg-white\">\r\n          <Image\r\n            className=\"bg-transparent\"\r\n            width={300}\r\n            height={300}\r\n            src=\"/assets/other/black-friday-sale.png\"\r\n            alt=\"Black Friday Sale\"\r\n          />\r\n        </div>\r\n        <div className=\"col-span-3 flex h-full w-full flex-col items-center justify-center gap-3 px-3\">\r\n          <Label className=\"text-center\">\r\n            Scratch to reveal your coupon code.\r\n          </Label>\r\n          <ScratchCard\r\n            className=\"h-14 w-full\"\r\n            overlayLabel=\"Scratch\"\r\n            ariaLabel=\"Scratch to reveal your coupon code. Press Enter to reveal.\"\r\n            revealAnnouncement=\"Coupon revealed: BFS123\"\r\n          >\r\n            <div className=\"flex h-full w-full flex-col items-center text-center\">\r\n              <span className=\"mt-2 text-3xl font-semibold tracking-tight\">\r\n                20% off\r\n              </span>\r\n            </div>\r\n          </ScratchCard>\r\n          <Tooltip delayDuration={300}>\r\n            <TooltipTrigger asChild>\r\n              <CopyButton\r\n                className=\"w-full\"\r\n                variant=\"dashed\"\r\n                size=\"default\"\r\n                text=\"BFS123\"\r\n                onCopyError={() => {\r\n                  console.log(\"Copy failed\");\r\n                }}\r\n              >\r\n                <span className=\"uppercase\">BFS123</span>\r\n              </CopyButton>\r\n            </TooltipTrigger>\r\n            <TooltipContent>\r\n              <p>Click to Copy</p>\r\n            </TooltipContent>\r\n          </Tooltip>\r\n        </div>\r\n      </WidgetContent>\r\n    </Widget>\r\n  );\r\n};\r\n\r\nexport default WidgetDemo;\r\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "sale"
+    ],
+    "size": "lg"
+  },
+  "type": "registry:component"
+}

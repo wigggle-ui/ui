@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sale-sm-08",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/sale/sm/sale-08.tsx",
+      "content": "\"use client\";\n\nimport CopyButton from \"@/components/copy-button\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\";\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget design=\"mumbai\">\n    <WidgetContent className=\"mx-auto flex-col items-start gap-3\">\n      <div className=\"flex w-full flex-col items-center justify-center\">\n        <Label size=\"lg\">Your code for</Label>\n        <Label size=\"xxxxl\">20%</Label>\n        <Label size=\"lg\">discount</Label>\n      </div>\n      <Tooltip delayDuration={300}>\n        <TooltipTrigger asChild>\n          <CopyButton\n            variant=\"dashed\"\n            size=\"default\"\n            text=\"Wigggly20\"\n            onCopyError={() => {\n              console.log(\"Copy failed\");\n            }}\n          >\n            <span className=\"uppercase\">Wigggly20</span>\n          </CopyButton>\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Click to Copy</p>\n        </TooltipContent>\n      </Tooltip>\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "sale"
+    ],
+    "size": "sm"
+  },
+  "type": "registry:component"
+}
