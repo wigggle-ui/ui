@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { Icons } from "@/components/icons";
 import MobileNav from "@/components/mobile-nav";
-import RotatingLogo from "@/components/rotating-logo";
 import SearchCommandMenu from "@/components/search-command-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -16,7 +15,8 @@ const SiteHeader = () => (
         <MobileNav />
       </div>
       <Link className="group flex items-center justify-center gap-1.5" href="/">
-        <RotatingLogo />
+        <Icons.Logo />
+        Wigggle UI
       </Link>
       <div className="hidden md:flex md:items-center md:justify-start md:gap-4">
         {MENU_LINKS.map((link) => (

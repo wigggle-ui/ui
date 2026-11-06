@@ -7,6 +7,14 @@ export const Icons = {
       <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57-155.5-127C46.7 790.7 0 663 0 541.8c0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z" />
     </svg>
   ),
+  ClaudeAI: (props: IconProps) => (
+    <svg {...props} preserveAspectRatio="xMidYMid" viewBox="0 0 256 257">
+      <path
+        fill="var(--color-claude-ai)"
+        d="m50.228 170.321 50.357-28.257.843-2.463-.843-1.361h-2.462l-8.426-.518-28.775-.778-24.952-1.037-24.175-1.296-6.092-1.297L0 125.796l.583-3.759 5.12-3.434 7.324.648 16.202 1.101 24.304 1.685 17.629 1.037 26.118 2.722h4.148l.583-1.685-1.426-1.037-1.101-1.037-25.147-17.045-27.22-18.017-14.258-10.37-7.713-5.25-3.888-4.925-1.685-10.758 7-7.713 9.397.649 2.398.648 9.527 7.323 20.35 15.75L94.817 91.9l3.889 3.24 1.555-1.102.195-.777-1.75-2.917-14.453-26.118-15.425-26.572-6.87-11.018-1.814-6.61c-.648-2.723-1.102-4.991-1.102-7.778l7.972-10.823L71.42 0 82.05 1.426l4.472 3.888 6.61 15.101 10.694 23.786 16.591 32.34 4.861 9.592 2.592 8.879.973 2.722h1.685v-1.556l1.36-18.211 2.528-22.36 2.463-28.776.843-8.1 4.018-9.722 7.971-5.25 6.222 2.981 5.12 7.324-.713 4.73-3.046 19.768-5.962 30.98-3.889 20.739h2.268l2.593-2.593 10.499-13.934 17.628-22.036 7.778-8.749 9.073-9.657 5.833-4.601h11.018l8.1 12.055-3.628 12.443-11.342 14.388-9.398 12.184-13.48 18.147-8.426 14.518.778 1.166 2.01-.194 30.46-6.481 16.462-2.982 19.637-3.37 8.88 4.148.971 4.213-3.5 8.62-20.998 5.184-24.628 4.926-36.682 8.685-.454.324.519.648 16.526 1.555 7.065.389h17.304l32.21 2.398 8.426 5.574 5.055 6.805-.843 5.184-12.962 6.611-17.498-4.148-40.83-9.721-14-3.5h-1.944v1.167l11.666 11.406 21.387 19.314 26.767 24.887 1.36 6.157-3.434 4.86-3.63-.518-23.526-17.693-9.073-7.972-20.545-17.304h-1.36v1.814l4.73 6.935 25.017 37.59 1.296 11.536-1.814 3.76-6.481 2.268-7.13-1.297-14.647-20.544-15.1-23.138-12.185-20.739-1.49.843-7.194 77.448-3.37 3.953-7.778 2.981-6.48-4.925-3.436-7.972 3.435-15.749 4.148-20.544 3.37-16.333 3.046-20.285 1.815-6.74-.13-.454-1.49.194-15.295 20.999-23.267 31.433-18.406 19.702-4.407 1.75-7.648-3.954.713-7.064 4.277-6.286 25.47-32.405 15.36-20.092 9.917-11.6-.065-1.686h-.583L44.07 198.125l-12.055 1.555-5.185-4.86.648-7.972 2.463-2.593 20.35-13.999-.064.065Z"
+      />
+    </svg>
+  ),
   GitHub: (props: IconProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path
@@ -26,135 +34,9 @@ export const Icons = {
       <path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077" />
     </svg>
   ),
-  // Logo: (props: IconProps) => (
-  //   <svg
-  //     {...props}
-  //     xmlns="http://www.w3.org/2000/svg"
-  //     width="24"
-  //     height="24"
-  //     viewBox="0 0 24 24"
-  //     fill="none"
-  //     stroke="currentColor"
-  //     strokeWidth="2"
-  //     strokeLinecap="round"
-  //     strokeLinejoin="round"
-  //   >
-  //     <rect width="18" height="18" x="3" y="3" rx="2" />
-  //   </svg>
-  // ),
-  // =========================================================================
-  // VARIANT 1: "The Jack-O-Lantern & Ghost" (Classic Dev Glow)
-  // =========================================================================
-  Logo: ({ className = "", ...props }: IconProps) => (
+  Logo: (props: IconProps) => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={`overflow-visible ${className}`}
       {...props}
-    >
-      <title>Logo</title>
-      <defs>
-        <radialGradient id="hal-eye-glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="var(--color-muted)" />
-          <stop offset="60%" stopColor="var(--color-vercel-yellow)" />
-          <stop
-            offset="100%"
-            stopColor="var(--color-destructive)"
-            stopOpacity="0"
-          />
-        </radialGradient>
-        <linearGradient id="hal-ghost-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop
-            offset="0%"
-            stopColor="var(--color-chart-2)"
-            stopOpacity="0.8"
-          />
-          <stop
-            offset="100%"
-            stopColor="var(--color-vercel-purple)"
-            stopOpacity="0"
-          />
-        </linearGradient>
-      </defs>
-
-      {/* Base geometry */}
-      <rect
-        width="18"
-        height="18"
-        x="3"
-        y="3"
-        rx="2"
-        className="fill-background stroke-vercel-yellow"
-      />
-
-      {/* Toxic slime drips */}
-      <path
-        d="M4 5 C5 5, 5 9, 6 9 C7 9, 7 5, 9 5 C10 5, 10.5 11, 12 11 C13.5 11, 14 5, 15 5 C16 5, 16.5 8, 17.5 8 C18.5 8, 19 5, 20 5"
-        className="stroke-productive fill-none stroke-1"
-      />
-
-      {/* Carved demon eyes and jagged grin */}
-      <g>
-        <circle
-          cx="8.5"
-          cy="12"
-          r="2.5"
-          fill="url(#hal-eye-glow)"
-          opacity="0.6"
-        />
-        <circle
-          cx="15.5"
-          cy="12"
-          r="2.5"
-          fill="url(#hal-eye-glow)"
-          opacity="0.6"
-        />
-        <polygon
-          points="7,11 10.5,12 8,13.5"
-          className="fill-vercel-yellow stroke-none"
-        />
-        <polygon
-          points="17,11 13.5,12 16,13.5"
-          className="fill-vercel-yellow stroke-none"
-        />
-        <path
-          d="M8.5 16.5 L9.5 15.5 L11 16.5 L12 15 L13 16.5 L14.5 15.5 L15.5 16.5"
-          className="stroke-vercel-yellow fill-none stroke-1"
-        />
-      </g>
-
-      {/* Ghost */}
-      <g className="pointer-events-none">
-        <path
-          d="M9 3 C9 0.5, 15 0.5, 15 3 C15 5.5, 13 6, 12 7 C11 6, 9 5.5, 9 3 Z"
-          fill="url(#hal-ghost-grad)"
-          className="stroke-none"
-        />
-        <circle
-          cx="11"
-          cy="2.5"
-          r="0.6"
-          fill="var(--color-code-foreground)"
-          className="stroke-none"
-        />
-        <circle
-          cx="13"
-          cy="2.5"
-          r="0.6"
-          fill="var(--color-code-foreground)"
-          className="stroke-none"
-        />
-      </g>
-    </svg>
-  ),
-  LogoCobweb: ({ className = "", ...props }: IconProps) => (
-    <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -164,152 +46,8 @@ export const Icons = {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={`overflow-visible ${className}`}
-      {...props}
     >
-      <title>Logo</title>
-
-      {/* Base Logo Frame */}
       <rect width="18" height="18" x="3" y="3" rx="2" />
-
-      {/* Clean Corner Web (Top-Left) */}
-      <g strokeWidth="1" opacity="0.6">
-        {/* Radial structural spokes */}
-        <line x1="3" y1="3" x2="11" y2="11" />
-        <line x1="3" y1="3" x2="12" y2="7" />
-        <line x1="3" y1="3" x2="7" y2="12" />
-
-        {/* Concentric woven arcs */}
-        <path d="M3 7 Q 5.5 5.5 7 3" />
-        <path d="M3 11 Q 8 8 11 3" />
-      </g>
-
-      {/* Single Hanging Thread & Minimalist Spider */}
-      <g strokeWidth="1">
-        {/* Silk line from top border */}
-        <line
-          x1="16"
-          y1="3"
-          x2="16"
-          y2="12"
-          strokeDasharray="1.5 1.5"
-          opacity="0.5"
-        />
-
-        {/* Spider Silhouette */}
-        <g transform="translate(16, 13)">
-          {/* Body */}
-          <ellipse
-            cx="0"
-            cy="0"
-            rx="1.1"
-            ry="1.4"
-            fill="currentColor"
-            stroke="none"
-          />
-          <circle cx="0" cy="1.3" r="0.8" fill="currentColor" stroke="none" />
-
-          {/* Minimalist angled legs */}
-          <g fill="none" strokeWidth="0.8">
-            <path d="M-0.6 0.8 L-2 1.8 L-2.2 3" />
-            <path d="M0.6 0.8 L2 1.8 L2.2 3" />
-            <path d="M-0.8 -0.2 L-2.4 -0.2 L-2.8 -1.2" />
-            <path d="M0.8 -0.2 L2.4 -0.2 L2.8 -1.2" />
-          </g>
-        </g>
-      </g>
-    </svg>
-  ),
-  LogoDungeon: ({ className = "", ...props }: IconProps) => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={`overflow-visible ${className}`}
-      {...props}
-    >
-      <title>Logo Dungeon</title>
-      <defs>
-        <radialGradient id="dungeon-crimson-glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="var(--color-destructive)" />
-          <stop offset="70%" stopColor="var(--color-destructive)" />
-          <stop
-            offset="100%"
-            stopColor="var(--color-code-foreground)"
-            stopOpacity="0"
-          />
-        </radialGradient>
-      </defs>
-
-      {/* Base geometry */}
-      <rect
-        width="18"
-        height="18"
-        x="3"
-        y="3"
-        rx="2"
-        className="fill-background stroke-muted-foreground"
-      />
-
-      {/* Portcullis iron bars */}
-      <g className="stroke-muted-foreground stroke-1">
-        <line x1="7.5" y1="4" x2="7.5" y2="20" />
-        <line x1="12" y1="4" x2="12" y2="20" />
-        <line x1="16.5" y1="4" x2="16.5" y2="20" />
-      </g>
-
-      {/* Crimson demon eyes */}
-      <g>
-        <circle
-          cx="9.5"
-          cy="11.5"
-          r="3"
-          fill="url(#dungeon-crimson-glow)"
-          opacity="0.8"
-          className="stroke-none"
-        />
-        <circle
-          cx="14.5"
-          cy="11.5"
-          r="3"
-          fill="url(#dungeon-crimson-glow)"
-          opacity="0.8"
-          className="stroke-none"
-        />
-        <circle
-          cx="9.5"
-          cy="11.5"
-          r="0.8"
-          fill="var(--color-background)"
-          className="stroke-none"
-        />
-        <circle
-          cx="14.5"
-          cy="11.5"
-          r="0.8"
-          fill="var(--color-background)"
-          className="stroke-none"
-        />
-      </g>
-
-      {/* Crossed chain and padlock */}
-      <g className="stroke-vercel-yellow stroke-1">
-        <line x1="4.5" y1="18.5" x2="19.5" y2="5.5" strokeDasharray="2 1.5" />
-        <rect
-          x="10.5"
-          y="11"
-          width="3"
-          height="3"
-          rx="0.5"
-          fill="var(--color-vercel-yellow)"
-          strokeWidth="0.8"
-        />
-      </g>
     </svg>
   ),
   OpenPanel: (props: IconProps) => (
@@ -420,6 +158,11 @@ export const Icons = {
         d="M13.7688 19.0956L0 3.68759H5.53933L13.6231 12.7337V3.68759H17.7535V17.5746C17.7535 19.6705 15.1654 20.6584 13.7688 19.0956Z"
         fill="currentColor"
       />
+    </svg>
+  ),
+  Vercel: (props: IconProps) => (
+    <svg {...props} viewBox="0 0 256 222" preserveAspectRatio="xMidYMid">
+      <path fill="currentColor" d="m128 0 128 221.705H0z" />
     </svg>
   ),
   VercelMagic: (props: IconProps) => (

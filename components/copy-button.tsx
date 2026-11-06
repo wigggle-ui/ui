@@ -37,6 +37,7 @@ const CopyStateIcon = ({
 
 export type CopyButtonProps = ComponentProps<typeof Button> & {
   text: string | (() => string);
+  iconPosition?: "start" | "end" | "none";
   onCopySuccess?: (text: string) => void;
   onCopyError?: (error: Error) => void;
 } & Omit<CopyStateIconProps, "state">;
@@ -46,6 +47,7 @@ const CopyButton = ({
   size = "icon",
   children,
   text,
+  iconPosition = "start",
   idleIcon,
   doneIcon,
   errorIcon,
@@ -59,6 +61,15 @@ const CopyButton = ({
     onCopySuccess,
   });
 
+  const copyStateIcon = (
+    <CopyStateIcon
+      state={state}
+      idleIcon={idleIcon}
+      doneIcon={doneIcon}
+      errorIcon={errorIcon}
+    />
+  );
+
   return (
     <Button
       variant="ghost"
@@ -71,13 +82,9 @@ const CopyButton = ({
       aria-label="Copy"
       {...props}
     >
-      <CopyStateIcon
-        state={state}
-        idleIcon={idleIcon}
-        doneIcon={doneIcon}
-        errorIcon={errorIcon}
-      />
+      {iconPosition === "start" && copyStateIcon}
       {children}
+      {iconPosition === "end" && copyStateIcon}
     </Button>
   );
 };

@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import Announcement from "@/components/announcement";
 import { CodeBlockCommand } from "@/components/code-block-command";
 import PageHeader from "@/components/page-header";
 import { Button } from "@/components/ui/button";
@@ -8,8 +9,12 @@ import convertNpmCommand from "@/lib/convert-npm-command";
 
 const Home = () => (
   <div className="grid min-h-0 w-full grid-rows-[auto_1fr] gap-6">
-    <div className="min-w-0 space-y-6">
-      <PageHeader title="The first ever collection of Widgets for the Web.">
+    <div className="flex min-w-0 flex-col items-center justify-center gap-4">
+      <Announcement />
+      <PageHeader
+        className="mt-0"
+        title="The first ever collection of Widgets for the Web."
+      >
         An open-source curated collection of copy-paste widgets for your next
         project.
       </PageHeader>

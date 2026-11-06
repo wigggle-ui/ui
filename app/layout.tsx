@@ -2,14 +2,14 @@ import { OpenPanelComponent } from "@openpanel/nextjs";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
+import React from "react";
 
 import "./globals.css";
-
-import React from "react";
 
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { siteConfig } from "@/config/site";
 
@@ -109,6 +109,7 @@ const RootLayout = ({
             <SiteFooter />
           </div>
         </TooltipProvider>
+        <Toaster />
       </ThemeProvider>
       <Analytics />
     </body>
