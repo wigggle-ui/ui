@@ -1,0 +1,13 @@
+.lowBloom.lowBloom {
+  filter: blur(10px);
+  opacity: calc(var(--dither-bloom, 1) * 0.3);
+}
+
+.highBloom.highBloom {
+  filter: blur(18px);
+  opacity: calc(var(--dither-bloom, 1) * 0.55);
+}
+
+.bloomBox.bloomBox {
+  filter: var(--dither-bloom-filter);
+}

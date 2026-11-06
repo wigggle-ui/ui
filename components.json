@@ -24,6 +24,9 @@
   "registries": {
     "@magicui": "https://magicui.design/r/{name}.json",
     "@ncdai": "https://chanhdai.com/r/{name}.json",
-    "@animate-ui": "https://animate-ui.com/r/{name}.json"
+    "@animate-ui": "https://animate-ui.com/r/{name}.json",
+    "@uiarc": "https://uiarc.dev/r/{name}.json",
+    "@spectrumui": "https://ui.spectrumhq.in/r/{name}.json",
+    "@react-bits": "https://reactbits.dev/r/{name}.json"
   }
 }
