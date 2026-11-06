@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -38,6 +39,8 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-claude-ai: var(--claude-ai);
+  --color-neon-db: var(--neon-db);
   --color-vercel-purple: var(--vercel-purple);
   --color-vercel-yellow: var(--vercel-yellow);
   --color-vercel-blue: var(--vercel-blue);
@@ -67,6 +70,15 @@
       transform: translateY(calc(-100% - var(--gap)));
     }
   }
+  --color-dither-ink: var(--dither-ink);
+  --color-dither-paper: var(--dither-paper);
+  --color-dither-blue: var(--dither-color-blue);
+  --color-dither-purple: var(--dither-color-purple);
+  --color-dither-green: var(--dither-color-green);
+  --color-dither-pink: var(--dither-color-pink);
+  --color-dither-orange: var(--dither-color-orange);
+  --color-dither-red: var(--dither-color-red);
+  --color-dither-grey: var(--dither-color-grey);
 }
 
 :root {
@@ -103,6 +115,8 @@
   --sidebar-accent-foreground: oklch(0.205 0 0); /* Neutral 900 */
   --sidebar-border: oklch(0.922 0 0); /* Neutral 200 */
   --sidebar-ring: oklch(0.708 0 0); /* Neutral 400 */
+  --claude-ai: oklch(59.7% 0.135 39.9); /* Custom */
+  --neon-db: oklch(73.1% 0.141 163.5); /* Custom */
   --vercel-yellow: oklch(0.8169 0.1639 75.84); /* Custom */
   --vercel-purple: oklch(0.5556 0.1829 305.86); /* Custom */
   --vercel-blue: oklch(0.5787 0.2146 258.04); /* Custom */
@@ -145,6 +159,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0); /* Zinc 50 */
   --sidebar-border: oklch(1 0 0 / 10%); /* White / 10% */
   --sidebar-ring: oklch(0.556 0 0); /* Neutral 500 */
+  --claude-ai: oklch(59.7% 0.135 39.9); /* Custom */
+  --neon-db: oklch(73.1% 0.141 163.5); /* Custom */
   --vercel-yellow: oklch(0.8169 0.1639 75.84); /* Custom */
   --vercel-purple: oklch(0.5556 0.1829 305.86); /* Custom */
   --vercel-blue: oklch(0.5787 0.2146 258.04); /* Custom */
@@ -169,6 +185,32 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  :root {
+    --dither-ink: var(--primary);
+    --dither-paper: var(--background);
+    --dither-cell: 3px;
+    --dither-color-blue: oklch(0.56 0.18 248);
+    --dither-color-purple: oklch(0.53 0.22 302);
+    --dither-color-green: oklch(0.58 0.15 152);
+    --dither-color-pink: oklch(0.58 0.21 355);
+    --dither-color-orange: oklch(0.64 0.17 52);
+    --dither-color-red: oklch(0.55 0.21 27);
+    --dither-color-grey: oklch(0.55 0 0);
+    --dither-bloom: 0.6;
+  }
+  .dark {
+    --dither-ink: var(--primary);
+    --dither-paper: var(--background);
+    --dither-cell: 3px;
+    --dither-color-blue: oklch(0.72 0.14 240);
+    --dither-color-purple: oklch(0.7 0.18 304);
+    --dither-color-green: oklch(0.78 0.17 152);
+    --dither-color-pink: oklch(0.74 0.17 354);
+    --dither-color-orange: oklch(0.79 0.15 62);
+    --dither-color-red: oklch(0.68 0.2 25);
+    --dither-color-grey: oklch(0.66 0 0);
+    --dither-bloom: 1;
   }
 }
 
