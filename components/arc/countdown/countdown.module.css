@@ -1,0 +1,219 @@
+.countdown {
+  position: relative;
+  min-width: 0;
+  color: var(--foreground);
+  font-family: var(--font-body);
+  letter-spacing: var(--tracking-body);
+}
+.countdown[data-variant="large"] {
+  container-type: inline-size;
+  display: flex;
+  justify-content: center;
+}
+.countdown[data-variant="compact"] {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+/* The shell springs to whatever it holds; the compact pill shows that morph as its own outline. */
+.shell {
+  position: relative;
+  display: flex;
+  width: var(--countdown-width);
+  height: var(--countdown-height);
+  justify-content: center;
+}
+.content {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+}
+.countdown[data-variant="compact"] .shell {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  transition:
+    border-color var(--duration-standard) var(--ease-standard),
+    background-color var(--duration-standard) var(--ease-standard);
+}
+.countdown[data-variant="compact"] .content {
+  min-height: 32px;
+  padding: 0 var(--space-3);
+}
+.countdown[data-variant="compact"][data-complete] .shell {
+  border-color: color-mix(in oklab, var(--success) 35%, var(--border));
+  background: color-mix(in oklab, var(--success) 9%, var(--surface));
+}
+
+.units {
+  display: inline-flex;
+  align-items: flex-start;
+  white-space: nowrap;
+}
+.unit {
+  display: inline-flex;
+  align-items: flex-start;
+}
+.group {
+  display: inline-grid;
+  justify-items: center;
+  gap: 6px;
+}
+.number {
+  display: inline-flex;
+  font-variant-numeric: tabular-nums;
+  transition: opacity var(--duration-considered) var(--ease-standard);
+}
+.countdown[data-pending] .number {
+  opacity: 0.3;
+}
+.name {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  line-height: 1;
+}
+.colon {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* Large: display digits sized to the container, so four groups fit at 320px and breathe on a wide card. */
+.countdown[data-variant="large"] .units {
+  gap: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 12.5cqi, var(--text-5xl));
+  font-weight: 500;
+  letter-spacing: var(--tracking-display);
+  line-height: 1;
+}
+.countdown[data-variant="large"] .colon {
+  padding-inline: 0.12em;
+  line-height: 1;
+  transform: translateY(-0.06em);
+}
+/* On a narrow card the unit names outgrow the digits; an even column floor keeps the colons evenly spaced instead of following each name's width. */
+.countdown[data-variant="large"] .group {
+  min-width: min(calc((100cqi - 1.6em) / 4), calc(var(--text-xs) * 4.2));
+}
+.countdown[data-variant="large"] .name {
+  font-family: var(--font-body);
+  letter-spacing: var(--tracking-body);
+}
+
+/* Compact: one line, digits then a quiet unit letter. */
+.countdown[data-variant="compact"] .units {
+  gap: 6px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.3;
+}
+.countdown[data-variant="compact"] .group {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+}
+.countdown[data-variant="compact"] .name {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* Each digit is a clipped wheel whose window feathers out, so a turning digit fades at the edge instead of being cut. */
+.wheel {
+  --feather: 0.16em;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin-block: calc(var(--feather) * -1);
+  padding-block: var(--feather);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 calc(var(--feather) * 1.5),
+    #000 calc(100% - var(--feather) * 1.5),
+    transparent
+  );
+}
+.sizer {
+  visibility: hidden;
+}
+.glyph {
+  position: absolute;
+  inset: var(--feather) 0;
+  transform: translateY(var(--glyph-y));
+  text-align: center;
+  filter: var(--glyph-filter);
+  opacity: var(--glyph-opacity);
+  visibility: var(--glyph-visibility);
+}
+
+/* Finished: the digits give way to the label and a live mark. */
+.done {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  white-space: nowrap;
+}
+.countdown[data-variant="large"] .done {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 11cqi, var(--text-4xl));
+  font-weight: 500;
+  letter-spacing: var(--tracking-display);
+  line-height: 1.1;
+}
+.countdown[data-variant="compact"] .done {
+  color: var(--success);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.3;
+}
+.pulse {
+  position: relative;
+  width: 0.3em;
+  height: 0.3em;
+  min-width: 8px;
+  min-height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--success);
+}
+.pulse::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--success);
+  content: "";
+  animation: pulse 2s var(--ease-standard) infinite;
+}
+@keyframes pulse {
+  from {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  70%,
+  to {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pulse::after {
+    animation: none;
+  }
+  .number,
+  .shell {
+    transition: none;
+  }
+}
