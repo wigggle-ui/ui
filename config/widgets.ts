@@ -1,5 +1,6 @@
 import type { LucideProps } from "lucide-react";
 import {
+  BadgePercentIcon,
   CalendarIcon,
   ChartNoAxesCombinedIcon,
   CirclePlayIcon,
@@ -34,7 +35,6 @@ export interface WidgetCategory {
 export const categories: WidgetCategory[] = [
   {
     icon: CalendarIcon,
-    isNew: true,
     name: "Calendar",
     slug: "calendar",
     widgets: {
@@ -152,6 +152,31 @@ export const categories: WidgetCategory[] = [
         { name: "productivity-sm-05" },
         { name: "productivity-sm-06" },
         { name: "productivity-sm-07" },
+      ],
+    },
+  },
+  {
+    icon: BadgePercentIcon,
+    isNew: true,
+    name: "Sale",
+    slug: "sale",
+    widgets: {
+      lg: [],
+      md: [
+        { name: "sale-md-01" },
+        { name: "sale-md-02" },
+        { name: "sale-md-03" },
+        { name: "sale-md-04" },
+      ],
+      sm: [
+        { name: "sale-sm-01" },
+        { name: "sale-sm-02" },
+        { name: "sale-sm-03" },
+        { name: "sale-sm-04" },
+        { name: "sale-sm-05" },
+        { name: "sale-sm-06" },
+        { name: "sale-sm-07" },
+        { name: "sale-sm-08" },
       ],
     },
   },

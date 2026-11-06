@@ -272,6 +272,54 @@ export const widgetMap = new Map([
     () => import("@/registry/default/widgets/productivity/sm/productivity-07"),
   ],
   [
+    "registry/default/widgets/sale/md/sale-01.tsx",
+    () => import("@/registry/default/widgets/sale/md/sale-01"),
+  ],
+  [
+    "registry/default/widgets/sale/md/sale-02.tsx",
+    () => import("@/registry/default/widgets/sale/md/sale-02"),
+  ],
+  [
+    "registry/default/widgets/sale/md/sale-03.tsx",
+    () => import("@/registry/default/widgets/sale/md/sale-03"),
+  ],
+  [
+    "registry/default/widgets/sale/md/sale-04.tsx",
+    () => import("@/registry/default/widgets/sale/md/sale-04"),
+  ],
+  [
+    "registry/default/widgets/sale/sm/sale-01.tsx",
+    () => import("@/registry/default/widgets/sale/sm/sale-01"),
+  ],
+  [
+    "registry/default/widgets/sale/sm/sale-02.tsx",
+    () => import("@/registry/default/widgets/sale/sm/sale-02"),
+  ],
+  [
+    "registry/default/widgets/sale/sm/sale-03.tsx",
+    () => import("@/registry/default/widgets/sale/sm/sale-03"),
+  ],
+  [
+    "registry/default/widgets/sale/sm/sale-04.tsx",
+    () => import("@/registry/default/widgets/sale/sm/sale-04"),
+  ],
+  [
+    "registry/default/widgets/sale/sm/sale-05.tsx",
+    () => import("@/registry/default/widgets/sale/sm/sale-05"),
+  ],
+  [
+    "registry/default/widgets/sale/sm/sale-06.tsx",
+    () => import("@/registry/default/widgets/sale/sm/sale-06"),
+  ],
+  [
+    "registry/default/widgets/sale/sm/sale-07.tsx",
+    () => import("@/registry/default/widgets/sale/sm/sale-07"),
+  ],
+  [
+    "registry/default/widgets/sale/sm/sale-08.tsx",
+    () => import("@/registry/default/widgets/sale/sm/sale-08"),
+  ],
+  [
     "registry/default/widgets/sports/sm/sports-01.tsx",
     () => import("@/registry/default/widgets/sports/sm/sports-01"),
   ],

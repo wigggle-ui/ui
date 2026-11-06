@@ -1,4 +1,5 @@
 import {
+  BadgePercentIcon,
   BookOpenTextIcon,
   CalendarIcon,
   ChartNoAxesCombinedIcon,
@@ -87,6 +88,11 @@ export const WIDGET_CATEGORY_LINKS: WidgetCategoryLinkItem[] = [
     href: "/widgets/productivity",
     icon: GoalIcon,
     title: "Productivity",
+  },
+  {
+    href: "/widgets/sale",
+    icon: BadgePercentIcon,
+    title: "Sale",
   },
   {
     href: "/widgets/sports",
