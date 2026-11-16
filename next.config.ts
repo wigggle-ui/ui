@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns: [
+      {
+        hostname: "avatars.githubusercontent.com",
+        protocol: "https",
+      },
       new URL(
         "https://i.scdn.co/image/ab67616d0000b273dfd5b5d99cf81f1864deef01"
       ),

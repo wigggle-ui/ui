@@ -6,6 +6,7 @@ import {
   CirclePlayIcon,
   Clock3Icon,
   CloudSunIcon,
+  GitCompareArrowsIcon,
   GoalIcon,
   LayoutDashboardIcon,
   LayoutGridCirclesIcon,
@@ -34,6 +35,12 @@ export const MENU_LINKS: LinkItem[] = [
     icon: <LayoutGridCirclesIcon />,
     shortcut: "GW",
     title: "Widgets",
+  },
+  {
+    href: "/contributors",
+    icon: <GitCompareArrowsIcon />,
+    shortcut: "GC",
+    title: "Contributors",
   },
   // {
   //   href: "/playground",
