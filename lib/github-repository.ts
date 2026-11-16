@@ -90,7 +90,6 @@ const createApiClient = (
 ) => {
   const request = async (url: URL): Promise<Response> => {
     const response = await fetcher(url, {
-      cache: "no-store",
       headers: {
         Accept: "application/vnd.github+json",
         "X-GitHub-Api-Version": API_VERSION,

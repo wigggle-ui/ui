@@ -1,7 +1,7 @@
 import { SquareArrowOutUpRight } from "lucide-react";
+import { cacheLife } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense } from "react";
 
 import PageHeader from "@/components/page-header";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,16 @@ const formatNumber = new Intl.NumberFormat("en");
 const formatCount = (count: number, singular: string, plural: string): string =>
   `${formatNumber.format(count)} ${count === 1 ? singular : plural}`;
 
+const getCachedRepositoryStats = async (
+  repository: string,
+  token?: string
+): Promise<GitHubRepositoryStats> => {
+  "use cache";
+  cacheLife("hours");
+
+  return await getGitHubRepositoryStats({ repository, token });
+};
+
 type RepositoryResult =
   | { ok: true; stats: GitHubRepositoryStats }
   | { ok: false; message: string };
@@ -22,10 +32,10 @@ const loadRepositoryStats = async (): Promise<RepositoryResult> => {
   try {
     return {
       ok: true,
-      stats: await getGitHubRepositoryStats({
-        repository: REPOSITORY,
-        token: process.env.GITHUB_TOKEN,
-      }),
+      stats: await getCachedRepositoryStats(
+        REPOSITORY,
+        process.env.GITHUB_TOKEN
+      ),
     };
   } catch (error) {
     return {
@@ -75,29 +85,7 @@ const CountBadge = ({
   </span>
 );
 
-const Loading = () => (
-  <div className="space-y-8" aria-label="Loading repository statistics">
-    <div className="grid gap-3 sm:grid-cols-2">
-      {["contributors", "commits"].map((item) => (
-        <div
-          key={item}
-          className="border-border bg-card h-28 animate-pulse rounded-2xl border"
-        />
-      ))}
-    </div>
-    <div className="grid gap-3 sm:grid-cols-2">
-      {["first", "second", "third"].map((item) => (
-        <div
-          key={item}
-          className="border-border bg-card h-24 animate-pulse rounded-2xl border"
-        />
-      ))}
-    </div>
-  </div>
-);
-
-const RepositoryStats = async () => {
-  const result = await loadRepositoryStats();
+const RepositoryStats = ({ result }: { result: RepositoryResult }) => {
   if (!result.ok) {
     return (
       <p
@@ -219,12 +207,14 @@ export const metadata = {
   title: "Contributors",
 };
 
-const Page = () => (
-  <main className="mx-auto w-full max-w-4xl py-2">
-    <Suspense fallback={<Loading />}>
-      <RepositoryStats />
-    </Suspense>
-  </main>
-);
+const Page = async () => {
+  const result = await loadRepositoryStats();
+
+  return (
+    <main className="mx-auto w-full max-w-4xl py-2">
+      <RepositoryStats result={result} />
+    </main>
+  );
+};
 
 export default Page;
