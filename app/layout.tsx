@@ -17,8 +17,6 @@ const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
 });
-const openPanelClientId = process.env.OPEN_PANEL_CLIENT_ID;
-
 export const metadata: Metadata = {
   description: siteConfig.description,
   icons: {
@@ -90,12 +88,12 @@ const RootLayout = ({
 }>): React.JSX.Element => (
   <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
     <body className={`${outfit.className} antialiased`}>
-      {openPanelClientId && (
-        <OpenPanelComponent
-          clientId={openPanelClientId}
-          trackScreenViews={true}
-        />
-      )}
+      <OpenPanelComponent
+        clientId="9ff58510-51ad-4246-87c3-a25d37d60611"
+        trackScreenViews={true}
+        trackOutgoingLinks={true}
+        trackAttributes={true}
+      />
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
