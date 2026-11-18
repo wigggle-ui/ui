@@ -181,8 +181,8 @@ importers:
         specifier: ^1.94.0
         version: 1.94.0
       tailwindcss:
-        specifier: shadcn/lintv@types/node
-        version: link:shadcn/lintv@types/node
+        specifier: ^4.3.5
+        version: 4.3.5
       tw-animate-css:
         specifier: ^1.4.0
         version: 1.4.0
