@@ -1,6 +1,6 @@
 import { DumbbellIcon, SunIcon } from "lucide-react";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -18,10 +18,10 @@ const WidgetDemo = () => (
         <div className="flex items-center justify-center gap-2 px-1">
           <SunIcon className="stroke-vercel-yellow size-6" />
           <div className="flex flex-col items-start justify-start gap-0">
-            <Label size="sm">Wake up early</Label>
-            <Label size="sm" variant="muted-foreground">
+            <Text size="sm">Wake up early</Text>
+            <Text size="sm" variant="muted-foreground">
               13 days
-            </Label>
+            </Text>
           </div>
         </div>
       </div>
@@ -29,10 +29,10 @@ const WidgetDemo = () => (
         <div className="flex items-center justify-center gap-2 px-1">
           <DumbbellIcon className="stroke-destructive size-6" />
           <div className="flex flex-col items-start justify-start gap-0">
-            <Label size="sm">Workout</Label>
-            <Label size="sm" variant="muted-foreground">
+            <Text size="sm">Workout</Text>
+            <Text size="sm" variant="muted-foreground">
               6 days
-            </Label>
+            </Text>
           </div>
         </div>
       </div>

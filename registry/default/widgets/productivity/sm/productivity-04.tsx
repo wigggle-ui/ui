@@ -3,8 +3,8 @@
 import { cn } from "cn";
 import { useEffect, useState } from "react";
 
-import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { Text } from "@/components/ui/text";
 import {
   Tooltip,
   TooltipTrigger,
@@ -89,16 +89,16 @@ const WidgetDemo = () => {
               </TooltipTrigger>
               <TooltipContent>
                 <div className="flex gap-1">
-                  <Label variant="background" size="sm">
+                  <Text variant="background" size="sm">
                     {count} task{count === 1 ? "" : "s"}
-                  </Label>
-                  <Label variant="background" size="sm">
+                  </Text>
+                  <Text variant="background" size="sm">
                     on
-                  </Label>
-                  <Label
+                  </Text>
+                  <Text
                     variant="background"
                     size="sm"
-                  >{`${i + 1} ${month}`}</Label>
+                  >{`${i + 1} ${month}`}</Text>
                 </div>
               </TooltipContent>
             </Tooltip>

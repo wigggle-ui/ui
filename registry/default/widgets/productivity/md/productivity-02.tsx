@@ -3,7 +3,7 @@
 import { CheckCircle2Icon, CircleIcon, ListIcon } from "lucide-react";
 import React from "react";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -65,10 +65,10 @@ const WidgetDemo = () => {
             </WidgetTitle>
           </WidgetHeader>
           <div className="flex flex-col">
-            <Label size="xxxxl">{tasksDone}/3</Label>
-            <Label size="lg" variant="muted-foreground">
+            <Text size="xxxxl">{tasksDone}/3</Text>
+            <Text size="lg" variant="muted-foreground">
               tasks done
-            </Label>
+            </Text>
           </div>
         </div>
         <div className="flex size-full flex-col items-center justify-start">
@@ -86,7 +86,7 @@ const WidgetDemo = () => {
                   <CircleIcon className="text-muted-foreground size-4" />
                 )}
                 <div className="space-y-1">
-                  <Label
+                  <Text
                     size="sm"
                     variant="muted-foreground"
                     className="group-hover:cursor-pointer"
@@ -100,10 +100,10 @@ const WidgetDemo = () => {
                     >
                       {todo.task}
                     </span>
-                  </Label>
-                  <Label size="xs" variant="muted-foreground">
+                  </Text>
+                  <Text size="xs" variant="muted-foreground">
                     {todo.time}
-                  </Label>
+                  </Text>
                 </div>
               </div>
             </button>

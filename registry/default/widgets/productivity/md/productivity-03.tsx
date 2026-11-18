@@ -3,7 +3,7 @@
 import { ChartNoAxesColumnIcon } from "lucide-react";
 
 import { Gauge, GaugeArc, GaugeInset, GaugeTrack } from "@/components/gauge";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -16,7 +16,7 @@ const WidgetDemo = () => (
     <WidgetHeader className="w-full">
       <WidgetTitle className="flex items-center gap-2">
         <ChartNoAxesColumnIcon />
-        <Label>Weekly Progress</Label>
+        <Text>Weekly Progress</Text>
       </WidgetTitle>
     </WidgetHeader>
     <WidgetContent className="justify-between gap-4">
@@ -104,28 +104,28 @@ const WidgetDemo = () => (
         <div className="flex items-center gap-3">
           <div className="bg-productive size-4 rounded-xs" />
           <div>
-            <Label size="sm">55/100</Label>
-            <Label size="xs" variant="muted-foreground">
+            <Text size="sm">55/100</Text>
+            <Text size="xs" variant="muted-foreground">
               Design Mockups Completed
-            </Label>
+            </Text>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <div className="bg-vercel-yellow size-4 rounded-xs" />
           <div>
-            <Label size="sm">70/100</Label>
-            <Label size="xs" variant="muted-foreground">
+            <Text size="sm">70/100</Text>
+            <Text size="xs" variant="muted-foreground">
               Features Developed
-            </Label>
+            </Text>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <div className="bg-destructive size-4 rounded-xs" />
           <div>
-            <Label size="sm">85/100</Label>
-            <Label size="xs" variant="muted-foreground">
+            <Text size="sm">85/100</Text>
+            <Text size="xs" variant="muted-foreground">
               Test Cases Passed
-            </Label>
+            </Text>
           </div>
         </div>
       </div>

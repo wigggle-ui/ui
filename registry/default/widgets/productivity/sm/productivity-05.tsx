@@ -5,7 +5,7 @@ import { BookOpenIcon, CheckIcon } from "lucide-react";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -21,10 +21,10 @@ const WidgetDemo = () => {
     <Widget className="gap-3">
       <WidgetContent className="flex-col items-end justify-start gap-4">
         <div className="flex w-full flex-col">
-          <Label size="xl">Read 10 Mins</Label>
-          <Label size="sm" variant="muted-foreground">
+          <Text size="xl">Read 10 Mins</Text>
+          <Text size="sm" variant="muted-foreground">
             Streak: {status ? streak + 1 : streak} days
-          </Label>
+          </Text>
         </div>
       </WidgetContent>
       <WidgetFooter className="flex w-full items-center justify-between">

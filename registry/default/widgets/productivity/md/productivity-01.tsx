@@ -9,7 +9,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
 const chartData = [
@@ -83,15 +83,15 @@ const WidgetDemo = () => (
         <div className="mx-auto flex size-full flex-col items-center justify-center gap-6 border-e-2 px-1.5 py-3">
           <div className="flex items-center justify-between gap-2">
             <Icons.Instagram className="size-4.5" />
-            <Label>21m</Label>
+            <Text>21m</Text>
           </div>
           <div className="flex items-center gap-2">
             <Icons.Whatsapp className="size-4.5" />
-            <Label>21m</Label>
+            <Text>21m</Text>
           </div>
           <div className="flex items-center gap-2.5">
             <Icons.X className="size-4" />
-            <Label>21m</Label>
+            <Text>21m</Text>
           </div>
         </div>
         <ChartContainer

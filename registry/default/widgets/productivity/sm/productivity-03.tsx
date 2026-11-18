@@ -4,7 +4,7 @@ import { PauseIcon, PlayIcon, RotateCcwIcon } from "lucide-react";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -78,18 +78,18 @@ const WidgetDemo = () => {
   return (
     <Widget design="mumbai">
       <WidgetHeader className="justify-center">
-        <Label size="xxxl" variant="muted-foreground">
+        <Text size="xxxl" variant="muted-foreground">
           🚀
-        </Label>
+        </Text>
       </WidgetHeader>
       <WidgetContent>
         <div className="flex h-full w-full flex-col items-center justify-center gap-0.5">
-          <Label size="xxxxl">
+          <Text size="xxxxl">
             {minutes}:{seconds}
-          </Label>
-          <Label size="xs" variant="muted-foreground">
+          </Text>
+          <Text size="xs" variant="muted-foreground">
             POMODORO
-          </Label>
+          </Text>
         </div>
       </WidgetContent>
       <WidgetFooter>

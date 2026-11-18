@@ -3,7 +3,7 @@
 import { CheckCircle2Icon, CircleIcon } from "lucide-react";
 import React from "react";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -58,7 +58,7 @@ const WidgetDemo = () => {
               ) : (
                 <CircleIcon className="text-muted-foreground size-4" />
               )}
-              <Label
+              <Text
                 size="sm"
                 variant="muted-foreground"
                 className="group-hover:cursor-pointer"
@@ -72,7 +72,7 @@ const WidgetDemo = () => {
                 >
                   {todo.task}
                 </span>
-              </Label>
+              </Text>
             </div>
           </button>
         ))}
