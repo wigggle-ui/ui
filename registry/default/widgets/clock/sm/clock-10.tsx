@@ -1,7 +1,7 @@
 import { AlarmClockIcon } from "lucide-react";
 
-import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -23,9 +23,7 @@ const WidgetDemo = () => (
           key={alarm}
           className="flex w-full items-center justify-between space-x-2"
         >
-          <Label htmlFor={alarm} weight="semibold">
-            {alarm}
-          </Label>
+          <Text weight="semibold">{alarm}</Text>
           <Switch id={alarm} />
         </div>
       ))}

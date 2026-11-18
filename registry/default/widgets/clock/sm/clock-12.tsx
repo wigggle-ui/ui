@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import type { CSSProperties } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -99,7 +99,7 @@ const WidgetDemo = () => {
           const y = (-Math.cos(angle) * 50).toFixed(2);
           const number = index === 0 ? 12 : index;
           return (
-            <Label
+            <Text
               key={`num-${index}`}
               variant="muted-foreground"
               size="xs"
@@ -108,7 +108,7 @@ const WidgetDemo = () => {
               className="absolute top-[calc(50%+var(--y))] left-[calc(50%+var(--x))] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center"
             >
               {number}
-            </Label>
+            </Text>
           );
         })}
         {/* Second hand (red) with dot at the end */}
@@ -116,13 +116,13 @@ const WidgetDemo = () => {
           className="bg-destructive absolute top-1/2 left-1/2 z-10 h-16 w-0.5 origin-bottom -translate-x-1/2 -translate-y-full rotate-(--rotation) rounded-full"
           style={{ "--rotation": `${secondHandRotation}deg` } as CSSProperties}
         />
-        <Label
+        <Text
           variant="foreground"
           size="lg"
           className="absolute bottom-8 z-5 text-center"
         >
           {seconds}.{milliseconds}
-        </Label>
+        </Text>
       </WidgetContent>
       <WidgetFooter>
         {/* Reset Button */}

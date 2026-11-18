@@ -1,7 +1,7 @@
 import { MoonIcon, SunIcon } from "lucide-react";
 
-import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -13,7 +13,7 @@ const WidgetDemo = () => (
     <WidgetContent className="flex-col justify-between gap-3">
       <div className="flex w-full flex-col gap-2">
         <div className="flex w-full items-center justify-between">
-          <Label>Mumbai</Label>
+          <Text>Mumbai</Text>
           <SunIcon className="size-5" />
         </div>
         <WidgetTitle className="text-xl">8:15 AM</WidgetTitle>
@@ -21,7 +21,7 @@ const WidgetDemo = () => (
       <Separator />
       <div className="flex w-full flex-col gap-2">
         <div className="flex w-full items-center justify-between">
-          <Label>Vancouver</Label>
+          <Text>Vancouver</Text>
           <MoonIcon className="size-5" />
         </div>
         <WidgetTitle className="text-xl">6:45 PM</WidgetTitle>

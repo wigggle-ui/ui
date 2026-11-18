@@ -10,7 +10,7 @@ import {
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -83,9 +83,9 @@ const WidgetDemo = () => {
           <MinusIcon />
         </Button>
 
-        <Label variant="muted-foreground">
+        <Text variant="muted-foreground">
           {minutes} Min{minutes === 1 ? "" : "s"}
-        </Label>
+        </Text>
         <Button
           aria-label="Add one minute"
           disabled={isCountingDown || timeLeft >= 600}
@@ -99,9 +99,9 @@ const WidgetDemo = () => {
       </WidgetHeader>
       <WidgetContent>
         <div className="flex h-full w-full items-center justify-center">
-          <Label size="xxxxl">
+          <Text size="xxxxl">
             {minutes}:{seconds}
-          </Label>
+          </Text>
         </div>
       </WidgetContent>
       <WidgetFooter>

@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -10,19 +10,19 @@ const WidgetDemo = () => (
     <WidgetContent>
       <div className="grid size-full grid-cols-2 items-center gap-x-4">
         <div className="flex flex-col items-center justify-center gap-2">
-          <Label size="sm">Mumbai</Label>
+          <Text size="sm">Mumbai</Text>
           <WidgetTitle>8:15 AM</WidgetTitle>
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
-          <Label size="sm">London</Label>
+          <Text size="sm">London</Text>
           <WidgetTitle>6:45 PM</WidgetTitle>
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
-          <Label size="sm">Tokyo</Label>
+          <Text size="sm">Tokyo</Text>
           <WidgetTitle>8:15 AM</WidgetTitle>
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
-          <Label size="sm">Seoul</Label>
+          <Text size="sm">Seoul</Text>
           <WidgetTitle>6:45 PM</WidgetTitle>
         </div>
       </div>
