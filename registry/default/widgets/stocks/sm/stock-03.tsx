@@ -1,6 +1,6 @@
 import { EyeIcon, TriangleIcon } from "lucide-react";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import { cn, truncate } from "@/registry/default/lib/utils";
 import {
   Widget,
@@ -46,7 +46,7 @@ const WidgetDemo = () => (
           className="flex w-full items-center justify-between space-x-2 border-b py-1.5 last:border-b-0"
         >
           <div className="flex flex-col items-start gap-0">
-            <Label size="sm">
+            <Text size="sm">
               <TriangleIcon
                 className={cn(
                   stock.isPositive
@@ -56,20 +56,20 @@ const WidgetDemo = () => (
                 )}
               />
               {stock.ticker}
-            </Label>
-            <Label variant="muted-foreground" size="xs">
+            </Text>
+            <Text variant="muted-foreground" size="xs">
               {truncate(stock.company)}
-            </Label>
+            </Text>
           </div>
           <div className="flex flex-col items-end gap-0">
-            <Label size="sm">{stock.value}</Label>
-            <Label
+            <Text size="sm">{stock.value}</Text>
+            <Text
               size="xs"
               variant={stock.isPositive ? "productive" : "destructive"}
             >
               {stock.isPositive ? "+" : "-"}
               {stock.difference}
-            </Label>
+            </Text>
           </div>
         </div>
       ))}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -23,8 +23,8 @@ const WidgetDemo = () => (
         height={48}
       />
       <div className="text-muted-foreground flex flex-col">
-        <Label size="sm">UCL - 1st</Label>
-        <Label size="sm">EPL - 4th</Label>
+        <Text size="sm">UCL - 1st</Text>
+        <Text size="sm">EPL - 4th</Text>
       </div>
     </WidgetHeader>
     <WidgetContent className="mt-3 flex-col items-center gap-3">
@@ -33,10 +33,10 @@ const WidgetDemo = () => (
           key={i}
           className="bg-secondary flex w-full items-center justify-between rounded-lg px-2 py-1"
         >
-          <Label>{match.teamName}</Label>
+          <Text>{match.teamName}</Text>
           <div className="text-muted-foreground flex flex-col gap-0.5">
-            <Label size="xs">{match.date}</Label>
-            <Label size="xs">{match.time}</Label>
+            <Text size="xs">{match.date}</Text>
+            <Text size="xs">{match.time}</Text>
           </div>
         </div>
       ))}

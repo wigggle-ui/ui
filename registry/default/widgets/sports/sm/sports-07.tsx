@@ -1,7 +1,6 @@
 import { cn } from "cn";
 import Image from "next/image";
 
-import { Label } from "@/components/ui/label";
 import {
   Table,
   TableBody,
@@ -10,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -54,10 +54,10 @@ const WidgetDemo = () => (
             width={20}
             height={20}
           />
-          <Label size="xl">131</Label>
+          <Text size="xl">131</Text>
         </div>
         <div className="flex items-center gap-2">
-          <Label size="xl">129</Label>
+          <Text size="xl">129</Text>
           <Image
             className="size-8 rounded-full"
             src="/assets/logos/dn.png"

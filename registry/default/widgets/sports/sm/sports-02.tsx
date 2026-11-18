@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { Badge } from "@/components/ui/badge";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -27,7 +27,7 @@ const WidgetDemo = () => (
           width={40}
           height={40}
         />
-        <Label size="xxxl">4</Label>
+        <Text size="xxxl">4</Text>
       </div>
       <Badge variant="secondary">
         <div className="animate-pulse text-sm">34&apos;</div>
@@ -40,11 +40,11 @@ const WidgetDemo = () => (
           width={40}
           height={40}
         />
-        <Label size="xxxl">4</Label>
+        <Text size="xxxl">4</Text>
       </div>
     </WidgetContent>
     <WidgetFooter className="justify-center">
-      <Label variant="muted-foreground">UCL Final</Label>
+      <Text variant="muted-foreground">UCL Final</Text>
     </WidgetFooter>
   </Widget>
 );

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -43,8 +43,8 @@ const WidgetDemo = () => (
             width={32}
             height={32}
           />
-          <Label size="lg">{team.name}</Label>
-          <Label size="xxxl">{team.score}</Label>
+          <Text size="lg">{team.name}</Text>
+          <Text size="xxxl">{team.score}</Text>
         </div>
       ))}
     </WidgetContent>

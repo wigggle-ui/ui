@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -48,12 +48,12 @@ const WidgetDemo = () => (
             height={64}
           />
           <div className="flex flex-col items-center justify-center gap-0">
-            <Label variant="muted-foreground" size="xs">
+            <Text variant="muted-foreground" size="xs">
               {match.date}
-            </Label>
-            <Label variant="muted-foreground" size="xs">
+            </Text>
+            <Text variant="muted-foreground" size="xs">
               {match.time}
-            </Label>
+            </Text>
           </div>
           <Image
             className="size-7"

@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { Icons } from "@/components/icons";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Tooltip,
   TooltipContent,
@@ -52,7 +52,7 @@ const WidgetDemo = () => (
             <TooltipTrigger asChild>
               <div className="flex flex-col items-center justify-center gap-1">
                 <Logo className="fill-foreground size-8 rounded-full" />
-                <Label>${price}</Label>
+                <Text>${price}</Text>
               </div>
             </TooltipTrigger>
             <TooltipContent>

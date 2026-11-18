@@ -5,7 +5,7 @@ import { Area, AreaChart, CartesianGrid } from "recharts";
 
 import type { ChartConfig } from "@/components/ui/chart";
 import { ChartContainer } from "@/components/ui/chart";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -43,7 +43,7 @@ const WidgetDemo = () => (
         <TriangleIcon className="fill-destructive size-4 rotate-180 stroke-none" />
         <WidgetTitle className="text-base font-normal">AAPL</WidgetTitle>
       </div>
-      <Label variant="destructive">-4.26</Label>
+      <Text variant="destructive">-4.26</Text>
     </WidgetHeader>
     <WidgetContent>
       <ChartContainer className="h-20 w-full" config={chartConfig}>
@@ -75,9 +75,9 @@ const WidgetDemo = () => (
       </ChartContainer>
     </WidgetContent>
     <WidgetFooter className="justify-end">
-      <Label size="xxxl" weight="medium">
+      <Text size="xxxl" weight="medium">
         262.24
-      </Label>
+      </Text>
     </WidgetFooter>
   </Widget>
 );

@@ -1,6 +1,6 @@
 import { TriangleIcon } from "lucide-react";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetHeader,
@@ -13,19 +13,19 @@ const WidgetDemo = () => (
   <Widget design="mumbai">
     <WidgetHeader>
       <WidgetTitle className="flex w-full items-center justify-between">
-        <Label size="xxxxl">732.17</Label>
+        <Text size="xxxxl">732.17</Text>
         <TriangleIcon className="fill-productive size-6 stroke-none" />
       </WidgetTitle>
     </WidgetHeader>
     <WidgetContent className="justify-between">
-      <Label variant="productive">+2.76</Label>
-      <Label variant="productive">+0.47%</Label>
+      <Text variant="productive">+2.76</Text>
+      <Text variant="productive">+0.47%</Text>
     </WidgetContent>
     <WidgetFooter className="flex-col items-start">
-      <Label size="xxl" weight="medium">
+      <Text size="xxl" weight="medium">
         META
-      </Label>
-      <Label variant="muted-foreground">Meta Platforms Inc</Label>
+      </Text>
+      <Text variant="muted-foreground">Meta Platforms Inc</Text>
     </WidgetFooter>
   </Widget>
 );

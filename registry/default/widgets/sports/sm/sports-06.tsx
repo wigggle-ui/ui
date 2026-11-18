@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -41,11 +41,11 @@ const WidgetDemo = () => (
     <WidgetHeader className="pb-1.5">
       <div className="flex items-center gap-1">
         <div className="bg-productive size-2 rounded-full" />
-        <Label size="sm" variant="muted-foreground">
+        <Text size="sm" variant="muted-foreground">
           IND vs NZ
-        </Label>
+        </Text>
       </div>
-      <Label size="sm">340/7</Label>
+      <Text size="sm">340/7</Text>
     </WidgetHeader>
     <WidgetContent className="flex-col items-center gap-2">
       <div className="flex w-full flex-col items-center justify-between gap-3">
@@ -59,12 +59,12 @@ const WidgetDemo = () => (
                 width={20}
                 height={20}
               />
-              <Label size="xs">{batter.playerName}</Label>
+              <Text size="xs">{batter.playerName}</Text>
             </div>
-            <Label size="xs">
+            <Text size="xs">
               {batter.score}
               <span className="text-muted-foreground">({batter.balls})</span>
-            </Label>
+            </Text>
           </div>
         ))}
       </div>
@@ -80,12 +80,12 @@ const WidgetDemo = () => (
                 width={20}
                 height={20}
               />
-              <Label size="xs">{bowler.playerName}</Label>
+              <Text size="xs">{bowler.playerName}</Text>
             </div>
-            <Label size="xs">
+            <Text size="xs">
               {bowler.score}
               <span className="text-muted-foreground">({bowler.overs})</span>
-            </Label>
+            </Text>
           </div>
         ))}
       </div>

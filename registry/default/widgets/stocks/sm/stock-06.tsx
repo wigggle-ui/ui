@@ -1,7 +1,7 @@
 "use client";
 
 import { ChartNoAxesCombinedIcon } from "lucide-react";
-import { Label, Pie, PieChart } from "recharts";
+import { Label as ChartLabel, Pie, PieChart } from "recharts";
 import type { LabelProps } from "recharts";
 
 import type { ChartConfig } from "@/components/ui/chart";
@@ -90,7 +90,7 @@ const WidgetDemo = () => (
             innerRadius={35}
             strokeWidth={5}
           >
-            <Label content={<PortfolioLabel />} />
+            <ChartLabel content={<PortfolioLabel />} />
           </Pie>
         </PieChart>
       </ChartContainer>

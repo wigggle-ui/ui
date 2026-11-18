@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -40,13 +40,13 @@ const WidgetDemo = () => (
               width={24}
               height={24}
             />
-            <Label>{team.teamName}</Label>
+            <Text>{team.teamName}</Text>
           </div>
           <div className="flex items-center justify-end gap-1">
-            <Label>{team.score}</Label>
-            <Label variant="muted-foreground" size="xs">
+            <Text>{team.score}</Text>
+            <Text variant="muted-foreground" size="xs">
               ({team.overs})
-            </Label>
+            </Text>
           </div>
         </div>
       ))}
