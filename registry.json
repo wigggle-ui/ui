@@ -126,9 +126,21 @@
       "name": "label",
       "type": "registry:ui",
       "dependencies": ["@radix-ui/react-label"],
+      "registryDependencies": ["https://wigggle-ui.vercel.app/r/text.json"],
       "files": [
         {
           "path": "components/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "text",
+      "type": "registry:ui",
+      "dependencies": ["class-variance-authority", "cn"],
+      "files": [
+        {
+          "path": "components/ui/text.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1677,7 +1689,10 @@
     {
       "name": "sale-sm-01",
       "type": "registry:component",
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/widget.json"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
       "files": [
         {
           "path": "registry/default/widgets/sale/sm/sale-01.tsx",
@@ -1692,7 +1707,10 @@
     {
       "name": "sale-sm-02",
       "type": "registry:component",
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/widget.json"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
       "files": [
         {
           "path": "registry/default/widgets/sale/sm/sale-02.tsx",
@@ -1707,7 +1725,10 @@
     {
       "name": "sale-sm-03",
       "type": "registry:component",
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/widget.json"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
       "files": [
         {
           "path": "registry/default/widgets/sale/sm/sale-03.tsx",
@@ -1768,7 +1789,10 @@
     {
       "name": "sale-sm-06",
       "type": "registry:component",
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/widget.json"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
       "files": [
         {
           "path": "registry/default/widgets/sale/sm/sale-06.tsx",
@@ -1783,7 +1807,10 @@
     {
       "name": "sale-sm-07",
       "type": "registry:component",
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/widget.json"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
       "files": [
         {
           "path": "registry/default/widgets/sale/sm/sale-07.tsx",
@@ -1798,7 +1825,10 @@
     {
       "name": "sale-sm-08",
       "type": "registry:component",
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/widget.json"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
       "files": [
         {
           "path": "registry/default/widgets/sale/sm/sale-08.tsx",
@@ -1813,7 +1843,10 @@
     {
       "name": "sale-md-01",
       "type": "registry:component",
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/widget.json"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
       "files": [
         {
           "path": "registry/default/widgets/sale/md/sale-01.tsx",
@@ -1828,7 +1861,10 @@
     {
       "name": "sale-md-02",
       "type": "registry:component",
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/widget.json"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
       "files": [
         {
           "path": "registry/default/widgets/sale/md/sale-02.tsx",
@@ -1843,7 +1879,10 @@
     {
       "name": "sale-md-03",
       "type": "registry:component",
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/widget.json"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
       "files": [
         {
           "path": "registry/default/widgets/sale/md/sale-03.tsx",
@@ -1866,7 +1905,10 @@
     {
       "name": "sale-md-04",
       "type": "registry:component",
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/widget.json"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
       "files": [
         {
           "path": "registry/default/widgets/sale/md/sale-04.tsx",
@@ -2020,7 +2062,10 @@
       "name": "stock-sm-01",
       "type": "registry:component",
       "dependencies": ["lucide-react"],
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/widget.json"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
       "files": [
         {
           "path": "registry/default/widgets/stocks/sm/stock-01.tsx",
@@ -2035,7 +2080,10 @@
     {
       "name": "stock-sm-02",
       "type": "registry:component",
-      "registryDependencies": ["https://wigggle-ui.vercel.app/r/widget.json"],
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
       "files": [
         {
           "path": "registry/default/widgets/stocks/sm/stock-02.tsx",

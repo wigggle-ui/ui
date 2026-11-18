@@ -2,12 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sale-md-03",
   "registryDependencies": [
-    "https://wigggle-ui.vercel.app/r/widget.json"
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/text.json"
   ],
   "files": [
     {
       "path": "registry/default/widgets/sale/md/sale-03.tsx",
-      "content": "import { DitheredLogo } from \"@/components/dithercn/dithered-logo\";\nimport { Button } from \"@/components/ui/button\";\nimport { Label } from \"@/components/ui/label\";\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget\n    size=\"md\"\n    className=\"from-muted-foreground/10 to-foreground/15 dark:to-muted-foreground/5 dark:from-foreground/10 border-0 bg-linear-to-r\"\n  >\n    <WidgetContent className=\"grid grid-cols-2 items-center\">\n      <div className=\"flex size-full flex-col items-start justify-between\">\n        <Label size=\"xl\" weight=\"semibold\">\n          Black Friday Sale\n        </Label>\n        <Label size=\"sm\" weight=\"medium\" variant=\"muted-foreground\">\n          Get 40% off on new domains.\n        </Label>\n        <Button>Deploy Now</Button>\n      </div>\n      <DitheredLogo\n        src=\"/assets/logos/vercel.svg\"\n        alt=\"Acme\"\n        effect=\"scan\"\n        className=\"h-full\"\n      />\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
+      "content": "import { DitheredLogo } from \"@/components/dithercn/dithered-logo\";\nimport { Button } from \"@/components/ui/button\";\nimport { Text } from \"@/components/ui/text\";\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget\n    size=\"md\"\n    className=\"from-muted-foreground/10 to-foreground/15 dark:to-muted-foreground/5 dark:from-foreground/10 border-0 bg-linear-to-r\"\n  >\n    <WidgetContent className=\"grid grid-cols-2 items-center\">\n      <div className=\"flex size-full flex-col items-start justify-between\">\n        <Text size=\"xl\" weight=\"semibold\">\n          Black Friday Sale\n        </Text>\n        <Text size=\"sm\" weight=\"medium\" variant=\"muted-foreground\">\n          Get 40% off on new domains.\n        </Text>\n        <Button>Deploy Now</Button>\n      </div>\n      <DitheredLogo\n        src=\"/assets/logos/vercel.svg\"\n        alt=\"Acme\"\n        effect=\"scan\"\n        className=\"h-full\"\n      />\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],

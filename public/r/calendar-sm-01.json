@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/widgets/calendar/sm/calendar-01.tsx",
-      "content": "import { Label } from \"@/components/ui/label\";\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\nconst now = new Date();\n\nconst day = now.toLocaleDateString(\"en-US\", { weekday: \"short\" });\nconst month = now.toLocaleDateString(\"en-US\", { month: \"short\" });\nconst date = now.getDate().toString().padStart(2, \"0\");\n\nconst WidgetDemo = () => (\n  <Widget>\n    <WidgetContent className=\"mx-auto flex-col items-start\">\n      <div className=\"flex w-full items-center justify-center gap-2\">\n        <Label size=\"xxl\" variant=\"destructive\">\n          {day}\n        </Label>\n        <Label size=\"xxl\">{month}</Label>\n      </div>\n      <div className=\"text-8xl\">{date}</div>\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
+      "content": "import { Text } from \"@/components/ui/text\";\nimport { Widget, WidgetContent } from \"@/registry/default/ui/widget\";\n\nconst now = new Date();\n\nconst day = now.toLocaleDateString(\"en-US\", { weekday: \"short\" });\nconst month = now.toLocaleDateString(\"en-US\", { month: \"short\" });\nconst date = now.getDate().toString().padStart(2, \"0\");\n\nconst WidgetDemo = () => (\n  <Widget>\n    <WidgetContent className=\"mx-auto flex-col items-start\">\n      <div className=\"flex w-full items-center justify-center gap-2\">\n        <Text size=\"xxl\" variant=\"destructive\">\n          {day}\n        </Text>\n        <Text size=\"xxl\">{month}</Text>\n      </div>\n      <div className=\"text-8xl\">{date}</div>\n    </WidgetContent>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],

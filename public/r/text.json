@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text",
+  "dependencies": [
+    "class-variance-authority",
+    "cn"
+  ],
+  "files": [
+    {
+      "path": "components/ui/text.tsx",
+      "content": "import { cva } from \"class-variance-authority\";\nimport type { VariantProps } from \"class-variance-authority\";\nimport { cn } from \"cn\";\nimport * as React from \"react\";\n\nconst textVariants = cva(\n  \"flex items-center gap-2 leading-none text-wrap select-none\",\n  {\n    defaultVariants: {\n      size: \"default\",\n      variant: \"default\",\n      weight: \"default\",\n    },\n    variants: {\n      decoration: {\n        cancelled: \"line-through\",\n      },\n      size: {\n        default: \"text-base\",\n        lg: \"text-lg\",\n        md: \"text-base\",\n        sm: \"text-sm\",\n        xl: \"text-xl\",\n        xs: \"text-xs\",\n        xxl: \"text-2xl\",\n        xxxl: \"text-3xl\",\n        xxxxl: \"text-4xl\",\n      },\n      variant: {\n        background: \"text-background\",\n        default: \"text-primary\",\n        destructive: \"text-destructive\",\n        foreground: \"text-foreground\",\n        info: \"text-vercel-blue\",\n        \"muted-foreground\": \"text-muted-foreground\",\n        productive: \"text-productive\",\n        secondary: \"text-secondary\",\n        warning: \"text-vercel-yellow\",\n      },\n      weight: {\n        black: \"font-black\",\n        bold: \"font-bold\",\n        default: \"font-normal\",\n        light: \"font-light\",\n        medium: \"font-medium\",\n        semibold: \"font-semibold\",\n      },\n    },\n  }\n);\n\nconst Text = ({\n  className,\n  decoration,\n  size = \"default\",\n  variant = \"default\",\n  weight = \"default\",\n  ...props\n}: React.ComponentProps<\"span\"> & VariantProps<typeof textVariants>) => (\n  <span\n    data-slot=\"text\"\n    className={cn(\n      textVariants({ className, decoration, size, variant, weight })\n    )}\n    {...props}\n  />\n);\n\nexport { Text, textVariants };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

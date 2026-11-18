@@ -5,12 +5,13 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "https://wigggle-ui.vercel.app/r/widget.json"
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/text.json"
   ],
   "files": [
     {
       "path": "registry/default/widgets/stocks/sm/stock-01.tsx",
-      "content": "import { TriangleIcon } from \"lucide-react\";\n\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Widget,\n  WidgetHeader,\n  WidgetTitle,\n  WidgetContent,\n  WidgetFooter,\n} from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget design=\"mumbai\">\n    <WidgetHeader>\n      <WidgetTitle className=\"flex w-full items-center justify-between\">\n        <Label size=\"xxxxl\">732.17</Label>\n        <TriangleIcon className=\"fill-productive size-6 stroke-none\" />\n      </WidgetTitle>\n    </WidgetHeader>\n    <WidgetContent className=\"justify-between\">\n      <Label variant=\"productive\">+2.76</Label>\n      <Label variant=\"productive\">+0.47%</Label>\n    </WidgetContent>\n    <WidgetFooter className=\"flex-col items-start\">\n      <Label size=\"xxl\" weight=\"medium\">\n        META\n      </Label>\n      <Label variant=\"muted-foreground\">Meta Platforms Inc</Label>\n    </WidgetFooter>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
+      "content": "import { TriangleIcon } from \"lucide-react\";\n\nimport { Text } from \"@/components/ui/text\";\nimport {\n  Widget,\n  WidgetHeader,\n  WidgetTitle,\n  WidgetContent,\n  WidgetFooter,\n} from \"@/registry/default/ui/widget\";\n\nconst WidgetDemo = () => (\n  <Widget design=\"mumbai\">\n    <WidgetHeader>\n      <WidgetTitle className=\"flex w-full items-center justify-between\">\n        <Text size=\"xxxxl\">732.17</Text>\n        <TriangleIcon className=\"fill-productive size-6 stroke-none\" />\n      </WidgetTitle>\n    </WidgetHeader>\n    <WidgetContent className=\"justify-between\">\n      <Text variant=\"productive\">+2.76</Text>\n      <Text variant=\"productive\">+0.47%</Text>\n    </WidgetContent>\n    <WidgetFooter className=\"flex-col items-start\">\n      <Text size=\"xxl\" weight=\"medium\">\n        META\n      </Text>\n      <Text variant=\"muted-foreground\">Meta Platforms Inc</Text>\n    </WidgetFooter>\n  </Widget>\n);\n\nexport default WidgetDemo;\n",
       "type": "registry:component"
     }
   ],
