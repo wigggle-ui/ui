@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
 const now = new Date();
@@ -11,11 +11,11 @@ const date = now.getDate();
 const WidgetDemo = () => (
   <Widget>
     <WidgetContent className="flex flex-col gap-2">
-      <Label variant="muted-foreground">{day}</Label>
-      <Label weight="bold" size="xxxxl">
+      <Text variant="muted-foreground">{day}</Text>
+      <Text weight="bold" size="xxxxl">
         {date}
-      </Label>
-      <Label variant="muted-foreground">{month}</Label>
+      </Text>
+      <Text variant="muted-foreground">{month}</Text>
       <Badge variant="outline">{now.getFullYear()}</Badge>
     </WidgetContent>
   </Widget>

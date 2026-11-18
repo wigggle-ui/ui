@@ -10,7 +10,7 @@ import {
 import React from "react";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Widget,
@@ -54,14 +54,14 @@ const WidgetDemo = () => {
         </Button>
       </WidgetHeader>
       <WidgetContent className="flex-col items-start justify-start gap-4">
-        <Label size="xl">Henil&apos;s Dental Appointment</Label>
+        <Text size="xl">Henil&apos;s Dental Appointment</Text>
         <div className="flex w-full items-center justify-start gap-3">
           <Clock3Icon className="stroke-muted-foreground size-6" />
-          <Label>8:45 AM</Label>
+          <Text>8:45 AM</Text>
         </div>
         <div className="flex w-full items-center justify-start gap-3">
           <MapPinIcon className="stroke-muted-foreground size-6" />
-          <Label>Apple Park, Cupertino</Label>
+          <Text>Apple Park, Cupertino</Text>
         </div>
         <div className="flex size-full flex-1 items-start justify-start gap-3">
           <NotebookPenIcon className="stroke-muted-foreground size-6 min-w-6" />
@@ -74,7 +74,7 @@ const WidgetDemo = () => {
             />
           ) : (
             <div className="w-full text-wrap">
-              <Label className="items-start">{docNotes}</Label>
+              <Text className="items-start">{docNotes}</Text>
             </div>
           )}
         </div>

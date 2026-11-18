@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetHeader,
@@ -19,16 +19,16 @@ const WidgetDemo = () => (
   <Widget design="mumbai">
     <WidgetHeader className="text-destructive text-base">{day}</WidgetHeader>
     <WidgetContent className="flex-col items-start justify-start gap-2">
-      <Label size="xxxxl">{date}</Label>
+      <Text size="xxxxl">{date}</Text>
       {events.map((event, i) => (
         <div
           key={i}
           className="flex w-full items-center justify-between border-t-2 pt-1.5"
         >
-          <Label size="sm">{event.title}</Label>
-          <Label size="sm" variant="muted-foreground">
+          <Text size="sm">{event.title}</Text>
+          <Text size="sm" variant="muted-foreground">
             {event.time}
-          </Label>
+          </Text>
         </div>
       ))}
     </WidgetContent>

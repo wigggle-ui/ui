@@ -2,7 +2,7 @@ import { cn } from "cn";
 import { PlusIcon, VideoIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -43,12 +43,12 @@ const WidgetDemo = () => (
       <div className="flex items-center gap-2">
         <WidgetTitle className="text-3xl">{date}</WidgetTitle>
         <div className="flex flex-col">
-          <Label size="xs" variant="muted-foreground">
+          <Text size="xs" variant="muted-foreground">
             {month}
-          </Label>
-          <Label size="xs" variant="muted-foreground">
+          </Text>
+          <Text size="xs" variant="muted-foreground">
             {day}
-          </Label>
+          </Text>
         </div>
       </div>
       <Button variant="outline" size="icon-sm">
@@ -62,10 +62,10 @@ const WidgetDemo = () => (
           <div className="flex h-full">
             <div className={cn("h-full w-1 rounded-md", borderColor)} />
             <div className="flex flex-col px-2">
-              <Label size="xs" variant="muted-foreground">
+              <Text size="xs" variant="muted-foreground">
                 {time}
-              </Label>
-              <Label size="xs">{title}</Label>
+              </Text>
+              <Text size="xs">{title}</Text>
             </div>
           </div>
 

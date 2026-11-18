@@ -5,7 +5,7 @@ import { PlusIcon } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -46,8 +46,8 @@ const WidgetDemo = () => (
       <div className="flex space-x-4">
         <WidgetTitle className="text-6xl">{date}</WidgetTitle>
         <div className="flex h-full flex-col items-start justify-between py-1">
-          <Label size="xl">{dayName}</Label>
-          <Label variant="muted-foreground">{monthName}</Label>
+          <Text size="xl">{dayName}</Text>
+          <Text variant="muted-foreground">{monthName}</Text>
         </div>
       </div>
       <Button variant="outline" size="sm">
@@ -63,10 +63,10 @@ const WidgetDemo = () => (
           className="flex w-full items-center justify-between"
         >
           <div className={cn(event.color, "space-y-0.5 border-l-4 ps-3")}>
-            <Label>{event.title}</Label>
-            <Label size="sm" variant="muted-foreground">
+            <Text>{event.title}</Text>
+            <Text size="sm" variant="muted-foreground">
               {event.time}
-            </Label>
+            </Text>
           </div>
           <Badge variant="secondary">{event.category}</Badge>
         </div>

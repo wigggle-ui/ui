@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
 const now = new Date();
@@ -25,10 +25,10 @@ const WidgetDemo = () => (
     <WidgetContent className="items-center justify-between gap-4">
       <div className="flex w-full flex-col items-center justify-center">
         <div className="flex w-full items-center justify-center gap-2">
-          <Label variant="destructive" size="xxl">
+          <Text variant="destructive" size="xxl">
             {dayName}
-          </Label>
-          <Label size="xxl">{monthName}</Label>
+          </Text>
+          <Text size="xxl">{monthName}</Text>
         </div>
         <div className="text-8xl">{paddedDate}</div>
       </div>

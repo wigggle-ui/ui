@@ -1,7 +1,7 @@
 import { twJoin } from "tailwind-merge";
 
-import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -60,19 +60,19 @@ const WidgetDemo = () => (
           className="flex w-full items-center justify-between"
         >
           <div className={twJoin(event.color, "border-l-4 ps-3")}>
-            <Label size="sm">{event.title}</Label>
-            <Label size="sm" variant="muted-foreground">
+            <Text size="sm">{event.title}</Text>
+            <Text size="sm" variant="muted-foreground">
               {event.location}
-            </Label>
+            </Text>
           </div>
 
           <div className="flex flex-col items-end justify-end gap-1.5">
-            <Label size="sm" variant="muted-foreground">
+            <Text size="sm" variant="muted-foreground">
               {event.startTime}
-            </Label>
-            <Label size="sm" variant="muted-foreground">
+            </Text>
+            <Text size="sm" variant="muted-foreground">
               {event.endTime}
-            </Label>
+            </Text>
           </div>
         </div>
       ))}
@@ -89,15 +89,15 @@ const WidgetDemo = () => (
     <WidgetContent className="flex-col items-center justify-start gap-4">
       <div className="flex w-full items-center justify-between">
         <div className="border-destructive border-l-4 ps-3">
-          <Label size="sm">Design New Widgets</Label>
-          <Label size="sm" variant="muted-foreground">
+          <Text size="sm">Design New Widgets</Text>
+          <Text size="sm" variant="muted-foreground">
             Right Cerebral Ave
-          </Label>
+          </Text>
         </div>
 
         <div className="flex flex-col items-end justify-end gap-1.5">
-          <Label variant="muted-foreground">10:30</Label>
-          <Label variant="muted-foreground">12:30</Label>
+          <Text variant="muted-foreground">10:30</Text>
+          <Text variant="muted-foreground">12:30</Text>
         </div>
       </div>
     </WidgetContent>

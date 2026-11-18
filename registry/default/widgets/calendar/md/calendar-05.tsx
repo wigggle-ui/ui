@@ -2,7 +2,7 @@ import { cn } from "cn";
 import { VideoIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
 const WidgetDemo = () => {
@@ -45,13 +45,13 @@ const WidgetDemo = () => {
             )}
           >
             <div className="space-y-1">
-              <Label size="sm">{el.title}</Label>
-              <Label size="xs" variant="muted-foreground">
+              <Text size="sm">{el.title}</Text>
+              <Text size="xs" variant="muted-foreground">
                 {el.room}
-              </Label>
-              <Label size="xs" weight="light">
+              </Text>
+              <Text size="xs" weight="light">
                 {el.time}
-              </Label>
+              </Text>
             </div>
             {el.room === "Online" && (
               <Button variant="outline" size="icon-sm">

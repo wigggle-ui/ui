@@ -2,7 +2,7 @@ import { VideoIcon } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -30,11 +30,11 @@ const WidgetDemo = () => (
     <WidgetContent className="items-center justify-between gap-4">
       <div className="flex size-full flex-col items-center justify-between pb-2">
         <div className="flex size-full flex-col items-start justify-start gap-1">
-          <Label variant="muted-foreground" size="sm">
+          <Text variant="muted-foreground" size="sm">
             Google Meet
-          </Label>
-          <Label size="xl">Meet in 7 mins</Label>
-          <Label>Daily Scrum</Label>
+          </Text>
+          <Text size="xl">Meet in 7 mins</Text>
+          <Text>Daily Scrum</Text>
         </div>
         <Button variant="outline" size="sm" className="w-full">
           <VideoIcon /> Join Call

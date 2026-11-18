@@ -1,5 +1,5 @@
-import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -27,38 +27,38 @@ const WidgetDemo = () => (
     <WidgetContent className="flex flex-col justify-start gap-2 p-3">
       <div className="flex w-full items-start justify-start gap-4">
         <div className="flex flex-col items-center justify-center">
-          <Label size="xxxl">{date}</Label>
-          <Label size="sm" weight="light" className="text-center">
+          <Text size="xxxl">{date}</Text>
+          <Text size="sm" weight="light" className="text-center">
             {day}
-          </Label>
+          </Text>
         </div>
         <div className="w-full space-y-2">
           <div className="bg-secondary flex w-full items-center justify-between rounded-lg px-3 py-2">
             <div className="space-y-1">
-              <Label size="sm">Vercel Stand Up</Label>
-              <Label size="sm" variant="muted-foreground">
+              <Text size="sm">Vercel Stand Up</Text>
+              <Text size="sm" variant="muted-foreground">
                 California
-              </Label>
+              </Text>
             </div>
             <div className="flex flex-col items-end justify-end gap-1.5">
-              <Label size="sm">09:00</Label>
-              <Label size="sm" variant="muted-foreground">
+              <Text size="sm">09:00</Text>
+              <Text size="sm" variant="muted-foreground">
                 10:00
-              </Label>
+              </Text>
             </div>
           </div>
           <div className="bg-secondary flex w-full items-center justify-between rounded-lg px-3 py-2">
             <div className="space-y-1">
-              <Label size="sm">Vercel Sit Down</Label>
-              <Label size="sm" variant="muted-foreground">
+              <Text size="sm">Vercel Sit Down</Text>
+              <Text size="sm" variant="muted-foreground">
                 New York
-              </Label>
+              </Text>
             </div>
             <div className="flex flex-col items-end justify-end gap-1.5">
-              <Label size="sm">12:00</Label>
-              <Label size="sm" variant="muted-foreground">
+              <Text size="sm">12:00</Text>
+              <Text size="sm" variant="muted-foreground">
                 13:00
-              </Label>
+              </Text>
             </div>
           </div>
         </div>
@@ -66,38 +66,38 @@ const WidgetDemo = () => (
       <Separator />
       <div className="flex w-full items-start justify-start gap-4">
         <div className="flex flex-col items-center justify-center">
-          <Label size="xxxl">{nextDate}</Label>
-          <Label size="sm" weight="light" className="text-center">
+          <Text size="xxxl">{nextDate}</Text>
+          <Text size="sm" weight="light" className="text-center">
             {nextDay}
-          </Label>
+          </Text>
         </div>
         <div className="w-full space-y-2">
           <div className="bg-secondary flex w-full items-center justify-between rounded-lg px-3 py-2">
             <div className="space-y-1">
-              <Label size="sm">Vercel Dream</Label>
-              <Label size="sm" variant="muted-foreground">
+              <Text size="sm">Vercel Dream</Text>
+              <Text size="sm" variant="muted-foreground">
                 Mumbai
-              </Label>
+              </Text>
             </div>
             <div className="flex flex-col items-end justify-end gap-1.5">
-              <Label size="sm">22:00</Label>
-              <Label size="sm" variant="muted-foreground">
+              <Text size="sm">22:00</Text>
+              <Text size="sm" variant="muted-foreground">
                 24:00
-              </Label>
+              </Text>
             </div>
           </div>
           <div className="bg-secondary flex w-full items-center justify-between rounded-lg px-3 py-2">
             <div className="space-y-1">
-              <Label size="sm">Vercel Stand Up</Label>
-              <Label size="sm" variant="muted-foreground">
+              <Text size="sm">Vercel Stand Up</Text>
+              <Text size="sm" variant="muted-foreground">
                 California
-              </Label>
+              </Text>
             </div>
             <div className="flex flex-col items-end justify-end gap-1.5">
-              <Label size="sm">09:00</Label>
-              <Label size="sm" variant="muted-foreground">
+              <Text size="sm">09:00</Text>
+              <Text size="sm" variant="muted-foreground">
                 10:00
-              </Label>
+              </Text>
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import * as React from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -123,9 +123,9 @@ const WidgetDemo = () => {
             })}
           </WidgetHeader>
           <div className="w-full">
-            <Label size="xxxl" className="mx-auto w-max">
+            <Text size="xxxl" className="mx-auto w-max">
               {today.getDate().toString().padStart(2, "0")}
-            </Label>
+            </Text>
             <div className="mt-2 space-y-2">
               {EVENTS.map((event) => (
                 <Badge

@@ -5,7 +5,7 @@ import React from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -121,14 +121,14 @@ const WidgetDemo = () => {
 
           <div className="grid w-full grid-cols-7 items-center gap-x-4 px-3">
             {WEEKDAY_LABELS.map((day, i) => (
-              <Label
+              <Text
                 key={`weekday-${i}`}
                 size="sm"
                 variant="muted-foreground"
                 className="mx-auto"
               >
                 {day}
-              </Label>
+              </Text>
             ))}
 
             {weekDates.map((day) => {
@@ -136,14 +136,14 @@ const WidgetDemo = () => {
               const isSelected = dayNumber === selectedDate;
 
               return (
-                <Label
+                <Text
                   key={day.toISOString()}
                   variant={isSelected ? "destructive" : "default"}
                   size="xl"
                   className="mx-auto"
                 >
                   {dayNumber}
-                </Label>
+                </Text>
               );
             })}
           </div>
@@ -169,8 +169,8 @@ const WidgetDemo = () => {
             </Avatar>
 
             <div className="space-y-1">
-              <Label>{task.title}</Label>
-              <Label variant="muted-foreground">{task.time}</Label>
+              <Text>{task.title}</Text>
+              <Text variant="muted-foreground">{task.time}</Text>
             </div>
           </div>
         ))}

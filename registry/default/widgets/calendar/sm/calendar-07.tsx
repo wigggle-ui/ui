@@ -3,7 +3,7 @@
 import { BikeIcon, BookOpenIcon, DumbbellIcon } from "lucide-react";
 import React from "react";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
 const activities = [
@@ -85,9 +85,9 @@ const WidgetDemo = () => {
               return (
                 <React.Fragment key={activity.date}>
                   <IconComponent className="stroke-destructive mx-auto size-10" />
-                  <Label size="xl" weight="semibold" className="mx-auto">
+                  <Text size="xl" weight="semibold" className="mx-auto">
                     {activity.task}
-                  </Label>
+                  </Text>
                 </React.Fragment>
               );
             })}

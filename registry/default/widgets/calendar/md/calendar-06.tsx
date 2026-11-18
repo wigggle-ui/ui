@@ -1,7 +1,7 @@
 import { PlusIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -38,26 +38,26 @@ const WidgetDemo = () => (
       <div className="w-full space-y-0.5">
         <div className="grid w-full grid-cols-7 items-center gap-x-4">
           {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, i) => (
-            <Label
+            <Text
               key={`weekday-${i}-${day}`}
               size="sm"
               variant="muted-foreground"
               className="mx-auto"
             >
               {day}
-            </Label>
+            </Text>
           ))}
           {weekDates.map((d, i) => {
             const isToday = d.toDateString() === now.toDateString();
             return (
-              <Label
+              <Text
                 key={i}
                 size="lg"
                 variant={isToday ? "destructive" : "default"}
                 className="mx-auto"
               >
                 {d.getDate()}
-              </Label>
+              </Text>
             );
           })}
         </div>
@@ -65,12 +65,12 @@ const WidgetDemo = () => (
       <div className="w-full">
         <div className="border-destructive flex w-full items-center justify-between border-l-4 ps-3">
           <div className="space-y-0.5">
-            <Label>PRX vs RRQ</Label>
-            <Label size="sm" variant="muted-foreground">
+            <Text>PRX vs RRQ</Text>
+            <Text size="sm" variant="muted-foreground">
               VCT Pacific Kickoff Lower Final (BO5)
-            </Label>
+            </Text>
           </div>
-          <Label size="lg">3:30 PM</Label>
+          <Text size="lg">3:30 PM</Text>
         </div>
       </div>
     </WidgetContent>

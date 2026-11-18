@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
 const now = new Date();
@@ -11,10 +11,10 @@ const WidgetDemo = () => (
   <Widget>
     <WidgetContent className="mx-auto flex-col items-start">
       <div className="flex w-full items-center justify-center gap-2">
-        <Label size="xxl" variant="destructive">
+        <Text size="xxl" variant="destructive">
           {day}
-        </Label>
-        <Label size="xxl">{month}</Label>
+        </Text>
+        <Text size="xxl">{month}</Text>
       </div>
       <div className="text-8xl">{date}</div>
     </WidgetContent>

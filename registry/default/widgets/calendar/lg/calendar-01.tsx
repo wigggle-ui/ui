@@ -4,8 +4,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -81,7 +81,7 @@ const WidgetDemo = () => {
       <WidgetContent className="flex-col items-stretch justify-start gap-2">
         <div className="grid h-max w-full auto-rows-fr grid-cols-7 gap-1.5">
           {WEEKDAY_LABELS.map((day) => (
-            <Label
+            <Text
               size="sm"
               weight="semibold"
               variant="muted-foreground"
@@ -89,7 +89,7 @@ const WidgetDemo = () => {
               className="mx-auto mb-auto text-center"
             >
               {day}
-            </Label>
+            </Text>
           ))}
         </div>
         <div className="grid h-full w-full auto-rows-fr grid-cols-7 gap-2">
@@ -100,9 +100,9 @@ const WidgetDemo = () => {
             >
               {day !== null && (
                 <>
-                  <Label size="sm">{day}</Label>
+                  <Text size="sm">{day}</Text>
 
-                  <Label
+                  <Text
                     size="xs"
                     weight="light"
                     variant={
@@ -110,7 +110,7 @@ const WidgetDemo = () => {
                     }
                   >
                     ${prices[day]}
-                  </Label>
+                  </Text>
                 </>
               )}
             </div>
