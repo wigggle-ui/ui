@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@animate-ui/react':
+        specifier: ^2.4.6
+        version: 2.4.6(@base-ui/react@1.8.0(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(embla-carousel-react@8.6.0(react@19.3.1))(embla-carousel@8.6.0)(motion@14.14.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(radix-ui@1.7.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(shiki@4.5.0)
       '@base-ui/react':
         specifier: ^1.8.0
         version: 1.8.0(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -198,6 +201,41 @@ packages:
   '@alloc/quick-lru@5.3.0':
     resolution: {integrity: sha512-U4+70Pc5ZS9osnCBCE5Jha/ciHM+Yp+CNMNC/7HvYbNRk1Ldd+f7qO65W5qfhu/TCv+/ozljlXXe9Nj8419DMA==}
     engines: {node: '>=10'}
+
+  '@animate-ui/react@2.4.6':
+    resolution: {integrity: sha512-l+1cdJz+4XHScBXAsIwhU0O4S82OQob5Bo1i6WejaQD2MqWnwSvShBHczKNypuz+yc+/vfNAJk/MlASZax188g==}
+    peerDependencies:
+      '@base-ui/react': ^1.8.0
+      '@floating-ui/react': ^0.27.20
+      '@shadcn/react': ^0.3.1
+      embla-carousel: ^8.6.0
+      embla-carousel-react: ^8.6.0
+      input-otp: ^1.5.0
+      motion: ^14.0.0
+      radix-ui: ^1.6.0
+      react: ^19.0.0
+      react-aria-components: ^1.21.0
+      react-dom: ^19.0.0
+      shiki: ^4.5.0
+    peerDependenciesMeta:
+      '@base-ui/react':
+        optional: true
+      '@floating-ui/react':
+        optional: true
+      '@shadcn/react':
+        optional: true
+      embla-carousel:
+        optional: true
+      embla-carousel-react:
+        optional: true
+      input-otp:
+        optional: true
+      radix-ui:
+        optional: true
+      react-aria-components:
+        optional: true
+      shiki:
+        optional: true
 
   '@babel/code-frame@7.29.7':
     resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
@@ -4312,6 +4350,18 @@ packages:
 snapshots:
 
   '@alloc/quick-lru@5.3.0': {}
+
+  '@animate-ui/react@2.4.6(@base-ui/react@1.8.0(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(embla-carousel-react@8.6.0(react@19.3.1))(embla-carousel@8.6.0)(motion@14.14.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(radix-ui@1.7.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(shiki@4.5.0)':
+    dependencies:
+      motion: 14.14.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
+    optionalDependencies:
+      '@base-ui/react': 1.8.0(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      embla-carousel: 8.6.0
+      embla-carousel-react: 8.6.0(react@19.3.1)
+      radix-ui: 1.7.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      shiki: 4.5.0
 
   '@babel/code-frame@7.29.7':
     dependencies:

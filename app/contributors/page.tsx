@@ -1,8 +1,8 @@
-import { SquareArrowOutUpRight } from "lucide-react";
 import { cacheLife } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
 
+import { ExternalLink } from "@/components/animate-ui/icons/external-link";
 import PageHeader from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import type { GitHubRepositoryStats } from "@/lib/github-repository";
@@ -61,10 +61,7 @@ const StatCard = ({
     <h2 className="text-muted-foreground flex items-center justify-center gap-2 font-mono text-sm font-medium tracking-wide uppercase">
       {label}
       {showExternalLink && (
-        <SquareArrowOutUpRight
-          aria-hidden="true"
-          className="size-4 -translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100 motion-reduce:transition-none"
-        />
+        <ExternalLink className="size-4.5" animateOnHover animation="default" />
       )}
     </h2>
     <p className="text-4xl font-semibold tabular-nums">{value}</p>
@@ -100,102 +97,108 @@ const RepositoryStats = ({ result }: { result: RepositoryResult }) => {
   const { stats } = result;
   return (
     <div className="space-y-6">
-      <PageHeader title="Repo Stats" />
-      <section
-        aria-label="Repository totals"
-        className="grid grid-cols-2 items-center gap-6 md:grid-cols-4"
-      >
-        <StatCard label="Stars" value={formatNumber.format(stats.totalStars)} />
-        <StatCard
-          label="Contributors"
-          value={formatNumber.format(stats.totalContributors)}
-        />
-        <StatCard
-          label="Commits"
-          value={formatNumber.format(stats.totalCommits)}
-        />
-        <Link
-          aria-label={`${formatCount(stats.openIssues, "open issue", "open issues")} — view GitHub issues`}
-          className="group focus-visible:ring-ring rounded-xl focus-visible:ring-2 focus-visible:outline-none"
-          href={`${stats.repository.url}/issues`}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <StatCard
-            label="Open Issues"
-            value={formatNumber.format(stats.openIssues)}
-            showExternalLink
-          />
-        </Link>
-      </section>
-      <hr />
       <PageHeader title="Contributors">
         A few good weirdos who make Wigggle UI possible.
       </PageHeader>
-      <section aria-labelledby="contributors-heading">
-        {stats.contributors.length > 0 ? (
-          <ol className="grid list-none grid-cols-2 gap-6 py-2 lg:grid-cols-3">
-            {stats.contributors.map((contributor) => (
-              <li key={contributor.id}>
-                <Link
-                  className="border-border bg-card group hover:bg-accent focus-visible:ring-ring flex size-full flex-col items-center justify-center gap-4 rounded-2xl border p-6 transition-colors focus-visible:ring-2 focus-visible:outline-none"
-                  href={contributor.profileUrl}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <Image
-                    alt={contributor.name}
-                    className="size-24 shrink-0 rounded-full border object-cover"
-                    height={96}
-                    src={contributor.avatarUrl}
-                    width={96}
-                  />
-                  <span className="flex min-w-0 flex-1 flex-col items-center justify-center gap-1">
-                    <span className="block truncate">{contributor.name}</span>
-                    <span className="flex flex-wrap gap-1.5">
-                      <CountBadge
-                        count={contributor.commits}
-                        singular="commit"
-                        plural="commits"
-                      />
-                    </span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ol>
-        ) : (
-          <p className="text-muted-foreground text-sm">
-            No GitHub accounts with commits or merged pull requests were found.
-          </p>
-        )}
-      </section>
       <hr />
-      <div className="space-y-6 rounded-xl border p-8 text-center">
-        <p className="text-muted-foreground mx-auto max-w-md">
-          There&apos;s always room for another widget. Build something new,
-          improve what&apos;s already here, or fix something that could work
-          better. Have an idea? Open an issue. We&apos;d love to see it.
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <Button size="sm" asChild>
-            <Link
-              href={stats.repository.url}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              View the repository
-            </Link>
-          </Button>
-          <Button size="sm" variant="outline" asChild>
-            <Link
-              href={`${stats.repository.url}/issues`}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Browse open issues
-            </Link>
-          </Button>
+      <div className="space-y-6">
+        <section aria-labelledby="contributors-heading">
+          {stats.contributors.length > 0 ? (
+            <ol className="grid list-none grid-cols-2 gap-6 py-2 lg:grid-cols-3">
+              {stats.contributors.map((contributor) => (
+                <li key={contributor.id}>
+                  <Link
+                    className="border-border group hover:bg-accent/50 focus-visible:ring-ring flex size-full flex-col items-center justify-center gap-4 rounded-2xl border p-6 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                    href={contributor.profileUrl}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <Image
+                      alt={contributor.name}
+                      className="size-24 shrink-0 rounded-full border object-cover"
+                      height={96}
+                      src={contributor.avatarUrl}
+                      width={96}
+                    />
+                    <span className="flex min-w-0 flex-1 flex-col items-center justify-center gap-1">
+                      <span className="block truncate">{contributor.name}</span>
+                      <span className="flex flex-wrap gap-1.5">
+                        <CountBadge
+                          count={contributor.commits}
+                          singular="commit"
+                          plural="commits"
+                        />
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <p className="text-muted-foreground text-center">
+              Prolly some issue with GitHub&apos;s API, maybe you can take a
+              look at the repo itself...
+            </p>
+          )}
+        </section>
+        <hr />
+        <section
+          aria-label="Repository totals"
+          className="grid grid-cols-2 items-center gap-6 md:grid-cols-4"
+        >
+          <StatCard
+            label="Stars"
+            value={formatNumber.format(stats.totalStars)}
+          />
+          <StatCard
+            label="Contributors"
+            value={formatNumber.format(stats.totalContributors)}
+          />
+          <StatCard
+            label="Commits"
+            value={formatNumber.format(stats.totalCommits)}
+          />
+          <Link
+            aria-label={`${formatCount(stats.openIssues, "open issue", "open issues")} — view GitHub issues`}
+            className="group focus-visible:ring-ring rounded-xl focus-visible:ring-2 focus-visible:outline-none"
+            href={`${stats.repository.url}/issues`}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <StatCard
+              label="Open Issues"
+              value={formatNumber.format(stats.openIssues)}
+              showExternalLink
+            />
+          </Link>
+        </section>
+        <hr />
+        <div className="space-y-6 p-8 text-center">
+          <p className="text-muted-foreground mx-auto max-w-2xl">
+            There&apos;s always room for another widget. Build something new,
+            improve what&apos;s already here, or fix something that could work
+            better. Have an idea? Open an issue. We&apos;d love to see it.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Button size="sm" asChild>
+              <Link
+                href={stats.repository.url}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                View the repository
+              </Link>
+            </Button>
+            <Button size="sm" variant="outline" asChild>
+              <Link
+                href={`${stats.repository.url}/issues`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Browse open issues
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </div>
@@ -211,7 +214,7 @@ const Page = async () => {
   const result = await loadRepositoryStats();
 
   return (
-    <main className="mx-auto w-full max-w-4xl py-2">
+    <main className="mx-auto max-w-7xl">
       <RepositoryStats result={result} />
     </main>
   );

@@ -3,7 +3,7 @@ import PageHeader from "@/components/page-header";
 import { categories, getWidgetCount } from "@/config/widgets";
 
 const Home = () => (
-  <div className="relative" data-home>
+  <div data-home>
     <PageHeader title="Widgets">
       Widgets are divided based on categories. Take your pick!
     </PageHeader>
