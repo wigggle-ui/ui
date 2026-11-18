@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   DEFAULT_LOCATION,
   useLocation,
@@ -33,9 +33,9 @@ const WidgetDemo = () => {
     return (
       <Widget design="mumbai">
         <WidgetContent className="flex items-center justify-center">
-          <Label>
+          <Text>
             <span className="animate-pulse">Loading...</span>
-          </Label>
+          </Text>
         </WidgetContent>
       </Widget>
     );
@@ -49,12 +49,12 @@ const WidgetDemo = () => {
             key={index}
             className="grid w-full grid-cols-4 items-center gap-3 border-b pb-2 last:border-none"
           >
-            <Label>{el.day}</Label>
+            <Text>{el.day}</Text>
             {getWeatherIcon(el.weatherCode, "", {
               className: "mx-auto size-5 text-muted-foreground",
             })}
-            <Label className="mx-auto">{el.min}&deg;</Label>
-            <Label className="mx-auto">{el.max}&deg;</Label>
+            <Text className="mx-auto">{el.min}&deg;</Text>
+            <Text className="mx-auto">{el.max}&deg;</Text>
           </div>
         ))}
       </WidgetContent>

@@ -2,7 +2,7 @@
 
 import { MoveDownIcon, MoveUpIcon } from "lucide-react";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   DEFAULT_LOCATION,
   useLocation,
@@ -32,9 +32,9 @@ const WidgetDemo = () => {
     return (
       <Widget>
         <WidgetContent className="flex items-center justify-center">
-          <Label>
+          <Text>
             <span className="animate-pulse">Loading...</span>
-          </Label>
+          </Text>
         </WidgetContent>
       </Widget>
     );
@@ -46,7 +46,7 @@ const WidgetDemo = () => {
       <WidgetContent className="flex items-center justify-center gap-2">
         {weather &&
           getWeatherIcon(weather.weatherCode, "size-10", { strokeWidth: 2 })}
-        <Label size="xxxxl">{weather?.temperature}&deg;</Label>
+        <Text size="xxxxl">{weather?.temperature}&deg;</Text>
       </WidgetContent>
       <WidgetFooter className="justify-between gap-3">
         <div className="flex items-center justify-start">
@@ -55,7 +55,7 @@ const WidgetDemo = () => {
             className="mr-1 size-4"
             strokeWidth={4}
           />
-          <Label>{todayMin}&deg;</Label>
+          <Text>{todayMin}&deg;</Text>
         </div>
         <div className="flex h-max items-center justify-start">
           <MoveUpIcon
@@ -63,7 +63,7 @@ const WidgetDemo = () => {
             className="mr-1 size-4"
             strokeWidth={4}
           />
-          <Label>{todayMax}&deg;</Label>
+          <Text>{todayMax}&deg;</Text>
         </div>
       </WidgetFooter>
     </Widget>

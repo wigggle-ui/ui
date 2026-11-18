@@ -3,7 +3,7 @@
 import { DropletIcon, ThermometerIcon } from "lucide-react";
 import * as React from "react";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   DEFAULT_LOCATION,
   useLocation,
@@ -48,9 +48,9 @@ const WidgetDemo = () => {
     return (
       <Widget>
         <WidgetContent className="flex items-center justify-center">
-          <Label>
+          <Text>
             <span className="animate-pulse">Loading...</span>
-          </Label>
+          </Text>
         </WidgetContent>
       </Widget>
     );
@@ -71,19 +71,19 @@ const WidgetDemo = () => {
         <div className="flex flex-col items-center gap-1">
           <div className="flex h-max w-full items-center justify-start">
             <ThermometerIcon className="text-muted-foreground mr-1 size-5" />
-            <Label size="sm" variant="muted-foreground">
+            <Text size="sm" variant="muted-foreground">
               {weather?.feelsLike}&deg;
-            </Label>
+            </Text>
           </div>
           <div className="flex h-max w-full items-center justify-start">
             <DropletIcon className="text-muted-foreground mr-1 size-5" />
-            <Label size="sm" variant="muted-foreground">
+            <Text size="sm" variant="muted-foreground">
               {weather?.humidity}%
-            </Label>
+            </Text>
           </div>
         </div>
         <div className="flex w-full justify-end">
-          <Label size="xxxxl">{weather?.temperature}&deg;</Label>
+          <Text size="xxxxl">{weather?.temperature}&deg;</Text>
         </div>
       </WidgetFooter>
     </Widget>

@@ -2,7 +2,7 @@
 
 import { MoveDownIcon, MoveUpIcon } from "lucide-react";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   DEFAULT_LOCATION,
   useLocation,
@@ -39,9 +39,9 @@ const WidgetDemo = () => {
     return (
       <Widget design="mumbai" className="gap-6">
         <WidgetContent className="flex items-center justify-center">
-          <Label>
+          <Text>
             <span className="animate-pulse">Loading...</span>
-          </Label>
+          </Text>
         </WidgetContent>
       </Widget>
     );
@@ -51,10 +51,10 @@ const WidgetDemo = () => {
     <Widget design="mumbai" className="gap-4">
       <WidgetHeader className="flex items-center justify-between gap-3">
         <div className="flex flex-col gap-0">
-          <Label>{city || "Unknown"}</Label>
-          <Label size="xs" variant="muted-foreground">
+          <Text>{city || "Unknown"}</Text>
+          <Text size="xs" variant="muted-foreground">
             Feels Like {weather?.feelsLike}&deg;
-          </Label>
+          </Text>
         </div>
         <WidgetTitle className="text-3xl">
           {weather?.temperature}&deg;
@@ -67,7 +67,7 @@ const WidgetDemo = () => {
             className="mr-1 size-4"
             strokeWidth={4}
           />
-          <Label>{todayMax}&deg;</Label>
+          <Text>{todayMax}&deg;</Text>
         </div>
         <div className="flex w-full items-center justify-end">
           <MoveDownIcon
@@ -75,7 +75,7 @@ const WidgetDemo = () => {
             className="mr-1 size-4"
             strokeWidth={4}
           />
-          <Label>{todayMin}&deg;</Label>
+          <Text>{todayMin}&deg;</Text>
         </div>
       </WidgetContent>
       <WidgetFooter className="bg-muted w-full rounded-xl">
@@ -83,9 +83,9 @@ const WidgetDemo = () => {
           {next5Hours.map((h, i) => (
             <div key={i} className="flex flex-col items-center gap-2">
               {getWeatherIcon(h.code, "size-4")}
-              <Label size="xs" weight="light">
+              <Text size="xs" weight="light">
                 {h.temp}&deg;
-              </Label>
+              </Text>
             </div>
           ))}
         </div>

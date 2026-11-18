@@ -1,6 +1,6 @@
 "use client";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   DEFAULT_LOCATION,
   useLocation,
@@ -45,9 +45,9 @@ const WidgetDemo = () => {
       <Widget size="md">
         <WidgetContent>
           <div className="flex w-full items-center justify-center">
-            <Label>
+            <Text>
               <span className="animate-pulse">Loading weather data...</span>
-            </Label>
+            </Text>
           </div>
         </WidgetContent>
       </Widget>
@@ -58,8 +58,8 @@ const WidgetDemo = () => {
     <Widget size="md">
       <WidgetHeader className="items-start">
         <div className="flex flex-col items-start">
-          <Label>{city || "Unknown Location"}</Label>
-          <Label size="xxxxl">{weather?.temperature}&deg;</Label>
+          <Text>{city || "Unknown Location"}</Text>
+          <Text size="xxxxl">{weather?.temperature}&deg;</Text>
         </div>
         <div className="flex flex-col items-start">
           {weather && getWeatherIcon(weather.weatherCode)}
@@ -68,11 +68,11 @@ const WidgetDemo = () => {
       <WidgetContent className="mt-4 grid w-full grid-cols-6 items-end gap-6">
         {next6Hours.map((el, index) => (
           <div key={index} className="flex flex-col items-center gap-1">
-            <Label size="xs" variant="muted-foreground">
+            <Text size="xs" variant="muted-foreground">
               {el.time}
-            </Label>
-            <Label>{getSmallWeatherIcon(el.weatherCode)}</Label>
-            <Label size="lg">{el.temp}&deg;</Label>
+            </Text>
+            <Text>{getSmallWeatherIcon(el.weatherCode)}</Text>
+            <Text size="lg">{el.temp}&deg;</Text>
           </div>
         ))}
       </WidgetContent>

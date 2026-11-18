@@ -2,7 +2,7 @@
 
 import { MoveDownIcon, MoveUpIcon } from "lucide-react";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   DEFAULT_LOCATION,
   useLocation,
@@ -36,9 +36,9 @@ const WidgetDemo = () => {
     return (
       <Widget>
         <WidgetContent className="flex items-center justify-center">
-          <Label>
+          <Text>
             <span className="animate-pulse">Loading...</span>
-          </Label>
+          </Text>
         </WidgetContent>
       </Widget>
     );
@@ -51,11 +51,11 @@ const WidgetDemo = () => {
         <div className="flex flex-col">
           <div className="flex items-center gap-x-2">
             {weather && getWeatherIcon(weather.weatherCode, "size-8")}
-            <Label size="xxxxl">{weather?.temperature}&deg;</Label>
+            <Text size="xxxxl">{weather?.temperature}&deg;</Text>
           </div>
-          <Label variant="muted-foreground">
+          <Text variant="muted-foreground">
             Feels Like {weather?.feelsLike}&deg;
-          </Label>
+          </Text>
         </div>
       </WidgetHeader>
       <WidgetContent className="items-end">
@@ -65,7 +65,7 @@ const WidgetDemo = () => {
             className="mr-1 size-4"
             strokeWidth={4}
           />
-          <Label>{highTemp === null ? "--" : `${highTemp}\u00B0`}</Label>
+          <Text>{highTemp === null ? "--" : `${highTemp}\u00B0`}</Text>
         </div>
         <div className="flex w-full items-center justify-end">
           <MoveDownIcon
@@ -73,7 +73,7 @@ const WidgetDemo = () => {
             className="mr-1 size-4"
             strokeWidth={4}
           />
-          <Label>{lowTemp === null ? "--" : `${lowTemp}\u00B0`}</Label>
+          <Text>{lowTemp === null ? "--" : `${lowTemp}\u00B0`}</Text>
         </div>
       </WidgetContent>
     </Widget>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   DEFAULT_LOCATION,
   useLocation,
@@ -27,9 +27,9 @@ const WidgetDemo = () => {
     return (
       <Widget>
         <WidgetContent className="flex items-center justify-center">
-          <Label>
+          <Text>
             <span className="animate-pulse">Loading...</span>
-          </Label>
+          </Text>
         </WidgetContent>
       </Widget>
     );
@@ -45,9 +45,9 @@ const WidgetDemo = () => {
       <WidgetContent className="items-end">
         <div className="flex w-full flex-col items-end gap-1.5">
           {weather && getWeatherIcon(weather.weatherCode, "size-8")}
-          <Label size="lg" weight="medium">
+          <Text size="lg" weight="medium">
             {city || "Unknown"}
-          </Label>
+          </Text>
         </div>
       </WidgetContent>
     </Widget>

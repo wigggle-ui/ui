@@ -1,6 +1,6 @@
 "use client";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   DEFAULT_LOCATION,
   useLocation,
@@ -30,9 +30,9 @@ const WidgetDemo = () => {
     return (
       <Widget>
         <WidgetContent className="mx-auto flex-col items-center justify-center">
-          <Label>
+          <Text>
             <span className="animate-pulse">Loading...</span>
-          </Label>
+          </Text>
         </WidgetContent>
       </Widget>
     );
@@ -41,13 +41,13 @@ const WidgetDemo = () => {
   return (
     <Widget>
       <WidgetContent className="mx-auto flex-col items-start">
-        <Label weight="medium" size="xxxxl">
+        <Text weight="medium" size="xxxxl">
           {weather?.temperature}&deg;
-        </Label>
-        <Label size="xxl" weight="light">
+        </Text>
+        <Text size="xxl" weight="light">
           {weather ? getWeatherDescription(weather.weatherCode) : "Sunny"}
-        </Label>
-        <Label weight="light">{currentDate}</Label>
+        </Text>
+        <Text weight="light">{currentDate}</Text>
       </WidgetContent>
     </Widget>
   );
