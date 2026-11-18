@@ -1,5 +1,8 @@
+import { unstable_cache } from "next/cache";
+
 const API = "https://api.github.com";
 const API_VERSION = "2022-11-28";
+const REPOSITORY_STATS_CACHE_SECONDS = 60 * 60;
 
 interface GitHubUser {
   id: number;
@@ -264,3 +267,13 @@ export const getGitHubRepositoryStats = async ({
     totalStars: metadata.stargazers_count,
   };
 };
+
+export const getCachedGitHubRepositoryStats = unstable_cache(
+  async (repository: string): Promise<GitHubRepositoryStats> =>
+    await getGitHubRepositoryStats({
+      repository,
+      token: process.env.GITHUB_TOKEN,
+    }),
+  ["github-repository-stats"],
+  { revalidate: REPOSITORY_STATS_CACHE_SECONDS }
+);

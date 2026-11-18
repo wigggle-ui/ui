@@ -1,4 +1,3 @@
-import { cacheLife } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,23 +5,13 @@ import { ExternalLink } from "@/components/animate-ui/icons/external-link";
 import PageHeader from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import type { GitHubRepositoryStats } from "@/lib/github-repository";
-import { getGitHubRepositoryStats } from "@/lib/github-repository";
+import { getCachedGitHubRepositoryStats } from "@/lib/github-repository";
 
 const REPOSITORY =
   process.env.GITHUB_REPOSITORY ?? "https://github.com/wigggle-ui/ui";
 const formatNumber = new Intl.NumberFormat("en");
 const formatCount = (count: number, singular: string, plural: string): string =>
   `${formatNumber.format(count)} ${count === 1 ? singular : plural}`;
-
-const getCachedRepositoryStats = async (
-  repository: string,
-  token?: string
-): Promise<GitHubRepositoryStats> => {
-  "use cache";
-  cacheLife("hours");
-
-  return await getGitHubRepositoryStats({ repository, token });
-};
 
 type RepositoryResult =
   | { ok: true; stats: GitHubRepositoryStats }
@@ -32,10 +21,7 @@ const loadRepositoryStats = async (): Promise<RepositoryResult> => {
   try {
     return {
       ok: true,
-      stats: await getCachedRepositoryStats(
-        REPOSITORY,
-        process.env.GITHUB_TOKEN
-      ),
+      stats: await getCachedGitHubRepositoryStats(REPOSITORY),
     };
   } catch (error) {
     return {

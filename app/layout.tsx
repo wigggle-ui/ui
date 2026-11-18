@@ -101,11 +101,11 @@ const RootLayout = ({
         disableTransitionOnChange
       >
         <TooltipProvider>
-          <div className="bg-background text-foreground relative grid min-h-screen w-full grid-rows-[auto_1fr_auto] font-sans">
+          <main className="bg-background text-foreground relative grid min-h-screen w-full grid-rows-[auto_1fr_auto] font-sans">
             <SiteHeader />
             <div className="min-w-0 p-6">{children}</div>
             <SiteFooter />
-          </div>
+          </main>
         </TooltipProvider>
         <Toaster />
       </ThemeProvider>
