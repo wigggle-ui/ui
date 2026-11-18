@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/audio-player";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -35,10 +35,10 @@ const WidgetDemo = () => (
           <AvatarFallback>CM</AvatarFallback>
         </Avatar>
         <div className="space-y-0">
-          <Label size="sm">{track.data.title}</Label>
-          <Label size="xs" variant="muted-foreground">
+          <Text size="sm">{track.data.title}</Text>
+          <Text size="xs" variant="muted-foreground">
             {track.data.artist}
-          </Label>
+          </Text>
         </div>
       </WidgetHeader>
       <WidgetContent className="flex-col gap-1">

@@ -9,8 +9,8 @@ import {
 } from "@/components/ui/audio-player";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -90,16 +90,16 @@ const MusicCard = ({
       <AvatarFallback>{fallback}</AvatarFallback>
     </Avatar>
     <div className="space-y-0">
-      <Label size="sm" className="w-full group-hover:cursor-pointer">
+      <Text size="sm" className="w-full group-hover:cursor-pointer">
         {title}
-      </Label>
-      <Label
+      </Text>
+      <Text
         variant="muted-foreground"
         size="xs"
         className="group-hover:cursor-pointer"
       >
         {artist}
-      </Label>
+      </Text>
     </div>
   </div>
 );
@@ -119,10 +119,10 @@ const WidgetDemo = () => (
                 <AvatarFallback>CM</AvatarFallback>
               </Avatar>
               <div className="space-y-0">
-                <Label size="sm">{track.data.title}</Label>
-                <Label size="xs" variant="muted-foreground">
+                <Text size="sm">{track.data.title}</Text>
+                <Text size="xs" variant="muted-foreground">
                   {track.data.artist}
-                </Label>
+                </Text>
               </div>
             </WidgetHeader>
             <WidgetContent className="w-full flex-col gap-1">

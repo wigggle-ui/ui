@@ -4,7 +4,7 @@ import { XIcon } from "lucide-react";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -28,7 +28,7 @@ const WidgetDemo = () => (
         height={192}
         className="size-20"
       />
-      <Label>Henil&apos;s AirPods Max</Label>
+      <Text>Henil&apos;s AirPods Max</Text>
     </WidgetContent>
     <WidgetFooter>
       <Button size="icon-circle" variant="outline" className="w-full">

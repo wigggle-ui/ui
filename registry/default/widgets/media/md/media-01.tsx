@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/audio-player";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetFooter,
@@ -41,10 +41,10 @@ const WidgetDemo = () => (
             <AvatarFallback>NU</AvatarFallback>
           </Avatar>
           <div>
-            <Label>{track.data.title}</Label>
-            <Label variant="muted-foreground" size="sm">
+            <Text>{track.data.title}</Text>
+            <Text variant="muted-foreground" size="sm">
               {track.data.artist}
-            </Label>
+            </Text>
           </div>
         </div>
         <Button variant="ghost" size="icon-sm">

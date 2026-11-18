@@ -9,7 +9,7 @@ import {
   AudioPlayerTime,
 } from "@/components/ui/audio-player";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
 const track = {
@@ -34,10 +34,10 @@ const WidgetDemo = () => (
         <div className="size-full">
           <div className="flex h-full w-full flex-col items-start justify-between p-6">
             <div className="space-y-0">
-              <Label>{track.data.title}</Label>
-              <Label size="sm" variant="muted-foreground">
+              <Text>{track.data.title}</Text>
+              <Text size="sm" variant="muted-foreground">
                 {track.data.artist}
-              </Label>
+              </Text>
             </div>
             <div className="flex w-full flex-col gap-1.5">
               <AudioPlayerProgress className="h-full max-h-2 w-full flex-1" />

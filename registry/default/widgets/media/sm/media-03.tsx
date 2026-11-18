@@ -6,7 +6,7 @@ import {
   AudioPlayerProvider,
 } from "@/components/ui/audio-player";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -31,21 +31,21 @@ const WidgetDemo = () => (
             className="max-h-28 w-full rounded-lg object-cover"
           />
           <div className="absolute inset-0 z-10 rounded-md bg-linear-to-t from-black via-black/50 to-transparent" />
-          <Label
+          <Text
             variant="muted-foreground"
             size="xs"
             className="absolute bottom-7 left-2 z-10"
           >
             Now Playing
-          </Label>
-          <Label
+          </Text>
+          <Text
             size="sm"
             className="absolute bottom-2 left-2 z-10 w-36 overflow-hidden"
           >
             <span className="inline-block whitespace-nowrap">
               {track.data.title}
             </span>
-          </Label>
+          </Text>
         </div>
       </WidgetContent>
       <WidgetFooter className="gap-2">
