@@ -11,7 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -71,10 +71,10 @@ const WidgetDemo = () => (
           <AvatarFallback>WUI</AvatarFallback>
         </Avatar>
         <div>
-          <Label size="sm">wigggle-ui</Label>
-          <Label size="sm" variant="muted-foreground">
+          <Text size="sm">wigggle-ui</Text>
+          <Text size="sm" variant="muted-foreground">
             wigggle-ui.vercel.app
-          </Label>
+          </Text>
         </div>
       </div>
       <DropdownMenu>
@@ -105,12 +105,12 @@ const WidgetDemo = () => (
         <Icons.GitHub className="size-4" />
         wigggle-ui/ui
       </Link>
-      <Label size="sm">Merge pull request #26 from wigggle-ui/v2-design</Label>
-      <Label size="sm" variant="muted-foreground">
+      <Text size="sm">Merge pull request #26 from wigggle-ui/v2-design</Text>
+      <Text size="sm" variant="muted-foreground">
         <span>3d ago on </span>
         <GitBranchIcon className="size-4" />
         <span>main</span>
-      </Label>
+      </Text>
     </WidgetContent>
   </Widget>
 );

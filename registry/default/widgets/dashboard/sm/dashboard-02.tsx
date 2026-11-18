@@ -8,7 +8,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -56,11 +56,11 @@ const WidgetDemo = () => (
     <WidgetFooter className="items-center">
       <div className="flex w-full items-center justify-center gap-1">
         <div className="bg-muted-foreground size-3 rounded-xs" />
-        <Label size="sm">Desktop</Label>
+        <Text size="sm">Desktop</Text>
       </div>
       <div className="flex w-full items-center justify-center gap-1">
         <div className="bg-secondary-foreground size-3 rounded-xs" />
-        <Label size="sm">Mobile</Label>
+        <Text size="sm">Mobile</Text>
       </div>
     </WidgetFooter>
   </Widget>

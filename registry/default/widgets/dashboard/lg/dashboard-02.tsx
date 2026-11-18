@@ -14,7 +14,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import type { ChartConfig } from "@/components/ui/chart";
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -23,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetHeader,
@@ -72,9 +72,9 @@ const StatsItem = (item: StatsItemProps) => (
   <div className="flex w-full items-center justify-between border-t-2 py-2 first:border-0">
     <div className="flex items-center justify-start gap-x-2">
       <item.icon className="stroke-muted-foreground size-4" />
-      <Label size="sm">{item.label}</Label>
+      <Text size="sm">{item.label}</Text>
     </div>
-    <Label size="sm">{item.value}</Label>
+    <Text size="sm">{item.value}</Text>
   </div>
 );
 

@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Tooltip,
   TooltipContent,
@@ -44,17 +44,17 @@ const WidgetDemo = () => (
     <WidgetContent className="w-full flex-col items-start justify-start gap-2">
       <div className="flex w-max items-center justify-center gap-2">
         <GitCommitHorizontalIcon className="stroke-muted-foreground size-5" />
-        <Label size="sm">chore: nextjs v16</Label>
+        <Text size="sm">chore: nextjs v16</Text>
       </div>
       <div className="flex w-max items-center justify-center gap-2">
         <GitBranchIcon className="stroke-muted-foreground size-5" />
-        <Label className="-mt-1.5" size="sm">
+        <Text className="-mt-1.5" size="sm">
           prod
-        </Label>
+        </Text>
       </div>
       <div className="flex w-max items-center justify-center gap-2">
         <ShieldCheckIcon className="stroke-productive size-5" />
-        <Label size="sm">Firewall Active</Label>
+        <Text size="sm">Firewall Active</Text>
       </div>
     </WidgetContent>
     <WidgetFooter>

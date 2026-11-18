@@ -10,7 +10,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetHeader,
@@ -58,12 +58,12 @@ const WidgetDemo = () => (
       <div className="flex w-full items-center justify-start">
         <div className="flex items-center space-x-1">
           <GlobeIcon className="stroke-muted-foreground size-4" />
-          <Label variant="muted-foreground">Worldwide</Label>
+          <Text variant="muted-foreground">Worldwide</Text>
         </div>
         <DotIcon className="stroke-muted-foreground/40" />
         <div className="flex items-center space-x-1">
           <MonitorIcon className="stroke-muted-foreground size-4" />
-          <Label variant="muted-foreground">Desktop</Label>
+          <Text variant="muted-foreground">Desktop</Text>
         </div>
       </div>
       <ChartContainer config={chartConfig} className="size-full max-h-44">
@@ -84,27 +84,27 @@ const WidgetDemo = () => (
       <div className="flex w-full items-center justify-center gap-6">
         <div className="flex items-center space-x-1.5">
           <div className="bg-vercel-purple size-2.5 rounded-full" />
-          <Label size="sm" variant="muted-foreground">
+          <Text size="sm" variant="muted-foreground">
             Direct
-          </Label>
+          </Text>
         </div>
         <div className="flex items-center space-x-1.5">
           <div className="bg-vercel-pink size-2.5 rounded-full" />
-          <Label size="sm" variant="muted-foreground">
+          <Text size="sm" variant="muted-foreground">
             Search
-          </Label>
+          </Text>
         </div>
         <div className="flex items-center space-x-1.5">
           <div className="bg-vercel-yellow size-2.5 rounded-full" />
-          <Label size="sm" variant="muted-foreground">
+          <Text size="sm" variant="muted-foreground">
             Referrals
-          </Label>
+          </Text>
         </div>
         <div className="flex items-center space-x-1.5">
           <div className="bg-vercel-blue size-2.5 rounded-full" />
-          <Label size="sm" variant="muted-foreground">
+          <Text size="sm" variant="muted-foreground">
             Socials
-          </Label>
+          </Text>
         </div>
       </div>
       <Button className="w-full" variant="outline">

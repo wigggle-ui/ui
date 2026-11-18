@@ -1,7 +1,7 @@
 import { cn } from "cn";
 import type { CSSProperties } from "react";
 
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Tooltip,
   TooltipContent,
@@ -58,8 +58,8 @@ const WidgetDemo = () => (
             className="grid w-full grid-cols-[auto_1fr_auto] items-center gap-2.5"
           >
             <div className={cn("size-3 rounded-xs", `${el.color}`)} />
-            <Label size="sm">{el.device}</Label>
-            <Label size="sm">{el.count}</Label>
+            <Text size="sm">{el.device}</Text>
+            <Text size="sm">{el.count}</Text>
           </div>
         ))}
       </div>
