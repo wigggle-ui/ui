@@ -3,7 +3,7 @@
 import { BadgePercentIcon } from "lucide-react";
 
 import CopyButton from "@/components/copy-button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Tooltip,
   TooltipContent,
@@ -25,7 +25,7 @@ const WidgetDemo = () => (
     </WidgetHeader>
     <WidgetContent className="mx-auto flex-col items-center justify-center gap-1.5">
       <div className="flex w-full flex-col items-center justify-center px-3 text-center text-wrap">
-        <Label size="md">Your code for 20% discount</Label>
+        <Text size="md">Your code for 20% discount</Text>
       </div>
       <Tooltip delayDuration={300}>
         <TooltipTrigger asChild>

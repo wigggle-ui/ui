@@ -1,6 +1,6 @@
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Tooltip,
   TooltipContent,
@@ -18,9 +18,9 @@ const WidgetDemo = () => (
     <WidgetHeader className="items-center justify-between">
       <div className="flex items-center justify-start gap-2">
         <Icons.Vercel className="size-5" aria-hidden="true" />
-        <Label weight="medium" size="lg">
+        <Text weight="medium" size="lg">
           Vercel
-        </Label>
+        </Text>
       </div>
       <Tooltip delayDuration={300}>
         <TooltipTrigger asChild>
@@ -32,10 +32,10 @@ const WidgetDemo = () => (
       </Tooltip>
     </WidgetHeader>
     <WidgetContent className="flex-col items-start justify-start gap-1.5">
-      <Label size="sm">Deploy your shadcn/ui apps with just one click.</Label>
-      <Label size="xs" variant="muted-foreground">
+      <Text size="sm">Deploy your shadcn/ui apps with just one click.</Text>
+      <Text size="xs" variant="muted-foreground">
         Trusted by OpenAI, Sonos, Adobe, and more.
-      </Label>
+      </Text>
     </WidgetContent>
     <WidgetFooter>
       <Button size="sm" className="w-full" variant="outline">

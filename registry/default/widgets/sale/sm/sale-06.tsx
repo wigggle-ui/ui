@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Widget,
   WidgetContent,
@@ -16,9 +16,9 @@ const WidgetDemo = () => (
       <WidgetTitle>Wait before you go!</WidgetTitle>
     </WidgetHeader>
     <WidgetContent className="flex-col gap-2">
-      <Label size="sm" weight="semibold">
+      <Text size="sm" weight="semibold">
         15% OFF on next order
-      </Label>
+      </Text>
       <Field>
         <Input
           id="email"

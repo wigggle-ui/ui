@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 
 import CopyButton from "@/components/copy-button";
 import ScratchCard from "@/components/spectrumui/scratch-card";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Tooltip,
   TooltipContent,
@@ -40,9 +40,9 @@ const WidgetDemo = () => {
           />
         </div>
         <div className="col-span-3 flex h-full w-full flex-col items-center justify-center gap-3 px-3">
-          <Label className="text-center">
+          <Text className="text-center">
             Scratch to reveal your coupon code.
-          </Label>
+          </Text>
           <ScratchCard
             className="h-14 w-full"
             overlayLabel="Scratch"

@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
 const WidgetDemo = () => {
@@ -31,14 +31,14 @@ const WidgetDemo = () => {
   return (
     <Widget design="new-york" className="border-productive">
       <WidgetContent className="bg-productive/80 dark:bg-productive/50 mx-auto w-full flex-col items-center justify-center gap-1.5 rounded-2xl px-3">
-        <Label
+        <Text
           variant={isDark ? "foreground" : "background"}
           className="text-center"
           size="xl"
           weight="semibold"
         >
           Get 20% Off
-        </Label>
+        </Text>
         <form
           className="[&_[data-slot=input]::placeholder]:text-background/75 **:data-[slot=input]:text-background dark:**:data-[slot=input]:text-foreground dark:[&_[data-slot=input]::placeholder]:text-muted-foreground flex w-full flex-col gap-2"
           onSubmit={(event) => {

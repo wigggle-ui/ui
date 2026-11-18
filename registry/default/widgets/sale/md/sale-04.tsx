@@ -2,7 +2,7 @@ import { ArrowRightIcon } from "lucide-react";
 
 import ElectricLogo from "@/components/electric-logo";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
 const WidgetDemo = () => (
@@ -31,13 +31,13 @@ const WidgetDemo = () => (
         />
       </div>
       <div className="flex size-full flex-col items-start justify-between py-8 pe-4">
-        <Label size="xl" weight="semibold">
+        <Text size="xl" weight="semibold">
           <span className="uppercase">50% OFF</span>
-        </Label>
+        </Text>
         <div className="space-y-1">
-          <Label size="sm" weight="medium" variant="muted-foreground">
+          <Text size="sm" weight="medium" variant="muted-foreground">
             $0.30 per GB-month on SCALE plans.
-          </Label>
+          </Text>
         </div>
         <Button size="sm">
           Claim Deal

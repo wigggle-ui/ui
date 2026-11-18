@@ -1,7 +1,7 @@
 "use client";
 
 import CopyButton from "@/components/copy-button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import {
   Tooltip,
   TooltipContent,
@@ -13,9 +13,9 @@ const WidgetDemo = () => (
   <Widget design="mumbai">
     <WidgetContent className="mx-auto flex-col items-start gap-3">
       <div className="flex w-full flex-col items-center justify-center">
-        <Label size="lg">Your code for</Label>
-        <Label size="xxxxl">20%</Label>
-        <Label size="lg">discount</Label>
+        <Text size="lg">Your code for</Text>
+        <Text size="xxxxl">20%</Text>
+        <Text size="lg">discount</Text>
       </div>
       <Tooltip delayDuration={300}>
         <TooltipTrigger asChild>

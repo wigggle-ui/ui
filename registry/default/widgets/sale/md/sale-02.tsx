@@ -2,7 +2,7 @@
 
 import CopyButton from "@/components/copy-button";
 import { Icons } from "@/components/icons";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
 const WidgetDemo = () => (
@@ -13,12 +13,12 @@ const WidgetDemo = () => (
       </div>
       <div className="col-span-3 flex h-full w-full flex-col items-start justify-between py-3 pe-3">
         <div className="space-y-0">
-          <Label size="lg" weight="semibold">
+          <Text size="lg" weight="semibold">
             35% MORE TOKENS!
-          </Label>
-          <Label size="sm" variant="muted-foreground">
+          </Text>
+          <Text size="sm" variant="muted-foreground">
             Avaialble on all plans.
-          </Label>
+          </Text>
         </div>
         <div className="border-muted-foreground w-full rounded-lg border border-dashed px-3 py-2 text-center">
           <span className="w-full text-center text-lg font-semibold tracking-widest">

@@ -1,6 +1,6 @@
 import { DitheredLogo } from "@/components/dithercn/dithered-logo";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Text } from "@/components/ui/text";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
 const WidgetDemo = () => (
@@ -10,12 +10,12 @@ const WidgetDemo = () => (
   >
     <WidgetContent className="grid grid-cols-2 items-center">
       <div className="flex size-full flex-col items-start justify-between">
-        <Label size="xl" weight="semibold">
+        <Text size="xl" weight="semibold">
           Black Friday Sale
-        </Label>
-        <Label size="sm" weight="medium" variant="muted-foreground">
+        </Text>
+        <Text size="sm" weight="medium" variant="muted-foreground">
           Get 40% off on new domains.
-        </Label>
+        </Text>
         <Button>Deploy Now</Button>
       </div>
       <DitheredLogo

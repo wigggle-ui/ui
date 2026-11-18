@@ -1,8 +1,8 @@
 import { GiftIcon, VanIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
+import { Text } from "@/components/ui/text";
 import { Widget, WidgetContent } from "@/registry/default/ui/widget";
 
 const WidgetDemo = () => (
@@ -13,19 +13,19 @@ const WidgetDemo = () => (
           <VanIcon className="text-productive size-7" strokeWidth={1.5} />
         </div>
         <div className="flex flex-col items-start justify-start">
-          <Label weight="semibold">Free Shipping</Label>
-          <Label size="xs" variant="muted-foreground">
+          <Text weight="semibold">Free Shipping</Text>
+          <Text size="xs" variant="muted-foreground">
             On orders over $50
-          </Label>
+          </Text>
         </div>
       </div>
       <div className="w-full space-y-1.5">
         <Progress value={64} className="h-1.5" />
         <div className="flex w-full items-center justify-between">
-          <Label size="sm">$32 / 50</Label>
-          <Label size="sm" variant="productive">
+          <Text size="sm">$32 / 50</Text>
+          <Text size="sm" variant="productive">
             $18 more
-          </Label>
+          </Text>
         </div>
       </div>
       <Button variant="outline" size="sm">
