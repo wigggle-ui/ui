@@ -6,6 +6,7 @@ import {
   CirclePlayIcon,
   Clock3Icon,
   CloudSunIcon,
+  DollarSignIcon,
   GitCompareArrowsIcon,
   GoalIcon,
   LayoutDashboardIcon,
@@ -37,6 +38,12 @@ export const MENU_LINKS: LinkItem[] = [
     title: "Widgets",
   },
   {
+    href: "/sponsors",
+    icon: <DollarSignIcon />,
+    shortcut: "GS",
+    title: "Sponsors",
+  },
+  {
     href: "/contributors",
     icon: <GitCompareArrowsIcon />,
     shortcut: "GC",
@@ -48,12 +55,7 @@ export const MENU_LINKS: LinkItem[] = [
   //   shortcut: "GP",
   //   title: "Playground",
   // },
-  // {
-  //   href: "/sponsors",
-  //   icon: <IndianRupeeIcon />,
-  //   shortcut: "GS",
-  //   title: "Sponsors",
-  // },
+
   // {
   //   href: "/testimonials",
   //   icon: <SpeechIcon />,
