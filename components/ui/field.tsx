@@ -102,9 +102,11 @@ const FieldContent = ({ className, ...props }: React.ComponentProps<"div">) => (
 
 const FieldLabel = ({
   className,
+  htmlFor,
   ...props
 }: React.ComponentProps<typeof Label>) => (
   <Label
+    htmlFor={htmlFor}
     data-slot="field-label"
     className={cn(
       "group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50",
