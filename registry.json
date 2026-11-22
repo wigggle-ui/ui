@@ -2059,6 +2059,96 @@
       }
     },
     {
+      "name": "finance-sm-01",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/finance/sm/finance-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["finance"],
+        "size": "sm"
+      }
+    },
+    {
+      "name": "finance-sm-02",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/finance/sm/finance-02.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["finance"],
+        "size": "sm"
+      }
+    },
+    {
+      "name": "finance-sm-03",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/finance/sm/finance-03.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["finance"],
+        "size": "sm"
+      }
+    },
+    {
+      "name": "finance-md-01",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/finance/md/finance-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["finance"],
+        "size": "md"
+      }
+    },
+    {
+      "name": "finance-md-02",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://wigggle-ui.vercel.app/r/widget.json",
+        "https://wigggle-ui.vercel.app/r/text.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/widgets/finance/md/finance-02.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["finance"],
+        "size": "md"
+      }
+    },
+    {
       "name": "stock-sm-01",
       "type": "registry:component",
       "dependencies": ["lucide-react"],
