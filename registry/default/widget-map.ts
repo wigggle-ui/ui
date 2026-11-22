@@ -176,6 +176,26 @@ export const widgetMap = new Map([
     () => import("@/registry/default/widgets/dashboard/sm/dashboard-06"),
   ],
   [
+    "registry/default/widgets/finance/md/finance-01.tsx",
+    () => import("@/registry/default/widgets/finance/md/finance-01"),
+  ],
+  [
+    "registry/default/widgets/finance/md/finance-02.tsx",
+    () => import("@/registry/default/widgets/finance/md/finance-02"),
+  ],
+  [
+    "registry/default/widgets/finance/sm/finance-01.tsx",
+    () => import("@/registry/default/widgets/finance/sm/finance-01"),
+  ],
+  [
+    "registry/default/widgets/finance/sm/finance-02.tsx",
+    () => import("@/registry/default/widgets/finance/sm/finance-02"),
+  ],
+  [
+    "registry/default/widgets/finance/sm/finance-03.tsx",
+    () => import("@/registry/default/widgets/finance/sm/finance-03"),
+  ],
+  [
     "registry/default/widgets/media/md/media-01.tsx",
     () => import("@/registry/default/widgets/media/md/media-01"),
   ],

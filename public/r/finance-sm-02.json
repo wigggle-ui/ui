@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "finance-sm-02",
+  "registryDependencies": [
+    "https://wigggle-ui.vercel.app/r/widget.json",
+    "https://wigggle-ui.vercel.app/r/text.json"
+  ],
+  "files": [
+    {
+      "path": "registry/default/widgets/finance/sm/finance-02.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { Text } from \"@/components/ui/text\";\nimport {\n  Widget,\n  WidgetContent,\n  WidgetFooter,\n  WidgetHeader,\n  WidgetTitle,\n} from \"@/registry/default/ui/widget\";\n\nconst GOAL_NAME = \"New Laptop\";\nconst SAVED = 4800;\nconst TARGET = 8000;\nconst FINISH = \"Mar 2027\";\n\nconst percent = Math.round((SAVED / TARGET) * 100);\nconst format = (value: number) => `$${value.toLocaleString(\"en-US\")}`;\n\nconst WidgetDemo = () => {\n  const [filled, setFilled] = React.useState(false);\n  const [showRemaining, setShowRemaining] = React.useState(false);\n\n  React.useEffect(() => {\n    const frame = requestAnimationFrame(() => setFilled(true));\n    return () => cancelAnimationFrame(frame);\n  }, []);\n\n  return (\n    <Widget\n      className=\"group transition-all duration-300 hover:shadow-lg motion-safe:hover:-translate-y-1\"\n      design=\"mumbai\"\n    >\n      <WidgetHeader>\n        <WidgetTitle>\n          <Text variant=\"muted-foreground\">{GOAL_NAME}</Text>\n        </WidgetTitle>\n      </WidgetHeader>\n      <WidgetContent className=\"flex-col items-start justify-center gap-3\">\n        <Text size=\"xxxxl\" weight=\"semibold\">\n          {percent}%\n        </Text>\n        <progress\n          aria-label={`${GOAL_NAME} savings progress`}\n          className=\"sr-only\"\n          max={100}\n          value={percent}\n        />\n        <div\n          aria-hidden=\"true\"\n          className=\"bg-secondary relative h-2.5 w-full overflow-hidden rounded-full\"\n        >\n          <div\n            className=\"bg-productive h-full w-(--progress) rounded-full transition-all duration-1000 ease-out group-hover:brightness-125 motion-reduce:transition-none\"\n            style={\n              {\n                \"--progress\": filled ? `${percent}%` : \"0%\",\n              } as React.CSSProperties\n            }\n          />\n        </div>\n        <button\n          aria-label=\"Toggle between saved and remaining amount\"\n          className=\"cursor-pointer text-left transition-opacity hover:opacity-70 active:scale-95\"\n          onClick={() => setShowRemaining((value) => !value)}\n          type=\"button\"\n        >\n          <Text size=\"xs\" variant=\"muted-foreground\">\n            {showRemaining\n              ? `${format(TARGET - SAVED)} to go`\n              : `${format(SAVED)} of ${format(TARGET)}`}\n          </Text>\n        </button>\n      </WidgetContent>\n      <WidgetFooter>\n        <span className=\"flex items-center gap-1.5\">\n          <span className=\"bg-productive size-1.5 rounded-full motion-safe:animate-pulse\" />\n          <Text size=\"xs\" variant=\"productive\" weight=\"semibold\">\n            On track\n          </Text>\n        </span>\n        <Text size=\"xs\" variant=\"muted-foreground\">\n          {FINISH}\n        </Text>\n      </WidgetFooter>\n    </Widget>\n  );\n};\n\nexport default WidgetDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "tags": [
+      "finance"
+    ],
+    "size": "sm"
+  },
+  "type": "registry:component"
+}
