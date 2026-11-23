@@ -22,7 +22,7 @@ const SponsorshipTiers = () => (
         Choose your level of support
       </h2>
       <p className="text-muted-foreground text-sm sm:text-base">
-        Every tier is monthly and helps keep Wigggle UI free and open source.
+        Every helps keep Wigggle UI free and open source.
       </p>
     </div>
 
@@ -31,29 +31,27 @@ const SponsorshipTiers = () => (
         <li key={tier.id}>
           <Card className="h-full">
             <CardHeader>
-              <div className="space-y-3">
+              <div className="space-y-1">
                 <div className="flex items-center justify-between gap-3">
                   <CardTitle>
-                    <span className={tier.accent}>{tier.name}</span>
-                  </CardTitle>
-                  {tier.featured && (
-                    <span className="bg-primary text-primary-foreground rounded-full px-2.5 py-1 text-xs font-medium">
-                      Featured
+                    <span className={`${tier.accent} text-lg`}>
+                      {tier.name}
                     </span>
-                  )}
+                  </CardTitle>
                 </div>
                 <CardDescription>{tier.description}</CardDescription>
-                <p className="flex items-baseline gap-1 pt-2">
-                  <span className="text-4xl font-semibold tracking-tight">
-                    ${tier.price}
-                  </span>
-                  <span className="text-muted-foreground text-sm">/ month</span>
-                </p>
               </div>
             </CardHeader>
-
             <CardContent className="flex-1">
-              <ul className="space-y-3 border-t pt-5">
+              <p className="flex items-baseline gap-1 pt-2">
+                <span
+                  className={`${tier.accent} text-5xl font-semibold tracking-tight`}
+                >
+                  ${tier.price}
+                </span>
+                <span className="text-muted-foreground">/ month</span>
+              </p>
+              <ul className="space-y-2 pt-5">
                 {tier.benefits.map((benefit) => (
                   <li
                     className="flex items-start gap-2.5 text-sm leading-5"
@@ -68,12 +66,11 @@ const SponsorshipTiers = () => (
                 ))}
               </ul>
             </CardContent>
-
             <CardFooter>
               <Button
                 asChild
                 className="w-full justify-between"
-                variant={tier.featured ? "default" : "outline"}
+                variant="outline"
               >
                 <Link
                   aria-label={`Sponsor at $${tier.price} per month: ${tier.name}`}

@@ -2,7 +2,6 @@ export interface SponsorshipTier {
   accent: string;
   benefits: string[];
   description: string;
-  featured?: boolean;
   id: string;
   name: string;
   price: number;
@@ -10,7 +9,7 @@ export interface SponsorshipTier {
 
 export const sponsorshipTiers: SponsorshipTier[] = [
   {
-    accent: "text-muted-foreground",
+    accent: "text-orange-600 dark:text-orange-400",
     benefits: ["A nice shoutout on X"],
     description: "A little support goes a long way.",
     id: "577329",
@@ -34,7 +33,7 @@ export const sponsorshipTiers: SponsorshipTier[] = [
     price: 20,
   },
   {
-    accent: "text-slate-600 dark:text-slate-300",
+    accent: "text-purple-600 dark:text-purple-400",
     benefits: ["Everything in Crusader", "Your details on the Docs Page"],
     description: "Be recognized as a Silver Sponsor.",
     id: "577333",
@@ -42,7 +41,7 @@ export const sponsorshipTiers: SponsorshipTier[] = [
     price: 50,
   },
   {
-    accent: "text-yellow-700 dark:text-yellow-400",
+    accent: "text-green-700 dark:text-green-400",
     benefits: ["Everything in Archon", "Your details in the GitHub Readme"],
     description: "Be recognized as a Gold Sponsor.",
     id: "577334",
@@ -50,7 +49,7 @@ export const sponsorshipTiers: SponsorshipTier[] = [
     price: 100,
   },
   {
-    accent: "text-violet-600 dark:text-violet-400",
+    accent: "text-red-600 dark:text-red-400",
     benefits: [
       "Everything in Legend",
       "Featured prominently across major projects",
@@ -58,7 +57,7 @@ export const sponsorshipTiers: SponsorshipTier[] = [
       "Open to deeper collaboration and partnership",
     ],
     description: "Support open source at an organizational level.",
-    featured: true,
+
     id: "577335",
     name: "Ancient",
     price: 500,

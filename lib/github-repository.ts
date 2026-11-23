@@ -2,7 +2,7 @@ import { unstable_cache } from "next/cache";
 
 const API = "https://api.github.com";
 const API_VERSION = "2022-11-28";
-const REPOSITORY_STATS_CACHE_SECONDS = 60 * 60;
+const REPOSITORY_STATS_CACHE_SECONDS = 60 * 60 * 24;
 
 interface GitHubUser {
   id: number;

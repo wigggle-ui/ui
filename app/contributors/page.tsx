@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ExternalLink } from "@/components/animate-ui/icons/external-link";
+import CountUp from "@/components/count-up";
 import PageHeader from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import type { GitHubRepositoryStats } from "@/lib/github-repository";
@@ -43,15 +44,33 @@ const StatCard = ({
   value: string;
   showExternalLink?: boolean;
 }) => (
-  <div className="flex min-h-28 flex-col items-center justify-center gap-2 p-5 text-center">
-    <h2 className="text-muted-foreground flex items-center justify-center gap-2 font-mono text-sm font-medium tracking-wide uppercase">
-      {label}
-      {showExternalLink && (
-        <ExternalLink className="size-4.5" animateOnHover animation="default" />
-      )}
-    </h2>
-    <p className="text-4xl font-semibold tabular-nums">{value}</p>
-  </div>
+  <li className="p-1">
+    <div className="flex min-h-28 flex-col items-center justify-center gap-3 px-3">
+      <h2 className="text-muted-foreground flex items-center justify-center gap-2 font-mono text-sm font-medium tracking-wide uppercase">
+        {label}
+        {showExternalLink && (
+          <ExternalLink
+            className="size-4.5"
+            animateOnHover
+            animation="default"
+          />
+        )}
+      </h2>
+      <CountUp
+        from={0}
+        to={Number(value)}
+        mode="roll"
+        easing="expo"
+        format="standard"
+        direction="up"
+        duration={1.5}
+        delay={0}
+        trigger="view"
+        replayOnHover
+        className="text-4xl font-semibold tracking-tight tabular-nums sm:text-5xl"
+      />
+    </div>
+  </li>
 );
 
 const CountBadge = ({
@@ -84,10 +103,50 @@ const RepositoryStats = ({ result }: { result: RepositoryResult }) => {
   return (
     <div className="space-y-6">
       <PageHeader title="Contributors">
-        A few good weirdos who make Wigggle UI possible.
+        A little proof that people care about.
       </PageHeader>
       <hr />
+      <ul
+        aria-label="Repository totals"
+        className="grid grid-cols-2 items-center gap-6 md:grid-cols-4"
+      >
+        <StatCard label="Stars" value={formatNumber.format(stats.totalStars)} />
+        <StatCard
+          label="Contributors"
+          value={formatNumber.format(stats.totalContributors)}
+        />
+        <StatCard
+          label="Commits"
+          value={formatNumber.format(stats.totalCommits)}
+        />
+        <Link
+          aria-label={`${formatCount(stats.openIssues, "open issue", "open issues")} — view GitHub issues`}
+          className="group focus-visible:ring-ring rounded-xl focus-visible:ring-2 focus-visible:outline-none"
+          href={`${stats.repository.url}/issues`}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <StatCard
+            label="Open Issues"
+            value={formatNumber.format(stats.openIssues)}
+            showExternalLink
+          />
+        </Link>
+      </ul>
+      <hr />
+      <div className="space-y-2">
+        <h2
+          className="text-2xl font-semibold tracking-tight"
+          id="sponsorship-heading"
+        >
+          Credit due where it&apos;s due.
+        </h2>
+        <p className="text-muted-foreground text-sm sm:text-base">
+          Weirdos who make Wigggle UI possible.
+        </p>
+      </div>
       <div className="space-y-6">
+        <hr />
         <section aria-labelledby="contributors-heading">
           {stats.contributors.length > 0 ? (
             <ol className="grid list-none grid-cols-2 gap-6 py-2 lg:grid-cols-3">
@@ -126,37 +185,6 @@ const RepositoryStats = ({ result }: { result: RepositoryResult }) => {
               look at the repo itself...
             </p>
           )}
-        </section>
-        <hr />
-        <section
-          aria-label="Repository totals"
-          className="grid grid-cols-2 items-center gap-6 md:grid-cols-4"
-        >
-          <StatCard
-            label="Stars"
-            value={formatNumber.format(stats.totalStars)}
-          />
-          <StatCard
-            label="Contributors"
-            value={formatNumber.format(stats.totalContributors)}
-          />
-          <StatCard
-            label="Commits"
-            value={formatNumber.format(stats.totalCommits)}
-          />
-          <Link
-            aria-label={`${formatCount(stats.openIssues, "open issue", "open issues")} — view GitHub issues`}
-            className="group focus-visible:ring-ring rounded-xl focus-visible:ring-2 focus-visible:outline-none"
-            href={`${stats.repository.url}/issues`}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <StatCard
-              label="Open Issues"
-              value={formatNumber.format(stats.openIssues)}
-              showExternalLink
-            />
-          </Link>
         </section>
         <hr />
         <div className="space-y-6 p-8 text-center">
