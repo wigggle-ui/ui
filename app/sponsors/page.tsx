@@ -1,6 +1,6 @@
-import CountUp from "@/components/count-up";
 import PageHeader from "@/components/page-header";
 import SponsorshipTiers from "@/components/sponsorship-tiers";
+import { Text } from "@/components/ui/text";
 import { totalWidgetCount } from "@/config/widgets";
 
 export const metadata = {
@@ -13,10 +13,10 @@ const reachStats = [
   {
     label: "Total Widgets",
     suffix: "",
-    value: totalWidgetCount.toLocaleString(),
+    value: totalWidgetCount,
   },
-  { label: "Monthly Visitors", suffix: "K+", value: "60" },
-  { label: "Page Views", suffix: "K+", value: "150" },
+  { label: "Monthly Visitors", suffix: "K+", value: 60 },
+  { label: "Page Views", suffix: "K+", value: 150 },
 ];
 
 const Page = () => (
@@ -33,20 +33,10 @@ const Page = () => (
               <h2 className="text-muted-foreground flex items-center justify-center gap-2 text-center font-mono text-sm font-medium tracking-wide uppercase">
                 {label}
               </h2>
-              <CountUp
-                from={0}
-                to={Number(value)}
-                mode="roll"
-                easing="expo"
-                format="standard"
-                direction="up"
-                duration={1.5}
-                delay={0}
-                suffix={suffix}
-                trigger="view"
-                replayOnHover
-                className="text-4xl font-semibold tracking-tight tabular-nums sm:text-5xl"
-              />
+              <Text size="xxxxxl" weight="semibold">
+                {value}
+                {suffix}
+              </Text>
             </div>
           </li>
         ))}

@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ExternalLink } from "@/components/animate-ui/icons/external-link";
-import CountUp from "@/components/count-up";
 import PageHeader from "@/components/page-header";
 import { Button } from "@/components/ui/button";
+import { Text } from "@/components/ui/text";
 import type { GitHubRepositoryStats } from "@/lib/github-repository";
 import { getCachedGitHubRepositoryStats } from "@/lib/github-repository";
 
@@ -56,19 +56,9 @@ const StatCard = ({
           />
         )}
       </h2>
-      <CountUp
-        from={0}
-        to={Number(value)}
-        mode="roll"
-        easing="expo"
-        format="standard"
-        direction="up"
-        duration={1.5}
-        delay={0}
-        trigger="view"
-        replayOnHover
-        className="text-4xl font-semibold tracking-tight tabular-nums sm:text-5xl"
-      />
+      <Text size="xxxxxl" weight="semibold">
+        {value}
+      </Text>
     </div>
   </li>
 );

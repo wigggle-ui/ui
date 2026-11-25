@@ -25,6 +25,7 @@ const textVariants = cva(
         xxl: "text-2xl",
         xxxl: "text-3xl",
         xxxxl: "text-4xl",
+        xxxxxl: "text-5xl",
       },
       variant: {
         background: "text-background",

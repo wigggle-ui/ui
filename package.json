@@ -38,7 +38,6 @@
     "@rexa-developer/tiks": "^0.3.0",
     "@types/mdx": "^2.0.14",
     "@vercel/analytics": "^2.0.1",
-    "@wandry/analytics-sdk": "^1.16.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
